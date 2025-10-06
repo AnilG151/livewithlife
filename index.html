@@ -16,7 +16,7 @@
     .logo {font-weight:700;font-size:1.5rem;color:#3b7a57;}
     nav ul {display:flex;gap:1.5rem;list-style:none;}
     nav a {font-weight:500;color:#333;}
-    
+
     /* Hero Section */
     .hero {display:flex;flex-direction:column;align-items:center;text-align:center;padding:6rem 1rem;background:linear-gradient(135deg, #c6f2d7 0%, #effaf1 100%);}
     .hero h1 {font-size:2.5rem;margin-bottom:1rem;color:#2f9e44;}
@@ -48,6 +48,9 @@
     /* Footer */
     footer {background:#3b7a57;color:#fff;text-align:center;padding:1.5rem;margin-top:3rem;font-size:0.9rem;}
 
+    /* Hide Sections */
+    .hidden { display: none; }
+
     /* Responsive */
     @media(max-width:768px){.hero h1{font-size:2rem;}.hero p{font-size:1rem;}}
   </style>
@@ -59,10 +62,10 @@
     <div class="logo">Healthy Bites</div>
     <nav>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" onclick="showSection('home')">Home</a></li>
+        <li><a href="#" onclick="showSection('products')">Products</a></li>
+        <li><a href="#" onclick="showSection('about')">About</a></li>
+        <li><a href="#" onclick="showSection('contact')">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -71,17 +74,17 @@
   <section class="hero" id="home">
     <h1>Fresh & Nutritious Healthy Food</h1>
     <p>Your daily dose of wellness, delivered fresh from farm to table.</p>
-    <a href="#products" class="cta">Shop Now</a>
+    <a href="#" class="cta" onclick="showSection('products')">Shop Now</a>
   </section>
 
   <!-- About Section -->
-  <section class="about" id="about">
+  <section class="about hidden" id="about">
     <h2>About Us</h2>
     <p>Healthy Bites provides fresh, organic, and nutrient-rich food products for your healthy lifestyle. Our mission is to make nutritious eating simple, delicious, and sustainable.</p>
   </section>
 
   <!-- Products Section -->
-  <section class="products" id="products">
+  <section class="products hidden" id="products">
     <h2>Our Products</h2>
     <div class="product-grid">
       <div class="product-card">
@@ -111,7 +114,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section class="about" id="contact">
+  <section class="about hidden" id="contact">
     <h2>Contact Us</h2>
     <p>Email: hello@healthybites.com | Call: +91 98733 24887</p>
   </section>
@@ -126,7 +129,20 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 
+  <!-- JS -->
   <script>
+    const sections = ['home', 'products', 'about', 'contact'];
+
+    function showSection(id) {
+      sections.forEach(sec => {
+        document.getElementById(sec).classList.add('hidden');
+      });
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    // Show home by default
+    showSection('home');
+
     function orderWhatsApp(productName) {
       const number = '919873324887';
       const message = encodeURIComponent(`Hi, I’d like to place an order for ${productName}`);
