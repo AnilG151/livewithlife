@@ -1,103 +1,63 @@
-<!doctype html>
+<!-- index.html -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FreshLeaf Microgreens</title>
-  <meta name="description" content="FreshLeaf Microgreens — grow kits, seeds and live microgreens" />
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="whatsapp-icon.svg" type="image/svg+xml">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Microgreens World | Fresh, Nutritious, Sustainable</title>
+<link rel="stylesheet" href="styles.css" />
+<script defer src="app.js"></script>
+<link rel="icon" href="logo.png" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <div class="brand">FreshLeaf Microgreens</div>
-      <nav class="main-nav" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#products">Shop</a>
-        <a href="#learn">Learn</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+<header class="navbar">
+<div class="logo">🌱 Microgreens World</div>
+<nav>
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#products">Products</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
 
-  <main class="container">
-    <section id="hero" class="card hero" aria-labelledby="hero-heading">
-      <div>
-        <h1 id="hero-heading">Tiny leaves. Mighty nutrition.</h1>
-        <p class="lead">Premium microgreens, starter grow kits and easy guides for home cooks and restaurants.</p>
-        <div class="cta">
-          <a class="btn" href="#products">Shop Grow Kits</a>
-          <a class="btn outline" href="#learn">Read Guide</a>
-        </div>
-      </div>
-      <img alt="microgreens on a tray" src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder">
-    </section>
 
-    <section id="products">
-      <h2>Shop — Grow Kits & Live Microgreens</h2>
-      <div class="products-grid">
-        <article class="product card" data-name="Starter Grow Kit" data-price="799">
-          <h3>Starter Grow Kit</h3>
-          <p>Tray, soil mat, seeds (3 varieties), and a quick guide.</p>
-          <div class="product-row">
-            <strong>₹799</strong>
-            <button class="btn add-btn" type="button">Add</button>
-          </div>
-        </article>
+<section id="home" class="hero">
+<div class="hero-content">
+<h1>Grow. Eat. Live Healthy.</h1>
+<p>Fresh microgreens grown with love & delivered to your door.</p>
+<a href="#products" class="cta">Explore Products</a>
+</div>
+</section>
 
-        <article class="product card" data-name="Basil Microgreens" data-price="199">
-          <h3>Live Microgreens — Basil (80g)</h3>
-          <p>Fresh basil microgreens, harvested and packed to retain freshness.</p>
-          <div class="product-row">
-            <strong>₹199</strong>
-            <button class="btn add-btn" type="button">Add</button>
-          </div>
-        </article>
 
-        <article class="product card" data-name="Seeds Pack" data-price="349">
-          <h3>Microgreens Seeds — Mixed Pack</h3>
-          <p>Seeds for beginners: radish, mustard, and broccoli.</p>
-          <div class="product-row">
-            <strong>₹349</strong>
-            <button class="btn add-btn" type="button">Add</button>
-          </div>
-        </article>
-      </div>
+<section id="products" class="products">
+<h2>Our Microgreens</h2>
+<div class="product-grid">
+<div class="product-card">
+<img src="microgreen1.jpg" alt="Sunflower Microgreens" />
+<h3>Sunflower Microgreens</h3>
+<p>Rich in protein and crunch.</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+<div class="product-card">
+<img src="microgreen2.jpg" alt="Radish Microgreens" />
+<h3>Radish Microgreens</h3>
+<p>Spicy, flavorful, and full of antioxidants.</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+<div class="product-card">
+<img src="microgreen3.jpg" alt="Broccoli Microgreens" />
+<h3>Broccoli Microgreens</h3>
+<p>Loaded with vitamins and minerals.</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+</div>
+<button id="checkoutBtn">Checkout via WhatsApp</button>
+</section>
 
-      <aside class="card cart" id="cart" aria-live="polite">
-        <h3>Your Cart</h3>
-        <div id="cartItems">No items yet.</div>
-        <div class="cart-actions">
-          <button class="btn" id="checkoutBtn" type="button">Checkout via WhatsApp</button>
-          <button class="btn outline" id="clearBtn" type="button">Clear</button>
-        </div>
-      </aside>
-    </section>
 
-    <section id="learn" class="card">
-      <h2>Learn — Quick Guide</h2>
-      <p class="lead">Simple growing tips, nutrition highlights and usage ideas — perfect for urban growers.</p>
-    </section>
-
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <p>If you have a wholesale enquiry or restaurant order, use the WhatsApp chat or email us: info@freshleaf.example</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div>© FreshLeaf Microgreens</div>
-      <div class="social">Follow: Instagram • Facebook</div>
-    </div>
-  </footer>
-
-  <!-- Floating WhatsApp icon (also used as quick chat) -->
-  <a id="whatsappFloat" class="whatsapp-float" href="#" target="_blank" aria-label="Chat on WhatsApp">
-    <img src="whatsapp-icon.svg" alt="WhatsApp">
-  </a>
-
-  <script src="app.js"></script>
-</body>
+<section id="about" class="about">
+<h2>About Us</h2>
 </html>
