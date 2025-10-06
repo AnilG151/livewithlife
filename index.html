@@ -1,63 +1,138 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Microgreens World | Fresh, Nutritious, Sustainable</title>
-<link rel="stylesheet" href="styles.css" />
-<script defer src="app.js"></script>
-<link rel="icon" href="logo.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthy Bites | Fresh & Nutritious</title>
+  <style>
+    /* Basic Reset & Typography */
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body {background:#f9f9f9;color:#333;}
+    a{text-decoration:none;color:inherit;}
+    button{cursor:pointer;}
+
+    /* Navbar */
+    header {display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.08);position:sticky;top:0;z-index:100;}
+    .logo {font-weight:700;font-size:1.5rem;color:#3b7a57;}
+    nav ul {display:flex;gap:1.5rem;list-style:none;}
+    nav a {font-weight:500;color:#333;}
+    
+    /* Hero Section */
+    .hero {display:flex;flex-direction:column;align-items:center;text-align:center;padding:6rem 1rem;background:linear-gradient(135deg, #c6f2d7 0%, #effaf1 100%);}
+    .hero h1 {font-size:2.5rem;margin-bottom:1rem;color:#2f9e44;}
+    .hero p {font-size:1.2rem;margin-bottom:2rem;color:#555;}
+    .hero .cta {background:#2f9e44;color:#fff;padding:0.8rem 1.8rem;border-radius:30px;font-weight:600;transition:0.3s;}
+    .hero .cta:hover {background:#237a35;}
+
+    /* About Section */
+    section {padding:3rem 1rem;}
+    .about {background:#fff;border-radius:12px;max-width:900px;margin:2rem auto;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,0.05);}
+    .about h2 {font-size:2rem;color:#2f9e44;margin-bottom:1rem;}
+    .about p {font-size:1.1rem;color:#555;line-height:1.6;}
+
+    /* Product Grid */
+    .products h2 {text-align:center;font-size:2rem;color:#2f9e44;margin-bottom:2rem;}
+    .product-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;}
+    .product-card {background:#fff;padding:1rem;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.06);text-align:center;display:flex;flex-direction:column;justify-content:space-between;}
+    .product-card img {width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:1rem;}
+    .product-card h3 {color:#2f9e44;margin-bottom:0.5rem;font-size:1.2rem;}
+    .product-card p {color:#555;margin-bottom:0.8rem;font-size:0.95rem;}
+    .product-card .price {font-weight:600;font-size:1.1rem;margin-bottom:0.8rem;}
+    .product-card button {background:#25d366;color:#fff;padding:0.6rem 1rem;border:none;border-radius:25px;font-weight:600;transition:0.3s;}
+    .product-card button:hover {background:#1eb851;}
+
+    /* Floating WhatsApp Button */
+    .whatsapp-float {position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#25d366;border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:1000;}
+    .whatsapp-float img {width:32px;height:32px;}
+
+    /* Footer */
+    footer {background:#3b7a57;color:#fff;text-align:center;padding:1.5rem;margin-top:3rem;font-size:0.9rem;}
+
+    /* Responsive */
+    @media(max-width:768px){.hero h1{font-size:2rem;}.hero p{font-size:1rem;}}
+  </style>
 </head>
 <body>
-<header class="navbar">
-<div class="logo">🌱 Microgreens World</div>
-<nav>
-<ul class="nav-links">
-<li><a href="#home">Home</a></li>
-<li><a href="#products">Products</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-</header>
 
+  <!-- Navbar -->
+  <header>
+    <div class="logo">Healthy Bites</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<section id="home" class="hero">
-<div class="hero-content">
-<h1>Grow. Eat. Live Healthy.</h1>
-<p>Fresh microgreens grown with love & delivered to your door.</p>
-<a href="#products" class="cta">Explore Products</a>
-</div>
-</section>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <h1>Fresh & Nutritious Healthy Food</h1>
+    <p>Your daily dose of wellness, delivered fresh from farm to table.</p>
+    <a href="#products" class="cta">Shop Now</a>
+  </section>
 
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>Healthy Bites provides fresh, organic, and nutrient-rich food products for your healthy lifestyle. Our mission is to make nutritious eating simple, delicious, and sustainable.</p>
+  </section>
 
-<section id="products" class="products">
-<h2>Our Microgreens</h2>
-<div class="product-grid">
-<div class="product-card">
-<img src="microgreen1.jpg" alt="Sunflower Microgreens" />
-<h3>Sunflower Microgreens</h3>
-<p>Rich in protein and crunch.</p>
-<button class="add-cart">Add to Cart</button>
-</div>
-<div class="product-card">
-<img src="microgreen2.jpg" alt="Radish Microgreens" />
-<h3>Radish Microgreens</h3>
-<p>Spicy, flavorful, and full of antioxidants.</p>
-<button class="add-cart">Add to Cart</button>
-</div>
-<div class="product-card">
-<img src="microgreen3.jpg" alt="Broccoli Microgreens" />
-<h3>Broccoli Microgreens</h3>
-<p>Loaded with vitamins and minerals.</p>
-<button class="add-cart">Add to Cart</button>
-</div>
-</div>
-<button id="checkoutBtn">Checkout via WhatsApp</button>
-</section>
+  <!-- Products Section -->
+  <section class="products" id="products">
+    <h2>Our Products</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x180.png?text=Product+1" alt="Product 1">
+        <h3>Fresh Microgreens</h3>
+        <p>Organic microgreens packed with nutrients.</p>
+        <div class="price">₹199</div>
+        <button onclick="orderWhatsApp('Fresh Microgreens')">Order on WhatsApp</button>
+      </div>
 
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x180.png?text=Product+2" alt="Product 2">
+        <h3>Organic Salad Mix</h3>
+        <p>Pre-mixed greens for your daily salad.</p>
+        <div class="price">₹249</div>
+        <button onclick="orderWhatsApp('Organic Salad Mix')">Order on WhatsApp</button>
+      </div>
 
-<section id="about" class="about">
-<h2>About Us</h2>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300x180.png?text=Product+3" alt="Product 3">
+        <h3>Protein Smoothie</h3>
+        <p>Delicious smoothie mix, high in protein.</p>
+        <div class="price">₹299</div>
+        <button onclick="orderWhatsApp('Protein Smoothie')">Order on WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="about" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: hello@healthybites.com | Call: +91 98733 24887</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Healthy Bites. All Rights Reserved.
+  </footer>
+
+  <!-- Floating WhatsApp Icon -->
+  <a href="https://wa.me/919873324887" target="_blank" class="whatsapp-float">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <script>
+    function orderWhatsApp(productName) {
+      const number = '919873324887';
+      const message = encodeURIComponent(`Hi, I’d like to place an order for ${productName}`);
+      window.open(`https://wa.me/${number}?text=${message}`, '_blank');
+    }
+  </script>
+
+</body>
 </html>
