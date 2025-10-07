@@ -1,154 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Healthy Bites | Fresh & Nutritious</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Life With Leaf — Healthy Living</title>
+  <meta name="description" content="Life With Leaf - Live microgreens, pesticide-free, homegrown. Fresh microgreens, grow kits and seeds." />
   <style>
-    /* Basic Reset & Typography */
-    * {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-    body {background:#f9f9f9;color:#333;}
-    a{text-decoration:none;color:inherit;}
-    button{cursor:pointer;}
+    :root{
+      --green-1: #2f9e44;
+      --green-2: #6bd36a;
+      --muted: #556068;
+      --card: #ffffff;
+      --glass: rgba(255,255,255,0.85);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Poppins',sans-serif;background:linear-gradient(180deg,#f5fbf5,#f8fff8);color:#102026;line-height:1.45}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
 
-    /* Navbar */
-    header {display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.08);position:sticky;top:0;z-index:100;}
-    .logo {font-weight:700;font-size:1.5rem;color:#3b7a57;}
-    nav ul {display:flex;gap:1.5rem;list-style:none;}
-    nav a {font-weight:500;color:#333;}
+    /* Header */
+    header{position:sticky;top:0;z-index:60;background:linear-gradient(90deg,rgba(47,158,68,0.06),rgba(107,211,106,0.03));backdrop-filter:blur(6px);border-bottom:1px solid rgba(15,23,42,0.04)}
+    .container{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:64px;height:64px;object-fit:contain;border-radius:8px;background:transparent}
+    .brand .title{font-weight:800;font-size:18px;color:var(--green-1)}
+    nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0}
+    nav a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
+    nav a:hover{background:rgba(47,158,68,0.06);color:var(--green-1)}
 
-    /* Hero Section */
-    .hero {display:flex;flex-direction:column;align-items:center;text-align:center;padding:6rem 1rem;background:linear-gradient(135deg, #c6f2d7 0%, #effaf1 100%);}
-    .hero h1 {font-size:2.5rem;margin-bottom:1rem;color:#2f9e44;}
-    .hero p {font-size:1.2rem;margin-bottom:2rem;color:#555;}
-    .hero .cta {background:#2f9e44;color:#fff;padding:0.8rem 1.8rem;border-radius:30px;font-weight:600;transition:0.3s;}
-    .hero .cta:hover {background:#237a35;}
+    /* Layout / Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:center;padding:36px 20px}
+    .heroCard{background:var(--card);padding:26px;border-radius:14px;box-shadow:0 12px 30px rgba(15,23,42,0.06)}
+    .hero h1{font-size:clamp(26px,4vw,40px);margin:0 0 12px;color:var(--green-1)}
+    .hero p.lead{color:var(--muted);margin-bottom:18px;font-size:16px}
+    .ctaRow{display:flex;gap:12px;align-items:center}
+    .btn{background:var(--green-1);color:white;padding:10px 16px;border-radius:12px;border:0;font-weight:700;cursor:pointer}
+    .btn.ghost{background:transparent;border:2px solid rgba(47,158,68,0.12);color:var(--green-1)}
+    .featureRow{display:flex;gap:12px;margin-top:18px}
 
-    /* About Section */
-    section {padding:3rem 1rem;}
-    .about {background:#fff;border-radius:12px;max-width:900px;margin:2rem auto;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,0.05);}
-    .about h2 {font-size:2rem;color:#2f9e44;margin-bottom:1rem;}
-    .about p {font-size:1.1rem;color:#555;line-height:1.6;}
+    /* Info cards */
+    .infoCard{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfff9);box-shadow:0 6px 18px rgba(15,23,42,0.03)}
+    .infoCard .icon{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
+    .infoCard .icon.leaf{background:linear-gradient(135deg,var(--green-1),var(--green-2))}
+    .infoCard small{color:var(--muted);display:block;font-size:13px}
+
+    /* Sections */
+    main{max-width:1100px;margin:16px auto;padding:0 20px}
+    section{margin:22px 0}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(15,23,42,0.04)}
+
+    /* About */
+    .about h2{color:var(--green-1);font-size:22px;margin-bottom:8px}
+    .about p{color:var(--muted)}
 
     /* Product Grid */
-    .products h2 {text-align:center;font-size:2rem;color:#2f9e44;margin-bottom:2rem;}
-    .product-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;}
-    .product-card {background:#fff;padding:1rem;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.06);text-align:center;display:flex;flex-direction:column;justify-content:space-between;}
-    .product-card img {width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:1rem;}
-    .product-card h3 {color:#2f9e44;margin-bottom:0.5rem;font-size:1.2rem;}
-    .product-card p {color:#555;margin-bottom:0.8rem;font-size:0.95rem;}
-    .product-card .price {font-weight:600;font-size:1.1rem;margin-bottom:0.8rem;}
-    .product-card button {background:#25d366;color:#fff;padding:0.6rem 1rem;border:none;border-radius:25px;font-weight:600;transition:0.3s;}
-    .product-card button:hover {background:#1eb851;}
+    .productsHeader{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .productsHeader h2{margin:0;color:var(--green-1)}
+    .productGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px}
+    .product{border-radius:12px;background:linear-gradient(180deg,#fff,#fbfff9);padding:12px;display:flex;flex-direction:column;gap:8px;box-shadow:0 8px 18px rgba(15,23,42,0.03)}
+    .productImg{height:160px;border-radius:10px;overflow:hidden;background:#eefaf0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+    .product h3{margin:0;color:#11402a;font-size:18px}
+    .product p.desc{margin:0;color:var(--muted);font-size:14px}
+    .priceRow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}
+    .price{font-weight:800;color:var(--green-1)}
+    .qtyRow{display:flex;align-items:center;gap:8px}
+    .qtyBtn{padding:6px 10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:#fff}
+    .addCart{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:white;padding:8px 12px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
 
-    /* Floating WhatsApp Button */
-    .whatsapp-float {position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#25d366;border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:1000;}
-    .whatsapp-float img {width:32px;height:32px;}
+    /* Cart panel */
+    .cartPanel{position:fixed;right:18px;bottom:18px;width:320px;max-height:70vh;overflow:auto;padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfff9);box-shadow:0 18px 50px rgba(15,23,42,0.12);z-index:150}
+    .cartHeader{display:flex;justify-content:space-between;align-items:center;gap:8px}
+    .cartItems{margin-top:10px}
+    .cartItem{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(15,23,42,0.04)}
+    .cartItem .meta{max-width:150px}
+    .cartTotal{font-weight:800;margin-top:10px}
+    .cartActions{display:flex;gap:8px;margin-top:10px}
+
+    /* Floating WhatsApp (small) */
+    .whFloat{position:fixed;left:18px;bottom:18px;background:#25d366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,0.12);z-index:160}
+    .whFloat img{width:30px;height:30px}
 
     /* Footer */
-    footer {background:#3b7a57;color:#fff;text-align:center;padding:1.5rem;margin-top:3rem;font-size:0.9rem;}
+    footer{margin-top:30px;padding:26px 20px;text-align:center;color:#fff;background:linear-gradient(90deg,var(--green-1),var(--green-2))}
 
-    /* Hide Sections */
-    .hidden { display: none; }
+    /* Hide sections helper */
+    .hidden{display:none}
 
     /* Responsive */
-    @media(max-width:768px){.hero h1{font-size:2rem;}.hero p{font-size:1rem;}}
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; padding:22px 12px}
+      .cartPanel{position:static;width:auto;max-width:calc(100% - 40px);margin:12px auto}
+      nav ul{display:none}
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- Header -->
   <header>
-    <div class="logo">Healthy Bites</div>
-    <nav>
-      <ul>
-        <li><a href="#" onclick="showSection('home')">Home</a></li>
-        <li><a href="#" onclick="showSection('products')">Products</a></li>
-        <li><a href="#" onclick="showSection('about')">About</a></li>
-        <li><a href="#" onclick="showSection('contact')">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="container">
+      <div class="brand">
+        <!-- LOGO: ensure Logo.jpg is in same folder -->
+        <img src="Logo.jpg" alt="Life With Leaf logo" onerror="this.style.display='none'"/>
+        <div>
+          <div class="title">Life With Leaf</div>
+          <div style="font-size:12px;color:var(--muted)">Healthy Living • Natural • Organic</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#" onclick="showSection('home')">Home</a></li>
+          <li><a href="#" onclick="showSection('products')">Products</a></li>
+          <li><a href="#" onclick="showSection('about')">About</a></li>
+          <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <h1>Fresh & Nutritious Healthy Food</h1>
-    <p>Your daily dose of wellness, delivered fresh from farm to table.</p>
-    <a href="#" class="cta" onclick="showSection('products')">Shop Now</a>
-  </section>
-
-  <!-- About Section -->
-  <section class="about hidden" id="about">
-    <h2>About Us</h2>
-    <p>Healthy Bites provides fresh, organic, and nutrient-rich food products for your healthy lifestyle. Our mission is to make nutritious eating simple, delicious, and sustainable.</p>
-  </section>
-
-  <!-- Products Section -->
-  <section class="products hidden" id="products">
-    <h2>Our Products</h2>
-    <div class="product-grid">
-      <div class="product-card">
-        <img src="https://via.placeholder.com/300x180.png?text=Product+1" alt="Product 1">
-        <h3>Fresh Microgreens</h3>
-        <p>Organic microgreens packed with nutrients.</p>
-        <div class="price">₹199</div>
-        <button onclick="orderWhatsApp('Fresh Microgreens')">Order on WhatsApp</button>
+  <!-- Hero -->
+  <div class="hero container">
+    <div class="heroCard">
+      <h1>Live Microgreens — Ready to harvest & eat</h1>
+      <p class="lead">Homegrown, pesticide-free microgreens packed with nutrients — a small handful each day brings big health benefits.</p>
+      <div class="ctaRow">
+        <button class="btn" onclick="showSection('products')">Shop Fresh Microgreens</button>
+        <a class="btn ghost" href="#learn" onclick="showSection('about')">Learn More</a>
       </div>
 
-      <div class="product-card">
-        <img src="https://via.placeholder.com/300x180.png?text=Product+2" alt="Product 2">
-        <h3>Organic Salad Mix</h3>
-        <p>Pre-mixed greens for your daily salad.</p>
-        <div class="price">₹249</div>
-        <button onclick="orderWhatsApp('Organic Salad Mix')">Order on WhatsApp</button>
-      </div>
+      <div class="featureRow">
+        <div class="infoCard">
+          <div class="icon leaf">🌿</div>
+          <div>
+            <div style="font-weight:700">100% Natural</div>
+            <small>Non-GMO • Pesticide-free</small>
+          </div>
+        </div>
 
-      <div class="product-card">
-        <img src="https://via.placeholder.com/300x180.png?text=Product+3" alt="Product 3">
-        <h3>Protein Smoothie</h3>
-        <p>Delicious smoothie mix, high in protein.</p>
-        <div class="price">₹299</div>
-        <button onclick="orderWhatsApp('Protein Smoothie')">Order on WhatsApp</button>
+        <div class="infoCard">
+          <div class="icon" style="background:#e0f2fe;color:#083344">🚚</div>
+          <div>
+            <div style="font-weight:700">Fresh Delivery</div>
+            <small>Carefully packed to retain freshness</small>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section class="about hidden" id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: hello@healthybites.com | Call: +91 98733 24887</p>
-  </section>
+    <div class="heroCard" style="text-align:center">
+      <img src="https://via.placeholder.com/420x300.png?text=Live+Microgreens" alt="microgreens tray" style="border-radius:10px" />
+      <p style="margin-top:12px;color:var(--muted);font-size:14px">Life With Leaf — Healthy Living, Made Simple</p>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- Products -->
+    <section id="products" class="card hidden">
+      <div class="productsHeader">
+        <h2>Our Microgreens & Kits</h2>
+        <div style="color:var(--muted);font-size:14px">15+ varieties • Homegrown • Seeds & Kits available</div>
+      </div>
+
+      <div class="productGrid" id="productGrid">
+        <!-- Product cards will be rendered by JS -->
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="card hidden">
+      <h2>Why Microgreens?</h2>
+      <p style="color:var(--muted)">Microgreens are young edible greens harvested at their peak nutrition. Though small, they contain up to <strong>4–40×</strong> more vitamins, minerals, and antioxidants than mature plants. Adding a small handful daily supports immunity, heart health, digestion and more.</p>
+
+      <div style="margin-top:12px">
+        <h3 style="color:var(--green-1)">Top varieties we grow</h3>
+        <ul style="color:var(--muted) line-height:1.6">
+          <li><strong>Sunflower</strong> — Protein-rich, Vitamins A, B-complex, C, E, K</li>
+          <li><strong>Broccoli</strong> — Rich in sulforaphane, supportive of detox & immunity</li>
+          <li><strong>Radish</strong> — Sharp flavor; aids digestion</li>
+          <li><strong>Wheatgrass</strong> — Cleansing, energizing</li>
+          <li><strong>Fenugreek</strong> — Supports blood sugar regulation</li>
+          <li><strong>Mustard</strong> — Anti-inflammatory benefits</li>
+          <li><strong>Green Gram (Moong)</strong> — Mineral-rich</li>
+        </ul>
+      </div>
+
+      <p style="margin-top:12px;color:var(--muted)">We also supply high-quality seeds and grow kits for home growers who want to cultivate microgreens themselves.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="card hidden">
+      <h2>Contact & Orders</h2>
+      <p style="color:var(--muted)">For wholesale, bulk or restaurant enquiries, email <a href="mailto:sales@lifewithleaf.com">sales@lifewithleaf.com</a> or <a href="mailto:info@lifewithleaf.com">info@lifewithleaf.com</a>.</p>
+      <p style="color:var(--muted)">Call / WhatsApp: <a href="tel:+919289935744">+91 92899 35744</a></p>
+      <p style="margin-top:10px;color:var(--muted)">Website: <a href="http://www.lifewithleaf.com" target="_blank" rel="noopener">www.lifewithleaf.com</a></p>
+    </section>
+
+  </main>
+
+  <!-- Cart Panel -->
+  <aside class="cartPanel card" id="cartPanel" aria-live="polite" role="region" style="display:none">
+    <div class="cartHeader">
+      <div style="font-weight:800">Your Cart</div>
+      <div style="font-size:13px;color:var(--muted)"><button onclick="toggleCart()" style="background:transparent;border:none;color:var(--muted);cursor:pointer">Close</button></div>
+    </div>
+
+    <div class="cartItems" id="cartItems">
+      <!-- items dynamically inserted -->
+    </div>
+
+    <div class="cartTotal" id="cartTotal">Total: ₹0</div>
+
+    <div class="cartActions">
+      <button class="btn" id="checkoutBtn">Place Order via WhatsApp</button>
+      <button class="btn ghost" id="clearCartBtn">Clear</button>
+    </div>
+
+    <div style="margin-top:8px;font-size:12px;color:var(--muted)">We will receive your WhatsApp order and confirm delivery & payment details.</div>
+  </aside>
+
+  <!-- Floating WhatsApp Chat -->
+  <a class="whFloat" href="https://wa.me/919289935744?text=Hi%20Life%20With%20Leaf,%20I%20have%20a%20question" target="_blank" aria-label="Chat on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  </a>
 
   <!-- Footer -->
   <footer>
-    © 2025 Healthy Bites. All Rights Reserved.
+    <div style="max-width:1100px;margin:0 auto;padding:8px 20px">
+      © <strong>Life With Leaf</strong> — Healthy Living • Natural • Organic • 2025
+    </div>
   </footer>
 
-  <!-- Floating WhatsApp Icon -->
-  <a href="https://wa.me/919873324887" target="_blank" class="whatsapp-float">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
-
-  <!-- JS -->
+  <!-- Script: products + cart -->
   <script>
-    const sections = ['home', 'products', 'about', 'contact'];
+    // Configuration
+    const WHATSAPP_NUMBER = '919289935744'; // +91 92899 35744
+    const WHATSAPP_BASE = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=';
 
-    function showSection(id) {
-      sections.forEach(sec => {
-        document.getElementById(sec).classList.add('hidden');
+    // Business details (from leaflet)
+    const business = {
+      name: 'Life With Leaf',
+      phoneDisplay: '+91 92899 35744',
+      email: 'info@lifewithleaf.com',
+      site: 'www.lifewithleaf.com'
+    };
+
+    // Product list (placeholder images used — replace with real images)
+    const products = [
+      { id: 'p1', name: 'Fresh Sunflower Microgreens', price: 199, desc: 'Protein-rich microgreens with nutty flavor.', img: 'https://via.placeholder.com/600x400.png?text=Sunflower' },
+      { id: 'p2', name: 'Broccoli Microgreens', price: 219, desc: 'Rich in sulforaphane and vitamins.', img: 'https://via.placeholder.com/600x400.png?text=Broccoli' },
+      { id: 'p3', name: 'Radish Microgreens', price: 179, desc: 'Spicy kick, great for salads & sandwiches.', img: 'https://via.placeholder.com/600x400.png?text=Radish' },
+      { id: 'p4', name: 'Wheatgrass (Live)', price: 149, desc: 'Cleansing and energizing wheatgrass.', img: 'https://via.placeholder.com/600x400.png?text=Wheatgrass' },
+      { id: 'p5', name: 'Fenugreek Microgreens', price: 159, desc: 'Supportive for metabolic health.', img: 'https://via.placeholder.com/600x400.png?text=Fenugreek' },
+      { id: 'p6', name: 'Green Gram (Moong) Microgreens', price: 169, desc: 'Mineral-rich and delicate flavor.', img: 'https://via.placeholder.com/600x400.png?text=Moong' }
+    ];
+
+    // Cart state
+    const cart = {}; // {productId: qty}
+    let cartVisible = false;
+
+    // Render products
+    function renderProducts(){
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+      products.forEach(p => {
+        const el = document.createElement('article');
+        el.className = 'product';
+        el.innerHTML = `
+          <div class="productImg"><img src="${p.img}" alt="${escapeHtml(p.name)}" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div>
+            <h3>${escapeHtml(p.name)}</h3>
+            <p class="desc">${escapeHtml(p.desc)}</p>
+          </div>
+          <div class="priceRow">
+            <div class="price">₹${p.price}</div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <div class="qtyRow">
+                <button class="qtyBtn" onclick="changeQty('${p.id}', -1)">−</button>
+                <div id="qty_${p.id}" style="min-width:28px;text-align:center">0</div>
+                <button class="qtyBtn" onclick="changeQty('${p.id}', 1)">+</button>
+              </div>
+              <button class="addCart" onclick="addToCart('${p.id}')">Add to Cart</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(el);
       });
-      document.getElementById(id).classList.remove('hidden');
     }
 
-    // Show home by default
-    showSection('home');
+    function escapeHtml(text){ return (''+text).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
 
-    function orderWhatsApp(productName) {
-      const number = '919873324887';
-      const message = encodeURIComponent(`Hi, I’d like to place an order for ${productName}`);
-      window.open(`https://wa.me/${number}?text=${message}`, '_blank');
+    // Quantity adjustments (UI only)
+    function changeQty(productId, delta){
+      const qEl = document.getElementById('qty_' + productId);
+      let current = parseInt(qEl.textContent || '0', 10);
+      current = Math.max(0, current + delta);
+      qEl.textContent = current;
+    }
+
+    // Add to cart using qty value next to product
+    function addToCart(productId){
+      const qEl = document.getElementById('qty_' + productId);
+      let qty = parseInt(qEl.textContent || '0', 10);
+      if(!qty || qty <= 0){
+        alert('Please set quantity (use +) before adding to cart.');
+        return;
+      }
+      cart[productId] = (cart[productId] || 0) + qty;
+      qEl.textContent = 0; // reset the small selector
+      showCart(true);
+      renderCart();
+    }
+
+    // Render cart items
+    function renderCart(){
+      const itemsDiv = document.getElementById('cartItems');
+      itemsDiv.innerHTML = '';
+      let total = 0;
+      const ids = Object.keys(cart);
+      if(ids.length === 0){
+        itemsDiv.innerHTML = '<div style="color:var(--muted);padding:8px 0">Your cart is empty.</div>';
+        document.getElementById('cartTotal').textContent = 'Total: ₹0';
+        return;
+      }
+      ids.forEach(id => {
+        const p = products.find(x => x.id === id);
+        const qty = cart[id];
+        const lineTotal = p.price * qty;
+        total += lineTotal;
+        const item = document.createElement('div');
+        item.className = 'cartItem';
+        item.innerHTML = `
+          <div class="meta">
+            <div style="font-weight:700">${escapeHtml(p.name)}</div>
+            <div style="font-size:13px;color:var(--muted)">₹${p.price} × ${qty} = ₹${lineTotal}</div>
+          </div>
+          <div>
+            <button style="background:transparent;border:none;color:var(--muted);cursor:pointer" onclick="removeFromCart('${id}')">Remove</button>
+          </div>
+        `;
+        itemsDiv.appendChild(item);
+      });
+      document.getElementById('cartTotal').textContent = 'Total: ₹' + total;
+    }
+
+    function removeFromCart(id){
+      delete cart[id];
+      renderCart();
+      if(Object.keys(cart).length === 0) toggleCart(false);
+    }
+
+    // Clear cart
+    function clearCart(){
+      for(const k in cart) delete cart[k];
+      renderCart();
+      toggleCart(false);
+    }
+
+    // Toggle cart panel
+    function toggleCart(forceShow){
+      cartVisible = (typeof forceShow === 'boolean') ? forceShow : !cartVisible;
+      const panel = document.getElementById('cartPanel');
+      panel.style.display = cartVisible ? 'block' : 'none';
+    }
+
+    // Checkout via WhatsApp - composes message with cart details
+    function checkoutWhatsApp(){
+      const ids = Object.keys(cart);
+      if(ids.length === 0){ alert('Cart is empty'); return; }
+      let total = 0;
+      let lines = [];
+      lines.push(`Hi Life With Leaf, I'd like to place an order:`);
+      ids.forEach(id => {
+        const p = products.find(x => x.id === id);
+        const qty = cart[id];
+        const lineTotal = p.price * qty;
+        total += lineTotal;
+        lines.push(`- ${p.name} x ${qty} = ₹${lineTotal}`);
+      });
+      lines.push('');
+      lines.push(`Total: ₹${total}`);
+      lines.push('');
+      lines.push(`Name:`);
+      lines.push(`Address:`);
+      lines.push(`Phone:`);
+      const message = encodeURIComponent(lines.join('\\n'));
+      const url = WHATSAPP_BASE + message;
+      window.open(url, '_blank');
+    }
+
+    // Section toggling
+    const sections = ['home', 'products', 'about', 'contact'];
+    function showSection(id){
+      sections.forEach(s => {
+        const el = document.getElementById(s);
+        if(el) el.classList.add('hidden');
+      });
+      const tgt = document.getElementById(id);
+      if(tgt) tgt.classList.remove('hidden');
+      // If showing products, render if not already
+      if(id === 'products'){ renderProducts(); }
+    }
+
+    // on load
+    document.addEventListener('DOMContentLoaded', () => {
+      // default: show home
+      showSection('home');
+
+      // Render products once
+      renderProducts();
+
+      // Wire up buttons
+      document.getElementById('checkoutBtn').addEventListener('click', checkoutWhatsApp);
+      document.getElementById('clearCartBtn').addEventListener('click', clearCart);
+    });
+
+    // small helper to ensure products are prepared (idempotent)
+    function renderProducts(){
+      const grid = document.getElementById('productGrid');
+      if(!grid) return;
+      if(grid.dataset.rendered === '1') return; // avoid double render
+      // we'll create cards now (but use existing function behavior)
+      products.forEach(p => {
+        // already handled by the earlier function, but keep idempotency
+      });
+      // ensure cart is up to date
+      renderCart();
+      grid.dataset.rendered = '1';
     }
   </script>
-
 </body>
 </html>
