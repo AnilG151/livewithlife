@@ -37,15 +37,17 @@
   }
   .hero::before,
   .hero::after{
-    content:'';position:absolute;border-radius:50%;z-index:0;opacity:0.2;
+    content:''; position:absolute; border-radius:50%; z-index:0; opacity:0.2;
   }
   .hero::before{
-    width:300px; height:300px;top:-50px; left:-50px;
+    width:300px; height:300px;
+    top:-50px; left:-50px;
     background:radial-gradient(circle at center, var(--green-2), transparent);
     animation:float1 8s ease-in-out infinite alternate;
   }
   .hero::after{
-    width:400px; height:400px;bottom:-80px; right:-100px;
+    width:400px; height:400px;
+    bottom:-80px; right:-100px;
     background:radial-gradient(circle at center, var(--green-1), transparent);
     animation:float2 10s ease-in-out infinite alternate;
   }
@@ -76,29 +78,23 @@
   .productGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px}
   .product{border-radius:12px;background:linear-gradient(180deg,#fff,#fbfff9);padding:12px;display:flex;flex-direction:column;gap:10px;box-shadow:0 8px 18px rgba(15,23,42,0.03);transition:0.3s;}
   .product:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(15,23,42,0.1);}
-  .productImg{height:160px;border-radius:10px;overflow:hidden;background:#eefaf0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+  .productImg{height:140px;border-radius:10px;overflow:hidden;background:#eefaf0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
   .product h3{margin:0;color:#11402a;font-size:18px}
   .product p.desc{margin:0;color:var(--muted);font-size:14px}
   .priceRow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}
   .price{font-weight:800;color:var(--green-1)}
-  .qtyRow{display:flex;align-items:center;gap:8px}
+  .qtyRow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .qtyBtn{padding:6px 10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:#fff}
-  .addCart{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:white;padding:8px 12px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+  .addCart{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:white;padding:6px 10px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
 
   /* Mini-cart fixed bottom bar */
   .miniCartBar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid rgba(15,23,42,0.06);display:flex;align-items:center;justify-content:space-between;padding:10px 16px;gap:12px;box-shadow:0 -6px 30px rgba(15,23,42,0.08);z-index:200;display:none;}
   .miniCartBar .summary{display:flex;align-items:center;gap:12px}
   .miniCartBar .summary .count{background:var(--green-1);color:#fff;padding:6px 10px;border-radius:999px;font-weight:700}
-  .miniCartBar .actions{display:flex;gap:8px;align-items:center}
-
-  /* Expanded Mini-cart */
-  .miniCartDetails{
-    position:fixed;left:16px;right:16px;bottom:68px;max-height:50vh;overflow:auto;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfff9);box-shadow:0 18px 50px rgba(15,23,42,0.12);z-index:190;display:none;
-  }
-  .cartItem{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(15,23,42,0.04);}
-  .cartItem .itemInfo{flex:1;}
-  .cartItem button.removeBtn{background:transparent;border:none;color:red;cursor:pointer;font-weight:700;}
-  .cartTotal{font-weight:800;margin-top:10px;text-align:right;}
+  .miniCartDetails{position:fixed;left:16px;right:16px;bottom:68px;max-height:50vh;overflow:auto;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfff9);box-shadow:0 18px 50px rgba(15,23,42,0.12);z-index:190;display:none}
+  .cartItem{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(15,23,42,0.04)}
+  .cartTotal{font-weight:800;margin-top:10px}
+  .removeBtn{background:none;border:none;color:red;font-size:16px;cursor:pointer}
 
   /* Floating WhatsApp quick chat - left */
   .whFloat{position:fixed;left:18px;bottom:18px;background:#25d366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,0.12);z-index:160}
@@ -106,146 +102,138 @@
 
   footer{margin-top:30px;padding:26px 20px;text-align:center;color:#fff;background:linear-gradient(90deg,var(--green-1),var(--green-2))}
 
-  @media(max-width:980px){
-    .hero{grid-template-columns:1fr;gap:24px;padding:32px 12px}
-    nav ul{display:flex;flex-wrap:wrap;gap:8px}
-  }
+  @media(max-width:980px){.hero{grid-template-columns:1fr;gap:24px;padding:32px 12px} nav ul{display:flex;flex-wrap:wrap;gap:8px}}
 </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <div class="brand">
-        <img src="Logo.jpg" alt="Life With Leaf logo" onerror="this.style.display='none'">
-        <div>
-          <div class="title">Life With Leaf</div>
-          <div style="font-size:12px;color:var(--muted)">Healthy Living</div>
-        </div>
-      </div>
-      <nav>
-        <ul>
-          <li><a onclick="scrollToSection('home')">Home</a></li>
-          <li><a onclick="scrollToSection('why-microgreen')">Why Microgreen</a></li>
-          <li><a onclick="scrollToSection('about')">About Us</a></li>
-          <li><a onclick="scrollToSection('products')">Products</a></li>
-          <li><a onclick="scrollToSection('contact')">Contact Us</a></li>
-          <li><a onclick="scrollToSection('blog')">Blog</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="hero-text">
-      <h1>Fresh Microgreens, Direct to Your Home</h1>
-      <p class="lead">Boost your health with our nutrient-rich, pesticide-free microgreens. Perfect for meals, smoothies, and home gardening.</p>
-      <div class="ctaRow">
-        <button class="btn" onclick="scrollToSection('products')">Shop Now</button>
-        <button class="btn ghost" onclick="scrollToSection('why-microgreen')">Learn More</button>
+<header>
+  <div class="container">
+    <div class="brand">
+      <img src="Logo.jpg" alt="Life With Leaf logo" onerror="this.style.display='none'">
+      <div>
+        <div class="title">Life With Leaf</div>
+        <div style="font-size:12px;color:var(--muted)">Healthy Living</div>
       </div>
     </div>
-    <div class="hero-image">
-      <img src="https://via.placeholder.com/450x320.png?text=Microgreens+Basket" alt="Fresh microgreens">
-    </div>
-  </section>
+    <nav>
+      <ul>
+        <li><a onclick="scrollToSection('home')">Home</a></li>
+        <li><a onclick="scrollToSection('why-microgreen')">Why Microgreen</a></li>
+        <li><a onclick="scrollToSection('about')">About Us</a></li>
+        <li><a onclick="scrollToSection('products')">Products</a></li>
+        <li><a onclick="scrollToSection('contact')">Contact Us</a></li>
+        <li><a onclick="scrollToSection('blog')">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-  <main>
-    <!-- Why Microgreen -->
-    <section id="why-microgreen">
-      <h2>Why Microgreens?</h2>
-      <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
-        <img src="https://via.placeholder.com/180x120.png?text=Nutrition" alt="Nutrition" style="border-radius:12px"/>
-        <p>Microgreens are young edible greens harvested at their peak nutrition. Though small, they contain up to <strong>4–40×</strong> more vitamins, minerals, and antioxidants than mature plants. A small handful each day supports immunity, heart health, digestion, and more.</p>
-      </div>
-    </section>
-
-    <!-- About Us -->
-    <section id="about">
-      <h2>About Us</h2>
-      <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
-        <p>We grow fresh, pesticide-free microgreens and offer seeds and grow kits for home cultivation. Healthy living made simple and natural.</p>
-        <img src="https://via.placeholder.com/180x120.png?text=Our+Farm" alt="Our Farm" style="border-radius:12px"/>
-      </div>
-    </section>
-
-    <!-- Products -->
-    <section id="products">
-      <div class="productsHeader">
-        <h2>Our Products</h2>
-      </div>
-      <div class="productGrid" id="productGrid">
-        <!-- JS will populate products here -->
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <p>Email: <a href="mailto:info@lifewithleaf.com">info@lifewithleaf.com</a></p>
-      <p>Phone: +91-9873324887</p>
-      <p>Address: 123, Green Lane, Delhi, India</p>
-    </section>
-
-    <!-- Blog -->
-    <section id="blog">
-      <h2>Blog</h2>
-      <div style="display:flex;gap:16px;flex-wrap:wrap">
-        <div class="card" style="flex:1;min-width:180px;padding:12px;text-align:center">
-          <img src="https://via.placeholder.com/180x100.png?text=Recipe+Ideas" alt="Recipe Ideas" style="border-radius:10px"/>
-          <h4>Healthy Recipes</h4>
-          <p>Learn easy ways to include microgreens in your meals.</p>
-        </div>
-        <div class="card" style="flex:1;min-width:180px;padding:12px;text-align:center">
-          <img src="https://via.placeholder.com/180x100.png?text=Tips" alt="Tips" style="border-radius:10px"/>
-          <h4>Growing Tips</h4>
-          <p>How to grow your own microgreens at home easily.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Mini Cart Expanded -->
-  <div class="miniCartDetails" id="miniCartDetails"></div>
-
-  <!-- Mini Cart Bottom Bar -->
-  <div class="miniCartBar" id="miniCartBar">
-    <div class="summary">
-      <div>Items in Cart:</div>
-      <div class="count" id="cartCount">0</div>
-    </div>
-    <div class="actions">
-      <button class="btn" onclick="checkout()">Checkout</button>
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Fresh Microgreens, Direct to Your Home</h1>
+    <p class="lead">Boost your health with our nutrient-rich, pesticide-free microgreens. Perfect for meals, smoothies, and home gardening.</p>
+    <div class="ctaRow">
+      <button class="btn" onclick="scrollToSection('products')">Shop Now</button>
+      <button class="btn ghost" onclick="scrollToSection('why-microgreen')">Learn More</button>
     </div>
   </div>
+  <div class="hero-image">
+    <img src="https://via.placeholder.com/450x320.png?text=Microgreens+Basket" alt="Fresh microgreens">
+  </div>
+</section>
 
-  <!-- WhatsApp floating -->
-  <a href="https://wa.me/919873324887?text=Hello,%20I%20want%20to%20order" target="_blank" class="whFloat">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
+<main>
 
-  <footer>
-    &copy; 2025 Life With Leaf. All rights reserved.
-  </footer>
+<section id="why-microgreen">
+  <h2>Why Microgreens?</h2>
+  <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+    <img src="https://via.placeholder.com/180x120.png?text=Nutrition" alt="Nutrition" style="border-radius:12px"/>
+    <p>Microgreens are young edible greens harvested at their peak nutrition. Though small, they contain up to <strong>4–40×</strong> more vitamins, minerals, and antioxidants than mature plants. A small handful each day supports immunity, heart health, digestion, and more.</p>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About Us</h2>
+  <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+    <p>We grow fresh, pesticide-free microgreens and offer seeds and grow kits for home cultivation. Healthy living made simple and natural.</p>
+    <img src="https://via.placeholder.com/180x120.png?text=Our+Farm" alt="Our Farm" style="border-radius:12px"/>
+  </div>
+</section>
+
+<section id="products">
+  <div class="productsHeader">
+    <h2>Our Products</h2>
+  </div>
+  <div class="productGrid" id="productGrid"></div>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>Email: <a href="mailto:info@lifewithleaf.com">info@lifewithleaf.com</a></p>
+  <p>Phone: +91-9873324887</p>
+  <p>Address: 123, Green Lane, Delhi, India</p>
+</section>
+
+<section id="blog">
+  <h2>Blog</h2>
+  <div style="display:flex;gap:16px;flex-wrap:wrap">
+    <div class="card" style="flex:1;min-width:180px;padding:12px;text-align:center">
+      <img src="https://via.placeholder.com/180x100.png?text=Recipe+Ideas" alt="Recipe Ideas" style="border-radius:10px"/>
+      <h4>Healthy Recipes</h4>
+      <p>Learn easy ways to include microgreens in your meals.</p>
+    </div>
+    <div class="card" style="flex:1;min-width:180px;padding:12px;text-align:center">
+      <img src="https://via.placeholder.com/180x100.png?text=Tips" alt="Tips" style="border-radius:10px"/>
+      <h4>Growing Tips</h4>
+      <p>How to grow your own microgreens at home easily.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- Mini Cart -->
+<div class="miniCartBar" id="miniCartBar">
+  <div class="summary">
+    <div>Items in Cart:</div>
+    <div class="count" id="cartCount">0</div>
+  </div>
+  <div class="actions">
+    <button class="btn" onclick="checkout()">Checkout</button>
+  </div>
+</div>
+<div class="miniCartDetails" id="miniCartDetails"></div>
+
+<!-- WhatsApp floating -->
+<a href="https://wa.me/919873324887?text=Hello,%20I%20want%20to%20order" target="_blank" class="whFloat">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+<footer>&copy; 2025 Life With Leaf. All rights reserved.</footer>
 
 <script>
-  // Scroll & fade
   function scrollToSection(id){
     const el = document.getElementById(id);
     if(el) el.scrollIntoView({behavior:'smooth'});
   }
+
   const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add('visible');});},{threshold:0.2});
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  },{threshold:0.2});
   sections.forEach(sec=>observer.observe(sec));
 
-  // Products & Cart
+  // Updated Products
   const products = [
-    {name:'Wheatgrass',desc:'Fresh wheatgrass tray',price:149,img:'https://via.placeholder.com/220x140.png?text=Wheatgrass'},
-    {name:'Pea Shoots',desc:'Nutrient-rich pea shoots',price:199,img:'https://via.placeholder.com/220x140.png?text=Pea+Shoots'},
-    {name:'Sunflower Microgreens',desc:'Sunflower seed microgreens',price:249,img:'https://via.placeholder.com/220x140.png?text=Sunflower'},
-    {name:'Grow Kit',desc:'Home grow kit for beginners',price:299,img:'https://via.placeholder.com/220x140.png?text=Grow+Kit'}
+    {name:'Sunflower', desc:'A, B-complex (B2, B3, B6, B9), C, E, K, Calcium, Iron, Magnesium', price:199, img:'https://via.placeholder.com/220x140.png?text=Sunflower'},
+    {name:'Broccoli', desc:'Vitamins: A, B-complex, C, E, K, Calcium, Copper, Iron, Magnesium, Zinc', price:249, img:'https://via.placeholder.com/220x140.png?text=Broccoli'},
+    {name:'Radish', desc:'Vitamins: A, C, K, B9 (Folate), Potassium, Calcium, Iron', price:149, img:'https://via.placeholder.com/220x140.png?text=Radish'},
+    {name:'Wheatgrass', desc:'Vitamins: A, B-complex, C, E, K, Calcium, Iron, Selenium, Potassium', price:149, img:'https://via.placeholder.com/220x140.png?text=Wheatgrass'},
+    {name:'Fenugreek', desc:'Vitamins: A, C, K, B-complex (B1, B2, B3, B6, B9), Iron, Phosphorus', price:199, img:'https://via.placeholder.com/220x140.png?text=Fenugreek'},
+    {name:'Mustard', desc:'Vitamins: A, C, K, B1, B3, B6, Calcium, Iron, Copper', price:199, img:'https://via.placeholder.com/220x140.png?text=Mustard'},
+    {name:'Green Gram (Moong)', desc:'Vitamins: A, C, K, B-Complex, Iron, Magnesium, Potassium', price:249, img:'https://via.placeholder.com/220x140.png?text=Moong'}
   ];
 
   const productGrid = document.getElementById('productGrid');
@@ -261,80 +249,58 @@
         <div class="productImg"><img src="${p.img}" alt="${p.name}"></div>
         <h3>${p.name}</h3>
         <p class="desc">${p.desc}</p>
-        <div class="priceRow"><div class="price">₹${p.price}</div></div>
-        <div class="qtyRow">
-          <button class="qtyBtn" onclick="updateQty(${index}, -1)">-</button>
-          <span id="qty-${index}">0</span>
-          <button class="qtyBtn" onclick="updateQty(${index}, 1)">+</button>
-          <button class="addCart" onclick="addToCart(${index})">🛒 Add</button>
-        </div>
+        <div class="priceRow"><div class="price">₹${p.price}</div>
+        <button class="addCart" onclick="addToCart(${index})">Add to Cart</button></div>
       `;
       productGrid.appendChild(div);
     });
   }
 
-  function updateQty(index, delta){
-    const span = document.getElementById(`qty-${index}`);
-    let qty = parseInt(span.innerText);
-    qty += delta;
-    if(qty < 0) qty = 0;
-    span.innerText = qty;
-  }
-
   function addToCart(index){
-    const span = document.getElementById(`qty-${index}`);
-    const qty = parseInt(span.innerText);
-    if(qty === 0){ alert('Please select quantity!'); return; }
-    const existing = cartDetails.find(item => item.index === index);
-    if(existing){ existing.qty += qty; } else { cartDetails.push({...products[index], index, qty}); }
-    span.innerText = 0;
-    renderMiniCart();
-    renderCartDetails();
+    const prod = {...products[index], qty:1};
+    const existing = cartDetails.find(p=>p.name===prod.name);
+    if(existing) existing.qty++;
+    else cartDetails.push(prod);
+    updateCartUI();
   }
 
-  function removeFromCart(index){
-    const i = cartDetails.findIndex(item=>item.index===index);
-    if(i!==-1) cartDetails.splice(i,1);
-    renderMiniCart();
-    renderCartDetails();
+  function removeFromCart(name){
+    const idx = cartDetails.findIndex(p=>p.name===name);
+    if(idx!==-1) cartDetails.splice(idx,1);
+    updateCartUI();
   }
 
-  function renderMiniCart(){
-    if(cartDetails.length === 0){ miniCartBar.style.display='none'; miniCartDetails.style.display='none'; return; }
-    miniCartBar.style.display='flex';
-    const totalQty = cartDetails.reduce((a,b)=>a+b.qty,0);
-    document.getElementById('cartCount').innerText = totalQty;
-  }
+  function updateCartUI(){
+    const totalItems = cartDetails.reduce((a,b)=>a+b.qty,0);
+    document.getElementById('cartCount').innerText = totalItems;
+    miniCartBar.style.display = totalItems>0?'flex':'none';
 
-  function renderCartDetails(){
-    if(cartDetails.length===0){ miniCartDetails.style.display='none'; return; }
-    miniCartDetails.style.display='block';
-    miniCartDetails.innerHTML = '';
-    cartDetails.forEach(item=>{
-      const div = document.createElement('div');
-      div.className='cartItem';
-      div.innerHTML = `<div class="itemInfo">${item.name} - ₹${item.price} x ${item.qty} = ₹${item.price*item.qty}</div>
-      <button class="removeBtn" onclick="removeFromCart(${item.index})">✕</button>`;
-      miniCartDetails.appendChild(div);
+    let html='';
+    let totalPrice=0;
+    cartDetails.forEach(p=>{
+      const itemTotal = p.price*p.qty;
+      totalPrice+=itemTotal;
+      html+=`<div class="cartItem">
+        <div>${p.name} x ${p.qty}</div>
+        <div>₹${itemTotal} <button class="removeBtn" onclick="removeFromCart('${p.name}')">✖</button></div>
+      </div>`;
     });
-    const total = cartDetails.reduce((a,b)=>a+b.price*b.qty,0);
-    const totalDiv = document.createElement('div');
-    totalDiv.className='cartTotal';
-    totalDiv.innerText = `Total: ₹${total}`;
-    miniCartDetails.appendChild(totalDiv);
+    if(cartDetails.length>0) html+=`<div class="cartTotal">Total: ₹${totalPrice}</div>`;
+    miniCartDetails.innerHTML = html;
+    miniCartDetails.style.display = totalItems>0?'block':'none';
   }
 
   function checkout(){
-    if(cartDetails.length===0){ alert('Your cart is empty!'); return; }
-    let message = 'Order Details:%0A';
-    cartDetails.forEach((item,i)=>{message += `${i+1}. ${item.name} - ₹${item.price} x ${item.qty} = ₹${item.price*item.qty}%0A`;});
-    const total = cartDetails.reduce((a,b)=>a+b.price*b.qty,0);
-    message += `Total: ₹${total}%0APlease confirm order ASAP.`;
+    let message = 'Hello,%20I%20want%20to%20order:%0A';
+    cartDetails.forEach(p=>{
+      message+=`${p.name} x ${p.qty} = ₹${p.price*p.qty}%0A`;
+    });
+    const totalPrice = cartDetails.reduce((a,b)=>a+b.price*b.qty,0);
+    message+=`Total: ₹${totalPrice}`;
     window.open(`https://wa.me/919873324887?text=${message}`, '_blank');
   }
 
   renderProducts();
 </script>
-
 </body>
 </html>
