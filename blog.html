@@ -3,14 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Blog</title>
+<title>Blog — Life With Leaf</title>
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 <body>
+
 <header>
   <div class="container">
     <div class="brand">
-      <img src="Logo.jpg" alt="Life With Leaf logo">
+      <img src="Logo.jpg" alt="Life With Leaf logo" onerror="this.style.display='none'">
       <div>
         <div class="title">Life With Leaf</div>
         <div style="font-size:12px;color:var(--muted)">Healthy Living</div>
@@ -23,30 +25,33 @@
         <li><a href="about.html">About Us</a></li>
         <li><a href="products.html">Products</a></li>
         <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a onclick="scrollToSection('blog')">Blog</a></li>
       </ul>
     </nav>
   </div>
 </header>
+
 <main>
-<section>
+<section id="blog">
   <h2>Blog</h2>
   <div style="display:flex;gap:16px;flex-wrap:wrap">
     <div class="card" style="flex:1;min-width:180px;padding:12px;text-align:center">
-      <img src="https://via.placeholder.com/180x100.png?text=Recipe+Ideas" alt="Recipe Ideas" style="border-radius:10px"/>
+      <img src="placeholder_blog1.png" alt="Recipe Ideas" style="border-radius:10px"/>
       <h4>Healthy Recipes</h4>
       <p>Learn easy ways to include microgreens in your meals.</p>
     </div>
     <div class="card" style="flex:1;min-width:180px;padding:12px;text-align:center">
-      <img src="https://via.placeholder.com/180x100.png?text=Tips" alt="Tips" style="border-radius:10px"/>
+      <img src="placeholder_blog2.png" alt="Growing Tips" style="border-radius:10px"/>
       <h4>Growing Tips</h4>
       <p>How to grow your own microgreens at home easily.</p>
     </div>
   </div>
 </section>
 </main>
+
 <footer>
   &copy; 2025 Life With Leaf. All rights reserved.
 </footer>
+
 </body>
 </html>
