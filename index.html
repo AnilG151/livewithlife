@@ -62,7 +62,7 @@
   .hero .hero-image img{width:100%;height:auto;border-radius:16px;box-shadow:0 12px 30px rgba(15,23,42,0.12);transition:transform 0.6s ease;}
   .hero .hero-image:hover img{transform:translateY(-8px);}
   .hero h1{font-size:clamp(28px,4vw,44px);font-weight:800;color:var(--green-1);opacity:0;transform:translateY(20px);animation:slideFade 1s forwards;animation-delay:0.3s}
-  @keyframes slideFade{to{opacity:1;transform:translateY(0);}}
+  @keyframes slideFade{to{opacity:1;transform:translateY(0);} }
 
   .hero .lead{color:var(--muted);margin-bottom:18px;font-size:16px}
   .ctaRow{display:flex;gap:12px;align-items:center;margin-top:16px}
@@ -70,17 +70,10 @@
   .btn:hover{box-shadow:0 8px 20px rgba(47,158,68,0.35);transform:translateY(-2px);}
   .btn.ghost{background:transparent;border:2px solid rgba(47,158,68,0.12);color:var(--green-1)}
   .btn.ghost:hover{background:rgba(47,158,68,0.08);}
-  .featureRow{display:flex;gap:12px;margin-top:18px}
-
-  .infoCard{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfff9);box-shadow:0 6px 18px rgba(15,23,42,0.03)}
-  .infoCard .icon{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
-  .infoCard .icon.leaf{background:linear-gradient(135deg,var(--green-1),var(--green-2))}
-  .infoCard small{color:var(--muted);display:block;font-size:13px}
 
   main{max-width:1100px;margin:16px auto;padding:0 20px}
   section{margin:22px 0;opacity:0;transform:translateY(30px);transition:all 0.6s ease;}
-
-  .about h2,.productsHeader h2{color:var(--green-1)}
+  section.visible{opacity:1;transform:translateY(0);}
 
   /* Products grid */
   .productsHeader{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -102,7 +95,7 @@
   .cartItem{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(15,23,42,0.04)}
   .cartTotal{font-weight:800;margin-top:10px}
 
-  /* Floating WhatsApp quick chat - left */
+  /* Floating WhatsApp quick chat */
   .whFloat{position:fixed;left:18px;bottom:18px;background:#25d366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,0.12);z-index:160}
   .whFloat img{width:30px;height:30px}
 
@@ -116,126 +109,120 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <div class="brand">
-        <img src="Logo.jpg" alt="Life With Leaf logo" onerror="this.style.display='none'">
-        <div>
-          <div class="title">Life With Leaf</div>
-          <div style="font-size:12px;color:var(--muted)">Healthy Living</div>
-        </div>
+<header>
+  <div class="container">
+    <div class="brand">
+      <img src="Logo.jpg" alt="Life With Leaf logo" onerror="this.style.display='none'">
+      <div>
+        <div class="title">Life With Leaf</div>
+        <div style="font-size:12px;color:var(--muted)">Healthy Living</div>
       </div>
-      <nav>
-        <ul>
-          <li><a onclick="toggleSection('home')">Home</a></li>
-          <li><a onclick="toggleSection('why-microgreen')">Why Microgreen</a></li>
-          <li><a onclick="toggleSection('about')">About Us</a></li>
-          <li><a onclick="toggleSection('products')">Products</a></li>
-          <li><a onclick="toggleSection('contact')">Contact Us</a></li>
-          <li><a onclick="toggleSection('blog')">Blog</a></li>
-        </ul>
-      </nav>
     </div>
-  </header>
+    <nav>
+      <ul>
+        <li><a onclick="toggleSection('home')">Home</a></li>
+        <<li><a onclick="toggleSection('why-microgreen')">Why Microgreen</a></li>
+        <li><a onclick="toggleSection('about')">About Us</a></li>
+        <li><a onclick="toggleSection('products')">Products</a></li>
+        <li><a onclick="toggleSection('contact')">Contact Us</a></li>
+        <li><a onclick="toggleSection('blog')">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-  <!-- Main -->
-  <main id="mainContent">
-    <!-- Hero -->
-    <section class="hero" id="home" style="display:none">
-      <div class="hero-text">
-        <h1>Fresh Microgreens, Direct to Your Home</h1>
-        <p class="lead">Boost your health with our nutrient-rich, pesticide-free microgreens. Perfect for meals, smoothies, and home gardening.</p>
-        <div class="ctaRow">
-          <button class="btn" onclick="toggleSection('products')">Shop Now</button>
-          <button class="btn ghost" onclick="toggleSection('why-microgreen')">Learn More</button>
-        </div>
-      </div>
-      <div class="hero-image">
-        <img src="https://via.placeholder.com/450x320.png?text=Microgreens+Basket" alt="Fresh microgreens">
-      </div>
-    </section>
-
-    <!-- Why Microgreen -->
-    <section id="why-microgreen" style="display:none">
-      <h2>Why Microgreens?</h2>
-      <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
-        <img src="https://via.placeholder.com/180x120.png?text=Nutrition" alt="Nutrition" style="border-radius:12px"/>
-        <p>Microgreens are young edible greens harvested at their peak nutrition. Though small, they contain up to <strong>4–40×</strong> more vitamins, minerals, and antioxidants than mature plants. A small handful each day supports immunity, heart health, digestion, and more.</p>
-      </div>
-    </section>
-
-    <!-- About Us -->
-    <section id="about" style="display:none">
-      <h2>About Us</h2>
-      <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
-        <p>We grow fresh, pesticide-free microgreens and offer seeds and grow kits for home cultivation. Healthy living made simple and natural.</p>
-        <img src="https://via.placeholder.com/180x120.png?text=Our+Farm" alt="Our Farm" style="border-radius:12px"/>
-      </div>
-    </section>
-
-    <!-- Products -->
-    <section id="products" style="display:none">
-      <div class="productsHeader">
-        <h2>Our Products</h2>
-      </div>
-      <div class="productGrid" id="productGrid"></div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" style="display:none">
-      <h2>Contact Us</h2>
-      <p>Email: <a href="mailto:info@lifewithleaf.com">info@lifewithleaf.com</a></p>
-      <p>Phone: +91-XXXXXXXXXX</p>
-      <p>Address: 123, Green Lane, Delhi, India</p>
-    </section>
-
-    <!-- Blog -->
-    <section id="blog" style="display:none">
-      <h2>Blog</h2>
-      <div style="display:flex;gap:16px;flex-wrap:wrap">
-        <div class="card" style="flex:1;min-width:180px;padding:12px;text-align:center">
-          <img src="https://via.placeholder.com/180x100.png?text=Recipe+Ideas" alt="Recipe Ideas" style="border-radius:10px"/>
-          <h4>Healthy Recipes</h4>
-          <p>Learn easy ways to include microgreens in your meals.</p>
-        </div>
-        <div class="card" style="flex:1;min-width:180px;padding:12px;text-align:center">
-          <img src="https://via.placeholder.com/180x100.png?text=Tips" alt="Tips" style="border-radius:10px"/>
-          <h4>Growing Tips</h4>
-          <p>How to grow your own microgreens at home easily.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Mini Cart -->
-  <div class="miniCartBar" id="miniCartBar">
-    <div class="summary">
-      <div>Items in Cart:</div>
-      <div class="count" id="cartCount">0</div>
-    </div>
-    <div class="actions">
-      <button class="btn" onclick="checkout()">Checkout</button>
+<!-- Hero / Home -->
+<section class="hero visible" id="home" style="display:block">
+  <div class="hero-text">
+    <h1>Fresh Microgreens, Direct to Your Home</h1>
+    <p class="lead">Boost your health with our nutrient-rich, pesticide-free microgreens. Perfect for meals, smoothies, and home gardening.</p>
+    <div class="ctaRow">
+      <button class="btn" onclick="toggleSection('products')">Shop Now</button>
+      <button class="btn ghost" onclick="toggleSection('why-microgreen')">Learn More</button>
     </div>
   </div>
+  <div class="hero-image">
+    <img src="https://via.placeholder.com/450x320.png?text=Microgreens+Basket" alt="Fresh microgreens">
+  </div>
+</section>
 
-  <div class="miniCartDetails" id="miniCartDetails"></div>
+<main>
+  <!-- Other Sections Hidden by Default -->
+  <section id="why-microgreen" style="display:none">
+    <h2>Why Microgreens?</h2>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+      <img src="https://via.placeholder.com/180x120.png?text=Nutrition" alt="Nutrition" style="border-radius:12px"/>
+      <p>Microgreens are young edible greens harvested at their peak nutrition. Though small, they contain up to <strong>4–40×</strong> more vitamins, minerals, and antioxidants than mature plants. A small handful each day supports immunity, heart health, digestion, and more.</p>
+    </div>
+  </section>
 
-  <!-- WhatsApp floating -->
-  <a href="https://wa.me/91XXXXXXXXXX?text=Hello,%20I%20want%20to%20order" target="_blank" class="whFloat">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
+  <section id="about" style="display:none">
+    <h2>About Us</h2>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+      <p>We grow fresh, pesticide-free microgreens and offer seeds and grow kits for home cultivation. Healthy living made simple and natural.</p>
+      <img src="https://via.placeholder.com/180x120.png?text=Our+Farm" alt="Our Farm" style="border-radius:12px"/>
+    </div>
+  </section>
 
-  <footer>
-    &copy; 2025 Life With Leaf. All rights reserved.
-  </footer>
+  <section id="products" style="display:none">
+    <div class="productsHeader">
+      <h2>Our Products</h2>
+    </div>
+    <div class="productGrid" id="productGrid">
+      <!-- JS will populate products here -->
+    </div>
+  </section>
+
+  <section id="contact" style="display:none">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:info@lifewithleaf.com">info@lifewithleaf.com</a></p>
+    <p>Phone: +91-XXXXXXXXXX</p>
+    <p>Address: 123, Green Lane, Delhi, India</p>
+  </section>
+
+  <section id="blog" style="display:none">
+    <h2>Blog</h2>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <div class="card" style="flex:1;min-width:180px;padding:12px;text-align:center">
+        <img src="https://via.placeholder.com/180x100.png?text=Recipe+Ideas" alt="Recipe Ideas" style="border-radius:10px"/>
+        <h4>Healthy Recipes</h4>
+        <p>Learn easy ways to include microgreens in your meals.</p>
+      </div>
+      <div class="card" style="flex:1;min-width:180px;padding:12px;text-align:center">
+        <img src="https://via.placeholder.com/180x100.png?text=Tips" alt="Tips" style="border-radius:10px"/>
+        <h4>Growing Tips</h4>
+        <p>How to grow your own microgreens at home easily.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Mini Cart -->
+<div class="miniCartBar" id="miniCartBar">
+  <div class="summary">
+    <div>Items in Cart:</div>
+    <div class="count" id="cartCount">0</div>
+  </div>
+  <div class="actions">
+    <button class="btn" onclick="checkout()">Checkout</button>
+  </div>
+</div>
+
+<!-- WhatsApp floating -->
+<a href="https://wa.me/91XXXXXXXXXX?text=Hello,%20I%20want%20to%20order" target="_blank" class="whFloat">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+<footer>
+  &copy; 2025 Life With Leaf. All rights reserved.
+</footer>
 
 <script>
-  // Toggle section visibility
+  // Toggle Sections
   function toggleSection(id){
-    const sections = document.querySelectorAll('main section');
+    const sections = document.querySelectorAll('main section, .hero');
     sections.forEach(sec => {
-      if(sec.id === id){
+      if(sec.id === id || (id==='home' && sec.classList.contains('hero'))){
         sec.style.display='block';
         sec.classList.add('visible');
         sec.scrollIntoView({behavior:'smooth'});
@@ -256,10 +243,8 @@
 
   const productGrid = document.getElementById('productGrid');
   const miniCartBar = document.getElementById('miniCartBar');
-  const miniCartDetails = document.getElementById('miniCartDetails');
   let cart = [];
 
-  // Populate products
   products.forEach((p,index)=>{
     const div = document.createElement('div');
     div.className='product';
@@ -276,17 +261,10 @@
   });
 
   function updateMiniCart(){
-    if(cart.length>0) miniCartBar.style.display='flex';
-    else miniCartBar.style.display='none';
-    document.getElementById('cartCount').innerText = cart.reduce((a,c)=>a+c.qty,0);
-
-    miniCartDetails.innerHTML = '';
-    cart.forEach(item=>{
-      const div = document.createElement('div');
-      div.className='cartItem';
-      div.innerHTML = `${item.name} x ${item.qty} <span>₹${item.price*item.qty}</span>`;
-      miniCartDetails.appendChild(div);
-    });
+    const countEl = document.getElementById('cartCount');
+    const totalItems = cart.reduce((a,c)=>a+c.qty,0);
+    countEl.innerText = totalItems;
+    miniCartBar.style.display = totalItems>0 ? 'flex' : 'none';
   }
 
   function addToCart(index){
@@ -306,3 +284,4 @@
 
 </body>
 </html>
+
