@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Life With Leaf — Home</title>
+<title>Life With Leaf — Healthy Living</title>
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 <body>
 
 <header>
   <div class="container">
     <div class="brand">
-      <img src="Logo.jpg" alt="Life With Leaf logo">
+      <img src="Logo.jpg" alt="Life With Leaf logo" onerror="this.style.display='none'">
       <div>
         <div class="title">Life With Leaf</div>
         <div style="font-size:12px;color:var(--muted)">Healthy Living</div>
@@ -19,30 +20,48 @@
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="why-microgreen.html">Why Microgreen</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a onclick="scrollToSection('home')">Home</a></li>
+        <li><a onclick="scrollToSection('why-microgreen')">Why Microgreen</a></li>
+        <li><a onclick="scrollToSection('about')">About Us</a></li>
+        <li><a onclick="scrollToSection('products')">Products</a></li>
+        <li><a onclick="scrollToSection('contact')">Contact Us</a></li>
+        <li><a onclick="scrollToSection('blog')">Blog</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="home">
   <div class="hero-text">
     <h1>Fresh Microgreens, Direct to Your Home</h1>
     <p class="lead">Boost your health with our nutrient-rich, pesticide-free microgreens. Perfect for meals, smoothies, and home gardening.</p>
     <div class="ctaRow">
-      <a class="btn" href="products.html">Shop Now</a>
-      <a class="btn ghost" href="why-microgreen.html">Learn More</a>
+      <button class="btn" onclick="scrollToSection('products')">Shop Now</button>
+      <button class="btn ghost" onclick="scrollToSection('why-microgreen')">Learn More</button>
     </div>
   </div>
   <div class="hero-image">
-    <img src="https://via.placeholder.com/450x320.png?text=Microgreens+Basket" alt="Fresh microgreens">
+    <img src="placeholder_hero.png" alt="Fresh microgreens">
   </div>
 </section>
+
+<main>
+  <!-- Main content specific to this page -->
+</main>
+
+<div class="miniCartBar" id="miniCartBar">
+  <div class="summary">
+    <div>Items in Cart:</div>
+    <div class="count" id="cartCount">0</div>
+  </div>
+  <div class="actions">
+    <button class="btn" onclick="checkout()">Checkout</button>
+  </div>
+</div>
+
+<a href="https://wa.me/919873324887?text=Hello,%20I%20want%20to%20order" target="_blank" class="whFloat">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
 
 <footer>
   &copy; 2025 Life With Leaf. All rights reserved.
