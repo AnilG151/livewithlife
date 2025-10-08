@@ -1,6 +1,57 @@
 <!doctype html>
-<html lang='en'>
-<head><meta charset='utf-8'><title>About Us</title><link rel='stylesheet' href='style.css'></head>
-<body><header><h1>About Life With Leaf</h1></header>
-<main><p>We are passionate about bringing fresh, organic microgreens from our farm to your plate. Our mission is to promote healthy living through nature’s smallest greens.</p></main>
-<footer>&copy; 2025 Life With Leaf</footer></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About Us — Life With Leaf</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="brand">
+      <img src="images/Logo.jpg" alt="Life With Leaf logo">
+      <div>
+        <div class="title">Life With Leaf</div>
+        <div style="font-size:12px;color:var(--muted)">Healthy Living</div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- About Us -->
+  <section id="about">
+    <h2>About Us</h2>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+      <p style="max-width:60ch">We grow fresh, pesticide-free microgreens and offer seeds and grow kits for home cultivation. Healthy living made simple and natural. We believe nutritious food should be accessible — growing microgreens at home is easy, fast and rewarding.</p>
+      <img src="images/about-farm.png" alt="Our Farm" style="border-radius:12px;flex:0 0 220px"/>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h2>What customers say</h2>
+    <div class="testimonials">
+      <div class="testSlider" id="testSlider" aria-live="polite"></div>
+      <div class="dots" id="testDots" role="tablist" aria-label="Testimonials navigation"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Life With Leaf. All rights reserved.
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
