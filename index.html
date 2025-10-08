@@ -72,9 +72,13 @@
   .btn.ghost:hover{background:rgba(47,158,68,0.08);}
   .featureRow{display:flex;gap:12px;margin-top:18px}
 
+  .infoCard{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfff9);box-shadow:0 6px 18px rgba(15,23,42,0.03)}
+  .infoCard .icon{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
+  .infoCard .icon.leaf{background:linear-gradient(135deg,var(--green-1),var(--green-2))}
+  .infoCard small{color:var(--muted);display:block;font-size:13px}
+
   main{max-width:1100px;margin:16px auto;padding:0 20px}
   section{margin:22px 0;opacity:0;transform:translateY(30px);transition:all 0.6s ease;}
-  section.visible{opacity:1;transform:translateY(0);}
 
   .about h2,.productsHeader h2{color:var(--green-1)}
 
@@ -94,60 +98,9 @@
   .miniCartBar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid rgba(15,23,42,0.06);display:flex;align-items:center;justify-content:space-between;padding:10px 16px;gap:12px;box-shadow:0 -6px 30px rgba(15,23,42,0.08);z-index:200;display:none;}
   .miniCartBar .summary{display:flex;align-items:center;gap:12px}
   .miniCartBar .summary .count{background:var(--green-1);color:#fff;padding:6px 10px;border-radius:999px;font-weight:700}
-  .miniCartBar .actions{display:flex;gap:8px;align-items:center}
-
-  /* Mini-cart details popup */
-  .miniCartDetails {
-    position: fixed;
-    left: 16px;
-    right: 16px;
-    bottom: 68px;
-    max-height: 50vh;
-    overflow-y: auto;
-    padding: 12px;
-    border-radius: 12px;
-    background: linear-gradient(180deg,#fff,#f3fff4);
-    box-shadow: 0 18px 50px rgba(15,23,42,0.15);
-    z-index: 190;
-    display: none;
-    transition: all 0.3s ease;
-  }
-
-  .miniCartDetails.show { display:block; animation:slideUp 0.3s ease forwards; }
-  @keyframes slideUp { 0% { transform: translateY(20px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-
-  .cartItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px dashed rgba(15,23,42,0.05);
-    font-size: 14px;
-  }
-
-  .cartItem button {
-    background: transparent;
-    border: none;
-    color: #ff4d4d;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-  .cartItem button:hover { transform: scale(1.2); }
-
-  .cartTotal {
-    font-weight: 700;
-    font-size: 16px;
-    margin-top: 10px;
-    text-align: right;
-    color: var(--green-1);
-  }
-
-  /* Scrollbar styling */
-  .miniCartDetails::-webkit-scrollbar { width: 6px; }
-  .miniCartDetails::-webkit-scrollbar-track { background: #f0f5f0; border-radius:6px; }
-  .miniCartDetails::-webkit-scrollbar-thumb { background: var(--green-2); border-radius:6px; }
-  .miniCartDetails::-webkit-scrollbar-thumb:hover { background: var(--green-1); }
+  .miniCartDetails{position:fixed;left:16px;right:16px;bottom:68px;max-height:50vh;overflow:auto;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfff9);box-shadow:0 18px 50px rgba(15,23,42,0.12);z-index:190;display:none}
+  .cartItem{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(15,23,42,0.04)}
+  .cartTotal{font-weight:800;margin-top:10px}
 
   /* Floating WhatsApp quick chat - left */
   .whFloat{position:fixed;left:18px;bottom:18px;background:#25d366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,0.12);z-index:160}
@@ -175,35 +128,36 @@
       </div>
       <nav>
         <ul>
-          <li><a onclick="scrollToSection('home')">Home</a></li>
-          <li><a onclick="scrollToSection('why-microgreen')">Why Microgreen</a></li>
-          <li><a onclick="scrollToSection('about')">About Us</a></li>
-          <li><a onclick="scrollToSection('products')">Products</a></li>
-          <li><a onclick="scrollToSection('contact')">Contact Us</a></li>
-          <li><a onclick="scrollToSection('blog')">Blog</a></li>
+          <li><a onclick="toggleSection('home')">Home</a></li>
+          <li><a onclick="toggleSection('why-microgreen')">Why Microgreen</a></li>
+          <li><a onclick="toggleSection('about')">About Us</a></li>
+          <li><a onclick="toggleSection('products')">Products</a></li>
+          <li><a onclick="toggleSection('contact')">Contact Us</a></li>
+          <li><a onclick="toggleSection('blog')">Blog</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="hero-text">
-      <h1>Fresh Microgreens, Direct to Your Home</h1>
-      <p class="lead">Boost your health with our nutrient-rich, pesticide-free microgreens. Perfect for meals, smoothies, and home gardening.</p>
-      <div class="ctaRow">
-        <button class="btn" onclick="scrollToSection('products')">Shop Now</button>
-        <button class="btn ghost" onclick="scrollToSection('why-microgreen')">Learn More</button>
+  <!-- Main -->
+  <main id="mainContent">
+    <!-- Hero -->
+    <section class="hero" id="home" style="display:none">
+      <div class="hero-text">
+        <h1>Fresh Microgreens, Direct to Your Home</h1>
+        <p class="lead">Boost your health with our nutrient-rich, pesticide-free microgreens. Perfect for meals, smoothies, and home gardening.</p>
+        <div class="ctaRow">
+          <button class="btn" onclick="toggleSection('products')">Shop Now</button>
+          <button class="btn ghost" onclick="toggleSection('why-microgreen')">Learn More</button>
+        </div>
       </div>
-    </div>
-    <div class="hero-image">
-      <img src="https://via.placeholder.com/450x320.png?text=Microgreens+Basket" alt="Fresh microgreens">
-    </div>
-  </section>
+      <div class="hero-image">
+        <img src="https://via.placeholder.com/450x320.png?text=Microgreens+Basket" alt="Fresh microgreens">
+      </div>
+    </section>
 
-  <main>
     <!-- Why Microgreen -->
-    <section id="why-microgreen">
+    <section id="why-microgreen" style="display:none">
       <h2>Why Microgreens?</h2>
       <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
         <img src="https://via.placeholder.com/180x120.png?text=Nutrition" alt="Nutrition" style="border-radius:12px"/>
@@ -212,7 +166,7 @@
     </section>
 
     <!-- About Us -->
-    <section id="about">
+    <section id="about" style="display:none">
       <h2>About Us</h2>
       <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
         <p>We grow fresh, pesticide-free microgreens and offer seeds and grow kits for home cultivation. Healthy living made simple and natural.</p>
@@ -221,17 +175,15 @@
     </section>
 
     <!-- Products -->
-    <section id="products">
+    <section id="products" style="display:none">
       <div class="productsHeader">
         <h2>Our Products</h2>
       </div>
-      <div class="productGrid" id="productGrid">
-        <!-- JS will populate products here -->
-      </div>
+      <div class="productGrid" id="productGrid"></div>
     </section>
 
     <!-- Contact -->
-    <section id="contact">
+    <section id="contact" style="display:none">
       <h2>Contact Us</h2>
       <p>Email: <a href="mailto:info@lifewithleaf.com">info@lifewithleaf.com</a></p>
       <p>Phone: +91-XXXXXXXXXX</p>
@@ -239,7 +191,7 @@
     </section>
 
     <!-- Blog -->
-    <section id="blog">
+    <section id="blog" style="display:none">
       <h2>Blog</h2>
       <div style="display:flex;gap:16px;flex-wrap:wrap">
         <div class="card" style="flex:1;min-width:180px;padding:12px;text-align:center">
@@ -256,7 +208,7 @@
     </section>
   </main>
 
-  <!-- Mini Cart Bar -->
+  <!-- Mini Cart -->
   <div class="miniCartBar" id="miniCartBar">
     <div class="summary">
       <div>Items in Cart:</div>
@@ -266,6 +218,8 @@
       <button class="btn" onclick="checkout()">Checkout</button>
     </div>
   </div>
+
+  <div class="miniCartDetails" id="miniCartDetails"></div>
 
   <!-- WhatsApp floating -->
   <a href="https://wa.me/91XXXXXXXXXX?text=Hello,%20I%20want%20to%20order" target="_blank" class="whFloat">
@@ -277,22 +231,22 @@
   </footer>
 
 <script>
-  // Scroll to section
-  function scrollToSection(id){
-    const el = document.getElementById(id);
-    if(el) el.scrollIntoView({behavior:'smooth'});
+  // Toggle section visibility
+  function toggleSection(id){
+    const sections = document.querySelectorAll('main section');
+    sections.forEach(sec => {
+      if(sec.id === id){
+        sec.style.display='block';
+        sec.classList.add('visible');
+        sec.scrollIntoView({behavior:'smooth'});
+      } else {
+        sec.style.display='none';
+        sec.classList.remove('visible');
+      }
+    });
   }
 
-  // Fade-in sections
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  },{threshold:0.2});
-  sections.forEach(sec=>observer.observe(sec));
-
-  // Products
+  // Products array
   const products = [
     {name:'Wheatgrass',desc:'Fresh wheatgrass tray',price:149,img:'https://via.placeholder.com/220x140.png?text=Wheatgrass'},
     {name:'Pea Shoots',desc:'Nutrient-rich pea shoots',price:199,img:'https://via.placeholder.com/220x140.png?text=Pea+Shoots'},
@@ -302,39 +256,10 @@
 
   const productGrid = document.getElementById('productGrid');
   const miniCartBar = document.getElementById('miniCartBar');
-  const miniCartDetails = document.createElement('div');
-  miniCartDetails.className = 'miniCartDetails';
-  document.body.appendChild(miniCartDetails);
-
+  const miniCartDetails = document.getElementById('miniCartDetails');
   let cart = [];
 
-  function updateMiniCart(){
-    if(cart.length>0) miniCartBar.style.display='flex';
-    else miniCartBar.style.display='none';
-    document.getElementById('cartCount').innerText = cart.reduce((a,c)=>a+c.qty,0);
-
-    // Populate miniCartDetails
-    miniCartDetails.innerHTML = '';
-    let total = 0;
-    cart.forEach((item,i)=>{
-      total += item.price*item.qty;
-      const div = document.createElement('div');
-      div.className='cartItem';
-      div.innerHTML = `
-        <div>${item.name} x ${item.qty}</div>
-        <div>
-          ₹${item.price*item.qty} 
-          <button onclick="removeFromCart(${i})">&times;</button>
-        </div>
-      `;
-      miniCartDetails.appendChild(div);
-    });
-    const totalDiv = document.createElement('div');
-    totalDiv.className='cartTotal';
-    totalDiv.innerText = 'Total: ₹'+total;
-    miniCartDetails.appendChild(totalDiv);
-  }
-
+  // Populate products
   products.forEach((p,index)=>{
     const div = document.createElement('div');
     div.className='product';
@@ -350,35 +275,33 @@
     productGrid.appendChild(div);
   });
 
-  function addToCart(index){
-    const prod = products[index];
-    const existing = cart.find(c=>c.name===prod.name);
-    if(existing) existing.qty++;
-    else cart.push({...prod, qty:1});
-    updateMiniCart();
-  }
+  function updateMiniCart(){
+    if(cart.length>0) miniCartBar.style.display='flex';
+    else miniCartBar.style.display='none';
+    document.getElementById('cartCount').innerText = cart.reduce((a,c)=>a+c.qty,0);
 
-  function removeFromCart(i){
-    cart.splice(i,1);
-    updateMiniCart();
-  }
-
-  // Checkout - open WhatsApp with cart details
-  function checkout(){
-    if(cart.length===0) return;
-    let msg = 'Hello,%20I%20want%20to%20order:%0A';
+    miniCartDetails.innerHTML = '';
     cart.forEach(item=>{
-      msg += `${item.name} x ${item.qty} = ₹${item.price*item.qty}%0A`;
+      const div = document.createElement('div');
+      div.className='cartItem';
+      div.innerHTML = `${item.name} x ${item.qty} <span>₹${item.price*item.qty}</span>`;
+      miniCartDetails.appendChild(div);
     });
-    const total = cart.reduce((a,c)=>a+c.price*c.qty,0);
-    msg += `Total: ₹${total}`;
-    window.open(`https://wa.me/91XXXXXXXXXX?text=${msg}`,'_blank');
   }
 
-  // Toggle miniCartDetails on miniCartBar click
-  miniCartBar.addEventListener('click', ()=>{
-    miniCartDetails.classList.toggle('show');
-  });
+  function addToCart(index){
+    let prod = products[index];
+    let existing = cart.find(c=>c.name===prod.name);
+    if(existing) existing.qty++;
+    else cart.push({...prod,qty:1});
+    updateMiniCart();
+  }
+
+  function checkout(){
+    let msg = cart.map(c=>`${c.name} x ${c.qty} = ₹${c.price*c.qty}`).join('%0A');
+    let total = cart.reduce((a,c)=>a+c.price*c.qty,0);
+    window.open(`https://wa.me/91XXXXXXXXXX?text=Hello,%20I%20want%20to%20order:%0A${msg}%0ATotal:%20₹${total}`,'_blank');
+  }
 </script>
 
 </body>
