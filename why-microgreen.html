@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Why Microgreens</title>
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 <body>
 
 <header>
   <div class="container">
     <div class="brand">
-      <img src="Logo.jpg" alt="Life With Leaf logo">
+      <img src="Logo.jpg" alt="Life With Leaf logo" onerror="this.style.display='none'">
       <div>
         <div class="title">Life With Leaf</div>
         <div style="font-size:12px;color:var(--muted)">Healthy Living</div>
@@ -20,7 +21,7 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="why-microgreen.html">Why Microgreen</a></li>
+        <li><a onclick="scrollToSection('why-microgreen')">Why Microgreen</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="products.html">Products</a></li>
         <li><a href="contact.html">Contact Us</a></li>
@@ -31,11 +32,11 @@
 </header>
 
 <main>
-<section>
+<section id="why-microgreen">
   <h2>Why Microgreens?</h2>
   <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
-    <img src="https://via.placeholder.com/180x120.png?text=Nutrition" alt="Nutrition" style="border-radius:12px"/>
-    <p>Microgreens are young edible greens harvested at their peak nutrition. They contain up to <strong>4–40×</strong> more vitamins, minerals, and antioxidants than mature plants. A small handful each day supports immunity, heart health, digestion, and more.</p>
+    <img src="placeholder_why.png" alt="Nutrition" style="border-radius:12px"/>
+    <p>Microgreens are nutrient-dense young plants. They are packed with vitamins (A, B, C, K, etc.), minerals (Calcium, Iron, Magnesium), and antioxidants. Including microgreens in your daily diet supports immunity, digestion, heart health, and overall well-being.</p>
   </div>
 </section>
 </main>
