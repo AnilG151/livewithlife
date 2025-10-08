@@ -3,15 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Products</title>
+<title>Products — Life With Leaf</title>
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 <body>
 
 <header>
   <div class="container">
     <div class="brand">
-      <img src="Logo.jpg" alt="Life With Leaf logo">
+      <img src="Logo.jpg" alt="Life With Leaf logo" onerror="this.style.display='none'">
       <div>
         <div class="title">Life With Leaf</div>
         <div style="font-size:12px;color:var(--muted)">Healthy Living</div>
@@ -22,7 +23,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="why-microgreen.html">Why Microgreen</a></li>
         <li><a href="about.html">About Us</a></li>
-        <li><a href="products.html">Products</a></li>
+        <li><a onclick="scrollToSection('products')">Products</a></li>
         <li><a href="contact.html">Contact Us</a></li>
         <li><a href="blog.html">Blog</a></li>
       </ul>
@@ -31,10 +32,15 @@
 </header>
 
 <main>
-<section>
-  <h2>Our Products</h2>
-  <div class="productGrid" id="productGrid"></div>
+<section id="products">
+  <div class="productsHeader">
+    <h2>Our Products</h2>
+  </div>
+  <div class="productGrid" id="productGrid">
+    <!-- Products populated by script.js -->
+  </div>
 </section>
+</main>
 
 <!-- Mini Cart -->
 <div class="miniCartBar" id="miniCartBar">
@@ -47,17 +53,9 @@
   </div>
 </div>
 
-<div class="miniCartDetails" id="miniCartDetails"></div>
-
-<!-- WhatsApp floating -->
-<a href="https://wa.me/919873324887?text=Hello,%20I%20want%20to%20order" target="_blank" class="whFloat">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-</a>
-
-</main>
-<script src="script.js"></script>
 <footer>
   &copy; 2025 Life With Leaf. All rights reserved.
 </footer>
+
 </body>
 </html>
