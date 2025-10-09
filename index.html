@@ -22,8 +22,9 @@
   .brand img{width:64px;height:64px;object-fit:contain;border-radius:8px;background:transparent}
   .brand .title{font-weight:800;font-size:18px;color:var(--green-1)}
   nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0}
-  nav a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600;cursor:pointer}
+  nav a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600;cursor:pointer;transition:0.3s}
   nav a:hover{background:rgba(47,158,68,0.06);color:var(--green-1)}
+  nav a.active{background:rgba(47,158,68,0.1);color:var(--green-1)}
 
   /* Hero */
   .hero{
@@ -55,8 +56,8 @@
     background:radial-gradient(circle at center, var(--green-1), transparent);
     animation:float2 10s ease-in-out infinite alternate;
   }
-  @keyframes float1{0%{transform:translateY(0) translateX(0);}100%{transform:translateY(20px) translateX(15px);}}
-  @keyframes float2{0%{transform:translateY(0) translateX(0);}100%{transform:translateY(-25px) translateX(-20px);}}
+  @keyframes float1{0%{transform:translateY(0) translateX(0);}100%{transform:translateY(20px) translateX(15px);} }
+  @keyframes float2{0%{transform:translateY(0) translateX(0);}100%{transform:translateY(-25px) translateX(-20px);} }
 
   .hero .hero-text, .hero .hero-image{position:relative; z-index:1}
   .hero .hero-image img{width:100%;height:auto;border-radius:16px;box-shadow:0 12px 30px rgba(15,23,42,0.12);transition:transform 0.6s ease;}
@@ -73,7 +74,8 @@
 
   main{max-width:1100px;margin:16px auto;padding:0 20px}
   section{margin:22px 0;opacity:0;transform:translateY(30px);transition:all 0.6s ease;}
-  section.visible{opacity:1;transform:translateY(0);}
+  section.visible{opacity:1;transform:translateY(0);animation:fadeUp 0.6s ease forwards;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
 
   /* Products grid */
   .productsHeader{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -91,9 +93,6 @@
   .miniCartBar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid rgba(15,23,42,0.06);display:flex;align-items:center;justify-content:space-between;padding:10px 16px;gap:12px;box-shadow:0 -6px 30px rgba(15,23,42,0.08);z-index:200;display:none;}
   .miniCartBar .summary{display:flex;align-items:center;gap:12px}
   .miniCartBar .summary .count{background:var(--green-1);color:#fff;padding:6px 10px;border-radius:999px;font-weight:700}
-  .miniCartDetails{position:fixed;left:16px;right:16px;bottom:68px;max-height:50vh;overflow:auto;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfff9);box-shadow:0 18px 50px rgba(15,23,42,0.12);z-index:190;display:none}
-  .cartItem{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(15,23,42,0.04)}
-  .cartTotal{font-weight:800;margin-top:10px}
 
   /* Floating WhatsApp quick chat */
   .whFloat{position:fixed;left:18px;bottom:18px;background:#25d366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,0.12);z-index:160}
@@ -120,8 +119,8 @@
     </div>
     <nav>
       <ul>
-        <li><a onclick="toggleSection('home')">Home</a></li>
-        <<li><a onclick="toggleSection('why-microgreen')">Why Microgreen</a></li>
+        <li><a onclick="toggleSection('home')" class="active">Home</a></li>
+        <li><a onclick="toggleSection('why-microgreen')">Why Microgreen</a></li>
         <li><a onclick="toggleSection('about')">About Us</a></li>
         <li><a onclick="toggleSection('products')">Products</a></li>
         <li><a onclick="toggleSection('contact')">Contact Us</a></li>
@@ -168,15 +167,13 @@
     <div class="productsHeader">
       <h2>Our Products</h2>
     </div>
-    <div class="productGrid" id="productGrid">
-      <!-- JS will populate products here -->
-    </div>
+    <div class="productGrid" id="productGrid"></div>
   </section>
 
   <section id="contact" style="display:none">
     <h2>Contact Us</h2>
     <p>Email: <a href="mailto:info@lifewithleaf.com">info@lifewithleaf.com</a></p>
-    <p>Phone: +91-XXXXXXXXXX</p>
+    <p>Phone: +91-9873324887</p>
     <p>Address: 123, Green Lane, Delhi, India</p>
   </section>
 
@@ -209,7 +206,7 @@
 </div>
 
 <!-- WhatsApp floating -->
-<a href="https://wa.me/91XXXXXXXXXX?text=Hello,%20I%20want%20to%20order" target="_blank" class="whFloat">
+<a href="https://wa.me/919873324887?text=Hello,%20I%20want%20to%20order" target="_blank" class="whFloat">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
 
@@ -221,6 +218,8 @@
   // Toggle Sections
   function toggleSection(id){
     const sections = document.querySelectorAll('main section, .hero');
+    const links = document.querySelectorAll('nav a');
+    
     sections.forEach(sec => {
       if(sec.id === id || (id==='home' && sec.classList.contains('hero'))){
         sec.style.display='block';
@@ -231,6 +230,9 @@
         sec.classList.remove('visible');
       }
     });
+
+    links.forEach(link => link.classList.remove('active'));
+    document.querySelector(`nav a[onclick="toggleSection('${id}')"]`)?.classList.add('active');
   }
 
   // Products array
@@ -254,7 +256,7 @@
       <p class="desc">${p.desc}</p>
       <div class="priceRow">
         <div class="price">₹${p.price}</div>
-        <button class="addCart" onclick="addToCart(${index})">Add to Cart</button>
+        <button class="addCart" onclick="addToCart(${index}, event)">Add to Cart</button>
       </div>
     `;
     productGrid.appendChild(div);
@@ -267,21 +269,24 @@
     miniCartBar.style.display = totalItems>0 ? 'flex' : 'none';
   }
 
-  function addToCart(index){
+  function addToCart(index, event){
     let prod = products[index];
     let existing = cart.find(c=>c.name===prod.name);
     if(existing) existing.qty++;
     else cart.push({...prod,qty:1});
     updateMiniCart();
+
+    const btn = event.target;
+    btn.innerText = "Added ✓";
+    setTimeout(()=>btn.innerText = "Add to Cart", 1000);
   }
 
   function checkout(){
     let msg = cart.map(c=>`${c.name} x ${c.qty} = ₹${c.price*c.qty}`).join('%0A');
     let total = cart.reduce((a,c)=>a+c.price*c.qty,0);
-    window.open(`https://wa.me/91XXXXXXXXXX?text=Hello,%20I%20want%20to%20order:%0A${msg}%0ATotal:%20₹${total}`,'_blank');
+    window.open(`https://wa.me/919873324887?text=Hello,%20I%20want%20to%20order:%0A${msg}%0ATotal:%20₹${total}`,'_blank');
   }
 </script>
 
 </body>
 </html>
-
