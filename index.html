@@ -21,7 +21,7 @@ header{position:sticky;top:0;z-index:60;background:var(--card);border-bottom:1px
 header .brand{display:flex;align-items:center;gap:12px;}
 header .brand img{width:60px;height:60px;border-radius:8px;object-fit:contain;}
 header nav ul{display:flex;gap:14px;list-style:none;}
-header nav a{padding:6px 10px;border-radius:8px;font-weight:600;color:var(--muted);}
+header nav a{padding:6px 10px;border-radius:8px;font-weight:600;color:var(--muted);cursor:pointer;}
 header nav a:hover{background:rgba(47,158,68,0.08);color:var(--green-1);}
 header .cartIcon{position:relative;cursor:pointer;}
 header .cartIcon span{position:absolute;top:-6px;right:-6px;background:var(--green-1);color:#fff;padding:2px 6px;border-radius:50%;font-size:12px;font-weight:700;}
@@ -39,6 +39,16 @@ header .cartIcon span{position:absolute;top:-6px;right:-6px;background:var(--gre
 .hero .btn.ghost:hover{background:rgba(47,158,68,0.08);}
 .hero .hero-image{flex:1;min-width:280px;text-align:center;}
 .hero .hero-image img{border-radius:16px;box-shadow:0 12px 30px rgba(15,23,42,0.12);}
+
+/* WHY MICROGREENS */
+.whyMicro{background:#fff;padding:50px 20px;text-align:center;}
+.whyMicro h2{font-size:28px;color:var(--green-1);margin-bottom:30px;}
+.whyGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;max-width:1000px;margin:0 auto;}
+.whyCard{background:var(--glass);border-radius:16px;padding:24px;box-shadow:0 8px 18px rgba(15,23,42,0.05);transition:0.3s;}
+.whyCard:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(15,23,42,0.12);}
+.whyCard img{width:60px;height:60px;margin:0 auto 16px;}
+.whyCard h3{color:var(--green-1);font-size:18px;margin-bottom:10px;}
+.whyCard p{color:var(--muted);font-size:14px;}
 
 /* PRODUCTS */
 section{padding:40px 0;}
@@ -71,7 +81,11 @@ section h2{font-size:28px;color:var(--green-1);margin-bottom:20px;text-align:cen
 footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#fff;text-align:center;padding:26px 20px;margin-top:40px;}
 
 /* RESPONSIVE */
-@media(max-width:768px){.hero{flex-direction:column;text-align:center}.hero .ctaRow{justify-content:center}.about{flex-direction:column;text-align:center;}}
+@media(max-width:768px){
+.hero{flex-direction:column;text-align:center}
+.hero .ctaRow{justify-content:center}
+.about{flex-direction:column;text-align:center;}
+}
 </style>
 </head>
 <body>
@@ -97,7 +111,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   </div>
 </header>
 
-<!-- HERO + WHY MICROGREENS -->
+<!-- HERO -->
 <section class="hero" id="home" style="display:block">
   <div class="hero-text">
     <h1>Fresh Microgreens, Direct to Your Home</h1>
@@ -110,6 +124,33 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   </div>
   <div class="hero-image">
     <img src="https://via.placeholder.com/450x320.png?text=Fresh+Microgreens" alt="Fresh Microgreens">
+  </div>
+</section>
+
+<!-- WHY MICROGREENS -->
+<section class="whyMicro" id="why">
+  <h2>Why Choose Microgreens?</h2>
+  <div class="whyGrid">
+    <div class="whyCard">
+      <img src="https://cdn-icons-png.flaticon.com/512/706/706195.png" alt="Nutrient Dense">
+      <h3>Nutrient Dense</h3>
+      <p>Contain 4–40× more nutrients than mature plants, fueling your body with essential vitamins and minerals.</p>
+    </div>
+    <div class="whyCard">
+      <img src="https://cdn-icons-png.flaticon.com/512/415/415733.png" alt="Pesticide Free">
+      <h3>Grown Pesticide-Free</h3>
+      <p>Pure, safe, and chemical-free — grown naturally to keep your family healthy.</p>
+    </div>
+    <div class="whyCard">
+      <img src="https://cdn-icons-png.flaticon.com/512/3106/3106780.png" alt="Fresh Harvest">
+      <h3>Freshly Harvested</h3>
+      <p>Delivered directly from our farm to your table for maximum freshness and flavor.</p>
+    </div>
+    <div class="whyCard">
+      <img src="https://cdn-icons-png.flaticon.com/512/4341/4341139.png" alt="Sustainable">
+      <h3>Locally Grown & Sustainable</h3>
+      <p>Supports eco-friendly farming practices and reduces food miles for a greener planet.</p>
+    </div>
   </div>
 </section>
 
@@ -158,72 +199,69 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </footer>
 
 <script>
-  // Toggle Sections
-  function toggleSection(id){
-    const sections = document.querySelectorAll('section, .hero');
-    sections.forEach(sec=>{
-      if(sec.id===id || (id==='home' && sec.classList.contains('hero'))){
-        sec.style.display='block';
-        sec.scrollIntoView({behavior:'smooth'});
-      }else sec.style.display='none';
-    });
-  }
-
-  // Products
-  const products = [
-    {name:'Wheatgrass',desc:'Fresh wheatgrass tray',price:149,img:'https://via.placeholder.com/220x140.png?text=Wheatgrass'},
-    {name:'Pea Shoots',desc:'Nutrient-rich pea shoots',price:199,img:'https://via.placeholder.com/220x140.png?text=Pea+Shoots'},
-    {name:'Sunflower Microgreens',desc:'Sunflower seed microgreens',price:249,img:'https://via.placeholder.com/220x140.png?text=Sunflower'},
-    {name:'Grow Kit',desc:'Home grow kit for beginners',price:299,img:'https://via.placeholder.com/220x140.png?text=Grow+Kit'}
-  ];
-
-  const productGrid = document.getElementById('productGrid');
-  const miniCartBar = document.getElementById('miniCartBar');
-  let cart = [];
-
-  products.forEach((p,index)=>{
-    const div = document.createElement('div');
-    div.className='product';
-    div.innerHTML=`
-      <div class="productImg"><img src="${p.img}" alt="${p.name}"></div>
-      <h3>${p.name}</h3>
-      <p class="desc">${p.desc}</p>
-      <div class="priceRow">
-        <div class="price">₹${p.price}</div>
-        <button class="addCart" onclick="addToCart(${index})">Add to Cart</button>
-      </div>
-    `;
-    productGrid.appendChild(div);
+function toggleSection(id){
+  const sections=document.querySelectorAll('section, .hero');
+  sections.forEach(sec=>{
+    if(sec.id===id || (id==='home' && sec.classList.contains('hero'))){
+      sec.style.display='block';
+      sec.scrollIntoView({behavior:'smooth'});
+    }else sec.style.display='none';
   });
+}
 
-  function updateMiniCart(){
-    const countEl = document.getElementById('cartCount');
-    const countMini = document.getElementById('cartCountMini');
-    const totalItems = cart.reduce((a,c)=>a+c.qty,0);
-    if(countEl) countEl.innerText = totalItems;
-    if(countMini) countMini.innerText = totalItems;
-    miniCartBar.style.display = totalItems>0?'flex':'none';
-  }
+const products=[
+  {name:'Wheatgrass',desc:'Fresh wheatgrass tray',price:149,img:'https://via.placeholder.com/220x140.png?text=Wheatgrass'},
+  {name:'Pea Shoots',desc:'Nutrient-rich pea shoots',price:199,img:'https://via.placeholder.com/220x140.png?text=Pea+Shoots'},
+  {name:'Sunflower Microgreens',desc:'Sunflower seed microgreens',price:249,img:'https://via.placeholder.com/220x140.png?text=Sunflower'},
+  {name:'Grow Kit',desc:'Home grow kit for beginners',price:299,img:'https://via.placeholder.com/220x140.png?text=Grow+Kit'}
+];
 
-  function addToCart(index){
-    const prod = products[index];
-    const existing = cart.find(c=>c.name===prod.name);
-    if(existing) existing.qty++;
-    else cart.push({...prod,qty:1});
-    updateMiniCart();
-  }
+const productGrid=document.getElementById('productGrid');
+const miniCartBar=document.getElementById('miniCartBar');
+let cart=[];
 
-  function checkout(){
-    const msg = cart.map(c=>`${c.name} x ${c.qty} = ₹${c.price*c.qty}`).join('%0A');
-    const total = cart.reduce((a,c)=>a+c.price*c.qty,0);
-    window.open(`https://wa.me/919873324887?text=Hello,%20I%20want%20to%20order:%0A${msg}%0ATotal:%20₹${total}`,'_blank');
-  }
+products.forEach((p,i)=>{
+  const div=document.createElement('div');
+  div.className='product';
+  div.innerHTML=`
+  <div class="productImg"><img src="${p.img}" alt="${p.name}"></div>
+  <h3>${p.name}</h3>
+  <p class="desc">${p.desc}</p>
+  <div class="priceRow">
+    <div class="price">₹${p.price}</div>
+    <button class="addCart" onclick="addToCart(${i})">Add to Cart</button>
+  </div>`;
+  productGrid.appendChild(div);
+});
 
-  function toggleCart(){
-    alert('Cart details:\n' + cart.map(c=>`${c.name} x ${c.qty}`).join('\n'));
-  }
+function updateMiniCart(){
+  const countEl=document.getElementById('cartCount');
+  const countMini=document.getElementById('cartCountMini');
+  const totalItems=cart.reduce((a,c)=>a+c.qty,0);
+  if(countEl) countEl.innerText=totalItems;
+  if(countMini) countMini.innerText=totalItems;
+  miniCartBar.style.display=totalItems>0?'flex':'none';
+}
 
+function addToCart(i){
+  const prod=products[i];
+  const existing=cart.find(c=>c.name===prod.name);
+  if(existing) existing.qty++;
+  else cart.push({...prod,qty:1});
   updateMiniCart();
+}
+
+function checkout(){
+  const msg=cart.map(c=>`${c.name} x ${c.qty} = ₹${c.price*c.qty}`).join('%0A');
+  const total=cart.reduce((a,c)=>a+c.price*c.qty,0);
+  window.open(`https://wa.me/919873324887?text=Hello,%20I%20want%20to%20order:%0A${msg}%0ATotal:%20₹${total}`,'_blank');
+}
+
+function toggleCart(){
+  alert('Cart details:\n'+cart.map(c=>`${c.name} x ${c.qty}`).join('\n'));
+}
+
+updateMiniCart();
 </script>
 
 </body>
