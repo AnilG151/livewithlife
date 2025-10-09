@@ -22,6 +22,339 @@ body {
   color: var(--text);
 }
 
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+header img {
+  height: 50px;
+}
+
+/* Desktop nav */
+nav {
+  display: flex;
+  gap: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 20px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+nav a:hover, nav a.active {
+  background: rgba(47,158,68,0.1);
+  color: var(--green-1);
+}
+
+/* Mobile menu */
+.menu-icon {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: var(--bg);
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: absolute;
+  top: 70px;
+  left: 0;
+  z-index: 15;
+}
+
+.mobile-nav a {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(rgba(47,158,68,0.6),rgba(47,158,68,0.6)), url('fresh-microgreen.jpg') center/cover;
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+section {
+  display: none;
+  padding: 50px 20px;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+section.visible {
+  display: block;
+}
+
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--gray);
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.btn {
+  background: var(--green-1);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: var(--green-2);
+}
+
+/* Floating WhatsApp Button */
+.whFloat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: white;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  text-decoration: none;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+/* Mini Cart */
+.cart {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--gray);
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width:768px){
+  nav {display: none;}
+  .menu-icon {display: block;}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <img src="logo.png" alt="Life With Leaf Logo">
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <nav>
+    <a class="active" onclick="toggleSection('home')">Home</a>
+    <a onclick="toggleSection('products')">Products</a>
+    <a onclick="toggleSection('about')">About</a>
+    <a onclick="toggleSection('contact')">Contact</a>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a onclick="toggleSection('home');toggleMenu()">Home</a>
+  <a onclick="toggleSection('products');toggleMenu()">Products</a>
+  <a onclick="toggleSection('about');toggleMenu()">About</a>
+  <a onclick="toggleSection('contact');toggleMenu()">Contact</a>
+</div>
+
+<main>
+  <!-- Home + Why Microgreen -->
+  <section id="home" class="visible">
+    <div class="hero">
+      <h1>Grow Fresh, Eat Fresh — Every Day</h1>
+      <p>Homegrown, pesticide-free microgreens for a healthier lifestyle.</p>
+      <button class="btn" onclick="toggleSection('products')">Explore Products</button>
+    </div>
+
+    <div style="margin-top:40px;text-align:center;">
+      <h2>Why Choose Microgreens?</h2>
+      <p>Microgreens are young vegetable greens packed with flavor, nutrients, and color. They are richer in vitamins, minerals, and antioxidants than their mature counterparts.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:30px;">
+        <div class="card">
+          <img src="micro1.jpg" alt="Nutrient Rich">
+          <h3>Nutrient Dense</h3>
+          <p>Up to 40x more nutrients than mature greens.</p>
+        </div>
+        <div class="card">
+          <img src="micro2.jpg" alt="Fresh Daily">
+          <h3>Fresh & Local</h3>
+          <p>Harvested just before delivery for maximum freshness.</p>
+        </div>
+        <div class="card">
+          <img src="micro3.jpg" alt="Eco Friendly">
+          <h3>Eco-Friendly</h3>
+          <p>Grown with minimal water and zero pesticides.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products">
+    <h2 style="text-align:center;">Our Products</h2>
+    <div class="products" id="productList"></div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>At Life With Leaf, we believe in promoting healthy living through fresh, sustainable, and pesticide-free microgreens. Whether you're a health enthusiast, home chef, or looking to start your own green journey — we have the perfect greens for you.</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>📍 Gurgaon, India<br>
+       📞 <a href="tel:+919873324887">+91 98733 24887</a><br>
+       💌 <a href="mailto:lifewithleaf@gmail.com">lifewithleaf@gmail.com</a></p>
+  </section>
+</main>
+
+<a href="https://wa.me/919873324887?text=Hello,%20I%20want%20to%20order" target="_blank" class="whFloat">💬</a>
+<div class="cart" id="cartInfo">Cart: 0</div>
+
+<script>
+const products = [
+  {name:'Broccoli Microgreens', price:199, img:'micro1.jpg'},
+  {name:'Sunflower Shoots', price:249, img:'micro2.jpg'},
+  {name:'Radish Mix', price:179, img:'micro3.jpg'},
+  {name:'Wheatgrass', price:149, img:'micro4.jpg'}
+];
+let cart = [];
+
+function toggleSection(id){
+  const sections = document.querySelectorAll('main section');
+  const links = document.querySelectorAll('nav a');
+  const mobileLinks = document.querySelectorAll('.mobile-nav a');
+
+  sections.forEach(sec=>{
+    if(sec.id===id){
+      sec.style.display='block';
+      sec.classList.add('visible');
+      sec.scrollIntoView({behavior:'smooth'});
+    } else {
+      sec.style.display='none';
+      sec.classList.remove('visible');
+    }
+  });
+
+  links.forEach(link=>link.classList.remove('active'));
+  mobileLinks.forEach(link=>link.classList.remove('active'));
+  document.querySelector(`nav a[onclick="toggleSection('${id}')"]`)?.classList.add('active');
+}
+
+function renderProducts(){
+  const list=document.getElementById('productList');
+  list.innerHTML=products.map((p,i)=>`
+    <div class="card">
+      <img src="${p.img}" alt="${p.name}">
+      <h3>${p.name}</h3>
+      <p>₹${p.price}</p>
+      <button class="btn" onclick="addToCart(${i}, event)">Add to Cart</button>
+    </div>`).join('');
+}
+
+function addToCart(i,e){
+  let p=products[i];
+  let found=cart.find(c=>c.name===p.name);
+  if(found) found.qty++;
+  else cart.push({...p,qty:1});
+  updateMiniCart();
+  e.target.innerText="Added ✓";
+  setTimeout(()=>e.target.innerText="Add to Cart",1000);
+}
+
+function updateMiniCart(){
+  let totalQty=cart.reduce((a,b)=>a+b.qty,0);
+  document.getElementById('cartInfo').innerText=`Cart: ${totalQty}`;
+}
+
+function toggleMenu(){
+  const menu=document.getElementById('mobileNav');
+  menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+}
+
+renderProducts();
+</script>
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Life With Leaf — Healthy Living</title>
+<meta name="description" content="Life With Leaf - Live microgreens, pesticide-free, homegrown. Fresh microgreens, grow kits and seeds." />
+
+<style>
+:root {
+  --green-1: #2f9e44;
+  --green-2: #37b24d;
+  --bg: #fff;
+  --text: #222;
+  --gray: #f4f4f4;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
 header {
   position: sticky;
   top: 0;
