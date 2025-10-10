@@ -53,6 +53,14 @@ header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--gr
 .whyCard h3{color:var(--green-1);font-size:16px;margin-bottom:8px}
 .whyCard p{color:var(--muted);font-size:14px}
 
+/* TESTIMONIALS */
+.testimonialWrap{max-width:900px;margin:0 auto;position:relative}
+.testList{display:flex;gap:16px;overflow:hidden;white-space:nowrap;transition:transform 0.4s ease}
+.testCard{min-width:100%;background:#fff;padding:20px;border-radius:12px;box-shadow:0 12px 30px rgba(15,23,42,0.06)}
+.testCard p{color:var(--muted)}
+.testNav{display:flex;gap:8px;justify-content:center;margin-top:12px}
+.testNav button{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:8px 12px;border-radius:8px;cursor:pointer}
+
 /* SECTIONS */
 section{padding:40px 0}
 section h2{font-size:26px;color:var(--green-1);margin-bottom:20px;text-align:center}
@@ -82,136 +90,202 @@ section h2{font-size:26px;color:var(--green-1);margin-bottom:20px;text-align:cen
 /* CART MODAL */
 .modalOverlay{position:fixed;inset:0;background:rgba(3,6,2,0.35);display:none;align-items:flex-end;justify-content:center;z-index:950}
 .cartModal{background:#fff;border-radius:14px;padding:18px;max-width:720px;width:100%;box-shadow:0 40px 80px rgba(2,12,6,0.24);transform:translateY(30px);transition:transform .28s, opacity .28s;opacity:0}
+.cartHeader{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.cartList{max-height:320px;overflow:auto;padding-right:8px}
+.cartItem{display:flex;gap:12px;align-items:center;border-bottom:1px dashed rgba(15,23,42,0.05);padding:10px 0}
+.cartItem img{width:64px;height:50px;object-fit:cover;border-radius:8px}
+.qtyCtrl{display:flex;align-items:center;gap:8px}
+.qtyCtrl button{width:30px;height:30px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);cursor:pointer}
+.cartFooter{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
 
 /* FOOTER */
-footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#fff;text-align:center;padding:26px 20px;margin-top:40px;border-radius:12px;position:relative;overflow:hidden}
+footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#fff;text-align:center;padding:26px 20px;margin-top:40px}
 
-/* FADE IN ANIMATION */
-.fadeIn{animation:fadeInSec 0.7s ease forwards;opacity:0}
-@keyframes fadeInSec{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:translateY(0)}}
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{flex-direction:column;text-align:center;padding:46px 16px}
+  .hero .hero-image{order:-1;margin-bottom:18px}
+  header nav ul{display:none}
+}
+
+/* small helpers */
+.kicker{display:inline-block;background:rgba(107,211,106,0.12);color:var(--green-1);padding:6px 10px;border-radius:999px;font-weight:700;margin-bottom:12px}
+.fadeIn{animation:fadeIn .6s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
 <header>
   <div class="brand">
-    <img src="images/logo.png" alt="Life With Leaf Logo">
-    <span>Life With Leaf</span>
+    <img src="images/logo.png" alt="Life With Leaf" onerror="this.onerror=null;this.src='https://via.placeholder.com/112x112.png?text=Logo'">
+    <div>
+      <div style="font-weight:800;color:var(--green-1);font-size:18px;">Life With Leaf</div>
+      <div style="font-size:12px;color:var(--muted)">Healthy Living</div>
+    </div>
   </div>
   <nav>
     <ul>
       <li><a onclick="toggleSection('home')">Home</a></li>
+      <li><a onclick="toggleSection('about')">Our Story</a></li>
       <li><a onclick="toggleSection('products')">Products</a></li>
       <li><a onclick="toggleSection('how')">How It Works</a></li>
       <li><a onclick="toggleSection('gallery')">Gallery</a></li>
       <li><a onclick="toggleSection('contact')">Contact</a></li>
-      <li><a onclick="toggleSection('story')">Our Story</a></li>
     </ul>
   </nav>
-  <div class="cartIcon" onclick="toggleCart()">
-    🛒<span id="cartCount">0</span>
+  <div style="display:flex;gap:12px;align-items:center">
+    <div class="cartIcon" onclick="openCart()">🛒 <span id="cartCount">0</span></div>
   </div>
 </header>
 
-<main>
-  <!-- HOME PAGE SECTIONS -->
-  <section class="hero" id="hero">
-    <div class="hero-text">
-      <div class="kicker">Fresh • Local • Sustainable</div>
-      <h1>Fresh Microgreens, Direct to Your Home</h1>
-      <p class="lead">Boost your health with nutrient-rich, pesticide-free microgreens — perfect for salads, sandwiches, smoothies, and home gardening.</p>
-      <p class="details">Microgreens are young edible greens harvested at their peak nutrition. Though small, they contain up to <strong>4–40×</strong> more vitamins, minerals, and antioxidants than mature plants — supporting immunity, heart health, and digestion.</p>
-      <div class="ctaRow">
-        <button class="btn" onclick="toggleSection('products')">Shop Now</button>
-        <button class="btn ghost" onclick="toggleSection('how')">How It Works</button>
-      </div>
+<!-- HOME: HERO + WHY + TESTIMONIALS -->
+<section class="hero" id="home" style="display:block">
+  <div class="hero-text">
+    <div class="kicker">Fresh • Local • Sustainable</div>
+    <h1>Fresh Microgreens, Direct to Your Home</h1>
+    <p class="lead">Boost your health with nutrient-rich, pesticide-free microgreens — perfect for salads, sandwiches, smoothies, and home gardening.</p>
+    <p class="details">Microgreens are young, edible seedlings of vegetables and herbs. Packed with flavor, vitamins, and minerals, they can easily elevate your everyday meals.</p>
+    <div class="ctaRow">
+      <button class="btn" onclick="toggleSection('products')">Shop Now</button>
+      <button class="btn ghost" onclick="toggleSection('how')">Learn How</button>
     </div>
-    <div class="hero-image">
-      <img src="images/hero.jpg" alt="Fresh Microgreens" width="520" height="360" onerror="this.onerror=null;this.src='https://via.placeholder.com/520x360.png?text=Fresh+Microgreens'">
-    </div>
-  </section>
+  </div>
+  <div class="hero-image">
+    <img src="images/fresh-microgreens.png" alt="Fresh Microgreens" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x350.png?text=Microgreens'">
+  </div>
+</section>
 
-  <section class="whyMicro fadeIn" id="why">
-    <h2>Why Choose Microgreens?</h2>
-    <div class="whyGrid container">
-      <div class="whyCard">
-        <img src="https://cdn-icons-png.flaticon.com/512/706/706195.png" alt="Nutrient Dense">
-        <h3>Nutrient Dense</h3>
-        <p>Contain 4–40× more nutrients than mature plants, fueling your body with essential vitamins and minerals.</p>
+<section class="whyMicro" id="why">
+  <h2>Why Choose Microgreens?</h2>
+  <div class="whyGrid">
+    <div class="whyCard">
+      <img src="images/nutrition.png" alt="Nutrition">
+      <h3>Highly Nutritious</h3>
+      <p>Microgreens pack vitamins and minerals in every bite, much higher than their mature counterparts.</p>
+    </div>
+    <div class="whyCard">
+      <img src="images/fresh.png" alt="Freshness">
+      <h3>Farm Fresh</h3>
+      <p>Picked daily to ensure maximum freshness and flavor in every order.</p>
+    </div>
+    <div class="whyCard">
+      <img src="images/growth.png" alt="Easy to Grow">
+      <h3>Easy to Grow</h3>
+      <p>Grow your own microgreens at home with minimal space and effort.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <h2>What Our Customers Say</h2>
+  <div class="testimonialWrap">
+    <div class="testList">
+      <div class="testCard">
+        <p>"Absolutely love the freshness and quality! My salads never tasted better."</p>
+        <strong>- Ananya R.</strong>
       </div>
-      <div class="whyCard">
-        <img src="https://cdn-icons-png.flaticon.com/512/415/415733.png" alt="Pesticide Free">
-        <h3>Grown Pesticide-Free</h3>
-        <p>Pure, safe, and chemical-free — grown naturally to keep your family healthy.</p>
+      <div class="testCard">
+        <p>"Easy to grow and delicious. The microgreens delivery is always on time."</p>
+        <strong>- Rohit S.</strong>
       </div>
-      <div class="whyCard">
-        <img src="https://cdn-icons-png.flaticon.com/512/3106/3106780.png" alt="Fresh Harvest">
-        <h3>Freshly Harvested</h3>
-        <p>Delivered directly from our farm to your table for maximum freshness and flavor.</p>
-      </div>
-      <div class="whyCard">
-        <img src="https://cdn-icons-png.flaticon.com/512/4341/4341139.png" alt="Sustainable">
-        <h3>Locally Grown & Sustainable</h3>
-        <p>Supports eco-friendly farming practices and reduces food miles for a greener planet.</p>
+      <div class="testCard">
+        <p>"A game-changer for my smoothies. Highly recommend Life With Leaf."</p>
+        <strong>- Priya M.</strong>
       </div>
     </div>
-  </section>
+    <div class="testNav">
+      <button onclick="showTestimonial(0)">1</button>
+      <button onclick="showTestimonial(1)">2</button>
+      <button onclick="showTestimonial(2)">3</button>
+    </div>
+  </div>
+</section>
 
-  <section class="whyMicro fadeIn" id="testimonials">
-    <h2>What Our Customers Say</h2>
-    <div class="whyGrid container">
-      <div class="whyCard">
-        <p>"Amazing flavor and texture — my salads never tasted better. Delivery was quick and packaging kept everything fresh."</p>
-        <div style="margin-top:12px;font-weight:700;color:var(--green-1)">— Neha, Delhi</div>
-      </div>
-      <div class="whyCard">
-        <p>"The grow kit is perfect for beginners. Simple instructions and great results in two weeks."</p>
-        <div style="margin-top:12px;font-weight:700;color:var(--green-1)">— Arjun, Bengaluru</div>
-      </div>
-      <div class="whyCard">
-        <p>"Love the taste and the sustainable packaging. Will order every month."</p>
-        <div style="margin-top:12px;font-weight:700;color:var(--green-1)">— Priya, Mumbai</div>
+<!-- OTHER SECTIONS: Keep everything as it was -->
+<section id="about" style="display:none">
+  <div class="container">
+    <h2>Our Story</h2>
+    <p>Original content of Our Story here...</p>
+  </div>
+</section>
+
+<section id="products" style="display:none">
+  <div class="container">
+    <h2>Products</h2>
+    <div class="productGrid">
+      <!-- Add your product cards here -->
+      <div class="product">
+        <div class="productImg"><img src="images/product1.png" alt="Product 1"></div>
+        <h3>Microgreens Kit</h3>
+        <p class="desc">Grow your own microgreens at home easily.</p>
+        <div class="priceRow">
+          <span class="price">₹499</span>
+          <button class="addCart" onclick="addToCart('Microgreens Kit',499)">Add</button>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- OTHER SECTIONS PLACEHOLDER -->
-  <section id="products" style="display:none"><!-- Products grid --></section>
-  <section id="how" style="display:none"><!-- How It Works steps --></section>
-  <section id="gallery" style="display:none"><!-- Gallery images --></section>
-  <section id="contact" style="display:none"><!-- Contact form --></section>
-  <section id="story" style="display:none"><!-- Our Story --></section>
-</main>
+<section id="how" style="display:none">
+  <div class="container">
+    <h2>How It Works</h2>
+    <div class="howGrid">
+      <div class="step">
+        <h4>Step 1</h4>
+        <p>Choose your microgreens kit.</p>
+      </div>
+      <div class="step">
+        <h4>Step 2</h4>
+        <p>Receive fresh microgreens at your doorstep.</p>
+      </div>
+      <div class="step">
+        <h4>Step 3</h4>
+        <p>Enjoy nutritious meals or grow at home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" style="display:none">
+  <div class="container">
+    <h2>Gallery</h2>
+    <p>Original gallery content...</p>
+  </div>
+</section>
+
+<section id="contact" style="display:none">
+  <div class="container">
+    <h2>Contact</h2>
+    <p>Contact form or info goes here...</p>
+  </div>
+</section>
 
 <footer>
-  <p>© 2025 Life With Leaf. All rights reserved.</p>
+  &copy; 2025 Life With Leaf. All rights reserved.
 </footer>
 
 <script>
-function toggleSection(section){
-  // Hide all main sections
-  const sections = ['hero','why','testimonials','products','how','gallery','contact','story'];
-  sections.forEach(id=>{
-    const el = document.getElementById(id);
-    if(el) el.style.display='none';
+function toggleSection(id){
+  const sections = ['home','about','products','how','gallery','contact'];
+  sections.forEach(s=>{
+    document.getElementById(s).style.display=(s===id)?'block':'none';
   });
-
-  if(section==='home'){
-    document.getElementById('hero').style.display='flex';
-    document.getElementById('why').style.display='block';
-    document.getElementById('testimonials').style.display='block';
-    window.scrollTo({top:0, behavior:'smooth'});
-  } else {
-    const el = document.getElementById(section);
-    if(el) el.style.display='block';
-    window.scrollTo({top:0, behavior:'smooth'});
-  }
 }
 
-// Dummy cart toggle
-function toggleCart(){
-  alert('Cart popup can be implemented here');
+// Testimonials slider
+let currentTest=0;
+function showTestimonial(index){
+  const list=document.querySelector('.testList');
+  list.style.transform=`translateX(-${index*100}%)`;
+  currentTest=index;
 }
+
+// Cart placeholder
+function openCart(){alert('Cart clicked')}
+function addToCart(name,price){alert(name+' added at ₹'+price);}
 </script>
+
 </body>
 </html>
