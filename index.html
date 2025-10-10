@@ -76,7 +76,7 @@ section h2{font-size:26px;color:var(--green-1);margin-bottom:20px;text-align:cen
 
 /* TESTIMONIALS */
 .testimonialWrap{max-width:900px;margin:0 auto;position:relative}
-.testList{display:flex;gap:16px;overflow:hidden}
+.testList{display:flex;gap:16px;overflow:hidden;white-space:nowrap}
 .testCard{min-width:100%;background:#fff;padding:20px;border-radius:12px;box-shadow:0 12px 30px rgba(15,23,42,0.06)}
 .testCard p{color:var(--muted)}
 .testNav{display:flex;gap:8px;justify-content:center;margin-top:12px}
@@ -96,7 +96,7 @@ section h2{font-size:26px;color:var(--green-1);margin-bottom:20px;text-align:cen
 
 /* CART MODAL */
 .modalOverlay{position:fixed;inset:0;background:rgba(3,6,2,0.35);display:none;align-items:flex-end;justify-content:center;z-index:950}
-.cartModal{background:#fff;border-radius:14px;padding:18px;max-width:720px;width:100%;box-shadow:0 40px 80px rgba(2,12,6,0.24);transform:translateY(30px);transition:transform .28s, opacity .28s}
+.cartModal{background:#fff;border-radius:14px;padding:18px;max-width:720px;width:100%;box-shadow:0 40px 80px rgba(2,12,6,0.24);transform:translateY(30px);transition:transform .28s, opacity .28s;opacity:0}
 .cartHeader{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
 .cartList{max-height:320px;overflow:auto;padding-right:8px}
 .cartItem{display:flex;gap:12px;align-items:center;border-bottom:1px dashed rgba(15,23,42,0.05);padding:10px 0}
@@ -125,7 +125,8 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 <header>
   <div class="brand">
-    <img src="Logo.jpg" alt="Life With Leaf">
+    <!-- prefer images/logo in images/ folder; fallback to placeholder if missing -->
+    <img src="images/logo.png" alt="Life With Leaf" onerror="this.onerror=null;this.src='https://via.placeholder.com/112x112.png?text=Logo'">
     <div>
       <div style="font-weight:800;color:var(--green-1);font-size:18px;">Life With Leaf</div>
       <div style="font-size:12px;color:var(--muted)">Healthy Living</div>
@@ -160,7 +161,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     </div>
   </div>
   <div class="hero-image">
-    <img src="https://via.placeholder.com/520x360.png?text=Fresh+Microgreens" alt="Fresh Microgreens" width="520" height="360">
+    <img src="images/hero.jpg" alt="Fresh Microgreens" width="520" height="360" onerror="this.onerror=null;this.src='https://via.placeholder.com/520x360.png?text=Fresh+Microgreens'">
   </div>
 </section>
 
@@ -232,8 +233,8 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
         </div>
       </div>
       <div class="testNav">
-        <button onclick="prevTest()">◀</button>
-        <button onclick="nextTest()">▶</button>
+        <button onclick="prevTest()" aria-label="Previous testimonial">◀</button>
+        <button onclick="nextTest()" aria-label="Next testimonial">▶</button>
       </div>
     </div>
   </div>
@@ -244,10 +245,10 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   <div class="container">
     <h2>Gallery</h2>
     <div class="galleryGrid">
-      <img src="https://via.placeholder.com/320x240.png?text=Microgreen+1" alt="" onclick="openLight(this)">
-      <img src="https://via.placeholder.com/320x240.png?text=Microgreen+2" alt="" onclick="openLight(this)">
-      <img src="https://via.placeholder.com/320x240.png?text=Microgreen+3" alt="" onclick="openLight(this)">
-      <img src="https://via.placeholder.com/320x240.png?text=Grow+Kit" alt="" onclick="openLight(this)">
+      <img src="images/micro1.jpg" alt="" onclick="openLight(this)" onerror="this.onerror=null;this.src='https://via.placeholder.com/320x240.png?text=Microgreen+1'">
+      <img src="images/micro2.jpg" alt="" onclick="openLight(this)" onerror="this.onerror=null;this.src='https://via.placeholder.com/320x240.png?text=Microgreen+2'">
+      <img src="images/micro3.jpg" alt="" onclick="openLight(this)" onerror="this.onerror=null;this.src='https://via.placeholder.com/320x240.png?text=Microgreen+3'">
+      <img src="images/growkit.jpg" alt="" onclick="openLight(this)" onerror="this.onerror=null;this.src='https://via.placeholder.com/320x240.png?text=Grow+Kit'">
     </div>
   </div>
 </section>
@@ -257,7 +258,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   <div class="container">
     <h2>Our Story</h2>
     <div class="about" style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:center;margin-top:10px">
-      <img src="https://via.placeholder.com/320x220.png?text=Our+Farm" alt="Our Farm" style="border-radius:12px;flex:1;min-width:240px">
+      <img src="images/farm.jpg" alt="Our Farm" style="border-radius:12px;flex:1;min-width:240px" onerror="this.onerror=null;this.src='https://via.placeholder.com/320x220.png?text=Our+Farm'">
       <p style="flex:1;min-width:260px;color:var(--muted);line-height:1.5">We are passionate growers bringing you pesticide-free, freshly harvested microgreens and grow kits — all grown with care and love. Our mission is to make healthy living simple, natural, and sustainable. We partner with local farms and use minimal packaging to reduce waste.</p>
     </div>
   </div>
@@ -285,7 +286,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </div>
 
 <!-- CART MODAL -->
-<div class="modalOverlay" id="modalOverlay">
+<div class="modalOverlay" id="modalOverlay" aria-hidden="true">
   <div class="cartModal" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
     <div class="cartHeader">
       <h3 id="cartTitle">Your Cart</h3>
@@ -294,7 +295,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
         <button onclick="closeCart()" style="padding:8px 10px;border-radius:8px;border:0;background:transparent;cursor:pointer">Close</button>
       </div>
     </div>
-    <div class="cartList" id="cartList">
+    <div class="cartList" id="cartList" tabindex="0">
       <!-- Cart items go here -->
     </div>
     <div class="cartFooter">
@@ -308,7 +309,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </div>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLight()">
+<div class="lightbox" id="lightbox" onclick="closeLight()" role="dialog" aria-hidden="true">
   <img id="lightImg" src="" alt="">
 </div>
 
@@ -323,105 +324,152 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </footer>
 
 <script>
-/* Section toggling: fixed to show whyMicro along with hero on Home */
-function toggleSection(id) {
-  const sections = document.querySelectorAll('section, .hero');
-  sections.forEach(sec => {
-    // Show both hero and whyMicro sections when Home is clicked
-    if (id === 'home' && (sec.classList.contains('hero') || sec.id === 'why')) {
-      sec.style.display = 'block';
-    } 
-    // Show selected section
-    else if (sec.id === id) {
-      sec.style.display = 'block';
-      sec.scrollIntoView({ behavior: 'smooth' });
-    } 
-    // Hide everything else
-    else {
-      sec.style.display = 'none';
+/* ---------- Utilities & Data ---------- */
+
+/* Products data (you can replace images with local files in images/ ) */
+const products = [
+  {id:1,name:'Wheatgrass',desc:'Fresh wheatgrass tray',price:149,img:'images/wheatgrass.jpg',fallback:'https://via.placeholder.com/320x220.png?text=Wheatgrass'},
+  {id:2,name:'Pea Shoots',desc:'Nutrient-rich pea shoots',price:199,img:'images/peashoots.jpg',fallback:'https://via.placeholder.com/320x220.png?text=Pea+Shoots'},
+  {id:3,name:'Sunflower Microgreens',desc:'Sunflower microgreens',price:249,img:'images/sunflower.jpg',fallback:'https://via.placeholder.com/320x220.png?text=Sunflower'},
+  {id:4,name:'Grow Kit',desc:'Home grow kit for beginners',price:299,img:'images/growkit.jpg',fallback:'https://via.placeholder.com/320x220.png?text=Grow+Kit'}
+];
+
+/* Cart state saved to localStorage */
+let cart = JSON.parse(localStorage.getItem('lw_cart') || '[]');
+
+/* DOM helpers */
+const productGrid = document.getElementById('productGrid');
+const modalOverlay = document.getElementById('modalOverlay');
+const lightbox = document.getElementById('lightbox');
+
+/* ---------- Initialization ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  renderProducts();
+  updateMiniCart();
+  attachGlobalKeys();
+  // ensure home shows hero+why on load
+  toggleSection('home', {instant: true});
+});
+
+/* ---------- Navigation (hero + why visibility fix) ---------- */
+function toggleSection(id, opts={instant:false}) {
+  // Select sections and hero explicitly
+  const hero = document.querySelector('.hero');
+  const why = document.getElementById('why');
+  const sections = document.querySelectorAll('section[id]');
+
+  // If home -> show hero + why
+  if (id === 'home') {
+    // hide all sections first
+    sections.forEach(s => s.style.display = 'none');
+    // show hero and why
+    hero.style.display = 'block';
+    if (why) why.style.display = 'block';
+    // scroll to top smoothly (or instantly)
+    if (opts.instant) window.scrollTo(0,0);
+    else window.scrollTo({top:0,behavior:'smooth'});
+    return;
+  }
+
+  // For any other section -> hide hero and why, show selected section
+  hero.style.display = 'none';
+  if (why) why.style.display = 'none';
+
+  let found = false;
+  sections.forEach(s => {
+    if (s.id === id) {
+      s.style.display = 'block';
+      found = true;
+      // try smooth scroll to that section
+      s.scrollIntoView({behavior:'smooth'});
+    } else {
+      s.style.display = 'none';
     }
+  });
+
+  // If id not found, default to home
+  if (!found) toggleSection('home');
+}
+
+/* ---------- Products rendering ---------- */
+function renderProducts() {
+  productGrid.innerHTML = '';
+  products.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'product fadeIn';
+    // image element with fallback handler
+    const imgSrc = p.img || p.fallback;
+    div.innerHTML = `
+      <div class="productImg"><img src="${imgSrc}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover" onerror="this.onerror=null;this.src='${p.fallback}'"></div>
+      <h3>${p.name}</h3>
+      <p class="desc">${p.desc}</p>
+      <div class="priceRow">
+        <div class="price">₹${p.price}</div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <div style="display:flex;align-items:center;gap:6px">
+            <button onclick="decrement(${p.id})" style="width:34px;height:34px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent;cursor:pointer">−</button>
+            <input id="qty-${p.id}" value="1" min="1" type="number" style="width:44px;padding:6px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);text-align:center;font-weight:700" />
+            <button onclick="increment(${p.id})" style="width:34px;height:34px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent;cursor:pointer">+</button>
+          </div>
+          <button class="addCart" onclick="addToCart(${p.id})">Add</button>
+        </div>
+      </div>`;
+    productGrid.appendChild(div);
   });
 }
 
-/* Products data */
-const products=[
-  {id:1,name:'Wheatgrass',desc:'Fresh wheatgrass tray',price:149,img:'https://via.placeholder.com/320x220.png?text=Wheatgrass'},
-  {id:2,name:'Pea Shoots',desc:'Nutrient-rich pea shoots',price:199,img:'https://via.placeholder.com/320x220.png?text=Pea+Shoots'},
-  {id:3,name:'Sunflower Microgreens',desc:'Sunflower microgreens',price:249,img:'https://via.placeholder.com/320x220.png?text=Sunflower'},
-  {id:4,name:'Grow Kit',desc:'Home grow kit for beginners',price:299,img:'https://via.placeholder.com/320x220.png?text=Grow+Kit'}
-];
-
-/* Render products */
-const productGrid=document.getElementById('productGrid');
-products.forEach((p,i)=>{
-  const div=document.createElement('div');
-  div.className='product fadeIn';
-  div.innerHTML=`
-    <div class="productImg"><img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover"></div>
-    <h3>${p.name}</h3>
-    <p class="desc">${p.desc}</p>
-    <div class="priceRow">
-      <div class="price">₹${p.price}</div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <div style="display:flex;align-items:center;gap:6px">
-          <button onclick="decrement(${p.id})" style="width:34px;height:34px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent;cursor:pointer">−</button>
-          <input id="qty-${p.id}" value="1" min="1" type="number" style="width:44px;padding:6px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);text-align:center;font-weight:700" />
-          <button onclick="increment(${p.id})" style="width:34px;height:34px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent;cursor:pointer">+</button>
-        </div>
-        <button class="addCart" onclick="addToCart(${p.id})">Add</button>
-      </div>
-    </div>`;
-  productGrid.appendChild(div);
-});
-
-/* Cart state (persist in localStorage) */
-let cart = JSON.parse(localStorage.getItem('lw_cart')||'[]');
-function saveCart(){ localStorage.setItem('lw_cart', JSON.stringify(cart)); updateMiniCart(); }
-
-function findProduct(id){ return products.find(p=>p.id===id); }
-function getQtyInput(id){ const el=document.getElementById('qty-'+id); return el? Math.max(1,parseInt(el.value||1,10)) : 1; }
-function increment(id){ const el=document.getElementById('qty-'+id); if(el) el.value = Math.max(1,parseInt(el.value||1,10)+1); }
-function decrement(id){ const el=document.getElementById('qty-'+id); if(el) el.value = Math.max(1,parseInt(el.value||1,10)-1); }
-
-function addToCart(id){ const p=findProduct(id); if(!p) return; const qty=getQtyInput(id);
-  const existing = cart.find(c=>c.id===id);
-  if(existing) existing.qty = Math.min(99, existing.qty + qty);
-  else cart.push({id:p.id,name:p.name,price:p.price,img:p.img,qty:qty});
-  saveCart(); animateAddToCart();
+/* quantity helpers */
+function getQtyInput(id) {
+  const el = document.getElementById('qty-' + id);
+  return el ? Math.max(1, parseInt(el.value || 1, 10)) : 1;
+}
+function increment(id) {
+  const el = document.getElementById('qty-' + id);
+  if (el) el.value = Math.max(1, parseInt(el.value || 1, 10) + 1);
+}
+function decrement(id) {
+  const el = document.getElementById('qty-' + id);
+  if (el) el.value = Math.max(1, parseInt(el.value || 1, 10) - 1);
 }
 
-function animateAddToCart(){ const el=document.querySelector('.cartIcon'); if(!el) return; el.animate([{transform:'scale(1)'},{transform:'scale(1.18)'},{transform:'scale(1)'}],{duration:360}); }
-
-function updateMiniCart(){ const countEl=document.getElementById('cartCount'); const countMini=document.getElementById('cartCountMini'); const totalItems=cart.reduce((a,c)=>a+c.qty,0);
-  if(countEl) countEl.innerText=totalItems; if(countMini) countMini.innerText=totalItems;
-  document.getElementById('miniCartBar').style.display = totalItems>0 ? 'flex' : 'none';
-}
-updateMiniCart();
-
-/* CART MODAL functions */
-const modalOverlay = document.getElementById('modalOverlay');
-
-function openCart() {
-  renderCart();
-  modalOverlay.style.display = 'flex';
-  setTimeout(() => {
-    document.querySelector('.cartModal').style.transform = 'translateY(0)';
-    document.querySelector('.cartModal').style.opacity = '1';
-  }, 10);
+/* ---------- Cart functionality ---------- */
+function saveCart() {
+  localStorage.setItem('lw_cart', JSON.stringify(cart));
+  updateMiniCart();
 }
 
-function closeCart() {
-  const modal = document.querySelector('.cartModal');
-  modal.style.transform = 'translateY(30px)';
-  modal.style.opacity = '0';
-  setTimeout(() => (modalOverlay.style.display = 'none'), 280);
+function findProduct(id) {
+  return products.find(p => p.id === id);
 }
 
-// Close cart if clicking outside modal
-modalOverlay.addEventListener('click', e => {
-  if (e.target === modalOverlay) closeCart();
-});
+function addToCart(id) {
+  const p = findProduct(id);
+  if (!p) return;
+  const qty = getQtyInput(id);
+  const existing = cart.find(c => c.id === id);
+  if (existing) existing.qty = Math.min(99, existing.qty + qty);
+  else cart.push({id:p.id,name:p.name,price:p.price,img:p.img || p.fallback,qty:qty});
+  saveCart();
+  animateAddToCart();
+}
 
+function animateAddToCart() {
+  const el = document.querySelector('.cartIcon');
+  if (!el) return;
+  el.animate([{transform:'scale(1)'},{transform:'scale(1.18)'},{transform:'scale(1)'}],{duration:360});
+}
+
+/* Update mini cart UI & counters */
+function updateMiniCart() {
+  const countEl = document.getElementById('cartCount');
+  const countMini = document.getElementById('cartCountMini');
+  const totalItems = cart.reduce((a,c) => a + c.qty, 0);
+  if (countEl) countEl.innerText = totalItems;
+  if (countMini) countMini.innerText = totalItems;
+  document.getElementById('miniCartBar').style.display = totalItems > 0 ? 'flex' : 'none';
+}
+
+/* ---------- Cart modal (render, open, close) ---------- */
 function renderCart() {
   const cartList = document.getElementById('cartList');
   cartList.innerHTML = '';
@@ -432,7 +480,7 @@ function renderCart() {
       const div = document.createElement('div');
       div.className = 'cartItem';
       div.innerHTML = `
-        <img src="${item.img}" alt="${item.name}">
+        <img src="${item.img}" alt="${item.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/64x50.png?text=Img'">
         <div style="flex:1">
           <div style="font-weight:700">${item.name}</div>
           <div style="color:var(--muted);font-size:13px">₹${item.price} × ${item.qty}</div>
@@ -447,9 +495,39 @@ function renderCart() {
       cartList.appendChild(div);
     });
   }
-  document.getElementById('cartTotal').innerText = '₹' + cart.reduce((a, c) => a + c.price * c.qty, 0);
+  const total = cart.reduce((a,c) => a + c.price * c.qty, 0);
+  document.getElementById('cartTotal').innerText = '₹' + total;
 }
 
+/* open and animate */
+function openCart() {
+  renderCart();
+  modalOverlay.style.display = 'flex';
+  modalOverlay.setAttribute('aria-hidden','false');
+  const modal = document.querySelector('.cartModal');
+  // small delay to allow transition
+  setTimeout(() => {
+    modal.style.transform = 'translateY(0)';
+    modal.style.opacity = '1';
+  }, 10);
+}
+
+/* close cart */
+function closeCart() {
+  const modal = document.querySelector('.cartModal');
+  modal.style.transform = 'translateY(30px)';
+  modal.style.opacity = '0';
+  modalOverlay.setAttribute('aria-hidden','true');
+  setTimeout(() => modalOverlay.style.display = 'none', 280);
+}
+
+/* close if clicking outside cart content */
+modalOverlay.addEventListener('click', e => {
+  const modal = document.querySelector('.cartModal');
+  if (e.target === modalOverlay) closeCart();
+});
+
+/* change quantity inside cart */
 function changeQty(id, delta) {
   const item = cart.find(c => c.id === id);
   if (!item) return;
@@ -459,6 +537,7 @@ function changeQty(id, delta) {
   renderCart();
 }
 
+/* clear cart */
 function clearCart() {
   if (!confirm('Clear all items from cart?')) return;
   cart = [];
@@ -467,28 +546,31 @@ function clearCart() {
   closeCart();
 }
 
+/* checkout via WhatsApp */
 function checkout() {
   if (cart.length === 0) return alert('Your cart is empty!');
-  const msg = cart
-    .map(c => `${c.name} × ${c.qty} = ₹${c.price * c.qty}`)
-    .join('%0A');
-  const total = cart.reduce((a, c) => a + c.price * c.qty, 0);
+  const msg = cart.map(c => `${c.name} × ${c.qty} = ₹${c.price * c.qty}`).join('%0A');
+  const total = cart.reduce((a,c) => a + c.price * c.qty, 0);
   const text = `Hello! I'd like to order:%0A${msg}%0A%0ATotal: ₹${total}%0A%0APlease confirm order ASAP.`;
   const phone = '919873324887'; // your WhatsApp number
   window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
 }
 
-/* LIGHTBOX */
+/* ---------- Lightbox ---------- */
 function openLight(img) {
-  const lightbox = document.getElementById('lightbox');
-  document.getElementById('lightImg').src = img.src;
+  document.getElementById('lightImg').src = img.src || img.dataset.src;
   lightbox.style.display = 'flex';
-}
-function closeLight() {
-  document.getElementById('lightbox').style.display = 'none';
+  lightbox.setAttribute('aria-hidden','false');
 }
 
-/* TESTIMONIAL SLIDER */
+function closeLight() {
+  lightbox.style.display = 'none';
+  lightbox.setAttribute('aria-hidden','true');
+}
+
+/* click outside to close lightbox handled by onclick on lightbox container above */
+
+/* ---------- Testimonials slider ---------- */
 let testIndex = 0;
 function nextTest() {
   const list = document.getElementById('testList');
@@ -504,6 +586,21 @@ function prevTest() {
   list.style.transform = `translateX(-${testIndex * 100}%)`;
   list.style.transition = 'transform 0.4s ease';
 }
+
+/* ---------- Accessibility & Keyboard ---------- */
+function attachGlobalKeys() {
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      // close modals / overlays
+      if (modalOverlay.style.display === 'flex') closeCart();
+      if (lightbox.style.display === 'flex') closeLight();
+    }
+  });
+}
+
+/* ensure cart UI shows up immediately on page load */
+updateMiniCart();
+
 </script>
 </body>
 </html>
