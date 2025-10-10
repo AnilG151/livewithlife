@@ -55,7 +55,7 @@ header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--gr
 
 /* TESTIMONIALS */
 .testimonialWrap{max-width:900px;margin:0 auto;position:relative}
-.testList{display:flex;gap:16px;overflow:hidden;white-space:nowrap;transition:transform 0.4s ease}
+.testList{display:flex;gap:16px;overflow:hidden;white-space:nowrap}
 .testCard{min-width:100%;background:#fff;padding:20px;border-radius:12px;box-shadow:0 12px 30px rgba(15,23,42,0.06)}
 .testCard p{color:var(--muted)}
 .testNav{display:flex;gap:8px;justify-content:center;margin-top:12px}
@@ -82,6 +82,13 @@ section h2{font-size:26px;color:var(--green-1);margin-bottom:20px;text-align:cen
 .step{background:linear-gradient(180deg,rgba(107,211,106,0.06),#fff);border-radius:12px;padding:18px;text-align:center;box-shadow:0 8px 20px rgba(15,23,42,0.03)}
 .step h4{color:var(--green-1);margin-bottom:8px}
 
+/* GALLERY */
+.galleryGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.galleryGrid img{width:100%;height:120px;object-fit:cover;border-radius:8px;cursor:pointer;transition:transform .18s}
+.galleryGrid img:hover{transform:scale(1.03)}
+.lightbox{position:fixed;inset:0;background:rgba(2,6,2,0.7);display:none;align-items:center;justify-content:center;z-index:900}
+.lightbox img{max-width:88%;max-height:80%;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+
 /* MINI-CART BAR */
 .miniCartBar{position:fixed;left:12px;right:12px;bottom:18px;background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:12px;box-shadow:0 -6px 30px rgba(15,23,42,0.08);z-index:200;display:none}
 .miniCartBar .summary{display:flex;align-items:center;gap:12px}
@@ -91,201 +98,233 @@ section h2{font-size:26px;color:var(--green-1);margin-bottom:20px;text-align:cen
 .modalOverlay{position:fixed;inset:0;background:rgba(3,6,2,0.35);display:none;align-items:flex-end;justify-content:center;z-index:950}
 .cartModal{background:#fff;border-radius:14px;padding:18px;max-width:720px;width:100%;box-shadow:0 40px 80px rgba(2,12,6,0.24);transform:translateY(30px);transition:transform .28s, opacity .28s;opacity:0}
 .cartHeader{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
-.cartList{max-height:320px;overflow:auto;padding-right:8px}
-.cartItem{display:flex;gap:12px;align-items:center;border-bottom:1px dashed rgba(15,23,42,0.05);padding:10px 0}
-.cartItem img{width:64px;height:50px;object-fit:cover;border-radius:8px}
-.qtyCtrl{display:flex;align-items:center;gap:8px}
-.qtyCtrl button{width:30px;height:30px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);cursor:pointer}
-.cartFooter{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.cartHeader h3{color:var(--green-1)}
+.cartItems{max-height:380px;overflow-y:auto}
+.cartItem{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(15,23,42,0.06)}
+.cartItem span{font-weight:700;color:var(--green-1)}
+.removeItem{cursor:pointer;color:#ff4444;font-size:18px}
 
 /* FOOTER */
-footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#fff;text-align:center;padding:26px 20px;margin-top:40px}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .hero{flex-direction:column;text-align:center;padding:46px 16px}
-  .hero .hero-image{order:-1;margin-bottom:18px}
-  header nav ul{display:none}
-}
-
-/* small helpers */
-.kicker{display:inline-block;background:rgba(107,211,106,0.12);color:var(--green-1);padding:6px 10px;border-radius:999px;font-weight:700;margin-bottom:12px}
-.fadeIn{animation:fadeIn .6s ease both}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+footer{background:var(--card);padding:28px 20px;text-align:center;font-size:14px;color:var(--muted);margin-top:30px;border-top:1px solid rgba(15,23,42,0.06)}
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="brand">
-    <img src="images/logo.png" alt="Life With Leaf" onerror="this.onerror=null;this.src='https://via.placeholder.com/112x112.png?text=Logo'">
-    <div>
-      <div style="font-weight:800;color:var(--green-1);font-size:18px;">Life With Leaf</div>
-      <div style="font-size:12px;color:var(--muted)">Healthy Living</div>
-    </div>
+    <img src="images/logo.png" alt="Life With Leaf Logo">
+    <span>Life With Leaf</span>
   </div>
   <nav>
     <ul>
       <li><a onclick="toggleSection('home')">Home</a></li>
-      <li><a onclick="toggleSection('about')">Our Story</a></li>
       <li><a onclick="toggleSection('products')">Products</a></li>
       <li><a onclick="toggleSection('how')">How It Works</a></li>
       <li><a onclick="toggleSection('gallery')">Gallery</a></li>
       <li><a onclick="toggleSection('contact')">Contact</a></li>
+      <li><a onclick="toggleSection('about')">About Us</a></li>
     </ul>
   </nav>
-  <div style="display:flex;gap:12px;align-items:center">
-    <div class="cartIcon" onclick="openCart()">🛒 <span id="cartCount">0</span></div>
+  <div class="cartIcon" onclick="toggleCart()">
+    🛒 <span id="cartCount">0</span>
   </div>
 </header>
 
-<!-- HOME: HERO + WHY + TESTIMONIALS -->
-<section class="hero" id="home" style="display:block">
+<!-- HERO -->
+<section class="hero">
   <div class="hero-text">
-    <div class="kicker">Fresh • Local • Sustainable</div>
-    <h1>Fresh Microgreens, Direct to Your Home</h1>
-    <p class="lead">Boost your health with nutrient-rich, pesticide-free microgreens — perfect for salads, sandwiches, smoothies, and home gardening.</p>
-    <p class="details">Microgreens are young, edible seedlings of vegetables and herbs. Packed with flavor, vitamins, and minerals, they can easily elevate your everyday meals.</p>
+    <h1>Fresh Microgreens, Delivered Home</h1>
+    <p class="lead">Pesticide-free, nutrient-packed, homegrown microgreens to supercharge your meals.</p>
+    <p class="details">Choose from our wide variety of microgreens, easy grow kits, and seeds — perfect for every kitchen and garden enthusiast.</p>
     <div class="ctaRow">
       <button class="btn" onclick="toggleSection('products')">Shop Now</button>
-      <button class="btn ghost" onclick="toggleSection('how')">Learn How</button>
+      <button class="btn ghost" onclick="toggleSection('how')">How It Works</button>
     </div>
   </div>
   <div class="hero-image">
-    <img src="images/fresh-microgreens.png" alt="Fresh Microgreens" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x350.png?text=Microgreens'">
+    <img src="images/fresh-microgreens.jpg" alt="Fresh Microgreens">
   </div>
 </section>
 
-<section class="whyMicro" id="why">
-  <h2>Why Choose Microgreens?</h2>
-  <div class="whyGrid">
-    <div class="whyCard">
-      <img src="images/nutrition.png" alt="Nutrition">
-      <h3>Highly Nutritious</h3>
-      <p>Microgreens pack vitamins and minerals in every bite, much higher than their mature counterparts.</p>
-    </div>
-    <div class="whyCard">
-      <img src="images/fresh.png" alt="Freshness">
-      <h3>Farm Fresh</h3>
-      <p>Picked daily to ensure maximum freshness and flavor in every order.</p>
-    </div>
-    <div class="whyCard">
-      <img src="images/growth.png" alt="Easy to Grow">
-      <h3>Easy to Grow</h3>
-      <p>Grow your own microgreens at home with minimal space and effort.</p>
-    </div>
-  </div>
-</section>
-
-<section class="testimonials" id="testimonials">
-  <h2>What Our Customers Say</h2>
-  <div class="testimonialWrap">
-    <div class="testList">
-      <div class="testCard">
-        <p>"Absolutely love the freshness and quality! My salads never tasted better."</p>
-        <strong>- Ananya R.</strong>
-      </div>
-      <div class="testCard">
-        <p>"Easy to grow and delicious. The microgreens delivery is always on time."</p>
-        <strong>- Rohit S.</strong>
-      </div>
-      <div class="testCard">
-        <p>"A game-changer for my smoothies. Highly recommend Life With Leaf."</p>
-        <strong>- Priya M.</strong>
-      </div>
-    </div>
-    <div class="testNav">
-      <button onclick="showTestimonial(0)">1</button>
-      <button onclick="showTestimonial(1)">2</button>
-      <button onclick="showTestimonial(2)">3</button>
-    </div>
-  </div>
-</section>
-
-<!-- OTHER SECTIONS: Keep everything as it was -->
-<section id="about" style="display:none">
+<!-- WHY MICROGREENS -->
+<section id="why" style="display:none" class="whyMicro">
   <div class="container">
-    <h2>Our Story</h2>
-    <p>Original content of Our Story here...</p>
+    <h2>Why Choose Microgreens?</h2>
+    <div class="whyGrid">
+      <div class="whyCard">
+        <img src="images/nutrition.png" alt="">
+        <h3>Highly Nutritious</h3>
+        <p>Microgreens contain concentrated nutrients and antioxidants to boost your health.</p>
+      </div>
+      <div class="whyCard">
+        <img src="images/fresh.png" alt="">
+        <h3>Fresh & Pesticide-Free</h3>
+        <p>Grown with care, harvested at peak freshness, and free from harmful chemicals.</p>
+      </div>
+      <div class="whyCard">
+        <img src="images/easy.png" alt="">
+        <h3>Easy to Grow</h3>
+        <p>Simple home-growing kits allow you to enjoy fresh greens in just 7-14 days.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="products" style="display:none">
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="display:none">
   <div class="container">
-    <h2>Products</h2>
-    <div class="productGrid">
-      <!-- Add your product cards here -->
-      <div class="product">
-        <div class="productImg"><img src="images/product1.png" alt="Product 1"></div>
-        <h3>Microgreens Kit</h3>
-        <p class="desc">Grow your own microgreens at home easily.</p>
-        <div class="priceRow">
-          <span class="price">₹499</span>
-          <button class="addCart" onclick="addToCart('Microgreens Kit',499)">Add</button>
+    <h2>What Our Customers Say</h2>
+    <div class="testimonialWrap">
+      <div class="testList" id="testList">
+        <div class="testCard">
+          <p>"Amazing flavor and texture — my salads never tasted better."</p>
+          <div style="margin-top:12px;font-weight:700;color:var(--green-1)">— Neha, Delhi</div>
+        </div>
+        <div class="testCard">
+          <p>"The grow kit is perfect for beginners. Simple instructions and great results in two weeks."</p>
+          <div style="margin-top:12px;font-weight:700;color:var(--green-1)">— Arjun, Bengaluru</div>
+        </div>
+        <div class="testCard">
+          <p>"Love the taste and the sustainable packaging. Will order every month."</p>
+          <div style="margin-top:12px;font-weight:700;color:var(--green-1)">— Priya, Mumbai</div>
         </div>
       </div>
+      <div class="testNav">
+        <button onclick="prevTest()">◀</button>
+        <button onclick="nextTest()">▶</button>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- PRODUCTS -->
+<section id="products" style="display:none">
+  <div class="container">
+    <h2>Our Products</h2>
+    <div class="productGrid" id="productGrid">
+      <!-- Dynamic products will be inserted here -->
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
 <section id="how" style="display:none">
   <div class="container">
     <h2>How It Works</h2>
     <div class="howGrid">
-      <div class="step">
-        <h4>Step 1</h4>
-        <p>Choose your microgreens kit.</p>
-      </div>
-      <div class="step">
-        <h4>Step 2</h4>
-        <p>Receive fresh microgreens at your doorstep.</p>
-      </div>
-      <div class="step">
-        <h4>Step 3</h4>
-        <p>Enjoy nutritious meals or grow at home.</p>
-      </div>
+      <div class="step"><h4>Choose Your Kit</h4><p>Select your favorite microgreens kit.</p></div>
+      <div class="step"><h4>Plant & Grow</h4><p>Follow simple instructions and watch your greens grow.</p></div>
+      <div class="step"><h4>Harvest & Enjoy</h4><p>Harvest in 7–14 days and enjoy fresh microgreens daily.</p></div>
     </div>
   </div>
 </section>
 
+<!-- GALLERY -->
 <section id="gallery" style="display:none">
   <div class="container">
     <h2>Gallery</h2>
-    <p>Original gallery content...</p>
+    <div class="galleryGrid">
+      <img src="images/gallery1.jpg" alt="">
+      <img src="images/gallery2.jpg" alt="">
+      <img src="images/gallery3.jpg" alt="">
+    </div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact" style="display:none">
   <div class="container">
-    <h2>Contact</h2>
-    <p>Contact form or info goes here...</p>
+    <h2>Contact Us</h2>
+    <p>Email: hello@lifewithleaf.com | Phone: +91 98765 43210</p>
   </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about" style="display:none">
+  <div class="container">
+    <h2>About Us</h2>
+    <p>Life With Leaf is committed to bringing fresh, healthy, pesticide-free microgreens to your home. Our mission is to make green living simple and enjoyable.</p>
+  </div>
+</section>
+
+<!-- MINI CART BAR -->
+<div class="miniCartBar" id="miniCartBar">
+  <div class="summary">
+    🛒 <span class="count" id="miniCartCount">0</span> items
+  </div>
+  <button onclick="toggleCart()">View Cart</button>
+</div>
+
+<!-- CART MODAL -->
+<div class="modalOverlay" id="cartOverlay">
+  <div class="cartModal" id="cartModal">
+    <div class="cartHeader">
+      <h3>Your Cart</h3>
+      <span onclick="toggleCart()" style="cursor:pointer;font-size:20px">✖</span>
+    </div>
+    <div class="cartItems" id="cartItems">
+      <!-- Cart items will appear here -->
+    </div>
+    <div style="margin-top:12px;text-align:right">
+      <button onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+</div>
+
 <footer>
-  &copy; 2025 Life With Leaf. All rights reserved.
+  &copy; 2025 Life With Leaf. All Rights Reserved.
 </footer>
 
 <script>
-function toggleSection(id){
-  const sections = ['home','about','products','how','gallery','contact'];
+let cart = [];
+function toggleSection(id, opts={instant:false}) {
+  const hero = document.querySelector('.hero');
+  const why = document.getElementById('why');
+  const testimonials = document.getElementById('testimonials');
+  const sections = document.querySelectorAll('section[id]');
+  if (id === 'home') {
+    sections.forEach(s => s.style.display='none');
+    hero.style.display='block';
+    if(why) why.style.display='block';
+    if(testimonials) testimonials.style.display='block';
+    if(opts.instant) window.scrollTo(0,0);
+    else window.scrollTo({top:0,behavior:'smooth'});
+    return;
+  }
+  hero.style.display='none';
+  if(why) why.style.display='none';
+  if(testimonials) testimonials.style.display='none';
+  let found=false;
   sections.forEach(s=>{
-    document.getElementById(s).style.display=(s===id)?'block':'none';
+    if(s.id===id){s.style.display='block';found=true;s.scrollIntoView({behavior:'smooth'})}else{s.style.display='none'}
   });
+  if(!found) toggleSection('home');
 }
 
 // Testimonials slider
-let currentTest=0;
-function showTestimonial(index){
-  const list=document.querySelector('.testList');
-  list.style.transform=`translateX(-${index*100}%)`;
-  currentTest=index;
+let testIndex=0;
+function showTest(index){
+  const list=document.getElementById('testList');
+  const cards=list.children;
+  if(index<0) testIndex=cards.length-1;
+  else if(index>=cards.length) testIndex=0;
+  else testIndex=index;
+  list.style.transform=`translateX(-${testIndex*100}%)`;
 }
+function prevTest(){showTest(testIndex-1)}
+function nextTest(){showTest(testIndex+1)}
+showTest(0);
 
-// Cart placeholder
-function openCart(){alert('Cart clicked')}
-function addToCart(name,price){alert(name+' added at ₹'+price);}
+// Cart functions placeholder
+function toggleCart(){
+  const overlay=document.getElementById('cartOverlay');
+  overlay.style.display=(overlay.style.display==='flex')?'none':'flex';
+}
+function checkout(){alert("Checkout - send to WhatsApp or payment")}
+
+// Initialize home on load
+window.onload=function(){toggleSection('home', {instant:true})}
 </script>
-
 </body>
 </html>
