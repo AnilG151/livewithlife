@@ -99,508 +99,179 @@ section h2{font-size:26px;color:var(--green-1);margin-bottom:20px;text-align:cen
 .cartModal{background:#fff;border-radius:14px;padding:18px;max-width:720px;width:100%;box-shadow:0 40px 80px rgba(2,12,6,0.24);transform:translateY(30px);transition:transform .28s, opacity .28s;opacity:0}
 .cartHeader{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
 .cartList{max-height:320px;overflow:auto;padding-right:8px}
-.cartItem{display:flex;gap:12px;align-items:center;border-bottom:1px dashed rgba(15,23,42,0.05);padding:10px 0}
-.cartItem img{width:64px;height:50px;object-fit:cover;border-radius:8px}
-.qtyCtrl{display:flex;align-items:center;gap:8px}
-.qtyCtrl button{width:30px;height:30px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);cursor:pointer}
-.cartFooter{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
-
-/* FOOTER */
-footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#fff;text-align:center;padding:26px 20px;margin-top:40px}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .hero{flex-direction:column;text-align:center;padding:46px 16px}
-  .hero .hero-image{order:-1;margin-bottom:18px}
-  header nav ul{display:none}
-}
-
-/* small helpers */
-.kicker{display:inline-block;background:rgba(107,211,106,0.12);color:var(--green-1);padding:6px 10px;border-radius:999px;font-weight:700;margin-bottom:12px}
-.fadeIn{animation:fadeIn .6s ease both}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.cartItem{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(15,23,42,0.08)}
+.cartItem p{margin:0;font-size:14px}
+.cartFooter{display:flex;justify-content:space-between;margin-top:12px}
+.cartModal.show{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
 
 <header>
   <div class="brand">
-    <!-- prefer images/logo in images/ folder; fallback to placeholder if missing -->
-    <img src="images/logo.png" alt="Life With Leaf" onerror="this.onerror=null;this.src='https://via.placeholder.com/112x112.png?text=Logo'">
-    <div>
-      <div style="font-weight:800;color:var(--green-1);font-size:18px;">Life With Leaf</div>
-      <div style="font-size:12px;color:var(--muted)">Healthy Living</div>
-    </div>
+    <img src="images/logo.png" alt="Life With Leaf">
+    <span>Life With Leaf</span>
   </div>
   <nav>
     <ul>
       <li><a onclick="toggleSection('home')">Home</a></li>
-      <li><a onclick="toggleSection('about')">Our Story</a></li>
       <li><a onclick="toggleSection('products')">Products</a></li>
-      <li><a onclick="toggleSection('how')">How It Works</a></li>
-      <li><a onclick="toggleSection('testimonials')">Testimonials</a></li>
       <li><a onclick="toggleSection('gallery')">Gallery</a></li>
-      <li><a onclick="toggleSection('contact')">Contact</a></li>
+      <li><a onclick="toggleSection('home', {bottom:true})">Testimonials</a></li>
     </ul>
   </nav>
-  <div style="display:flex;gap:12px;align-items:center">
-    <div class="cartIcon" onclick="openCart()">🛒 <span id="cartCount">0</span></div>
+  <div class="cartIcon" onclick="openCart()">
+    🛒 <span id="cartCount">0</span>
   </div>
 </header>
 
 <!-- HERO -->
-<section class="hero" id="home" style="display:block">
+<section class="hero" id="home">
   <div class="hero-text">
-    <div class="kicker">Fresh • Local • Sustainable</div>
-    <h1>Fresh Microgreens, Direct to Your Home</h1>
-    <p class="lead">Boost your health with nutrient-rich, pesticide-free microgreens — perfect for salads, sandwiches, smoothies, and home gardening.</p>
-    <p class="details">Microgreens are young edible greens harvested at their peak nutrition. Though small, they contain up to <strong>4–40×</strong> more vitamins, minerals, and antioxidants than mature plants — supporting immunity, heart health, and digestion.</p>
+    <h1>Fresh Microgreens Delivered</h1>
+    <p class="lead">Grow your health with our pesticide-free, homegrown microgreens.</p>
+    <p class="details">Choose from our curated variety of seeds, kits, and ready-to-eat microgreens. Fast delivery and freshness guaranteed.</p>
     <div class="ctaRow">
       <button class="btn" onclick="toggleSection('products')">Shop Now</button>
-      <button class="btn ghost" onclick="toggleSection('how')">How It Works</button>
+      <button class="btn ghost" onclick="toggleSection('home', {bottom:true})">Testimonials</button>
     </div>
   </div>
   <div class="hero-image">
-    <img src="images/hero.jpg" alt="Fresh Microgreens" width="520" height="360" onerror="this.onerror=null;this.src='https://via.placeholder.com/520x360.png?text=Fresh+Microgreens'">
+    <img src="images/heroMicrogreen.png" alt="Fresh Microgreens">
   </div>
 </section>
 
 <!-- WHY MICROGREENS -->
-<section class="whyMicro fadeIn" id="why">
+<section class="whyMicro">
   <h2>Why Choose Microgreens?</h2>
-  <div class="whyGrid container">
+  <div class="whyGrid">
     <div class="whyCard">
-      <img src="https://cdn-icons-png.flaticon.com/512/706/706195.png" alt="Nutrient Dense">
-      <h3>Nutrient Dense</h3>
-      <p>Contain 4–40× more nutrients than mature plants, fueling your body with essential vitamins and minerals.</p>
+      <img src="images/nutrition.png" alt="Nutrition">
+      <h3>Highly Nutritious</h3>
+      <p>Packed with vitamins, minerals, and antioxidants to boost your health.</p>
     </div>
     <div class="whyCard">
-      <img src="https://cdn-icons-png.flaticon.com/512/415/415733.png" alt="Pesticide Free">
-      <h3>Grown Pesticide-Free</h3>
-      <p>Pure, safe, and chemical-free — grown naturally to keep your family healthy.</p>
+      <img src="images/fresh.png" alt="Fresh">
+      <h3>Fresh & Pesticide-Free</h3>
+      <p>Grown organically and delivered fresh to your doorstep.</p>
     </div>
     <div class="whyCard">
-      <img src="https://cdn-icons-png.flaticon.com/512/3106/3106780.png" alt="Fresh Harvest">
-      <h3>Freshly Harvested</h3>
-      <p>Delivered directly from our farm to your table for maximum freshness and flavor.</p>
-    </div>
-    <div class="whyCard">
-      <img src="https://cdn-icons-png.flaticon.com/512/4341/4341139.png" alt="Sustainable">
-      <h3>Locally Grown & Sustainable</h3>
-      <p>Supports eco-friendly farming practices and reduces food miles for a greener planet.</p>
+      <img src="images/growkit.png" alt="Grow Kit">
+      <h3>Easy to Grow</h3>
+      <p>Home grow kits available for beginners and experts alike.</p>
     </div>
   </div>
 </section>
+
+<!-- TESTIMONIALS (Merged in Home) -->
+<div class="container" id="homeTestimonials">
+  <h2>What Our Customers Say</h2>
+  <div class="testimonialWrap">
+    <div class="testList" id="testList">
+      <div class="testCard">
+        <p>"Amazing flavor and texture — my salads never tasted better. Delivery was quick and packaging kept everything fresh."</p>
+        <div style="margin-top:12px;font-weight:700;color:var(--green-1)">— Neha, Delhi</div>
+      </div>
+      <div class="testCard">
+        <p>"The grow kit is perfect for beginners. Simple instructions and great results in two weeks."</p>
+        <div style="margin-top:12px;font-weight:700;color:var(--green-1)">— Arjun, Bengaluru</div>
+      </div>
+      <div class="testCard">
+        <p>"Love the taste and the sustainable packaging. Will order every month."</p>
+        <div style="margin-top:12px;font-weight:700;color:var(--green-1)">— Priya, Mumbai</div>
+      </div>
+    </div>
+    <div class="testNav">
+      <button onclick="prevTest()" aria-label="Previous testimonial">◀</button>
+      <button onclick="nextTest()" aria-label="Next testimonial">▶</button>
+    </div>
+  </div>
+</div>
 
 <!-- PRODUCTS -->
-<section id="products" style="display:none">
-  <div class="container">
-    <h2>Our Products</h2>
-    <div class="productGrid" id="productGrid"></div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how" style="display:none">
-  <div class="container">
-    <h2>How It Works</h2>
-    <div class="howGrid">
-      <div class="step"> <h4>Order</h4><p class="muted">Choose your microgreens or grow kit online.</p></div>
-      <div class="step"> <h4>Harvest</h4><p class="muted">We harvest fresh-to-order for peak nutrition.</p></div>
-      <div class="step"> <h4>Pack</h4><p class="muted">Careful eco-friendly packing keeps them fresh.</p></div>
-      <div class="step"> <h4>Deliver</h4><p class="muted">Fast local delivery or scheduled pickup.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials" style="display:none">
-  <div class="container">
-    <h2>What Our Customers Say</h2>
-    <div class="testimonialWrap">
-      <div class="testList" id="testList">
-        <div class="testCard">
-          <p>"Amazing flavor and texture — my salads never tasted better. Delivery was quick and packaging kept everything fresh."</p>
-          <div style="margin-top:12px;font-weight:700;color:var(--green-1)">— Neha, Delhi</div>
-        </div>
-        <div class="testCard">
-          <p>"The grow kit is perfect for beginners. Simple instructions and great results in two weeks."</p>
-          <div style="margin-top:12px;font-weight:700;color:var(--green-1)">— Arjun, Bengaluru</div>
-        </div>
-        <div class="testCard">
-          <p>"Love the taste and the sustainable packaging. Will order every month."</p>
-          <div style="margin-top:12px;font-weight:700;color:var(--green-1)">— Priya, Mumbai</div>
-        </div>
+<section id="products" class="container">
+  <h2>Our Products</h2>
+  <div class="productGrid">
+    <div class="product">
+      <div class="productImg"><img src="images/sunflower.png" alt="Sunflower Microgreen"></div>
+      <h3>Sunflower</h3>
+      <p class="desc">Rich in vitamins and easy to grow at home.</p>
+      <div class="priceRow">
+        <span class="price">₹120</span>
+        <button class="addCart" onclick="addToCart('Sunflower',120)">Add to Cart</button>
       </div>
-      <div class="testNav">
-        <button onclick="prevTest()" aria-label="Previous testimonial">◀</button>
-        <button onclick="nextTest()" aria-label="Next testimonial">▶</button>
+    </div>
+    <div class="product">
+      <div class="productImg"><img src="images/broccoli.png" alt="Broccoli Microgreen"></div>
+      <h3>Broccoli</h3>
+      <p class="desc">Boosts immunity with fresh broccoli sprouts.</p>
+      <div class="priceRow">
+        <span class="price">₹150</span>
+        <button class="addCart" onclick="addToCart('Broccoli',150)">Add to Cart</button>
       </div>
     </div>
   </div>
 </section>
 
 <!-- GALLERY -->
-<section id="gallery" style="display:none">
-  <div class="container">
-    <h2>Gallery</h2>
-    <div class="galleryGrid">
-      <img src="images/micro1.jpg" alt="" onclick="openLight(this)" onerror="this.onerror=null;this.src='https://via.placeholder.com/320x240.png?text=Microgreen+1'">
-      <img src="images/micro2.jpg" alt="" onclick="openLight(this)" onerror="this.onerror=null;this.src='https://via.placeholder.com/320x240.png?text=Microgreen+2'">
-      <img src="images/micro3.jpg" alt="" onclick="openLight(this)" onerror="this.onerror=null;this.src='https://via.placeholder.com/320x240.png?text=Microgreen+3'">
-      <img src="images/growkit.jpg" alt="" onclick="openLight(this)" onerror="this.onerror=null;this.src='https://via.placeholder.com/320x240.png?text=Grow+Kit'">
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT / OUR STORY -->
-<section id="about" style="display:none">
-  <div class="container">
-    <h2>Our Story</h2>
-    <div class="about" style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:center;margin-top:10px">
-      <img src="images/farm.jpg" alt="Our Farm" style="border-radius:12px;flex:1;min-width:240px" onerror="this.onerror=null;this.src='https://via.placeholder.com/320x220.png?text=Our+Farm'">
-      <p style="flex:1;min-width:260px;color:var(--muted);line-height:1.5">We are passionate growers bringing you pesticide-free, freshly harvested microgreens and grow kits — all grown with care and love. Our mission is to make healthy living simple, natural, and sustainable. We partner with local farms and use minimal packaging to reduce waste.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" style="display:none">
-  <div class="container">
-    <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:info@lifewithleaf.com">info@lifewithleaf.com</a></p>
-    <p>Phone: <a href="tel:+919873324887">+91 9873324887</a></p>
-    <p>Address: 123, Green Lane, Delhi, India</p>
+<section id="gallery" class="container">
+  <h2>Gallery</h2>
+  <div class="galleryGrid">
+    <img src="images/gallery1.jpg" alt="">
+    <img src="images/gallery2.jpg" alt="">
+    <img src="images/gallery3.jpg" alt="">
   </div>
 </section>
 
 <!-- MINI-CART -->
 <div class="miniCartBar" id="miniCartBar">
-  <div class="summary">
-    <div>Items in Cart:</div>
-    <div class="count" id="cartCountMini">0</div>
-  </div>
-  <div class="actions">
-    <button class="btn" onclick="openCart()">View Cart</button>
-  </div>
+  <div class="summary"><span id="miniCartCount" class="count">0</span> items</div>
+  <div>Total: ₹<span id="miniCartTotal">0</span></div>
+  <button onclick="openCart()">View Cart</button>
 </div>
 
 <!-- CART MODAL -->
-<div class="modalOverlay" id="modalOverlay" aria-hidden="true">
-  <div class="cartModal" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+<div class="modalOverlay" id="cartModalOverlay" onclick="closeCart()">
+  <div class="cartModal" onclick="event.stopPropagation()">
     <div class="cartHeader">
-      <h3 id="cartTitle">Your Cart</h3>
-      <div style="display:flex;gap:8px;align-items:center">
-        <div style="color:var(--muted);font-weight:700">Total: <span id="cartTotal">₹0</span></div>
-        <button onclick="closeCart()" style="padding:8px 10px;border-radius:8px;border:0;background:transparent;cursor:pointer">Close</button>
-      </div>
+      <h3>Your Cart</h3>
+      <button onclick="closeCart()">✖</button>
     </div>
-    <div class="cartList" id="cartList" tabindex="0">
-      <!-- Cart items go here -->
-    </div>
+    <div class="cartList" id="cartList"></div>
     <div class="cartFooter">
-      <div style="color:var(--muted);font-weight:700">Delivery & taxes calculated at checkout</div>
-      <div style="display:flex;gap:8px">
-        <button class="btn ghost" onclick="clearCart()">Clear</button>
-        <button class="btn" onclick="checkout()">Checkout via WhatsApp</button>
-      </div>
+      <strong>Total: ₹<span id="cartTotal">0</span></strong>
+      <button onclick="checkout()">Checkout</button>
     </div>
   </div>
 </div>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLight()" role="dialog" aria-hidden="true">
-  <img id="lightImg" src="" alt="">
-</div>
-
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/919873324887?text=Hello,%20I%20want%20to%20order" target="_blank" class="whFloat" style="position:fixed;left:18px;bottom:18px;background:#25d366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,0.12);z-index:160">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:28px;height:28px">
-</a>
-
-<!-- FOOTER -->
-<footer>
-  &copy; 2025 Life With Leaf. All rights reserved.
-</footer>
-
 <script>
-/* ---------- Utilities & Data ---------- */
-
-/* Products data (you can replace images with local files in images/ ) */
-const products = [
-  {id:1,name:'Wheatgrass',desc:'Fresh wheatgrass tray',price:149,img:'images/wheatgrass.jpg',fallback:'https://via.placeholder.com/320x220.png?text=Wheatgrass'},
-  {id:2,name:'Pea Shoots',desc:'Nutrient-rich pea shoots',price:199,img:'images/peashoots.jpg',fallback:'https://via.placeholder.com/320x220.png?text=Pea+Shoots'},
-  {id:3,name:'Sunflower Microgreens',desc:'Sunflower microgreens',price:249,img:'images/sunflower.jpg',fallback:'https://via.placeholder.com/320x220.png?text=Sunflower'},
-  {id:4,name:'Grow Kit',desc:'Home grow kit for beginners',price:299,img:'images/growkit.jpg',fallback:'https://via.placeholder.com/320x220.png?text=Grow+Kit'}
-];
-
-/* Cart state saved to localStorage */
-let cart = JSON.parse(localStorage.getItem('lw_cart') || '[]');
-
-/* DOM helpers */
-const productGrid = document.getElementById('productGrid');
-const modalOverlay = document.getElementById('modalOverlay');
-const lightbox = document.getElementById('lightbox');
-
-/* ---------- Initialization ---------- */
-document.addEventListener('DOMContentLoaded', () => {
-  renderProducts();
-  updateMiniCart();
-  attachGlobalKeys();
-  // ensure home shows hero+why on load
-  toggleSection('home', {instant: true});
-});
-
-/* ---------- Navigation (hero + why visibility fix) ---------- */
-function toggleSection(id, opts={instant:false}) {
-  // Select sections and hero explicitly
-  const hero = document.querySelector('.hero');
-  const why = document.getElementById('why');
-  const sections = document.querySelectorAll('section[id]');
-
-  // If home -> show hero + why
-  if (id === 'home') {
-    // hide all sections first
-    sections.forEach(s => s.style.display = 'none');
-    // show hero and why
-    hero.style.display = 'block';
-    if (why) why.style.display = 'block';
-    // scroll to top smoothly (or instantly)
-    if (opts.instant) window.scrollTo(0,0);
-    else window.scrollTo({top:0,behavior:'smooth'});
-    return;
-  }
-
-  // For any other section -> hide hero and why, show selected section
-  hero.style.display = 'none';
-  if (why) why.style.display = 'none';
-
-  let found = false;
-  sections.forEach(s => {
-    if (s.id === id) {
-      s.style.display = 'block';
-      found = true;
-      // try smooth scroll to that section
-      s.scrollIntoView({behavior:'smooth'});
-    } else {
-      s.style.display = 'none';
-    }
-  });
-
-  // If id not found, default to home
-  if (!found) toggleSection('home');
-}
-
-/* ---------- Products rendering ---------- */
-function renderProducts() {
-  productGrid.innerHTML = '';
-  products.forEach(p => {
-    const div = document.createElement('div');
-    div.className = 'product fadeIn';
-    // image element with fallback handler
-    const imgSrc = p.img || p.fallback;
-    div.innerHTML = `
-      <div class="productImg"><img src="${imgSrc}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover" onerror="this.onerror=null;this.src='${p.fallback}'"></div>
-      <h3>${p.name}</h3>
-      <p class="desc">${p.desc}</p>
-      <div class="priceRow">
-        <div class="price">₹${p.price}</div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <div style="display:flex;align-items:center;gap:6px">
-            <button onclick="decrement(${p.id})" style="width:34px;height:34px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent;cursor:pointer">−</button>
-            <input id="qty-${p.id}" value="1" min="1" type="number" style="width:44px;padding:6px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);text-align:center;font-weight:700" />
-            <button onclick="increment(${p.id})" style="width:34px;height:34px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent;cursor:pointer">+</button>
-          </div>
-          <button class="addCart" onclick="addToCart(${p.id})">Add</button>
-        </div>
-      </div>`;
-    productGrid.appendChild(div);
-  });
-}
-
-/* quantity helpers */
-function getQtyInput(id) {
-  const el = document.getElementById('qty-' + id);
-  return el ? Math.max(1, parseInt(el.value || 1, 10)) : 1;
-}
-function increment(id) {
-  const el = document.getElementById('qty-' + id);
-  if (el) el.value = Math.max(1, parseInt(el.value || 1, 10) + 1);
-}
-function decrement(id) {
-  const el = document.getElementById('qty-' + id);
-  if (el) el.value = Math.max(1, parseInt(el.value || 1, 10) - 1);
-}
-
-/* ---------- Cart functionality ---------- */
-function saveCart() {
-  localStorage.setItem('lw_cart', JSON.stringify(cart));
-  updateMiniCart();
-}
-
-function findProduct(id) {
-  return products.find(p => p.id === id);
-}
-
-function addToCart(id) {
-  const p = findProduct(id);
-  if (!p) return;
-  const qty = getQtyInput(id);
-  const existing = cart.find(c => c.id === id);
-  if (existing) existing.qty = Math.min(99, existing.qty + qty);
-  else cart.push({id:p.id,name:p.name,price:p.price,img:p.img || p.fallback,qty:qty});
-  saveCart();
-  animateAddToCart();
-}
-
-function animateAddToCart() {
-  const el = document.querySelector('.cartIcon');
-  if (!el) return;
-  el.animate([{transform:'scale(1)'},{transform:'scale(1.18)'},{transform:'scale(1)'}],{duration:360});
-}
-
-/* Update mini cart UI & counters */
-function updateMiniCart() {
-  const countEl = document.getElementById('cartCount');
-  const countMini = document.getElementById('cartCountMini');
-  const totalItems = cart.reduce((a,c) => a + c.qty, 0);
-  if (countEl) countEl.innerText = totalItems;
-  if (countMini) countMini.innerText = totalItems;
-  document.getElementById('miniCartBar').style.display = totalItems > 0 ? 'flex' : 'none';
-}
-
-/* ---------- Cart modal (render, open, close) ---------- */
-function renderCart() {
-  const cartList = document.getElementById('cartList');
-  cartList.innerHTML = '';
-  if (cart.length === 0) {
-    cartList.innerHTML = '<p style="text-align:center;color:var(--muted)">Your cart is empty.</p>';
+/* Simple Section Toggle */
+function toggleSection(id, opts={}) {
+  let sections=['home','products','gallery'];
+  sections.forEach(s=>document.getElementById(s).style.display='none');
+  document.getElementById(id).style.display='block';
+  if(id==='home' && opts.bottom){
+    document.getElementById('homeTestimonials').scrollIntoView({behavior:'smooth'});
   } else {
-    cart.forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'cartItem';
-      div.innerHTML = `
-        <img src="${item.img}" alt="${item.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/64x50.png?text=Img'">
-        <div style="flex:1">
-          <div style="font-weight:700">${item.name}</div>
-          <div style="color:var(--muted);font-size:13px">₹${item.price} × ${item.qty}</div>
-        </div>
-        <div class="qtyCtrl">
-          <button onclick="changeQty(${item.id},-1)">−</button>
-          <div>${item.qty}</div>
-          <button onclick="changeQty(${item.id},1)">+</button>
-        </div>
-        <div style="font-weight:700;color:var(--green-1)">₹${item.price * item.qty}</div>
-      `;
-      cartList.appendChild(div);
-    });
+    window.scrollTo({top:0,behavior:'smooth'});
   }
-  const total = cart.reduce((a,c) => a + c.price * c.qty, 0);
-  document.getElementById('cartTotal').innerText = '₹' + total;
 }
 
-/* open and animate */
-function openCart() {
-  renderCart();
-  modalOverlay.style.display = 'flex';
-  modalOverlay.setAttribute('aria-hidden','false');
-  const modal = document.querySelector('.cartModal');
-  // small delay to allow transition
-  setTimeout(() => {
-    modal.style.transform = 'translateY(0)';
-    modal.style.opacity = '1';
-  }, 10);
-}
+/* Testimonials Slider */
+let currentTest=0;
+function showTest(){let list=document.getElementById('testList');list.style.transform='translateX(-'+(currentTest*100)+'%)';}
+function nextTest(){currentTest=(currentTest+1)%document.getElementById('testList').children.length;showTest();}
+function prevTest(){currentTest=(currentTest-1+document.getElementById('testList').children.length)%document.getElementById('testList').children.length;showTest();}
 
-/* close cart */
-function closeCart() {
-  const modal = document.querySelector('.cartModal');
-  modal.style.transform = 'translateY(30px)';
-  modal.style.opacity = '0';
-  modalOverlay.setAttribute('aria-hidden','true');
-  setTimeout(() => modalOverlay.style.display = 'none', 280);
-}
-
-/* close if clicking outside cart content */
-modalOverlay.addEventListener('click', e => {
-  const modal = document.querySelector('.cartModal');
-  if (e.target === modalOverlay) closeCart();
-});
-
-/* change quantity inside cart */
-function changeQty(id, delta) {
-  const item = cart.find(c => c.id === id);
-  if (!item) return;
-  item.qty += delta;
-  if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
-  saveCart();
-  renderCart();
-}
-
-/* clear cart */
-function clearCart() {
-  if (!confirm('Clear all items from cart?')) return;
-  cart = [];
-  saveCart();
-  renderCart();
-  closeCart();
-}
-
-/* checkout via WhatsApp */
-function checkout() {
-  if (cart.length === 0) return alert('Your cart is empty!');
-  const msg = cart.map(c => `${c.name} × ${c.qty} = ₹${c.price * c.qty}`).join('%0A');
-  const total = cart.reduce((a,c) => a + c.price * c.qty, 0);
-  const text = `Hello! I'd like to order:%0A${msg}%0A%0ATotal: ₹${total}%0A%0APlease confirm order ASAP.`;
-  const phone = '919873324887'; // your WhatsApp number
-  window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-}
-
-/* ---------- Lightbox ---------- */
-function openLight(img) {
-  document.getElementById('lightImg').src = img.src || img.dataset.src;
-  lightbox.style.display = 'flex';
-  lightbox.setAttribute('aria-hidden','false');
-}
-
-function closeLight() {
-  lightbox.style.display = 'none';
-  lightbox.setAttribute('aria-hidden','true');
-}
-
-/* click outside to close lightbox handled by onclick on lightbox container above */
-
-/* ---------- Testimonials slider ---------- */
-let testIndex = 0;
-function nextTest() {
-  const list = document.getElementById('testList');
-  const cards = list.querySelectorAll('.testCard');
-  testIndex = (testIndex + 1) % cards.length;
-  list.style.transform = `translateX(-${testIndex * 100}%)`;
-  list.style.transition = 'transform 0.4s ease';
-}
-function prevTest() {
-  const list = document.getElementById('testList');
-  const cards = list.querySelectorAll('.testCard');
-  testIndex = (testIndex - 1 + cards.length) % cards.length;
-  list.style.transform = `translateX(-${testIndex * 100}%)`;
-  list.style.transition = 'transform 0.4s ease';
-}
-
-/* ---------- Accessibility & Keyboard ---------- */
-function attachGlobalKeys() {
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      // close modals / overlays
-      if (modalOverlay.style.display === 'flex') closeCart();
-      if (lightbox.style.display === 'flex') closeLight();
-    }
-  });
-}
-
-/* ensure cart UI shows up immediately on page load */
-updateMiniCart();
-
+/* Mini Cart */
+let cart=[];
+function addToCart(name,price){cart.push({name,price});updateCart();}
+function updateCart(){document.getElementById('cartCount').innerText=cart.length;document.getElementById('miniCartCount').innerText=cart.length;let total=cart.reduce((a,b)=>a+b.price,0);document.getElementById('cartTotal').innerText=total;document.getElementById('miniCartTotal').innerText=total;if(cart.length>0)document.getElementById('miniCartBar').style.display='flex';else document.getElementById('miniCartBar').style.display='none';let list=document.getElementById('cartList');list.innerHTML='';cart.forEach((item,i)=>{let div=document.createElement('div');div.className='cartItem';div.innerHTML='<p>'+item.name+'</p><p>₹'+item.price+'</p><button onclick="removeItem('+i+')">Remove</button>';list.appendChild(div);});}
+function removeItem(i){cart.splice(i,1);updateCart();}
+function openCart(){document.getElementById('cartModalOverlay').style.display='flex';document.querySelector('.cartModal').classList.add('show');}
+function closeCart(){document.getElementById('cartModalOverlay').style.display='none';document.querySelector('.cartModal').classList.remove('show');}
+function checkout(){alert('Please confirm order ASAP via WhatsApp');}
 </script>
 </body>
 </html>
