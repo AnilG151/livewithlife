@@ -1,44 +1,23 @@
-<!-- 🌿 Home Section - Life With Leaf -->
-<section id="home" class="hero-section">
-  <div class="hero-overlay"></div>
-  <div class="floating-leaves"></div>
-
-  <div class="hero-content">
-    <h1 class="hero-title">Grow. Nourish. Thrive.</h1>
-    <p class="hero-subtitle">Fresh, pesticide-free microgreens grown with love — straight from our farm to your plate.</p>
-    <a href="#shop" class="hero-btn">Shop Microgreens</a>
-  </div>
-
-  <div class="scroll-down"><span></span></div>
-</section>
-
-<!-- 🌱 Why Microgreens Section -->
-<section id="why-microgreens" class="why-section">
-  <h2 class="section-title">Why Choose Microgreens?</h2>
-  <div class="why-grid">
-    <div class="why-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/415/415733.png" alt="Nutrients">
-      <h3>Rich in Nutrients</h3>
-      <p>Up to 40x more vitamins and minerals than mature greens — a super boost in every bite!</p>
-    </div>
-    <div class="why-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/4264/4264825.png" alt="Taste">
-      <h3>Fresh & Flavorful</h3>
-      <p>Enjoy a burst of fresh flavor in salads, sandwiches, and smoothies — naturally delicious.</p>
-    </div>
-    <div class="why-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/7655/7655673.png" alt="Sustainable">
-      <h3>Eco-Friendly Growth</h3>
-      <p>Locally grown with minimal water and zero pesticides — good for you, great for the planet.</p>
-    </div>
-  </div>
-</section>
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Life With Leaf — Healthy Living</title>
+<meta name="description" content="Life With Leaf - Fresh, pesticide-free microgreens grown with love. Shop microgreens, learn benefits, and live healthy." />
 <style>
-/* 🌿 Home Section Styling */
+/* 🌿 Global Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* 🌿 Hero Section */
 .hero-section {
   position: relative;
-  background: url('images/microgreens-bg.jpg') center/cover no-repeat;
+  background: url('images/microgreens-bg.jpg') center/cover no-repeat fixed;
   height: 90vh;
   display: flex;
   align-items: center;
@@ -51,26 +30,39 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0,0,0,0.45);
   backdrop-filter: blur(3px);
   z-index: 1;
 }
 
-/* 🍃 Floating Leaves */
-.floating-leaves {
+/* 🍃 Floating Leaves Layers */
+.floating-leaves, .floating-leaves::after {
   position: absolute;
   inset: 0;
   background: url('images/leaf-particles.png') repeat;
   opacity: 0.15;
-  animation: floatBg 40s linear infinite;
   z-index: 1;
+}
+.floating-leaves {
+  animation: floatBg 60s linear infinite;
+}
+.floating-leaves::after {
+  content: "";
+  background: url('images/leaf-particles2.png') repeat;
+  opacity: 0.1;
+  animation: floatBgReverse 100s linear infinite;
 }
 
 @keyframes floatBg {
   from { background-position: 0 0; }
   to { background-position: 1000px 1000px; }
 }
+@keyframes floatBgReverse {
+  from { background-position: 0 0; }
+  to { background-position: -1000px -1000px; }
+}
 
+/* Hero Content */
 .hero-content {
   position: relative;
   z-index: 3;
@@ -84,17 +76,21 @@
   font-weight: 700;
   letter-spacing: 1px;
   margin-bottom: 10px;
-  text-shadow: 0 0 15px rgba(91, 189, 97, 0.6);
+  text-shadow: 0 0 15px rgba(91,189,97,0.6);
+  animation: fadeInUp 1s ease forwards;
 }
 
 .hero-subtitle {
   font-size: 1.2rem;
   margin-bottom: 25px;
   line-height: 1.6;
+  animation: fadeInUp 1.5s ease forwards;
 }
 
 .hero-btn {
   display: inline-block;
+  position: relative;
+  overflow: hidden;
   padding: 12px 28px;
   background: linear-gradient(135deg, #5bbd61, #2e7d32);
   color: white;
@@ -103,13 +99,23 @@
   text-decoration: none;
   transition: all 0.3s ease;
 }
+.hero-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+.hero-btn:hover::before { transform: scaleX(1); }
 .hero-btn:hover {
   background: linear-gradient(135deg, #66d46e, #388e3c);
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(102, 212, 110, 0.6);
+  box-shadow: 0 0 15px rgba(102,212,110,0.6);
 }
 
-/* 🌿 Scroll Down Indicator */
+/* Scroll Down Indicator */
 .scroll-down {
   position: absolute;
   bottom: 30px;
@@ -143,6 +149,14 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+.why-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('images/leaf-bg-light.png') repeat;
+  opacity: 0.03;
+  z-index: 0;
 }
 
 .section-title {
@@ -212,7 +226,7 @@
   line-height: 1.5;
 }
 
-/* 🌟 Animations */
+/* Animations */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -225,14 +239,63 @@
   .hero-section { height: 80vh; }
 }
 </style>
+</head>
+<body>
 
-<!-- 🌿 Scroll Animation Script -->
+<!-- 🌿 Hero Section -->
+<section id="home" class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="floating-leaves"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Grow. Nourish. Thrive.</h1>
+    <p class="hero-subtitle">Fresh, pesticide-free microgreens grown with love — straight from our farm to your plate.</p>
+    <a href="#shop" class="hero-btn">Shop Microgreens</a>
+  </div>
+  <div class="scroll-down"><span></span></div>
+</section>
+
+<!-- 🌱 Why Microgreens Section -->
+<section id="why-microgreens" class="why-section">
+  <h2 class="section-title">Why Choose Microgreens?</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/415/415733.png" alt="Nutrients">
+      <h3>Rich in Nutrients</h3>
+      <p>Up to 40x more vitamins and minerals than mature greens — a super boost in every bite!</p>
+    </div>
+    <div class="why-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/4264/4264825.png" alt="Taste">
+      <h3>Fresh & Flavorful</h3>
+      <p>Enjoy a burst of fresh flavor in salads, sandwiches, and smoothies — naturally delicious.</p>
+    </div>
+    <div class="why-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/7655/7655673.png" alt="Sustainable">
+      <h3>Eco-Friendly Growth</h3>
+      <p>Locally grown with minimal water and zero pesticides — good for you, great for the planet.</p>
+    </div>
+  </div>
+</section>
+
 <script>
+// 🌟 Scroll Animation Observer
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.2 });
 
-document.querySelectorAll('.why-card, .section-title').forEach(el => observer.observe(el));
+document.querySelectorAll('.why-card, .section-title').forEach((el, i) => {
+  el.style.transitionDelay = `${i * 0.2}s`; // stagger animation
+  observer.observe(el);
+});
+
+// 🌿 Hero Mouse Interaction for floating leaves
+document.querySelector('.hero-section').addEventListener('mousemove', e => {
+  const leaves = document.querySelector('.floating-leaves');
+  const moveX = (e.clientX - window.innerWidth/2) * 0.01;
+  const moveY = (e.clientY - window.innerHeight/2) * 0.01;
+  leaves.style.transform = `translate(${moveX}px, ${moveY}px)`;
+});
 </script>
+</body>
+</html>
