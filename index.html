@@ -64,23 +64,9 @@ body, html {
   transform: translateY(20px);
   animation: fadeInUp 1s forwards;
 }
-.hero-title {
-  animation-delay: 0.5s;
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  text-shadow: 0 0 15px rgba(91,189,97,0.6);
-}
-.hero-subtitle {
-  animation-delay: 1s;
-  font-size: 1.2rem;
-  margin-bottom: 25px;
-  line-height: 1.6;
-}
-@keyframes fadeInUp {
-  to { opacity: 1; transform: translateY(0); }
-}
+.hero-title { animation-delay: 0.5s; font-size: 3rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; text-shadow: 0 0 15px rgba(91,189,97,0.6);}
+.hero-subtitle { animation-delay: 1s; font-size: 1.2rem; margin-bottom: 25px; line-height: 1.6; }
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
 .hero-btn {
   display: inline-block;
@@ -183,60 +169,48 @@ body, html {
   box-shadow: 0 20px 35px rgba(0,0,0,0.1);
   background: linear-gradient(135deg, #e6f4e6, #f0fff0);
 }
-.why-card img {
-  width: 70px;
-  margin-bottom: 20px;
-  transition: transform 0.4s;
-}
-.why-card:hover img {
-  transform: rotate(-5deg) scale(1.1);
-}
+.why-card img { width: 70px; margin-bottom: 20px; transition: transform 0.4s; }
+.why-card:hover img { transform: rotate(-5deg) scale(1.1); }
 .why-card h3 { color: #2e7d32; font-size: 1.3rem; margin-bottom: 10px; }
 .why-card p { font-size: 1rem; color: #444; line-height: 1.5; }
 .why-card h3::before { content: "🌿 "; }
 
-/* 🌿 Benefits Section */
+/* 🌿 Interactive Benefits Section */
 .benefits-section {
-  background: linear-gradient(to right, #f0fff0, #e6f4e6);
+  background: linear-gradient(120deg, #e6f4e6, #f0fff0);
   padding: 80px 20px;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
-.benefits-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('https://cdn-icons-png.flaticon.com/512/616/616408.png') repeat;
-  opacity: 0.02;
-  z-index: 0;
-}
+.benefits-section::before { content: ""; position: absolute; inset:0; background:url('https://cdn-icons-png.flaticon.com/512/616/616408.png') repeat; opacity:0.02; z-index:0;}
+.benefits-section .section-title { margin-bottom: 50px; }
+
 .benefits-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
-  max-width: 1100px;
-  margin: auto;
-  position: relative;
-  z-index: 1;
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 20px;
 }
 .benefit-card {
+  flex: 0 0 300px;
   background: white;
-  border-radius: 20px;
-  padding: 30px 25px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  transition: all 0.4s ease;
-  opacity: 0;
-  transform: translateY(30px);
+  border-radius: 25px;
+  padding: 30px 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  scroll-snap-align: start;
 }
-.benefit-card.visible {
-  opacity: 1;
-  transform: translateY(0);
+.benefit-card:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.12);
 }
-.benefit-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12);}
 .benefit-card img { width: 80px; margin-bottom: 20px; transition: transform 0.4s ease;}
 .benefit-card:hover img { transform: rotate(-5deg) scale(1.1); }
 .benefit-text { font-size: 1rem; color: #2e7d32; line-height: 1.6; }
 .benefit-text strong { color: #1b5e20; }
+.counter { color: #1b5e20; font-weight:700; font-size:1.3rem; }
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -289,49 +263,54 @@ body, html {
   </div>
 </section>
 
-<!-- 🌿 Benefits Section -->
+<!-- 🌿 Interactive Benefits Section -->
 <section id="benefits" class="benefits-section">
+  <h2 class="section-title">Benefits of Microgreens</h2>
   <div class="benefits-container">
     <div class="benefit-card">
       <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Nutritional Value">
       <p class="benefit-text">
-        <strong>Microgreens are tender, young greens</strong> harvested at the peak of their nutritional value. Despite their small size, they contain <strong>4 to 40 times more vitamins, minerals, and antioxidants</strong> than their fully grown counterparts.
+        <strong>Microgreens are packed with nutrients</strong> — up to <span class="counter" data-count="40">0</span>x more vitamins than mature greens.
       </p>
     </div>
     <div class="benefit-card">
       <img src="https://cdn-icons-png.flaticon.com/512/616/616494.png" alt="Daily Health">
       <p class="benefit-text">
-        <strong>A small handful each day</strong> brings big health benefits.
+        <strong>Just a handful a day</strong> supports your daily health naturally.
       </p>
     </div>
     <div class="benefit-card">
       <img src="https://cdn-icons-png.flaticon.com/512/2910/2910764.png" alt="Life With Leaf Assurance">
       <p class="benefit-text">
         <strong>Life With Leaf Assurance</strong><br>
-        100% Natural | Pesticide-Free | Non-GMO<br>
-        Homegrown with passion, arriving at your doorstep <strong>live, fresh and full of health</strong>.
+        100% Natural | Pesticide-Free | Non-GMO | Delivered Live & Fresh.
       </p>
     </div>
   </div>
 </section>
 
 <script>
-// 🌱 Scroll Animation for Benefits Cards
-function isInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  return rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 50;
-}
-
-const benefitCards = document.querySelectorAll('.benefit-card');
-function revealBenefits() {
-  benefitCards.forEach(card => {
-    if (isInViewport(card)) {
-      card.classList.add('visible');
+// Animate counters
+function animateCounters() {
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(counter => {
+    if (!counter.started && counter.getBoundingClientRect().top < window.innerHeight) {
+      counter.started = true;
+      const target = +counter.getAttribute('data-count');
+      let count = 0;
+      const increment = target / 100;
+      const interval = setInterval(() => {
+        count += increment;
+        if(count >= target){
+          counter.innerText = target;
+          clearInterval(interval);
+        } else counter.innerText = Math.floor(count);
+      }, 20);
     }
   });
 }
-window.addEventListener('scroll', revealBenefits);
-window.addEventListener('load', revealBenefits);
+window.addEventListener('scroll', animateCounters);
+window.addEventListener('load', animateCounters);
 </script>
 
 </body>
