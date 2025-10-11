@@ -1,317 +1,190 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Life With Leaf — Healthy Living</title>
-<meta name="description" content="Life With Leaf - Fresh, pesticide-free microgreens grown with love. Shop microgreens, learn benefits, and live healthy." />
-<style>
-/* 🌿 Global Styles */
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  scroll-behavior: smooth;
-  background: #f9fef9;
-  overflow-x: hidden;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life With Leaf | Microgreens</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Include all your CSS from earlier here, plus styles for new sections */
+    /* 🌿 Existing styles from your original code... (hero-section, why-section, etc.) */
+    /* Add new styles below */
 
-/* 🌿 Hero Section */
-.hero-section {
-  position: relative;
-  background: url('https://images.unsplash.com/photo-1601050690683-7edfb9a6a07b?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat fixed;
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-  overflow: hidden;
-}
+    .featured-section, .testimonials-section, .subscribe-section, .newsletter-section {
+      padding: 80px 20px;
+      text-align: center;
+      background: #fff;
+    }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.25);
-  backdrop-filter: blur(2px);
-  z-index: 1;
-}
+    .featured-grid, .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
 
-/* 🍃 Floating Leaves */
-.floating-leaves {
-  position: absolute;
-  inset: 0;
-  background: url('https://cdn-icons-png.flaticon.com/512/616/616408.png') repeat;
-  opacity: 0.1;
-  z-index: 1;
-  animation: floatBg 60s linear infinite;
-}
-@keyframes floatBg {
-  from { background-position:0 0; }
-  to { background-position:1000px 1000px; }
-}
+    .featured-card, .testimonial-card {
+      background: #f9fef9;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      transition: all 0.4s ease;
+    }
 
-/* Hero Content */
-.hero-content {
-  position: relative;
-  z-index: 3;
-  max-width: 700px;
-  padding: 20px;
-}
+    .featured-card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
 
-.hero-title, .hero-subtitle {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
-}
-.hero-title { animation-delay: 0.5s; font-size: 3rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; text-shadow: 0 0 15px rgba(91,189,97,0.6);}
-.hero-subtitle { animation-delay: 1s; font-size: 1.2rem; margin-bottom: 25px; line-height: 1.6; }
-@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+    .featured-card h3, .testimonial-card h4 {
+      color: #2e7d32;
+      margin-bottom: 10px;
+    }
 
-.hero-btn {
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  padding: 12px 28px;
-  background: linear-gradient(135deg, #5bbd61, #2e7d32);
-  color: white;
-  font-size: 1.1rem;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.hero-btn:hover {
-  background: linear-gradient(135deg, #66d46e, #388e3c);
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(102,212,110,0.6);
-}
+    .testimonial-card p {
+      font-style: italic;
+      color: #555;
+    }
 
-/* Scroll Down Indicator */
-.scroll-down {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 50px;
-  border: 2px solid white;
-  border-radius: 25px;
-  z-index: 3;
-}
-.scroll-down span {
-  display: block;
-  width: 6px;
-  height: 6px;
-  background: white;
-  border-radius: 50%;
-  margin: 10px auto;
-  animation: scrollAnim 1.5s infinite;
-}
-@keyframes scrollAnim {
-  0% { opacity: 0; transform: translateY(0); }
-  50% { opacity: 1; transform: translateY(15px); }
-  100% { opacity: 0; transform: translateY(30px); }
-}
+    .subscribe-section {
+      background: #e8f5e9;
+    }
 
-/* 🌱 Why Microgreens Section */
-.why-section {
-  background: #f9fef9;
-  padding: 80px 20px;
-  text-align: center;
-  position: relative;
-}
-.why-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('https://cdn-icons-png.flaticon.com/512/616/616494.png') repeat;
-  opacity: 0.05;
-  z-index: 0;
-}
+    .subscribe-section .hero-btn {
+      margin-top: 20px;
+    }
 
-.section-title {
-  font-size: 2.2rem;
-  color: #1b5e20;
-  margin-bottom: 50px;
-  font-weight: 700;
-  position: relative;
-}
-.section-title::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 4px;
-  background: #66bb6a;
-  margin: 12px auto 0;
-  border-radius: 2px;
-}
+    .newsletter-form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
 
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  max-width: 1000px;
-  margin: auto;
-  position: relative;
-  z-index: 1;
-}
+    .newsletter-form input {
+      padding: 12px;
+      border-radius: 30px;
+      border: 1px solid #ccc;
+      width: 250px;
+    }
 
-.why-card {
-  background: white;
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-  transition: all 0.4s ease;
-  cursor: pointer;
-}
-.why-card:hover {
-  transform: translateY(-15px) scale(1.05);
-  box-shadow: 0 20px 35px rgba(0,0,0,0.1);
-  background: linear-gradient(135deg, #e6f4e6, #f0fff0);
-}
-.why-card img { width: 70px; margin-bottom: 20px; transition: transform 0.4s; }
-.why-card:hover img { transform: rotate(-5deg) scale(1.1); }
-.why-card h3 { color: #2e7d32; font-size: 1.3rem; margin-bottom: 10px; }
-.why-card p { font-size: 1rem; color: #444; line-height: 1.5; }
-.why-card h3::before { content: "🌿 "; }
+    .newsletter-form button {
+      padding: 12px 28px;
+      border-radius: 30px;
+      background: #5bbd61;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-/* 🌿 Interactive Benefits Section */
-.benefits-section {
-  background: linear-gradient(120deg, #e6f4e6, #f0fff0);
-  padding: 80px 20px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.benefits-section::before { content: ""; position: absolute; inset:0; background:url('https://cdn-icons-png.flaticon.com/512/616/616408.png') repeat; opacity:0.02; z-index:0;}
-.benefits-section .section-title { margin-bottom: 50px; }
-
-.benefits-container {
-  display: flex;
-  gap: 30px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 20px;
-}
-.benefit-card {
-  flex: 0 0 300px;
-  background: white;
-  border-radius: 25px;
-  padding: 30px 20px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  scroll-snap-align: start;
-}
-.benefit-card:hover {
-  transform: translateY(-15px) scale(1.05);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.12);
-}
-.benefit-card img { width: 80px; margin-bottom: 20px; transition: transform 0.4s ease;}
-.benefit-card:hover img { transform: rotate(-5deg) scale(1.1); }
-.benefit-text { font-size: 1rem; color: #2e7d32; line-height: 1.6; }
-.benefit-text strong { color: #1b5e20; }
-.counter { color: #1b5e20; font-weight:700; font-size:1.3rem; }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero-title { font-size: 2.2rem; }
-  .hero-subtitle { font-size: 1rem; }
-  .hero-section { height: 80vh; }
-  .why-card, .benefit-card { padding: 25px 15px; }
-  .benefit-text { font-size: 0.95rem; }
-}
-@media (max-width: 480px){
-  .hero-title { font-size: 1.8rem; }
-  .hero-subtitle { font-size: 0.9rem; }
-  .benefit-card { padding: 20px 10px; }
-}
-</style>
+    .newsletter-form button:hover {
+      background: #388e3c;
+    }
+  </style>
 </head>
 <body>
 
-<!-- 🌿 Hero Section -->
-<section id="home" class="hero-section">
-  <div class="hero-overlay"></div>
-  <div class="floating-leaves"></div>
-  <div class="hero-content">
-    <h1 class="hero-title">Grow. Nourish. Thrive.</h1>
-    <p class="hero-subtitle">Fresh, pesticide-free microgreens grown with love — straight from our farm to your plate.</p>
-    <a href="#shop" class="hero-btn">Shop Microgreens</a>
-  </div>
-  <div class="scroll-down"><span></span></div>
-</section>
+  <!-- 🌿 Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="floating-leaves"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Grow. Nourish. Thrive.</h1>
+      <p class="hero-subtitle">Fresh, pesticide-free microgreens grown with love — straight from our farm to your plate.</p>
+      <a href="#shop" class="hero-btn">Shop Microgreens</a>
+    </div>
+    <div class="scroll-down"><span></span></div>
+  </section>
 
-<!-- 🌱 Why Microgreens Section -->
-<section id="why-microgreens" class="why-section">
-  <h2 class="section-title">Why Choose Microgreens?</h2>
-  <div class="why-grid">
-    <div class="why-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/415/415733.png" alt="Nutrients">
-      <h3>Rich in Nutrients</h3>
-      <p>Up to 40x more vitamins and minerals than mature greens — a super boost in every bite!</p>
+  <!-- 🌱 Why Microgreens Section -->
+  <section id="why-microgreens" class="why-section">
+    <h2 class="section-title">Why Choose Microgreens?</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/415/415733.png" alt="Nutrients">
+        <h3>Rich in Nutrients</h3>
+        <p>Up to 40x more vitamins and minerals than mature greens — a super boost in every bite!</p>
+      </div>
+      <div class="why-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4264/4264825.png" alt="Taste">
+        <h3>Fresh & Flavorful</h3>
+        <p>Enjoy a burst of fresh flavor in salads, sandwiches, and smoothies — naturally delicious.</p>
+      </div>
+      <div class="why-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/7655/7655673.png" alt="Sustainable">
+        <h3>Eco-Friendly Growth</h3>
+        <p>Locally grown with minimal water and zero pesticides — good for you, great for the planet.</p>
+      </div>
     </div>
-    <div class="why-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/4264/4264825.png" alt="Taste">
-      <h3>Fresh & Flavorful</h3>
-      <p>Enjoy a burst of fresh flavor in salads, sandwiches, and smoothies — naturally delicious.</p>
-    </div>
-    <div class="why-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/7655/7655673.png" alt="Sustainable">
-      <h3>Eco-Friendly Growth</h3>
-      <p>Locally grown with minimal water and zero pesticides — good for you, great for the planet.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- 🌿 Interactive Benefits Section -->
-<section id="benefits" class="benefits-section">
-  <h2 class="section-title">Benefits of Microgreens</h2>
-  <div class="benefits-container">
-    <div class="benefit-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Nutritional Value">
-      <p class="benefit-text">
-        <strong>Microgreens are packed with nutrients</strong> — up to <span class="counter" data-count="40">0</span>x more vitamins than mature greens.
-      </p>
+  <!-- 🌟 Featured Microgreens -->
+  <section id="featured" class="featured-section">
+    <h2 class="section-title">Our Star Microgreens</h2>
+    <div class="featured-grid">
+      <div class="featured-card">
+        <img src="images/broccoli-microgreens.jpg" alt="Broccoli Microgreens">
+        <h3>Broccoli</h3>
+        <p>Mild, earthy flavor — perfect for salads and soups.</p>
+      </div>
+      <div class="featured-card">
+        <img src="images/radish-microgreens.jpg" alt="Radish Microgreens">
+        <h3>Radish</h3>
+        <p>Spicy kick — great for sandwiches and tacos.</p>
+      </div>
+      <div class="featured-card">
+        <img src="images/sunflower-microgreens.jpg" alt="Sunflower Microgreens">
+        <h3>Sunflower</h3>
+        <p>Nutty crunch — ideal for wraps and bowls.</p>
+      </div>
     </div>
-    <div class="benefit-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/616/616494.png" alt="Daily Health">
-      <p class="benefit-text">
-        <strong>Just a handful a day</strong> supports your daily health naturally.
-      </p>
-    </div>
-    <div class="benefit-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2910/2910764.png" alt="Life With Leaf Assurance">
-      <p class="benefit-text">
-        <strong>Life With Leaf Assurance</strong><br>
-        100% Natural | Pesticide-Free | Non-GMO | Delivered Live & Fresh.
-      </p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<script>
-// Animate counters
-function animateCounters() {
-  const counters = document.querySelectorAll('.counter');
-  counters.forEach(counter => {
-    if (!counter.started && counter.getBoundingClientRect().top < window.innerHeight) {
-      counter.started = true;
-      const target = +counter.getAttribute('data-count');
-      let count = 0;
-      const increment = target / 100;
-      const interval = setInterval(() => {
-        count += increment;
-        if(count >= target){
-          counter.innerText = target;
-          clearInterval(interval);
-        } else counter.innerText = Math.floor(count);
-      }, 20);
-    }
-  });
-}
-window.addEventListener('scroll', animateCounters);
-window.addEventListener('load', animateCounters);
-</script>
+  <!-- 🗣️ Testimonials -->
+  <section id="testimonials" class="testimonials-section">
+    <h2 class="section-title">What Our Customers Say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p>"These microgreens are a game-changer! So fresh and flavorful."</p>
+        <h4>— Priya M., Delhi</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>"I love knowing my greens are grown sustainably and locally."</p>
+        <h4>— Arjun S., Gurgaon</h4>
+      </div>
+    </div>
+  </section>
 
+  <!-- 📦 Subscription CTA -->
+  <section id="subscribe" class="subscribe-section">
+    <h2 class="section-title">Never Run Out of Greens</h2>
+    <p>Get fresh microgreens delivered weekly. Cancel anytime.</p>
+    <a href="#shop" class="hero-btn">Start Your Subscription</a>
+  </section>
+
+  <!-- 📬 Newsletter Signup -->
+  <section id="newsletter" class="newsletter-section">
+    <h2 class="section-title">Stay Fresh</h2>
+    <p>Get recipes, growing tips, and exclusive offers straight to your inbox.</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- 🌿 Scroll Animation Script -->
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.why-card, .section-title').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
