@@ -12,6 +12,7 @@ body, html {
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
   scroll-behavior: smooth;
+  background: #f9fef9;
 }
 
 /* 🌿 Hero Section */
@@ -53,14 +54,8 @@ body, html {
   animation: floatBgReverse 100s linear infinite;
 }
 
-@keyframes floatBg {
-  from { background-position: 0 0; }
-  to { background-position: 1000px 1000px; }
-}
-@keyframes floatBgReverse {
-  from { background-position: 0 0; }
-  to { background-position: -1000px -1000px; }
-}
+@keyframes floatBg { from { background-position:0 0;} to { background-position:1000px 1000px;} }
+@keyframes floatBgReverse { from { background-position:0 0;} to { background-position:-1000px -1000px;} }
 
 /* Hero Content */
 .hero-content {
@@ -200,10 +195,6 @@ body, html {
   transform: translateY(-10px);
   box-shadow: 0 20px 35px rgba(0,0,0,0.1);
 }
-.why-card.visible, .section-title.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 .why-card img {
   width: 70px;
@@ -214,29 +205,51 @@ body, html {
   transform: rotate(-5deg) scale(1.1);
 }
 
-.why-card h3 {
-  color: #2e7d32;
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-}
+.why-card h3 { color: #2e7d32; font-size: 1.3rem; margin-bottom: 10px; }
+.why-card p { font-size: 1rem; color: #444; line-height: 1.5; }
 
-.why-card p {
-  font-size: 1rem;
-  color: #444;
-  line-height: 1.5;
+.why-card.visible, .section-title.visible { opacity: 1; transform: translateY(0); }
+
+/* 🌿 Microgreens Benefits Section */
+.benefits-section {
+  background: linear-gradient(to right, #f0fff0, #e6f4e6);
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
+.benefits-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1100px;
+  margin: auto;
+}
+.benefit-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.benefit-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12);}
+.benefit-card img { width: 80px; margin-bottom: 20px; transition: transform 0.4s ease;}
+.benefit-card:hover img { transform: rotate(-5deg) scale(1.1); }
+.benefit-text { font-size: 1rem; color: #2e7d32; line-height: 1.6; }
+.benefit-text strong { color: #1b5e20; }
 
 /* Animations */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px);} to { opacity:1; transform: translateY(0); } }
 
 /* Responsive */
 @media (max-width: 768px) {
   .hero-title { font-size: 2.2rem; }
   .hero-subtitle { font-size: 1rem; }
   .hero-section { height: 80vh; }
+  .benefit-card { padding: 25px 15px; }
+  .benefit-text { font-size: 0.95rem; }
 }
 </style>
 </head>
@@ -276,20 +289,46 @@ body, html {
   </div>
 </section>
 
+<!-- 🌿 Microgreens Benefits Section -->
+<section id="benefits" class="benefits-section">
+  <div class="benefits-container">
+    <div class="benefit-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Nutritional Value">
+      <p class="benefit-text">
+        <strong>Microgreens are tender, young greens</strong> harvested at the peak of their nutritional value. Despite their small size, they contain <strong>4 to 40 times more vitamins, minerals, and antioxidants</strong> than their fully grown counterparts.
+      </p>
+    </div>
+    <div class="benefit-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616494.png" alt="Daily Health">
+      <p class="benefit-text">
+        <strong>A small handful each day</strong> brings big health benefits.
+      </p>
+    </div>
+    <div class="benefit-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2910/2910764.png" alt="Life With Leaf Assurance">
+      <p class="benefit-text">
+        <strong>Life With Leaf Assurance</strong><br>
+        100% Natural | Pesticide-Free | Non-GMO<br>
+        Homegrown with passion, arriving at your doorstep <strong>live, fresh and full of health</strong>.
+      </p>
+    </div>
+  </div>
+</section>
+
 <script>
-// 🌟 Scroll Animation Observer
+// 🌟 Scroll Animations
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+    if(entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.2 });
 
-document.querySelectorAll('.why-card, .section-title').forEach((el, i) => {
-  el.style.transitionDelay = `${i * 0.2}s`; // stagger animation
+document.querySelectorAll('.why-card, .section-title, .benefit-card').forEach((el,i)=>{
+  el.style.transitionDelay = `${i*0.2}s`;
   observer.observe(el);
 });
 
-// 🌿 Hero Mouse Interaction for floating leaves
+// 🌿 Hero Mouse Interaction
 document.querySelector('.hero-section').addEventListener('mousemove', e => {
   const leaves = document.querySelector('.floating-leaves');
   const moveX = (e.clientX - window.innerWidth/2) * 0.01;
