@@ -1,11 +1,15 @@
 <!-- 🌿 Home Section - Life With Leaf -->
 <section id="home" class="hero-section">
   <div class="hero-overlay"></div>
+  <div class="floating-leaves"></div>
+
   <div class="hero-content">
     <h1 class="hero-title">Grow. Nourish. Thrive.</h1>
     <p class="hero-subtitle">Fresh, pesticide-free microgreens grown with love — straight from our farm to your plate.</p>
     <a href="#shop" class="hero-btn">Shop Microgreens</a>
   </div>
+
+  <div class="scroll-down"><span></span></div>
 </section>
 
 <!-- 🌱 Why Microgreens Section -->
@@ -49,11 +53,27 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+/* 🍃 Floating Leaves */
+.floating-leaves {
+  position: absolute;
+  inset: 0;
+  background: url('images/leaf-particles.png') repeat;
+  opacity: 0.15;
+  animation: floatBg 40s linear infinite;
+  z-index: 1;
+}
+
+@keyframes floatBg {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
 }
 
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   max-width: 700px;
   padding: 20px;
   animation: fadeInUp 1.2s ease-in-out;
@@ -64,6 +84,7 @@
   font-weight: 700;
   letter-spacing: 1px;
   margin-bottom: 10px;
+  text-shadow: 0 0 15px rgba(91, 189, 97, 0.6);
 }
 
 .hero-subtitle {
@@ -85,6 +106,34 @@
 .hero-btn:hover {
   background: linear-gradient(135deg, #66d46e, #388e3c);
   transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(102, 212, 110, 0.6);
+}
+
+/* 🌿 Scroll Down Indicator */
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 50px;
+  border: 2px solid white;
+  border-radius: 25px;
+  z-index: 3;
+}
+.scroll-down span {
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  margin: 10px auto;
+  animation: scrollAnim 1.5s infinite;
+}
+@keyframes scrollAnim {
+  0% { opacity: 0; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(15px); }
+  100% { opacity: 0; transform: translateY(30px); }
 }
 
 /* 🌱 Why Microgreens Section */
@@ -92,6 +141,8 @@
   background: #f9fef9;
   padding: 80px 20px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .section-title {
@@ -100,8 +151,10 @@
   margin-bottom: 50px;
   font-weight: 700;
   position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
 }
-
 .section-title::after {
   content: "";
   display: block;
@@ -126,10 +179,16 @@
   padding: 30px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.05);
   transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
 }
 .why-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+}
+.why-card.visible, .section-title.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .why-card img {
@@ -166,3 +225,14 @@
   .hero-section { height: 80vh; }
 }
 </style>
+
+<!-- 🌿 Scroll Animation Script -->
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.why-card, .section-title').forEach(el => observer.observe(el));
+</script>
