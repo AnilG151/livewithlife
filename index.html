@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Life With Leaf — Fresh Microgreens</title>
+  <title>Life With Leaf — Premium Microgreens</title>
   <style>
     :root {
-      --leaf-green: #7acb7a;
+      --leaf-green: #5bb85c;
       --dark-green: #2e7d32;
+      --gold: #c9a227;
       --cream: #f9fff8;
       --text-dark: #1c1c1c;
     }
@@ -23,137 +24,131 @@
     /* ===== HERO SECTION ===== */
     .hero {
       position: relative;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      background: linear-gradient(180deg, #dfffd6 0%, #ffffff 100%);
-      overflow: hidden;
       text-align: center;
+      background: url('microgreen-bg.jpg') center/cover no-repeat;
+      color: #fff;
     }
 
-    .hero img.bg-leaf {
+    .hero::after {
+      content: "";
       position: absolute;
-      width: 150px;
-      opacity: 0.15;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .bg-leaf.leaf1 { top: 10%; left: 10%; animation-delay: 0s; }
-    .bg-leaf.leaf2 { top: 30%; right: 15%; animation-delay: 2s; }
-    .bg-leaf.leaf3 { bottom: 20%; left: 25%; animation-delay: 4s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(10deg); }
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
+      max-width: 700px;
       padding: 20px;
-      max-width: 600px;
+      animation: fadeIn 1.5s ease forwards;
     }
 
     .hero h1 {
-      font-size: 2.8rem;
-      color: var(--dark-green);
+      font-size: 3rem;
       line-height: 1.2;
-      margin-bottom: 10px;
-      animation: fadeInDown 1s ease forwards;
+      color: #fff;
+      margin-bottom: 15px;
     }
 
     .hero p {
       font-size: 1.2rem;
-      color: #444;
-      margin-bottom: 20px;
-      animation: fadeInUp 1.5s ease forwards;
+      color: #eee;
+      margin-bottom: 25px;
     }
 
     .hero button {
-      background: var(--leaf-green);
+      background: linear-gradient(90deg, var(--leaf-green), var(--gold));
       color: #fff;
       border: none;
-      padding: 12px 30px;
-      border-radius: 30px;
-      font-size: 1rem;
+      padding: 14px 34px;
+      border-radius: 40px;
+      font-size: 1.1rem;
       cursor: pointer;
       transition: all 0.3s ease;
-      animation: fadeIn 2s ease forwards;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     .hero button:hover {
-      background: var(--dark-green);
-      transform: scale(1.05);
+      transform: translateY(-3px);
+      background: linear-gradient(90deg, var(--gold), var(--leaf-green));
     }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
+    @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
 
-    /* ===== WHY MICROGREENS SECTION ===== */
+    /* ===== WHY MICROGREENS ===== */
     .why-section {
-      padding: 80px 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #ecffe7 100%);
       text-align: center;
-      background: linear-gradient(180deg, #ffffff 0%, #e8ffe4 100%);
+      padding: 100px 20px;
     }
 
     .why-section h2 {
-      font-size: 2rem;
+      font-size: 2.3rem;
       color: var(--dark-green);
-      margin-bottom: 40px;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .why-section h2::after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: var(--leaf-green);
+      margin: 15px auto 0;
+      border-radius: 2px;
     }
 
     .benefits {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 25px;
+      gap: 40px;
+      max-width: 1100px;
+      margin: auto;
     }
 
     .benefit-card {
       background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      width: 250px;
-      padding: 25px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeIn 1s ease forwards;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      width: 280px;
+      padding: 30px 25px;
+      transition: all 0.3s ease;
+      cursor: pointer;
     }
 
     .benefit-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
     }
 
     .benefit-card img {
-      width: 60px;
+      width: 70px;
       margin-bottom: 15px;
     }
 
     .benefit-card h3 {
-      font-size: 1.2rem;
       color: var(--dark-green);
+      font-size: 1.2rem;
       margin-bottom: 10px;
     }
 
     .benefit-card p {
-      font-size: 0.95rem;
       color: #555;
+      font-size: 0.95rem;
     }
 
-    /* Responsive */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .hero h1 { font-size: 2rem; }
       .hero p { font-size: 1rem; }
@@ -162,38 +157,37 @@
   </style>
 </head>
 <body>
+
   <!-- ===== HERO SECTION ===== -->
   <section class="hero" id="home">
-    <img src="leaf1.png" alt="leaf" class="bg-leaf leaf1">
-    <img src="leaf2.png" alt="leaf" class="bg-leaf leaf2">
-    <img src="leaf3.png" alt="leaf" class="bg-leaf leaf3">
     <div class="hero-content">
-      <h1>Grow Fresh. Eat Fresh. Live Fresh 🌱</h1>
-      <p>Discover the joy of fresh microgreens — full of nutrition, flavor, and life. Delivered right from our farm to your table.</p>
-      <button onclick="window.location.href='#products'">Explore Microgreens</button>
+      <h1>Experience the Power of Fresh Microgreens 🌿</h1>
+      <p>Pure nutrition, premium freshness, and natural goodness — grown locally, harvested daily.</p>
+      <button onclick="window.location.href='#products'">Shop Now</button>
     </div>
   </section>
 
-  <!-- ===== WHY MICROGREENS SECTION ===== -->
+  <!-- ===== WHY MICROGREENS ===== -->
   <section class="why-section" id="why">
-    <h2>Why Choose Microgreens?</h2>
+    <h2>Why Choose Life With Leaf?</h2>
     <div class="benefits">
       <div class="benefit-card">
-        <img src="icon1.png" alt="Health Boost">
-        <h3>🌿 Packed with Nutrition</h3>
-        <p>Up to 40x more nutrients than mature greens — giving your body a real boost.</p>
+        <img src="icon1.png" alt="Nutrition">
+        <h3>Loaded with Nutrients</h3>
+        <p>Microgreens contain up to 40× more vitamins and antioxidants than mature greens.</p>
       </div>
       <div class="benefit-card">
-        <img src="icon2.png" alt="Fresh Daily">
-        <h3>🌞 Always Fresh</h3>
-        <p>Grown pesticide-free and harvested daily for maximum freshness.</p>
+        <img src="icon2.png" alt="Freshness">
+        <h3>Always Farm-Fresh</h3>
+        <p>Harvested fresh and delivered directly from our local urban farm to your table.</p>
       </div>
       <div class="benefit-card">
         <img src="icon3.png" alt="Eco Friendly">
-        <h3>🌎 Eco-Friendly</h3>
-        <p>Locally grown using minimal water and space — kind to you and the planet.</p>
+        <h3>Eco-Friendly Growth</h3>
+        <p>We use minimal water and zero pesticides — good for you, great for the planet.</p>
       </div>
     </div>
   </section>
+
 </body>
 </html>
