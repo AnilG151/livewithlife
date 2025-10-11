@@ -13,6 +13,7 @@ body, html {
   font-family: 'Segoe UI', sans-serif;
   scroll-behavior: smooth;
   background: #f9fef9;
+  overflow-x: hidden;
 }
 
 /* 🌿 Hero Section */
@@ -31,7 +32,7 @@ body, html {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.25);
   backdrop-filter: blur(2px);
   z-index: 1;
 }
@@ -41,7 +42,7 @@ body, html {
   position: absolute;
   inset: 0;
   background: url('https://cdn-icons-png.flaticon.com/512/616/616408.png') repeat;
-  opacity: 0.08;
+  opacity: 0.1;
   z-index: 1;
   animation: floatBg 60s linear infinite;
 }
@@ -63,8 +64,20 @@ body, html {
   transform: translateY(20px);
   animation: fadeInUp 1s forwards;
 }
-.hero-title { animation-delay: 0.5s; font-size: 3rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; text-shadow: 0 0 15px rgba(91,189,97,0.6);}
-.hero-subtitle { animation-delay: 1s; font-size: 1.2rem; margin-bottom: 25px; line-height: 1.6; }
+.hero-title {
+  animation-delay: 0.5s;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px rgba(91,189,97,0.6);
+}
+.hero-subtitle {
+  animation-delay: 1s;
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
 @keyframes fadeInUp {
   to { opacity: 1; transform: translateY(0); }
 }
@@ -126,7 +139,7 @@ body, html {
   position: absolute;
   inset: 0;
   background: url('https://cdn-icons-png.flaticon.com/512/616/616494.png') repeat;
-  opacity: 0.02;
+  opacity: 0.05;
   z-index: 0;
 }
 
@@ -163,6 +176,7 @@ body, html {
   padding: 30px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.05);
   transition: all 0.4s ease;
+  cursor: pointer;
 }
 .why-card:hover {
   transform: translateY(-15px) scale(1.05);
@@ -232,6 +246,11 @@ body, html {
   .why-card, .benefit-card { padding: 25px 15px; }
   .benefit-text { font-size: 0.95rem; }
 }
+@media (max-width: 480px){
+  .hero-title { font-size: 1.8rem; }
+  .hero-subtitle { font-size: 0.9rem; }
+  .benefit-card { padding: 20px 10px; }
+}
 </style>
 </head>
 <body>
@@ -300,9 +319,7 @@ body, html {
 // 🌱 Scroll Animation for Benefits Cards
 function isInViewport(el) {
   const rect = el.getBoundingClientRect();
-  return (
-    rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 100
-  );
+  return rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 50;
 }
 
 const benefitCards = document.querySelectorAll('.benefit-card');
