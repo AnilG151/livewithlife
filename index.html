@@ -1,209 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Life With Leaf | Microgreens</title>
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* 🌿 Global Styles */
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-    h1, h2, h3, h4 {
-      color: #2e7d32;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life With Leaf | Microgreens</title>
+<style>
+/* ===== GLOBAL ===== */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9fef9;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+h1,h2,h3,h4{margin:0;padding:0;}
+a{text-decoration:none;color:white;}
+section{padding:80px 20px;position:relative;}
 
-    /* 🌿 Hero Section */
-    .hero-section {
-      position: relative;
-      background: url('images/hero-bg.jpg') no-repeat center center/cover;
-      color: white;
-      text-align: center;
-      padding: 100px 20px;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-    .hero-title {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    .hero-subtitle {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-    }
-    .hero-btn {
-      background-color: #5bbd61;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 1.2rem;
-    }
-    .hero-btn:hover {
-      background-color: #388e3c;
-    }
+/* ===== HERO ===== */
+.hero-section{
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1601050690683-7edfb9a6a07b?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat fixed;
+  display:flex;align-items:center;justify-content:center;text-align:center;color:white;
+  overflow:hidden;
+}
+.hero-overlay{
+  position:absolute;inset:0;background:rgba(0,0,0,0.3);z-index:1;
+}
+.hero-content{
+  position:relative;z-index:2;max-width:700px;
+  animation:fadeInUp 1s ease forwards;
+}
+.hero-title{font-size:3rem;font-weight:700;margin-bottom:10px;text-shadow:0 0 15px rgba(91,189,97,0.6);}
+.hero-subtitle{font-size:1.3rem;margin-bottom:25px;line-height:1.6;}
+.hero-btn{
+  background:linear-gradient(135deg,#5bbd61,#2e7d32);
+  padding:12px 28px;border-radius:30px;
+  transition:0.3s;
+}
+.hero-btn:hover{
+  background:linear-gradient(135deg,#66d46e,#388e3c);
+  transform:scale(1.05);
+  box-shadow:0 0 15px rgba(102,212,110,0.6);
+}
 
-    /* 🌿 Featured Microgreens */
-    .featured-section {
-      background-color: #ffffff;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .featured-grid {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .featured-card {
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      padding: 20px;
-      width: 250px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-    .featured-card:hover {
-      transform: translateY(-10px);
-    }
-    .featured-card img {
-      width: 100%;
-      border-radius: 5px;
-    }
-    .featured-card h3 {
-      margin-top: 15px;
-      font-size: 1.5rem;
-    }
-    .featured-card p {
-      font-size: 1rem;
-      color: #555;
-    }
+/* Floating microgreens */
+.floating-leaves{
+  position:absolute;inset:0;
+  background:url('https://cdn-icons-png.flaticon.com/512/616/616408.png') repeat;
+  opacity:0.05;
+  z-index:1;
+  animation: floatBg 60s linear infinite;
+}
+@keyframes floatBg{
+  from{background-position:0 0;}
+  to{background-position:1000px 1000px;}
+}
 
-    /* 🌿 Testimonials */
-    .testimonials-section {
-      background-color: #e8f5e9;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .testimonial-grid {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-    .testimonial-card {
-      background-color: #ffffff;
-      border-radius: 10px;
-      padding: 30px;
-      width: 300px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .testimonial-card p {
-      font-style: italic;
-      color: #555;
-    }
-    .testimonial-card h4 {
-      margin-top: 15px;
-      font-weight: bold;
-    }
+/* Scroll down */
+.scroll-down{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  width:30px;height:50px;border:2px solid white;border-radius:25px;
+  z-index:3;
+}
+.scroll-down span{
+  display:block;width:6px;height:6px;background:white;border-radius:50%;
+  margin:10px auto;animation:scrollAnim 1.5s infinite;
+}
+@keyframes scrollAnim{
+  0%{opacity:0;transform:translateY(0);}
+  50%{opacity:1;transform:translateY(15px);}
+  100%{opacity:0;transform:translateY(30px);}
+}
 
-    /* 🌿 Newsletter Signup */
-    .newsletter-section {
-      background-color: #ffffff;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .newsletter-form {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .newsletter-form input {
-      padding: 12px;
-      border-radius: 30px;
-      border: 1px solid #ccc;
-      width: 250px;
-      font-size: 1rem;
-    }
-    .newsletter-form button {
-      padding: 12px 28px;
-      border-radius: 30px;
-      background-color: #5bbd61;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    .newsletter-form button:hover {
-      background-color: #388e3c;
-    }
-  </style>
+/* ===== WHY MICROGREENS ===== */
+.why-section{background:#f9fef9;text-align:center;}
+.section-title{font-size:2.2rem;color:#1b5e20;margin-bottom:50px;font-weight:700;position:relative;}
+.section-title::after{content:"";display:block;width:80px;height:4px;background:#66bb6a;margin:12px auto 0;border-radius:2px;}
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:40px;
+  max-width:1000px;margin:auto;
+}
+.why-card{
+  background:white;border-radius:20px;padding:30px;box-shadow:0 10px 20px rgba(0,0,0,0.05);
+  transition:0.4s ease;cursor:pointer;overflow:hidden;
+}
+.why-card:hover{
+  transform:translateY(-15px) scale(1.05);
+  box-shadow:0 20px 35px rgba(0,0,0,0.1);
+  background:linear-gradient(135deg,#e6f4e6,#f0fff0);
+}
+.why-card img{width:70px;margin-bottom:20px;transition:transform 0.4s;}
+.why-card:hover img{transform:rotate(-5deg) scale(1.1);}
+.why-card h3{color:#2e7d32;font-size:1.3rem;margin-bottom:10px;}
+.why-card p{font-size:1rem;color:#444;line-height:1.5;}
+.why-card h3::before{content:"🌿 ";}
+
+/* ===== FEATURED MICROGREENS ===== */
+.featured-section{text-align:center;}
+.featured-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+  max-width:1000px;margin:auto;
+}
+.featured-card{
+  background:#fff;border-radius:20px;overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);transition:0.3s;
+  cursor:pointer;position:relative;
+}
+.featured-card img{width:100%;transition:transform 0.3s;}
+.featured-card:hover img{transform:scale(1.05);}
+.featured-card h3{padding:15px 20px 0 20px;}
+.featured-card p{padding:0 20px 20px 20px;color:#555;}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section{background:#e8f5e9;text-align:center;overflow:hidden;}
+.testimonial-grid{
+  display:flex;
+  gap:40px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.testimonial-card{
+  background:white;border-radius:20px;padding:30px;
+  max-width:300px;box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  opacity:0;transform:translateY(50px);transition:0.6s;
+}
+.testimonial-card.visible{opacity:1;transform:translateY(0);}
+.testimonial-card p{font-style:italic;color:#555;}
+.testimonial-card h4{margin-top:15px;color:#2e7d32;}
+
+/* ===== NEWSLETTER ===== */
+.newsletter-section{text-align:center;background:#fff;}
+.newsletter-form{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px;}
+.newsletter-form input{padding:12px;border-radius:30px;border:1px solid #ccc;width:250px;}
+.newsletter-form button{padding:12px 28px;border-radius:30px;background:#5bbd61;color:white;border:none;cursor:pointer;transition:0.3s;}
+.newsletter-form button:hover{background:#388e3c;}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
+@media(max-width:768px){.hero-title{font-size:2rem;}.hero-subtitle{font-size:1rem;}.why-card,.featured-card{padding:20px;}}
+</style>
 </head>
 <body>
 
-  <!-- 🌿 Hero Section -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <h1 class="hero-title">Grow. Nourish. Thrive.</h1>
-      <p class="hero-subtitle">Fresh, pesticide-free microgreens grown with love — straight from our farm to your plate.</p>
-      <a href="#shop" class="hero-btn">Shop Microgreens</a>
-    </div>
-  </section>
+<!-- HERO -->
+<section class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="floating-leaves"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Grow. Nourish. Thrive.</h1>
+    <p class="hero-subtitle">Fresh, pesticide-free microgreens grown with love — straight from our farm to your plate.</p>
+    <a href="#featured" class="hero-btn">Shop Microgreens</a>
+  </div>
+  <div class="scroll-down"><span></span></div>
+</section>
 
-  <!-- 🌿 Featured Microgreens -->
-  <section class="featured-section">
-    <h2>Our Star Microgreens</h2>
-    <div class="featured-grid">
-      <div class="featured-card">
-        <img src="images/broccoli-microgreens.jpg" alt="Broccoli Microgreens">
-        <h3>Broccoli</h3>
-        <p>Mild, earthy flavor — perfect for salads and soups.</p>
-      </div>
-      <div class="featured-card">
-        <img src="images/radish-microgreens.jpg" alt="Radish Microgreens">
-        <h3>Radish</h3>
-        <p>Spicy kick — great for sandwiches and tacos.</p>
-      </div>
-      <div class="featured-card">
-        <img src="images/sunflower-microgreens.jpg" alt="Sunflower Microgreens">
-        <h3>Sunflower</h3>
-        <p>Nutty crunch — ideal for wraps and bowls.</p>
-      </div>
+<!-- WHY MICROGREENS -->
+<section class="why-section">
+  <h2 class="section-title">Why Choose Microgreens?</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/415/415733.png" alt="Nutrients">
+      <h3>Rich in Nutrients</h3>
+      <p>Up to 40x more vitamins and minerals than mature greens — a super boost in every bite!</p>
     </div>
-  </section>
-
-  <!-- 🌿 Testimonials -->
-  <section class="testimonials-section">
-    <h2>What Our Customers Say</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <p>"These microgreens are a game-changer! So fresh and flavorful."</p>
-        <h4>— Priya M., Delhi</h4>
-      </div>
-      <div class="testimonial-card">
-        <p>"I love knowing my greens are grown sustainably and locally."</p>
-        <h4>— Arjun S., Gurgaon</h4>
-      </div>
+    <div class="why-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/4264/4264825.png" alt="Taste">
+      <h3>Fresh & Flavorful</h3>
+      <p>Enjoy a burst of fresh flavor in salads, sandwiches, and smoothies — naturally delicious.</p>
     </div>
-  </section>
+    <div class="why-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/7655/7655673.png" alt="Sustainable">
+      <h3>Eco-Friendly Growth</h3>
+      <p>Locally grown with minimal water and zero pesticides — good for you, great for the planet.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- 🌿 Newsletter Signup -->
-  <section class="newsletter-section">
-    <h2>Stay Fresh</h2>
-    <p>Get recipes, growing tips, and exclusive offers straight to your inbox.</p>
-    <form class="newsletter-form">
-      <input type="email" placeholder="Your email" required>
-      <button type="submit">Subscribe</button>
-    </form>
-  </section>
+<!-- FEATURED MICROGREENS -->
+<section class="featured-section">
+  <h2 class="section-title">Our Star Microgreens</h2>
+  <div class="featured-grid">
+    <div class="featured-card">
+      <img src="images/broccoli-microgreens.jpg" alt="Broccoli Microgreens">
+      <h3>Broccoli</h3>
+      <p>Mild, earthy flavor — perfect for salads and soups.</p>
+    </div>
+    <div class="featured-card">
+      <img src="images/radish-microgreens.jpg" alt="Radish Microgreens">
+      <h3>Radish</h3>
+      <p>Spicy kick — great for sandwiches and tacos.</p>
+    </div>
+    <div class="featured-card">
+      <img src="images/sunflower-microgreens.jpg" alt="Sunflower Microgreens">
+      <h3>Sunflower</h3>
+      <p>Nutty crunch — ideal for wraps and bowls.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <h2 class="section-title">What Our Customers Say</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <p>"These microgreens are a game-changer! So fresh and flavorful."</p>
+      <h4>— Priya M., Delhi</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>"I love knowing my greens are grown sustainably and locally."</p>
+      <h4>— Arjun S., Gurgaon</h4>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <h2 class="section-title">Stay Fresh</h2>
+  <p>Get recipes, growing tips, and exclusive offers straight to your inbox.</p>
+  <form class="newsletter-form">
+    <input type="email" placeholder="Your email" required>
+    <button type="submit">Subscribe</button>
+  </form>
+</section>
+
+<!-- JS for scroll animations -->
+<script>
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add('visible');
+  });
+},{threshold:0.2});
+
+document.querySelectorAll('.why-card,.testimonial-card,.section-title').forEach(el=>observer.observe(el));
+</script>
 
 </body>
 </html>
