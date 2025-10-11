@@ -45,7 +45,6 @@ body, html {
   z-index: 1;
   animation: floatBg 60s linear infinite;
 }
-
 @keyframes floatBg {
   from { background-position:0 0; }
   to { background-position:1000px 1000px; }
@@ -59,18 +58,15 @@ body, html {
   padding: 20px;
 }
 
-.hero-title {
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  text-shadow: 0 0 15px rgba(91,189,97,0.6);
+.hero-title, .hero-subtitle {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
 }
-
-.hero-subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 25px;
-  line-height: 1.6;
+.hero-title { animation-delay: 0.5s; font-size: 3rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; text-shadow: 0 0 15px rgba(91,189,97,0.6);}
+.hero-subtitle { animation-delay: 1s; font-size: 1.2rem; margin-bottom: 25px; line-height: 1.6; }
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .hero-btn {
@@ -169,8 +165,9 @@ body, html {
   transition: all 0.4s ease;
 }
 .why-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-15px) scale(1.05);
   box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #e6f4e6, #f0fff0);
 }
 .why-card img {
   width: 70px;
@@ -182,6 +179,7 @@ body, html {
 }
 .why-card h3 { color: #2e7d32; font-size: 1.3rem; margin-bottom: 10px; }
 .why-card p { font-size: 1rem; color: #444; line-height: 1.5; }
+.why-card h3::before { content: "🌿 "; }
 
 /* 🌿 Benefits Section */
 .benefits-section {
@@ -189,6 +187,14 @@ body, html {
   padding: 80px 20px;
   text-align: center;
   position: relative;
+}
+.benefits-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://cdn-icons-png.flaticon.com/512/616/616408.png') repeat;
+  opacity: 0.02;
+  z-index: 0;
 }
 .benefits-container {
   display: grid;
@@ -205,6 +211,12 @@ body, html {
   padding: 30px 25px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.benefit-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .benefit-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12);}
 .benefit-card img { width: 80px; margin-bottom: 20px; transition: transform 0.4s ease;}
@@ -283,6 +295,27 @@ body, html {
     </div>
   </div>
 </section>
+
+<script>
+// 🌱 Scroll Animation for Benefits Cards
+function isInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 100
+  );
+}
+
+const benefitCards = document.querySelectorAll('.benefit-card');
+function revealBenefits() {
+  benefitCards.forEach(card => {
+    if (isInViewport(card)) {
+      card.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', revealBenefits);
+window.addEventListener('load', revealBenefits);
+</script>
 
 </body>
 </html>
