@@ -604,7 +604,9 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </footer>
 
 <script>
+// ========================
 // SECTION TOGGLE FUNCTION
+// ========================
 function toggleSection(id) {
   const allSections = document.querySelectorAll('section');
 
@@ -632,6 +634,7 @@ function toggleSection(id) {
     setTimeout(() => sec.style.opacity = 1, 20);
   }
 
+  // Smooth scroll to top
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -640,11 +643,9 @@ window.addEventListener('DOMContentLoaded', () => {
   toggleSection('home');
 });
 
-  // Smooth scroll to top
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
+// ========================
 // PRODUCTS DATA
+// ========================
 const products = [
   {id:1,name:"Sunflower Microgreens",desc:"Crunchy & nutty flavor",price:220,img:"images/sunflower.png"},
   {id:2,name:"Radish Microgreens",desc:"Spicy and fresh",price:180,img:"images/radish.png"},
@@ -654,7 +655,9 @@ const products = [
 
 let cart = [];
 
+// ========================
 // RENDER PRODUCTS
+// ========================
 const grid = document.getElementById('productGrid');
 products.forEach(p => {
   const div = document.createElement('div');
@@ -672,7 +675,9 @@ products.forEach(p => {
   grid.appendChild(div);
 });
 
+// ========================
 // CART FUNCTIONS
+// ========================
 function addToCart(id) {
   const prod = products.find(p => p.id === id);
   const existing = cart.find(c => c.id === id);
@@ -741,7 +746,9 @@ function checkout() {
   alert('Proceed to WhatsApp checkout!');
 }
 
+// ========================
 // LIGHTBOX
+// ========================
 document.querySelectorAll('.galleryGrid img').forEach(img => {
   img.onclick = () => {
     const lb = document.getElementById('lightbox');
@@ -751,7 +758,9 @@ document.querySelectorAll('.galleryGrid img').forEach(img => {
 });
 document.getElementById('lightbox').onclick = function() { this.style.display='none' };
 
+// ========================
 // TESTIMONIALS SLIDER
+// ========================
 let tIndex = 0;
 function slideTestimonial(){ 
   const list = document.getElementById('testList');
