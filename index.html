@@ -21,7 +21,21 @@ button{font-family:inherit;cursor:pointer}
 /* HEADER */
 header{position:sticky;top:0;z-index:60;background:var(--card);border-bottom:1px solid rgba(15,23,42,0.06);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;box-shadow:0 6px 18px rgba(0,0,0,0.03);backdrop-filter:blur(6px)}
 header .brand{display:flex;align-items:center;gap:12px}
-header .brand img{width:56px;height:56px;border-radius:10px;object-fit:contain}
+/* Desktop logo size */
+header .brand img {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px; /* slightly more rounded for elegance */
+  object-fit: contain;
+}
+
+/* Mobile logo size */
+@media(max-width:768px){
+  header .brand img {
+    width: 56px;
+    height: 56px;
+  }
+}
 header nav ul{display:flex;gap:14px;list-style:none}
 header nav a{padding:8px 10px;border-radius:10px;font-weight:600;color:var(--muted)}
 header nav a:hover{background:rgba(47,158,68,0.08);color:var(--green-1)}
