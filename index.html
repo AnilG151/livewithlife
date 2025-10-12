@@ -160,20 +160,18 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     <img src="images/hero-microgreens.png" alt="Fresh Microgreens" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+Image'">
   </div>
 </section>
-<!-- HOME DETAILS -->
-  <!-- 🌿 Daily Benefits & Life With Leaf Assurance -->
-<section id="leaf-benefits" class="leaf-benefits-section">
-  <div class="leaf-benefits-content">
-    <p class="benefits-tagline">
-      A small handful each day brings big health benefits.
-    </p>
+<!-- HOME DETAILS SECTION -->
+<section id="homeDetails" class="home-details">
+  <div class="container">
 
-    <div class="assurance-box">
+    <div class="intro-text">
+      <h2>A small handful each day brings big health benefits</h2>
+    </div>
+
+    <div class="assurance-card">
       <h3>🌿 Life With Leaf Assurance</h3>
-      <p>
-        100% Natural | Pesticide-Free | Non-GMO<br>
-        Homegrown with passion, arriving at your doorstep live, fresh and full of health.
-      </p>
+      <p class="subtitle">100% Natural | Pesticide-Free | Non-GMO</p>
+      <p>Homegrown with passion, arriving at your doorstep live, fresh and full of health.</p>
       <ul>
         <li>✅ Boost Immunity</li>
         <li>❤️ Support Heart Health</li>
@@ -182,10 +180,10 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
         <li>😋 Fresh Taste for Every Meal</li>
       </ul>
     </div>
-     <!-- Usage suggestions -->
-    <div style="background:rgba(107,211,106,0.08); padding:20px; border-radius:12px; font-size:15px; color:var(--muted); max-width:600px; margin:0 auto;">
-      <p style="font-weight:600; margin-bottom:12px; text-align:center;">Add microgreens to your:</p>
-      <ul style="list-style:none; padding-left:0; line-height:1.8;">
+
+    <div class="usage-card">
+      <h3>Add microgreens to your:</h3>
+      <ul>
         <li>🥤 Smoothies & Juices</li>
         <li>🥗 Salads & Sandwiches</li>
         <li>🍲 Soups, Chutney & Curries</li>
@@ -195,6 +193,109 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   </div>
 </section>
 
+<style>
+/* 🌱 Home Details Section Styles */
+.home-details {
+  background: #f8fff8;
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-details::before,
+.home-details::after {
+  content: "";
+  position: absolute;
+  background: url('images/leaf-bg.png') no-repeat center/contain;
+  opacity: 0.1;
+  width: 160px;
+  height: 160px;
+  z-index: 0;
+}
+.home-details::before { top: 10%; left: 5%; transform: rotate(-15deg); }
+.home-details::after { bottom: 8%; right: 5%; transform: rotate(20deg); }
+
+.home-details .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.home-details .intro-text {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.home-details .intro-text h2 {
+  font-size: 1.8rem;
+  color: #2f9e44;
+  font-weight: 700;
+}
+
+.assurance-card, .usage-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  padding: 30px 25px;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.assurance-card:hover, .usage-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.assurance-card h3, .usage-card h3 {
+  color: #2f9e44;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.assurance-card .subtitle {
+  text-align: center;
+  font-weight: 600;
+  color: #4b4b4b;
+  margin-bottom: 10px;
+}
+
+.assurance-card p {
+  text-align: center;
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.assurance-card ul, .usage-card ul {
+  list-style: none;
+  padding-left: 0;
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #444;
+}
+
+.usage-card {
+  background: #e8fbe8;
+}
+
+.usage-card li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+@media (max-width: 600px) {
+  .home-details .intro-text h2 {
+    font-size: 1.4rem;
+  }
+  .assurance-card, .usage-card {
+    padding: 20px;
+  }
+}
+</style>
 
 <!-- WHY MICROGREENS -->
 <section class="whyMicro" id="whyMicro" style="display:none">
