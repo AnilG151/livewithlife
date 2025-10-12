@@ -607,7 +607,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 // SECTION TOGGLE FUNCTION
 function toggleSection(id) {
   const allSections = document.querySelectorAll('section');
-  
+
   allSections.forEach(sec => {
     // Hide all sections first
     sec.style.opacity = 0;
@@ -631,6 +631,14 @@ function toggleSection(id) {
     sec.style.display = 'block';
     setTimeout(() => sec.style.opacity = 1, 20);
   }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Show Home section by default on page load
+window.addEventListener('DOMContentLoaded', () => {
+  toggleSection('home');
+});
 
   // Smooth scroll to top
   window.scrollTo({ top: 0, behavior: 'smooth' });
