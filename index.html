@@ -161,35 +161,33 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </section>
 
 <style>
-/* HERO FIXED */
+/* HERO LAYOUT FIX */
 .hero {
   display: flex;
-  flex-wrap: nowrap; /* never wrap */
+  flex-wrap: nowrap;       /* prevent wrapping */
   justify-content: space-between;
   align-items: center;
-  padding: 68px 20px;
+  padding: 68px 60px;      /* horizontal padding */
+  gap: 20px;               /* space between text and image */
   background: linear-gradient(180deg,#f5fbf5,#f8fff8);
   position: relative;
   overflow: hidden;
-  width: 100%;
 }
 
 /* HERO TEXT */
 .hero .hero-text {
-  flex: 0 0 50%; /* exact width */
-  max-width: 50%;
-  margin-right: 20px;
+  flex: 1 1 55%;           /* 55% width on desktop */
+  max-width: 55%;
   z-index: 2;
 }
 
 /* HERO IMAGE */
 .hero .hero-image {
-  flex: 0 0 45%; /* exact width */
-  max-width: 45%;
+  flex: 1 1 40%;           /* 40% width on desktop */
+  max-width: 40%;
   text-align: center;
   z-index: 1;
 }
-
 .hero .hero-image img {
   width: 100%;
   height: auto;
@@ -199,7 +197,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   animation: float 6s ease-in-out infinite;
 }
 
-/* Glow behind image */
+/* GLOW BEHIND IMAGE */
 .hero::after {
   content:'';
   position:absolute;
@@ -248,17 +246,16 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 @media(max-width:768px){
   .hero {
     flex-direction: column;
-    text-align: center;
     padding: 46px 16px;
+    text-align: center;
   }
   .hero .hero-image {
-    order: -1; /* image above text */
-    margin-bottom: 18px;
+    order: -1;  /* image above text */
     max-width: 100%;
+    margin-bottom: 18px;
   }
   .hero .hero-text {
     max-width: 100%;
-    margin-right: 0;
   }
   .hero::after {
     width: 300px; height: 300px;
