@@ -130,17 +130,17 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   <div class="cartIcon" onclick="openCart()">🛒 <span id="cartCount">0</span></div>
 </header>
 
-<!-- HERO -->
+<!-- HERO SECTION -->
 <section class="hero" id="home" style="display:block; position:relative; overflow:hidden;">
-  
+
   <!-- Floating Leaves -->
   <div class="floating-leaves">
     <img src="images/leaf1.png" class="leaf leaf1" alt="">
     <img src="images/leaf2.png" class="leaf leaf2" alt="">
     <img src="images/leaf3.png" class="leaf leaf3" alt="">
   </div>
-  
-  <!-- Hero Text -->
+
+  <!-- HERO TEXT -->
   <div class="hero-text">
     <div class="kicker">Fresh • Local • Sustainable</div>
     <h1>Grow. Nourish. Thrive.</h1>
@@ -152,7 +152,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     </div>
   </div>
 
-  <!-- Hero Image -->
+  <!-- HERO IMAGE -->
   <div class="hero-image">
     <img src="images/hero-microgreens.png" alt="Fresh Microgreens"
          onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+Image'">
@@ -161,32 +161,32 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </section>
 
 <style>
-/* HERO */
+/* HERO FIXED */
 .hero {
   display: flex;
-  flex-wrap: nowrap; /* prevent image from dropping */
+  flex-wrap: nowrap; /* never wrap */
   justify-content: space-between;
   align-items: center;
   padding: 68px 20px;
   background: linear-gradient(180deg,#f5fbf5,#f8fff8);
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
-/* Text on left */
+/* HERO TEXT */
 .hero .hero-text {
-  flex: 0 0 55%; /* 55% width */
-  max-width: 55%;
+  flex: 0 0 50%; /* exact width */
+  max-width: 50%;
   margin-right: 20px;
   z-index: 2;
 }
 
-/* Image on right */
+/* HERO IMAGE */
 .hero .hero-image {
-  flex: 0 0 40%; /* 40% width */
-  max-width: 40%;
+  flex: 0 0 45%; /* exact width */
+  max-width: 45%;
   text-align: center;
-  position: relative;
   z-index: 1;
 }
 
@@ -199,7 +199,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   animation: float 6s ease-in-out infinite;
 }
 
-/* Glow / blur behind image */
+/* Glow behind image */
 .hero::after {
   content:'';
   position:absolute;
@@ -244,7 +244,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   100% { transform: translateY(100vh) rotate(180deg); opacity: 0.4; }
 }
 
-/* RESPONSIVE: Mobile */
+/* RESPONSIVE: MOBILE */
 @media(max-width:768px){
   .hero {
     flex-direction: column;
@@ -252,7 +252,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     padding: 46px 16px;
   }
   .hero .hero-image {
-    order:-1; /* image above text */
+    order: -1; /* image above text */
     margin-bottom: 18px;
     max-width: 100%;
   }
@@ -266,6 +266,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   }
 }
 </style>
+
 
 <!-- HOME DETAILS SECTION -->
 <section id="homeDetails" class="home-details" style="padding:60px 20px; background:#f8fff8; position:relative; overflow:hidden; text-align:center;">
