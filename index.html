@@ -162,8 +162,13 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </section>
 <!-- HOME DETAILS SECTION -->
 <section id="homeDetails" class="home-details">
-  <div class="container">
+  <div class="floating-leaves">
+    <img src="images/leaf1.png" class="leaf leaf1" alt="">
+    <img src="images/leaf2.png" class="leaf leaf2" alt="">
+    <img src="images/leaf3.png" class="leaf leaf3" alt="">
+  </div>
 
+  <div class="container">
     <div class="intro-text">
       <h2>A small handful each day brings big health benefits</h2>
     </div>
@@ -194,26 +199,13 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </section>
 
 <style>
-/* 🌱 Home Details Section Styles */
+/* 🌱 Home Details Section */
 .home-details {
   background: #f8fff8;
   padding: 60px 20px;
   position: relative;
   overflow: hidden;
 }
-
-.home-details::before,
-.home-details::after {
-  content: "";
-  position: absolute;
-  background: url('images/leaf-bg.png') no-repeat center/contain;
-  opacity: 0.1;
-  width: 160px;
-  height: 160px;
-  z-index: 0;
-}
-.home-details::before { top: 10%; left: 5%; transform: rotate(-15deg); }
-.home-details::after { bottom: 8%; right: 5%; transform: rotate(20deg); }
 
 .home-details .container {
   max-width: 1000px;
@@ -222,16 +214,17 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   z-index: 2;
 }
 
-.home-details .intro-text {
+.intro-text {
   text-align: center;
   margin-bottom: 40px;
 }
-.home-details .intro-text h2 {
+.intro-text h2 {
   font-size: 1.8rem;
   color: #2f9e44;
   font-weight: 700;
 }
 
+/* 🌿 Cards */
 .assurance-card, .usage-card {
   background: #ffffff;
   border-radius: 16px;
@@ -284,16 +277,36 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   display: flex;
   align-items: center;
   gap: 8px;
-  justify-content: flex-start;
+}
+
+/* 🍃 Floating Leaves Animation */
+.floating-leaves {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+.leaf {
+  position: absolute;
+  opacity: 0.7;
+  width: 80px;
+  animation: floatLeaf linear infinite;
+}
+.leaf1 { left: 10%; animation-duration: 18s; top: -80px; }
+.leaf2 { left: 50%; animation-duration: 22s; top: -100px; animation-delay: 3s; }
+.leaf3 { right: 10%; animation-duration: 25s; top: -120px; animation-delay: 6s; }
+
+@keyframes floatLeaf {
+  0% { transform: translateY(-10%) rotate(0deg); opacity: 0.9; }
+  50% { transform: translateY(50vh) rotate(90deg); opacity: 0.7; }
+  100% { transform: translateY(100vh) rotate(180deg); opacity: 0.4; }
 }
 
 @media (max-width: 600px) {
-  .home-details .intro-text h2 {
-    font-size: 1.4rem;
-  }
-  .assurance-card, .usage-card {
-    padding: 20px;
-  }
+  .intro-text h2 { font-size: 1.4rem; }
+  .assurance-card, .usage-card { padding: 20px; }
+  .leaf { width: 50px; }
 }
 </style>
 
