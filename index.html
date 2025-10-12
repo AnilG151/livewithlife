@@ -28,20 +28,6 @@ header nav a:hover{background:rgba(47,158,68,0.08);color:var(--green-1)}
 header .cartIcon{position:relative;font-size:20px;cursor:pointer}
 header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--green-1);color:#fff;padding:2px 7px;border-radius:999px;font-size:12px;font-weight:700}
 
-/* HERO */
-.hero{position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:68px 20px;background:linear-gradient(180deg,#f5fbf5,#f8fff8);overflow:hidden}
-.hero::after{content:'';position:absolute;right:-120px;top:-40px;width:420px;height:420px;border-radius:50%;background:linear-gradient(180deg,rgba(107,211,106,0.08),rgba(47,158,68,0.04));filter:blur(40px);}
-.hero .hero-text{flex:1;min-width:280px}
-.hero .hero-text h1{font-size: clamp(28px, 6vw, 52px);color: #000; /* Changed to black */margin-bottom: 16px;letter-spacing: -0.5px;}
-.hero .hero-text p.lead{font-size:16px;color:var(--muted)}
-.hero .hero-text p.details{margin-top:16px;color:var(--muted);max-width:60ch}
-.hero .ctaRow{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;}
-.hero .btn{background:var(--green-1);color:white;padding:12px 20px;border-radius:12px;border:0;font-weight:700;transition:transform .22s ease, box-shadow .22s ease}
-.hero .btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(47,158,68,0.18)}
-.hero .btn.ghost{background:transparent;border:2px solid rgba(47,158,68,0.12);color:var(--green-1)}
-.hero .hero-image{flex:1;min-width:280px;text-align:center;margin-top:16px;}
-.hero .hero-image img{border-radius:18px;box-shadow:var(--shadow);transform:translateY(6px);animation:float 6s ease-in-out infinite}
-@keyframes float{0%{transform:translateY(6px)}50%{transform:translateY(-6px)}100%{transform:translateY(6px)}}
 
 /* WHY MICROGREENS */
 .whyMicro{background:#fff;padding:56px 20px;text-align:center}
@@ -145,7 +131,10 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </header>
 
 <!-- HERO -->
-<section class="hero" id="home" style="display:block">
+<section class="hero" id="home" style="display:block; position:relative; overflow:hidden;">
+  <div class="hero-overlay"></div>
+  
+  <!-- Hero Text -->
   <div class="hero-text">
     <div class="kicker">Fresh • Local • Sustainable</div>
     <h1>Grow. Nourish. Thrive.</h1>
@@ -156,10 +145,101 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
       <button class="btn ghost" onclick="toggleSection('whyMicro')">Learn More</button>
     </div>
   </div>
+
+  <!-- Hero Image -->
   <div class="hero-image">
-    <img src="images/hero-microgreens.png" alt="Fresh Microgreens" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+Image'">
+    <img src="images/hero-microgreens.png" alt="Fresh Microgreens" 
+         onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+Image'">
   </div>
 </section>
+
+<style>
+/* HERO */
+.hero {
+  display: flex;
+  flex-wrap: nowrap; /* Keep side-by-side on desktop */
+  justify-content: space-between;
+  align-items: center;
+  padding: 68px 20px;
+  background: linear-gradient(180deg,#f5fbf5,#f8fff8);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .hero-text {
+  flex: 1;
+  min-width: 300px;
+  margin-right: 30px;
+  z-index: 2; /* Keep text above floating image */
+}
+
+.hero .hero-text h1 {
+  font-size: clamp(28px, 6vw, 52px);
+  color: #000;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.hero .hero-text p.lead, .hero .hero-text p.details {
+  color: var(--muted);
+}
+
+.hero .hero-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero .hero-image img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  transform: translateY(6px);
+  animation: float 6s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+/* Floating background effect behind text */
+.hero::after {
+  content:'';
+  position:absolute;
+  top:-60px;
+  right:-100px;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  background: linear-gradient(180deg, rgba(107,211,106,0.08), rgba(47,158,68,0.04));
+  filter: blur(50px);
+  z-index:0;
+}
+
+/* FLOAT ANIMATION */
+@keyframes float {
+  0% { transform: translateY(6px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(6px); }
+}
+
+/* RESPONSIVE: Mobile */
+@media(max-width:768px){
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 46px 16px;
+  }
+  .hero .hero-image {
+    order:-1; /* move image above text */
+    margin-bottom: 18px;
+  }
+  .hero::after { width: 300px; height: 300px; top:-40px; right:-60px; }
+}
+</style>
+
 <!-- HOME DETAILS SECTION -->
 <section id="homeDetails" class="home-details" style="padding:60px 20px; background:#f8fff8; position:relative; overflow:hidden; text-align:center;">
   
