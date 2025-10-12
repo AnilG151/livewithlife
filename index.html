@@ -218,6 +218,8 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   padding: 60px 20px;
   position: relative;
   overflow: hidden;
+  transition: opacity 0.3s ease;
+  opacity: 1;
 }
 
 .home-details .container {
@@ -245,6 +247,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   padding: 30px 25px;
   margin-bottom: 30px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
 }
 .assurance-card:hover, .usage-card:hover {
   transform: translateY(-5px);
@@ -280,16 +283,10 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   font-size: 15px;
   line-height: 1.8;
   color: #444;
+  transition: transform 0.2s ease;
 }
-
-.usage-card {
-  background: #e8fbe8;
-}
-
-.usage-card li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.assurance-card ul li:hover, .usage-card ul li:hover {
+  transform: translateX(6px);
 }
 
 /* 🍃 Floating Leaves Animation */
@@ -305,6 +302,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   opacity: 0.7;
   width: 80px;
   animation: floatLeaf linear infinite;
+  will-change: transform;
 }
 .leaf1 { left: 10%; animation-duration: 18s; top: -80px; }
 .leaf2 { left: 50%; animation-duration: 22s; top: -100px; animation-delay: 3s; }
@@ -316,6 +314,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   100% { transform: translateY(100vh) rotate(180deg); opacity: 0.4; }
 }
 
+/* RESPONSIVE */
 @media (max-width: 600px) {
   .intro-text h2 { font-size: 1.4rem; }
   .assurance-card, .usage-card { padding: 20px; }
@@ -434,9 +433,16 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 <script>
 // SECTION TOGGLE
 function toggleSection(id){
-  document.querySelectorAll('section').forEach(s=>s.style.display='none');
-  document.getElementById(id).style.display='block';
-  window.scrollTo(0,0);
+  document.querySelectorAll('section').forEach(s=>{
+    if(s.style.display !== 'none'){
+      s.style.opacity = 0;
+      setTimeout(()=>s.style.display='none', 300);
+    }
+  });
+  const sec = document.getElementById(id);
+  sec.style.display = 'block';
+  setTimeout(()=>sec.style.opacity = 1, 20);
+  window.scrollTo({top:0, behavior:'smooth'});
 }
 
 // PRODUCTS DATA
