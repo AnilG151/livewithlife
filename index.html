@@ -1,3 +1,4 @@
+13 Oct
 
 <!doctype html>
 <html lang="en">
@@ -604,106 +605,59 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </footer>
 
 <script>
-// ========================
-// SECTION TOGGLE FUNCTION
-// ========================
-function toggleSection(id) {
-  const allSections = document.querySelectorAll('section');
-
-  allSections.forEach(sec => {
-    // Hide all sections first
-    sec.style.opacity = 0;
-    setTimeout(() => sec.style.display = 'none', 300);
+// SECTION TOGGLE
+function toggleSection(id){
+  document.querySelectorAll('section').forEach(s=>{
+    if(s.style.display !== 'none'){
+      s.style.opacity = 0;
+      setTimeout(()=>s.style.display='none', 300);
+    }
   });
-
-  if (id === 'home') {
-    // Show both Hero and Home Details together
-    const hero = document.getElementById('home');
-    const homeDetails = document.getElementById('homeDetails');
-
-    hero.style.display = 'block';
-    homeDetails.style.display = 'block';
-
-    setTimeout(() => {
-      hero.style.opacity = 1;
-      homeDetails.style.opacity = 1;
-    }, 20);
-  } else {
-    const sec = document.getElementById(id);
-    sec.style.display = 'block';
-    setTimeout(() => sec.style.opacity = 1, 20);
-  }
-
-  // Smooth scroll to top
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const sec = document.getElementById(id);
+  sec.style.display = 'block';
+  setTimeout(()=>sec.style.opacity = 1, 20);
+  window.scrollTo({top:0, behavior:'smooth'});
 }
 
-// Show Home section by default on page load
-window.addEventListener('DOMContentLoaded', () => {
-  toggleSection('home');
-});
-
-// ========================
 // PRODUCTS DATA
-// ========================
 const products = [
   {id:1,name:"Sunflower Microgreens",desc:"Crunchy & nutty flavor",price:220,img:"images/sunflower.png"},
   {id:2,name:"Radish Microgreens",desc:"Spicy and fresh",price:180,img:"images/radish.png"},
   {id:3,name:"Pea Shoots",desc:"Sweet and tender",price:200,img:"images/pea.png"},
   {id:4,name:"Wheatgrass",desc:"Detox powerhouse",price:250,img:"images/wheatgrass.png"},
 ];
+let cart=[];
 
-let cart = [];
-
-// ========================
 // RENDER PRODUCTS
-// ========================
-const grid = document.getElementById('productGrid');
-products.forEach(p => {
-  const div = document.createElement('div');
-  div.className = 'product fadeIn';
-  div.innerHTML = `
-    <div class="productImg">
-      <img src="${p.img}" onerror="this.onerror=null;this.src='https://via.placeholder.com/120.png?text=Img'">
-    </div>
-    <h3>${p.name}</h3>
-    <p class="desc">${p.desc}</p>
-    <div class="priceRow">
-      <div class="price">₹${p.price}</div>
-      <button class="addCart" onclick="addToCart(${p.id})">Add 🛒</button>
-    </div>`;
+const grid=document.getElementById('productGrid');
+products.forEach(p=>{
+  const div=document.createElement('div'); div.className='product fadeIn';
+  div.innerHTML=`<div class="productImg"><img src="${p.img}" onerror="this.onerror=null;this.src='https://via.placeholder.com/120.png?text=Img'"></div>
+  <h3>${p.name}</h3>
+  <p class="desc">${p.desc}</p>
+  <div class="priceRow"><div class="price">₹${p.price}</div><button class="addCart" onclick="addToCart(${p.id})">Add 🛒</button></div>`;
   grid.appendChild(div);
 });
 
-// ========================
 // CART FUNCTIONS
-// ========================
-function addToCart(id) {
-  const prod = products.find(p => p.id === id);
-  const existing = cart.find(c => c.id === id);
-  if (existing) { existing.qty += 1; }
-  else { cart.push({...prod, qty:1}); }
+function addToCart(id){
+  const prod=products.find(p=>p.id===id);
+  const existing=cart.find(c=>c.id===id);
+  if(existing){existing.qty+=1;} else {cart.push({...prod,qty:1});}
   updateCartUI();
 }
-
-function updateCartUI() {
-  const totalQty = cart.reduce((a,c) => a + c.qty, 0);
-  document.getElementById('cartCount').innerText = totalQty;
-  document.getElementById('miniCount').innerText = totalQty;
-
-  const list = document.getElementById('cartList'); 
-  list.innerHTML = '';
-  let total = 0;
-
-  cart.forEach(c => {
-    total += c.price * c.qty;
-    const item = document.createElement('div'); 
-    item.className = 'cartItem fadeIn';
-    item.innerHTML = `
-      <img src="${c.img}" onerror="this.onerror=null;this.src='https://via.placeholder.com/80.png'">
+function updateCartUI(){
+  document.getElementById('cartCount').innerText=cart.reduce((a,c)=>a+c.qty,0);
+  document.getElementById('miniCount').innerText=cart.reduce((a,c)=>a+c.qty,0);
+  const list=document.getElementById('cartList'); list.innerHTML='';
+  let total=0;
+  cart.forEach(c=>{
+    total+=c.price*c.qty;
+    const item=document.createElement('div'); item.className='cartItem fadeIn';
+    item.innerHTML=`<img src="${c.img}" onerror="this.onerror=null;this.src='https://via.placeholder.com/80.png'">
       <div style="flex:1">
         <div>${c.name}</div>
-        <div>₹${c.price} x ${c.qty} = ₹${c.price * c.qty}</div>
+        <div>₹${c.price} x ${c.qty} = ₹${c.price*c.qty}</div>
       </div>
       <div class="qtyCtrl">
         <button onclick="changeQty(${c.id},-1)">➖</button>
@@ -713,59 +667,34 @@ function updateCartUI() {
       </div>`;
     list.appendChild(item);
   });
-
-  document.getElementById('cartTotal').innerText = total;
-  document.getElementById('miniCartBar').style.display = cart.length > 0 ? 'flex' : 'none';
+  document.getElementById('cartTotal').innerText=total;
+  document.getElementById('miniCartBar').style.display=cart.length>0?'flex':'none';
 }
-
-function changeQty(id, val) {
-  const item = cart.find(c => c.id === id);
-  if (!item) return;
-  item.qty += val;
-  if (item.qty <= 0) { cart = cart.filter(c => c.id !== id); }
+function changeQty(id,val){
+  const item=cart.find(c=>c.id===id); if(!item)return;
+  item.qty+=val; if(item.qty<=0){cart=cart.filter(c=>c.id!==id);}
   updateCartUI();
 }
+function openCart(){document.getElementById('cartModalOverlay').style.display='flex';document.querySelector('.cartModal').style.opacity=1;document.querySelector('.cartModal').style.transform='translateY(0)';}
+function closeCart(){document.getElementById('cartModalOverlay').style.display='none';document.querySelector('.cartModal').style.opacity=0;document.querySelector('.cartModal').style.transform='translateY(30px)';}
+function checkout(){alert('Proceed to WhatsApp checkout!');}
 
-function openCart() {
-  const overlay = document.getElementById('cartModalOverlay');
-  overlay.style.display = 'flex';
-  const modal = document.querySelector('.cartModal');
-  modal.style.opacity = 1;
-  modal.style.transform = 'translateY(0)';
-}
-
-function closeCart() {
-  const overlay = document.getElementById('cartModalOverlay');
-  overlay.style.display = 'none';
-  const modal = document.querySelector('.cartModal');
-  modal.style.opacity = 0;
-  modal.style.transform = 'translateY(30px)';
-}
-
-function checkout() {
-  alert('Proceed to WhatsApp checkout!');
-}
-
-// ========================
 // LIGHTBOX
-// ========================
-document.querySelectorAll('.galleryGrid img').forEach(img => {
-  img.onclick = () => {
-    const lb = document.getElementById('lightbox');
-    lb.querySelector('img').src = img.src;
-    lb.style.display = 'flex';
+document.querySelectorAll('.galleryGrid img').forEach(img=>{
+  img.onclick=()=>{
+    const lb=document.getElementById('lightbox');
+    lb.querySelector('img').src=img.src;
+    lb.style.display='flex';
   }
 });
-document.getElementById('lightbox').onclick = function() { this.style.display='none' };
+document.getElementById('lightbox').onclick=function(){this.style.display='none'};
 
-// ========================
 // TESTIMONIALS SLIDER
-// ========================
-let tIndex = 0;
+let tIndex=0;
 function slideTestimonial(){ 
-  const list = document.getElementById('testList');
-  tIndex = (tIndex + 1) % document.querySelectorAll('.testCard').length;
-  list.style.transform = `translateX(-${tIndex*100}%)`;
+  const list=document.getElementById('testList');
+  tIndex=(tIndex+1)%document.querySelectorAll('.testCard').length;
+  list.style.transform=`translateX(-${tIndex*100}%)`;
 }
 setInterval(slideTestimonial,6000);
 </script>
