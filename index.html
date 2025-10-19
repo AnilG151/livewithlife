@@ -43,65 +43,15 @@ header .cartIcon{position:relative;font-size:20px;cursor:pointer}
 header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--green-1);color:#fff;padding:2px 7px;border-radius:999px;font-size:12px;font-weight:700}
 
 
-/* WHY MICROGREENS SECTION */
-.whyMicro {
-  background: #fff;
-  padding: 56px 20px;
-  text-align: center; /* centers headings and quote text */
-}
-
-/* Section heading */
-.whyMicro h2 {
-  font-size: 28px;
-  color: var(--green-1);
-  margin-bottom: 30px;
-}
-
-/* Quote / CTA */
-.whyMicro .why-quote {
-  max-width: 600px;   /* optional: limits width of quote */
-  margin: 0 auto 40px auto; /* centers quote and adds bottom space */
-  text-align: center; /* ensures button and text are centered */
-}
-
-/* Grid of cards */
-.whyGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 22px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-/* Individual cards */
-.whyCard {
-  background: var(--glass);
-  border-radius: 14px;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
-  transition: transform 0.28s ease, box-shadow 0.28s ease;
-}
-
-.whyCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
-}
-
-.whyCard img {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 14px;
-}
-
-.whyCard h3 {
-  color: var(--green-1);
-  font-size: 16px;
-  margin-bottom: 8px;
-}
-
-.whyCard p {
-  color: var(--muted);
-  font-size: 14px;
+/* WHY MICROGREENS */
+.whyMicro{background:#fff;padding:56px 20px;text-align:center}
+.whyMicro h2{font-size:28px;color:var(--green-1);margin-bottom:30px}
+.whyGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;max-width:1100px;margin:0 auto}
+.whyCard{background:var(--glass);border-radius:14px;padding:20px;box-shadow:0 8px 20px rgba(15,23,42,0.04);transition:transform .28s ease, box-shadow .28s ease}
+.whyCard:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(15,23,42,0.08)}
+.whyCard img{width:56px;height:56px;margin:0 auto 14px}
+.whyCard h3{color:var(--green-1);font-size:16px;margin-bottom:8px}
+.whyCard p{color:var(--muted);font-size:14px}
 
 /* SECTIONS */
 section{padding:40px 0}
@@ -545,7 +495,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </style>
 
 <!-- 🌾 WHY MICROGREENS SECTION -->
-<section id="whyMicro" style="display:none">
+<section id="whyMicro" class="why-microgreens-section">
   <div class="why-container">
     <h2 class="why-title">Why Microgreens?</h2>
     <p class="why-intro">
