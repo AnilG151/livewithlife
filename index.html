@@ -496,28 +496,78 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 }
 </style>
 
-<!-- WHY MICROGREENS -->
-<section class="whyMicro" id="whyMicro" style="display:none">
-  <h2>Why Microgreens?</h2>
-  <div class="whyGrid">
-    <div class="whyCard fadeIn">
-      <img src="images/nutrition.png" alt="Nutrition">
-      <h3>High Nutrients</h3>
-      <p>Rich in vitamins, minerals & antioxidants for daily health boost.</p>
+<!-- 🌾 WHY MICROGREENS SECTION -->
+<section id="why-microgreens" class="why-microgreens-section">
+  <div class="why-container">
+    <h2 class="why-title">Why Microgreens?</h2>
+    <p class="why-intro">
+      Tiny but mighty — microgreens are young edible greens packed with concentrated nutrients, vibrant flavors, and a burst of life in every leaf.
+    </p>
+
+    <!-- 🌱 BENEFITS GRID -->
+    <div class="why-grid">
+      <div class="why-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Nutrients" />
+        <h3>Up to 40× More Nutrients</h3>
+        <p>Compared to mature greens, microgreens deliver intense nutrition in every bite.</p>
+      </div>
+      <div class="why-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331926.png" alt="Immunity" />
+        <h3>Boosts Immunity</h3>
+        <p>Rich in vitamins A, C, and K, they help your body fight fatigue and infections.</p>
+      </div>
+      <div class="why-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="Sustainability" />
+        <h3>Eco-Friendly Growth</h3>
+        <p>Microgreens use 90% less water and grow naturally without pesticides or chemicals.</p>
+      </div>
+      <div class="why-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2830/2830289.png" alt="Freshness" />
+        <h3>Harvested Fresh</h3>
+        <p>From our trays to your plate within hours — nothing beats the freshness of Life With Leaf.</p>
+      </div>
     </div>
-    <div class="whyCard fadeIn">
-      <img src="images/fresh.png" alt="Fresh">
-      <h3>Fresh & Local</h3>
-      <p>Grown and delivered fresh to ensure maximum flavor & nutrition.</p>
+
+    <!-- 🧬 COMPARISON TABLE -->
+    <div class="why-compare">
+      <h3>Microgreens vs. Regular Greens</h3>
+      <table>
+        <tr>
+          <th>Feature</th>
+          <th>Microgreens 🌿</th>
+          <th>Regular Greens 🥬</th>
+        </tr>
+        <tr>
+          <td>Nutrient Density</td>
+          <td>4–40× higher</td>
+          <td>Standard</td>
+        </tr>
+        <tr>
+          <td>Freshness</td>
+          <td>Harvested daily</td>
+          <td>Stored for days</td>
+        </tr>
+        <tr>
+          <td>Growth Cycle</td>
+          <td>7–10 days</td>
+          <td>30–60 days</td>
+        </tr>
+        <tr>
+          <td>Pesticide Use</td>
+          <td>Zero</td>
+          <td>Possible residue</td>
+        </tr>
+      </table>
     </div>
-    <div class="whyCard fadeIn">
-      <img src="images/sustainable.png" alt="Sustainable">
-      <h3>Sustainable</h3>
-      <p>Eco-friendly farming with minimal water & no pesticides.</p>
+
+    <!-- 🌸 QUOTE / CTA -->
+    <div class="why-quote">
+      <p>“A handful of microgreens a day can bring a world of health benefits.”</p>
+      <a href="#shop" class="why-btn">Explore Fresh Greens</a>
     </div>
   </div>
 </section>
-
+  
 <!-- PRODUCTS -->
 <section id="products" style="display:none">
   <div class="container">
@@ -527,7 +577,124 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     </div>
   </div>
 </section>
+<style>
+/* 🌾 WHY MICROGREENS SECTION */
+.why-microgreens-section {
+  background: linear-gradient(180deg, #f7f5ef, #ece8de);
+  padding: 80px 20px;
+  text-align: center;
+  color: #2e2b25;
+  font-family: "Poppins", sans-serif;
+}
 
+.why-title {
+  font-size: 2.2rem;
+  color: #3b3b2b;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.why-intro {
+  max-width: 750px;
+  margin: 0 auto 50px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4a473e;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.why-item {
+  background: #ffffffd8;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.why-item img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.why-item h3 {
+  font-size: 1.1rem;
+  color: #2e2b25;
+  margin-bottom: 10px;
+}
+
+.why-item p {
+  font-size: 0.95rem;
+  color: #5a554d;
+}
+
+.why-compare {
+  background: #f5f1e6;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.why-compare h3 {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  color: #3c3a32;
+}
+
+.why-compare table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.why-compare th, .why-compare td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd7c8;
+}
+
+.why-compare th {
+  background-color: #e7e2d5;
+  color: #333;
+}
+
+.why-quote {
+  margin-top: 30px;
+}
+
+.why-quote p {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #4b463d;
+}
+
+.why-btn {
+  background: #628b4b;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.why-btn:hover {
+  background: #4d6c39;
+}
+</style>
 <!-- HOW IT WORKS -->
 <section id="how" style="display:none">
   <div class="container">
