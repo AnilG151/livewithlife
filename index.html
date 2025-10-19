@@ -772,6 +772,39 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </footer>
 
 <script>
+// 🌿 Section Toggle Function
+function toggleSection(id) {
+  const allSections = document.querySelectorAll('section');
+
+  // Hide all sections smoothly
+  allSections.forEach(sec => {
+    sec.style.opacity = 0;
+    setTimeout(() => sec.style.display = 'none', 300);
+  });
+
+  setTimeout(() => {
+    if (id === 'home') {
+      // Show both hero and home details together
+      const hero = document.getElementById('hero');
+      const homeDetails = document.getElementById('home-details');
+      if (hero) {
+        hero.style.display = 'block';
+        setTimeout(() => hero.style.opacity = 1, 50);
+      }
+      if (homeDetails) {
+        homeDetails.style.display = 'block';
+        setTimeout(() => homeDetails.style.opacity = 1, 50);
+      }
+    } else {
+      // Show only the selected section
+      const target = document.getElementById(id);
+      if (target) {
+        target.style.display = 'block';
+        setTimeout(() => target.style.opacity = 1, 50);
+      }
+    }
+  }, 300);
+}
 // SECTION TOGGLE
 function toggleSection(id){
   document.querySelectorAll('section').forEach(s=>{
