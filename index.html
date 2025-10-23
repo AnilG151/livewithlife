@@ -826,7 +826,56 @@ document.querySelectorAll('.galleryGrid img').forEach(img=>{
   }
 });
 document.getElementById('lightbox').onclick=function(){this.style.display='none'};
-
 </script>
+<script>
+// 🌿 Section Toggle & Smooth Scroll
+function toggleSection(id) {
+  const allSections = document.querySelectorAll('section');
+
+  // Hide all sections with fade-out
+  allSections.forEach(sec => {
+    sec.style.opacity = 0;
+    setTimeout(() => sec.style.display = 'none', 300);
+  });
+
+  // Show target section(s) after fade-out
+  setTimeout(() => {
+    if(id === 'home'){
+      // Show both hero and homeDetails
+      ['home','homeDetails'].forEach(secId => {
+        const s = document.getElementById(secId);
+        if(s){
+          s.style.display = 'block';
+          setTimeout(()=> s.style.opacity = 1, 50);
+        }
+      });
+    } else {
+      const target = document.getElementById(id);
+      if(target){
+        target.style.display = 'block';
+        setTimeout(()=> target.style.opacity = 1, 50);
+      }
+    }
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 300);
+}
+
+// Smooth scroll for nav links
+document.querySelectorAll('header nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href').substring(1);
+    toggleSection(targetId);
+  });
+});
+
+// Logo click scrolls to home
+document.querySelector('header .brand').addEventListener('click', () => {
+  toggleSection('home');
+});
+</script>
+
+
 </body>
 </html>
