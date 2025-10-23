@@ -908,15 +908,24 @@ const products = [
 let cart=[];
 
 // RENDER PRODUCTS
-const grid=document.getElementById('productGrid');
-products.forEach(p=>{
-  const div=document.createElement('div'); div.className='product fadeIn';
-  div.innerHTML=`<div class="productImg"><img src="${p.img}" onerror="this.onerror=null;this.src='https://via.placeholder.com/120.png?text=Img'"></div>
-  <h3>${p.name}</h3>
-  <p class="desc">${p.desc}</p>
-  <div class="priceRow"><div class="price">₹${p.price}</div><button class="addCart" onclick="addToCart(${p.id})">Add 🛒</button></div>`;
+const grid = document.getElementById('productGrid');
+products.forEach(p => {
+  const div = document.createElement('div');
+  div.className = 'product fadeIn';
+  div.innerHTML = `
+    <div class="productImg">
+      <img src="${p.image}" onerror="this.onerror=null;this.src='https://via.placeholder.com/120.png?text=Img'">
+    </div>
+    <h3>${p.name}</h3>
+    <p class="desc">${p.benefits}</p>
+    <div class="priceRow">
+      <div class="price">₹${p.price}</div>
+      <button class="addCart" onclick="addToCart(${p.id})">Add 🛒</button>
+    </div>
+  `;
   grid.appendChild(div);
 });
+
 
 // CART FUNCTIONS
 function addToCart(id){
