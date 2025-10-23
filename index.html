@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Life With Leaf — Healthy Living</title>
   <meta name="description" content="Life With Leaf - Live microgreens, pesticide-free, homegrown. Fresh microgreens, grow kits and seeds." />
-
   <style>
   :root{
     --green-1:#2f9e44; --green-2:#6bd36a; --muted:#556068;
@@ -18,7 +17,6 @@
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
   button{font-family:inherit;cursor:pointer}
-
   /* HEADER */
   header{position:sticky;top:0;z-index:60;background:var(--card);border-bottom:1px solid rgba(15,23,42,0.06);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;box-shadow:0 6px 18px rgba(0,0,0,0.03);backdrop-filter:blur(6px)}
   header .brand{display:flex;align-items:center;gap:12px}
@@ -31,8 +29,7 @@
   header nav a:hover{background:rgba(47,158,68,0.08);color:var(--green-1)}
   header .cartIcon{position:relative;font-size:20px;cursor:pointer}
   header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--green-1);color:#fff;padding:2px 7px;border-radius:999px;font-size:12px;font-weight:700}
-
-  /* CTA Banner (new) */
+  /* CTA Banner */
   .cta-banner {
     background: linear-gradient(90deg, #6bd36a 30%, #f8fff8 100%);
     padding: 40px 16px;
@@ -57,13 +54,11 @@
     transition: background 0.2s;
   }
   .cta-btn:hover { background: #174c2a; }
-
-  /* Badges (new) */
+  /* Badges */
   .badges-row {display: flex;justify-content: center;gap: 28px;margin: 24px 0;}
   .badge {background: #eefaf0;color: #2f9e44;font-weight: 700;padding: 10px 26px;border-radius: 99px;box-shadow: 0 2px 10px rgba(0,0,0,0.08);font-size: 1rem;transition: transform .2s;}
   .badge:hover {transform: scale(1.1);}
-  
-  /* Quick Reviews (new) */
+  /* Quick Reviews */
   .quick-reviews {
     display: flex; gap: 32px; justify-content: center;
     margin: 24px auto; background: #fff; border-radius: 16px;
@@ -73,8 +68,7 @@
   .review { display: flex; align-items: center; gap: 12px; }
   .review img { width: 36px; height: 36px; border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.07);}
   .review span { font-size: 1rem; color: #2f9e44; font-weight: 600; }
-
-  /* Newsletter Signup (new) */
+  /* Newsletter Signup */
   .newsletter {
     text-align: center;
     background: #e8f5e9;
@@ -88,12 +82,44 @@
     border: none;cursor: pointer;transition: background .2s;
   }
   .newsletter button:hover { background: #174c2a; }
-
-  /* Fade-in Animation (new) */
   .fadeInOnScroll {opacity: 0; transform: translateY(40px);
     transition: opacity 0.7s, transform 0.7s;}
   .fadeInOnScroll.visible { opacity: 1; transform: translateY(0); }
-
+  /* Microgreen Product Cards */
+  .microgreen-products {
+    background: #f8fff8;
+    padding: 48px 20px;
+    text-align: center;
+  }
+  .microgreen-products h2 {
+    color: #2f9e44;
+    font-size: 2rem;
+    margin-bottom: 32px;
+  }
+  .microgreen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .microgreen-card {
+    background: #fff; border-radius: 18px; box-shadow: 0 6px 24px rgba(47,158,68,0.09);
+    padding: 28px 22px; text-align: left; transition: transform .16s, box-shadow .16s;
+  }
+  .microgreen-card:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 32px rgba(47,158,68,0.16);
+  }
+  .microgreen-card h3 {
+    color: #174c2a;
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+  .microgreen-card ul {list-style: none;padding: 0;margin: 0;}
+  .microgreen-card li {margin-bottom: 7px;font-size: 1rem;color: #334f44;}
+  .microgreen-card strong {color: #2f9e44;font-weight: 600;}
   /* HERO SECTION */
   .hero {
     display: flex;flex-wrap: nowrap;justify-content: space-between;align-items: center;
@@ -102,9 +128,7 @@
   }
   .hero .hero-text {flex: 1 1 50%;max-width: 50%;min-width: 300px;z-index: 2;}
   .hero .hero-text .kicker {font-size: 16px;letter-spacing: 0.5px;}
-  .hero .hero-text h1 {
-    font-size: 64px; font-weight: 800; color: #11402a; line-height: 1.1; margin: 12px 0 20px;
-  }
+  .hero .hero-text h1 {font-size: 64px; font-weight: 800; color: #11402a; line-height: 1.1; margin: 12px 0 20px;}
   .hero .hero-text p.lead {font-size: 18px;color: var(--muted);margin-bottom: 16px;}
   .hero .hero-text p.details {font-size: 14px;color: var(--muted);line-height: 1.6;margin-bottom: 24px;}
   .hero .ctaRow {display: flex;gap: 16px;flex-wrap: wrap;}
@@ -114,16 +138,12 @@
   .hero .hero-image img {width: 100%;height: auto;border-radius: 18px;box-shadow: 0 12px 30px rgba(15,23,42,0.08);transform: translateY(6px);animation: float 6s ease-in-out infinite;}
   .hero::after {content:'';position:absolute;top:-60px;right:-100px;width:500px;height:500px;border-radius:50%;background: linear-gradient(180deg, rgba(107,211,106,0.08), rgba(47,158,68,0.04));filter: blur(50px);z-index:0;}
   @keyframes float {0% { transform: translateY(6px); }50% { transform: translateY(-6px); }100% { transform: translateY(6px); }}
-
-  /* Floating Leaves Animation */
   .floating-leaves {position: absolute;inset: 0;overflow: hidden;z-index: 0;pointer-events: none;}
   .leaf {position: absolute;opacity: 0.7;width: 80px;animation: floatLeaf linear infinite;}
   .leaf1 { left: 10%; animation-duration: 18s; top: -80px; }
   .leaf2 { left: 50%; animation-duration: 22s; top: -100px; animation-delay: 3s; }
   .leaf3 { right: 10%; animation-duration: 25s; top: -120px; animation-delay: 6s; }
   @keyframes floatLeaf {0% { transform: translateY(-10%) rotate(0deg); opacity: 0.9; }50% { transform: translateY(50vh) rotate(90deg); opacity: 0.7; }100% { transform: translateY(100vh) rotate(180deg); opacity: 0.4; }}
-
-  /* Responsive for Mobile */
   @media(max-width:768px){
     .hero {flex-direction: column;padding: 46px 16px;text-align: center;}
     .hero .hero-image {order: -1;max-width: 100%;margin-bottom: 18px;}
@@ -134,6 +154,7 @@
     .hero::after {width: 300px; height: 300px;top:-40px; right:-60px;}
     .badges-row {flex-direction: column; gap: 16px;}
     .quick-reviews {flex-direction: column; gap: 16px;}
+    .microgreen-grid {grid-template-columns: 1fr;}
   }
   </style>
 </head>
@@ -149,17 +170,11 @@
   <nav>
     <ul>
       <li><a onclick="toggleSection('home')">Home</a></li>
-      <li><a onclick="toggleSection('whyMicro')">Why Microgreens</a></li>
       <li><a onclick="toggleSection('products')">Products</a></li>
-      <li><a onclick="toggleSection('how')">How It Works</a></li>
-      <li><a onclick="toggleSection('gallery')">Gallery</a></li>
-      <li><a onclick="toggleSection('testimonials')">Testimonials</a></li>
     </ul>
   </nav>
   <div class="cartIcon" onclick="openCart()">🛒 <span id="cartCount">0</span></div>
 </header>
-
-<!-- HERO -->
 <section class="hero fadeInOnScroll" id="home">
   <div class="floating-leaves">
     <img src="images/leaf1.png" class="leaf leaf1" alt="">
@@ -173,30 +188,23 @@
     <p class="details">Microgreens are tender, young greens harvested at the peak of their nutritional value. Despite their small size, they contain 4 to 40 times more vitamins, minerals, and antioxidants than their fully grown counterparts. A small handful each day brings big health benefits.</p>
     <div class="ctaRow">
       <button class="btn" onclick="toggleSection('products')">Shop Now</button>
-      <button class="btn ghost" onclick="toggleSection('whyMicro')">Learn More</button>
     </div>
   </div>
   <div class="hero-image">
     <img src="images/hero-microgreens.png" alt="Fresh Microgreens" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+Image'">
   </div>
 </section>
-
-<!-- CTA BANNER (new feature) -->
 <section class="cta-banner fadeInOnScroll">
   <h2>Eat Fresh, Live Well!</h2>
   <p>Order any microgreens today and unlock a healthier lifestyle—delivered fresh to your home.</p>
   <a href="#products" class="cta-btn" onclick="toggleSection('products')">Shop Microgreens Now</a>
 </section>
-
-<!-- BADGES ROW (new feature) -->
 <div class="badges-row fadeInOnScroll">
   <div class="badge">🌱 Pesticide Free</div>
   <div class="badge">💚 Non-GMO</div>
   <div class="badge">🌏 Locally Grown</div>
   <div class="badge">🚚 Fast Delivery</div>
 </div>
-
-<!-- QUICK REVIEWS STRIP (new feature) -->
 <div class="quick-reviews fadeInOnScroll">
   <div class="review">
     <img src="images/avatar1.png" alt="Priya">
@@ -207,8 +215,6 @@
     <span>"Microgreens make my salads shine!"</span>
   </div>
 </div>
-
-<!-- NEWSLETTER SIGNUP (new feature) -->
 <section class="newsletter fadeInOnScroll">
   <h3>Stay updated with our microgreens news & deals!</h3>
   <form onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
@@ -216,17 +222,148 @@
     <button type="submit">Subscribe</button>
   </form>
 </section>
-
-<!-- (Keep your other sections here, like homeDetails, whyMicro etc.) -->
-<!-- HOME DETAILS SECTION, WHY MICROGREENS, PRODUCTS, HOW IT WORKS, GALLERY, TESTIMONIALS, MINI-CART, LIGHTBOX, FOOTER, etc. -->
-<!-- ... (Your previous code for these sections remains, you can use fadeInOnScroll class for animations) -->
-
+<!-- MICROGREEN PRODUCT CARDS: NEW FEATURE -->
+<section class="microgreen-products fadeInOnScroll" id="products">
+  <h2>Our Microgreens: Product Benefits</h2>
+  <div class="microgreen-grid">
+    <div class="microgreen-card">
+      <h3>White Radish</h3>
+      <ul>
+        <li><strong>Vitamins:</strong> C, K</li>
+        <li><strong>Minerals:</strong> Calcium, Potassium</li>
+        <li><strong>Antioxidants:</strong> Anthocyanins</li>
+        <li><strong>Health Benefits:</strong> Anti-inflammatory, digestion</li>
+        <li><strong>Skin & Hair:</strong> Skin clarity</li>
+        <li><strong>Additional:</strong> Supports metabolism</li>
+      </ul>
+    </div>
+    <div class="microgreen-card">
+      <h3>Broccoli</h3>
+      <ul>
+        <li><strong>Vitamins:</strong> A, C, K</li>
+        <li><strong>Minerals:</strong> Calcium, Iron</li>
+        <li><strong>Antioxidants:</strong> Sulforaphane</li>
+        <li><strong>Health Benefits:</strong> Anti-cancer, detox</li>
+        <li><strong>Skin & Hair:</strong> Collagen boost</li>
+        <li><strong>Additional:</strong> Supports liver detox</li>
+      </ul>
+    </div>
+    <div class="microgreen-card">
+      <h3>Fenugreek</h3>
+      <ul>
+        <li><strong>Vitamins:</strong> A, C, K</li>
+        <li><strong>Minerals:</strong> Iron, Magnesium</li>
+        <li><strong>Antioxidants:</strong> Saponins, Polyphenols</li>
+        <li><strong>Health Benefits:</strong> Blood sugar control</li>
+        <li><strong>Skin & Hair:</strong> Hormonal balance</li>
+        <li><strong>Additional:</strong> Improves digestion</li>
+      </ul>
+    </div>
+    <div class="microgreen-card">
+      <h3>Pink Radish</h3>
+      <ul>
+        <li><strong>Vitamins:</strong> C, K</li>
+        <li><strong>Minerals:</strong> Calcium, Potassium</li>
+        <li><strong>Antioxidants:</strong> Anthocyanins</li>
+        <li><strong>Health Benefits:</strong> Heart health</li>
+        <li><strong>Skin & Hair:</strong> Skin glow</li>
+        <li><strong>Additional:</strong> Boosts circulation</li>
+      </ul>
+    </div>
+    <div class="microgreen-card">
+      <h3>Mustard</h3>
+      <ul>
+        <li><strong>Vitamins:</strong> A, C, K</li>
+        <li><strong>Minerals:</strong> Calcium, Iron</li>
+        <li><strong>Antioxidants:</strong> Glucosinolates</li>
+        <li><strong>Health Benefits:</strong> Cancer prevention</li>
+        <li><strong>Skin & Hair:</strong> Skin hydration</li>
+        <li><strong>Additional:</strong> Supports immunity</li>
+      </ul>
+    </div>
+    <div class="microgreen-card">
+      <h3>Sunflower</h3>
+      <ul>
+        <li><strong>Vitamins:</strong> A, C, E, K</li>
+        <li><strong>Minerals:</strong> Zinc, Magnesium</li>
+        <li><strong>Antioxidants:</strong> Beta-carotene</li>
+        <li><strong>Health Benefits:</strong> Brain health, immunity</li>
+        <li><strong>Skin & Hair:</strong> Scalp nourishment</li>
+        <li><strong>Additional:</strong> Improves mood</li>
+      </ul>
+    </div>
+    <div class="microgreen-card">
+      <h3>Kale</h3>
+      <ul>
+        <li><strong>Vitamins:</strong> A, C, K</li>
+        <li><strong>Minerals:</strong> Calcium, Magnesium</li>
+        <li><strong>Antioxidants:</strong> Sulforaphane, Quercetin</li>
+        <li><strong>Health Benefits:</strong> Bone health, heart protection</li>
+        <li><strong>Skin & Hair:</strong> Skin firmness</li>
+        <li><strong>Additional:</strong> Supports vision</li>
+      </ul>
+    </div>
+    <div class="microgreen-card">
+      <h3>Beetroot</h3>
+      <ul>
+        <li><strong>Vitamins:</strong> A, C, K</li>
+        <li><strong>Minerals:</strong> Iron, Magnesium</li>
+        <li><strong>Antioxidants:</strong> Betalains</li>
+        <li><strong>Health Benefits:</strong> Heart health, detox</li>
+        <li><strong>Skin & Hair:</strong> Hair growth</li>
+        <li><strong>Additional:</strong> Improves stamina</li>
+      </ul>
+    </div>
+    <div class="microgreen-card">
+      <h3>Peas</h3>
+      <ul>
+        <li><strong>Vitamins:</strong> A, C, K</li>
+        <li><strong>Minerals:</strong> Iron, Phosphorus</li>
+        <li><strong>Antioxidants:</strong> Flavonoids</li>
+        <li><strong>Health Benefits:</strong> Energy, immunity</li>
+        <li><strong>Skin & Hair:</strong> Hair strength</li>
+        <li><strong>Additional:</strong> Supports pregnancy</li>
+      </ul>
+    </div>
+    <div class="microgreen-card">
+      <h3>Mung Bean</h3>
+      <ul>
+        <li><strong>Vitamins:</strong> C, B</li>
+        <li><strong>Minerals:</strong> Iron, Magnesium</li>
+        <li><strong>Antioxidants:</strong> Phenolic acids</li>
+        <li><strong>Health Benefits:</strong> Metabolism support</li>
+        <li><strong>Skin & Hair:</strong> Hair texture</li>
+        <li><strong>Additional:</strong> Supports gut health</li>
+      </ul>
+    </div>
+    <div class="microgreen-card">
+      <h3>Cilantro</h3>
+      <ul>
+        <li><strong>Vitamins:</strong> A, C, K</li>
+        <li><strong>Minerals:</strong> Iron, Potassium</li>
+        <li><strong>Antioxidants:</strong> Chlorophyll</li>
+        <li><strong>Health Benefits:</strong> Detox, immunity</li>
+        <li><strong>Skin & Hair:</strong> Skin detox</li>
+        <li><strong>Additional:</strong> Improves skin tone</li>
+      </ul>
+    </div>
+    <div class="microgreen-card">
+      <h3>Spinach</h3>
+      <ul>
+        <li><strong>Vitamins:</strong> A, C, K</li>
+        <li><strong>Minerals:</strong> Magnesium, Iron</li>
+        <li><strong>Antioxidants:</strong> Lutein, Zeaxanthin</li>
+        <li><strong>Health Benefits:</strong> Eye health, immunity</li>
+        <li><strong>Skin & Hair:</strong> Hair strength</li>
+        <li><strong>Additional:</strong> Supports bone health</li>
+      </ul>
+    </div>
+  </div>
+</section>
 <footer>
   &copy; 2025 Life With Leaf. All rights reserved.
 </footer>
-
 <script>
-/* Section Toggle (your existing code stays unchanged) */
 function toggleSection(id) {
   const allSections = document.querySelectorAll('section');
   allSections.forEach(sec => {
@@ -234,20 +371,12 @@ function toggleSection(id) {
     setTimeout(() => sec.style.display = 'none', 300);
   });
   setTimeout(() => {
-    if (id === 'home') {
-      const hero = document.getElementById('home');
-      const homeDetails = document.getElementById('homeDetails');
-      if (hero) { hero.style.display = 'block'; setTimeout(() => hero.style.opacity = 1, 50); }
-      if (homeDetails) { homeDetails.style.display = 'block'; setTimeout(() => homeDetails.style.opacity = 1, 50); }
-    } else {
-      const target = document.getElementById(id);
-      if (target) { target.style.display = 'block'; setTimeout(() => target.style.opacity = 1, 50); }
-    }
+    const target = document.getElementById(id);
+    if (target) { target.style.display = 'block'; setTimeout(() => target.style.opacity = 1, 50); }
     window.scrollTo({top:0, behavior:'smooth'});
   }, 300);
 }
-
-// Fade-In Animation On Scroll (new)
+// Fade-In Animation On Scroll
 window.addEventListener('scroll', () => {
   document.querySelectorAll('.fadeInOnScroll').forEach(sec => {
     if (sec.getBoundingClientRect().top < window.innerHeight - 80) {
@@ -263,10 +392,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
-/* Your cart, gallery, testimonial and other JS code continues unchanged below... */
-
-/* ... */
 </script>
 </body>
 </html>
