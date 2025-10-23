@@ -909,15 +909,23 @@ let cart=[];
 
 // RENDER PRODUCTS
 const grid = document.getElementById('productGrid');
+grid.innerHTML = ''; // Clear existing content
+
 products.forEach(p => {
   const div = document.createElement('div');
   div.className = 'product fadeIn';
   div.innerHTML = `
     <div class="productImg">
-      <img src="${p.image}" onerror="this.onerror=null;this.src='https://via.placeholder.com/120.png?text=Img'">
+      <img src="${p.image}" 
+           alt="${p.name}" 
+           onerror="this.onerror=null;this.src='https://via.placeholder.com/120.png?text=Img'">
     </div>
     <h3>${p.name}</h3>
-    <p class="desc">${p.benefits}</p>
+    <p class="desc"><strong>Benefits:</strong> ${p.benefits || 'N/A'}</p>
+    <p class="desc"><strong>Vitamins:</strong> ${p.vitamins || 'N/A'}</p>
+    <p class="desc"><strong>Minerals:</strong> ${p.minerals || 'N/A'}</p>
+    <p class="desc"><strong>Antioxidants:</strong> ${p.antioxidants || 'N/A'}</p>
+    <p class="desc"><strong>Skin/Hair:</strong> ${p.skinHair || 'N/A'}</p>
     <div class="priceRow">
       <div class="price">₹${p.price}</div>
       <button class="addCart" onclick="addToCart(${p.id})">Add 🛒</button>
