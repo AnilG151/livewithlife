@@ -759,11 +759,152 @@ function toggleSection(id) {
 
 // PRODUCTS DATA
 const products = [
-  {id:1,name:"Sunflower Microgreens",desc:"Crunchy & nutty flavor",price:220,img:"images/sunflower.png"},
-  {id:2,name:"Radish Microgreens",desc:"Spicy and fresh",price:180,img:"images/radish.png"},
-  {id:3,name:"Pea Shoots",desc:"Sweet and tender",price:200,img:"images/pea.png"},
-  {id:4,name:"Wheatgrass",desc:"Detox powerhouse",price:250,img:"images/wheatgrass.png"},
+  {
+    id: 1,
+    name: "White Radish",
+    vitamins: "C, K",
+    minerals: "Calcium, Potassium",
+    antioxidants: "Anthocyanins",
+    benefits: "Anti-inflammatory, digestion",
+    skinHairBenefits: "Skin clarity",
+    additionalBenefits: "Supports metabolism",
+    image: "product1.jpg",
+    price: 199
+  },
+  {
+    id: 2,
+    name: "Broccoli",
+    vitamins: "A, C, K",
+    minerals: "Calcium, Iron",
+    antioxidants: "Sulforaphane",
+    benefits: "Anti-cancer, detox",
+    skinHairBenefits: "Collagen boost",
+    additionalBenefits: "Supports liver detox",
+    image: "product2.jpg",
+    price: 249
+  },
+  {
+    id: 3,
+    name: "Fenugreek",
+    vitamins: "A, C, K",
+    minerals: "Iron, Magnesium",
+    antioxidants: "Saponins, Polyphenols",
+    benefits: "Blood sugar control",
+    skinHairBenefits: "Hormonal balance",
+    additionalBenefits: "Improves digestion",
+    image: "product3.jpg",
+    price: 179
+  },
+  {
+    id: 4,
+    name: "Pink Radish",
+    vitamins: "C, K",
+    minerals: "Calcium, Potassium",
+    antioxidants: "Anthocyanins",
+    benefits: "Heart health",
+    skinHairBenefits: "Skin glow",
+    additionalBenefits: "Boosts circulation",
+    image: "product4.jpg",
+    price: 199
+  },
+  {
+    id: 5,
+    name: "Mustard",
+    vitamins: "A, C, K",
+    minerals: "Calcium, Iron",
+    antioxidants: "Glucosinolates",
+    benefits: "Cancer prevention",
+    skinHairBenefits: "Skin hydration",
+    additionalBenefits: "Supports immunity",
+    image: "product5.jpg",
+    price: 179
+  },
+  {
+    id: 6,
+    name: "Sunflower",
+    vitamins: "A, C, E, K",
+    minerals: "Zinc, Magnesium",
+    antioxidants: "Beta-carotene",
+    benefits: "Brain health, immunity",
+    skinHairBenefits: "Scalp nourishment",
+    additionalBenefits: "Improves mood",
+    image: "product6.jpg",
+    price: 219
+  },
+  {
+    id: 7,
+    name: "Kale",
+    vitamins: "A, C, K",
+    minerals: "Calcium, Magnesium",
+    antioxidants: "Sulforaphane, Quercetin",
+    benefits: "Bone health, heart protection",
+    skinHairBenefits: "Skin firmness",
+    additionalBenefits: "Supports vision",
+    image: "product7.jpg",
+    price: 249
+  },
+  {
+    id: 8,
+    name: "Beetroot",
+    vitamins: "A, C, K",
+    minerals: "Iron, Magnesium",
+    antioxidants: "Betalains",
+    benefits: "Heart health, detox",
+    skinHairBenefits: "Hair growth",
+    additionalBenefits: "Improves stamina",
+    image: "product8.jpg",
+    price: 199
+  },
+  {
+    id: 9,
+    name: "Peas",
+    vitamins: "A, C, K",
+    minerals: "Iron, Phosphorus",
+    antioxidants: "Flavonoids",
+    benefits: "Energy, immunity",
+    skinHairBenefits: "Hair strength",
+    additionalBenefits: "Supports pregnancy",
+    image: "product9.jpg",
+    price: 179
+  },
+  {
+    id: 10,
+    name: "Mung Bean",
+    vitamins: "C, B",
+    minerals: "Iron, Magnesium",
+    antioxidants: "Phenolic acids",
+    benefits: "Metabolism support",
+    skinHairBenefits: "Hair texture",
+    additionalBenefits: "Supports gut health",
+    image: "product10.jpg",
+    price: 179
+  },
+  {
+    id: 11,
+    name: "Cilantro",
+    vitamins: "A, C, K",
+    minerals: "Iron, Potassium",
+    antioxidants: "Chlorophyll",
+    benefits: "Detox, immunity",
+    skinHairBenefits: "Skin detox",
+    additionalBenefits: "Improves skin tone",
+    image: "product11.jpg",
+    price: 169
+  },
+  {
+    id: 12,
+    name: "Spinach",
+    vitamins: "A, C, K",
+    minerals: "Magnesium, Iron",
+    antioxidants: "Lutein, Zeaxanthin",
+    benefits: "Eye health, immunity",
+    skinHairBenefits: "Hair strength",
+    additionalBenefits: "Supports bone health",
+    image: "product12.jpg",
+    price: 199
+  }
 ];
+
 let cart=[];
 
 // RENDER PRODUCTS
