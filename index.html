@@ -925,7 +925,9 @@ products.forEach(p => {
     <p class="desc"><strong>Vitamins:</strong> ${p.vitamins || 'N/A'}</p>
     <p class="desc"><strong>Minerals:</strong> ${p.minerals || 'N/A'}</p>
     <p class="desc"><strong>Antioxidants:</strong> ${p.antioxidants || 'N/A'}</p>
-    <p class="desc"><strong>Skin/Hair:</strong> ${p.skinHair || 'N/A'}</p>
+    <p class="desc"><strong>Skin & Hair:</strong> ${p.skinHairBenefits  || 'N/A'}</p>
+    <p class="desc"><strong>Addtional Benifts:</strong> ${p.additionalBenefits  || 'N/A'}</p>
+    additionalBenefits
     <div class="priceRow">
       <div class="price">₹${p.price}</div>
       <button class="addCart" onclick="addToCart(${p.id})">Add 🛒</button>
