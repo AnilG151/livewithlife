@@ -44,30 +44,70 @@ header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--gr
 
 
 /* WHY MICROGREENS */
+/* WHY MICROGREENS SECTION */
 .whyMicro {
-  background: linear-gradient(120deg, #d0f0c0, #a1e3a1, #79d279); /* multiple greens */
-  padding: 56px 20px;
+  background: linear-gradient(180deg, #a8e6a3, #ffffff); /* fresh green to white */
+  padding: 60px 20px;
   text-align: center;
+  border-radius: 12px; /* soft corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* subtle shadow */
 }
 
-/* Heading inside WHY MICROGREENS */
 .whyMicro h2 {
-  font-size: 28px;
-  color: var(--green-1); /* keeps your existing green color */
+  font-size: 32px;
+  color: #2f9e44; /* dark green for headings */
   margin-bottom: 30px;
+  font-weight: 600;
 }
 
-/* Optional: add hover effect for slight animation */
-.whyMicro:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+.whyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
-.whyGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;max-width:1100px;margin:0 auto}
-.whyCard{background:var(--glass);border-radius:14px;padding:20px;box-shadow:0 8px 20px rgba(15,23,42,0.04);transition:transform .28s ease, box-shadow .28s ease}
-.whyCard:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(15,23,42,0.08)}
-.whyCard img{width:56px;height:56px;margin:0 auto 14px}
-.whyCard h3{color:var(--green-1);font-size:16px;margin-bottom:8px}
-.whyCard p{color:var(--muted);font-size:14px}
+
+.whyGrid .whyItem {
+  background: rgba(255,255,255,0.8); /* semi-transparent white */
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whyGrid .whyItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.whyGrid .whyItem h3 {
+  font-size: 20px;
+  color: #1b5e20; /* slightly darker green */
+  margin-bottom: 12px;
+}
+
+.whyGrid .whyItem p {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Optional button styling if you have CTA */
+.whyMicro .btn {
+  margin-top: 25px;
+  padding: 12px 28px;
+  background-color: #2f9e44; /* dark green button */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.whyMicro .btn:hover {
+  background-color: #237a34; /* darker green on hover */
+}
 
 /* SECTIONS */
 section{padding:40px 0}
