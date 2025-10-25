@@ -1030,27 +1030,68 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 
 <!-- 💬 ABOUT US -->
-<section id="about" class="about-section">
-  <h2>💬 About Us</h2>
-  <div class="about-container">
-    <div class="about-text">
-      <p>
-        Welcome to <strong>Life With Leaf</strong> — your destination for fresh, live microgreens grown with care and sustainability.  
-        We believe that health starts from the soil, and our mission is to bring you nutrient-packed greens straight from nature to your plate.
-      </p>
-      <p>
-        Each tray of microgreens is cultivated without pesticides or artificial additives, ensuring purity and freshness.  
-        Whether you’re a health enthusiast, chef, or just starting your wellness journey, our microgreens bring vibrant flavor and life to every meal.
-      </p>
-      <p class="about-quote">
-        “From seed to sprout, we grow wellness — one leaf at a time.” 🌱
-      </p>
+<section id="about" class="about-section style="background: linear-gradient(135deg, #e6f5ea, #ffffff); padding: 100px 20px; position:relative; overflow:hidden;">
+  <!-- Decorative floating leaves -->
+  <img src="leaf1.png" alt="" style="position:absolute; top:10%; left:5%; width:60px; opacity:0.3; animation: float1 6s infinite ease-in-out;">
+  <img src="leaf2.png" alt="" style="position:absolute; bottom:15%; right:8%; width:50px; opacity:0.3; animation: float2 7s infinite ease-in-out;">
+  <img src="leaf3.png" alt="" style="position:absolute; top:40%; right:20%; width:40px; opacity:0.2; animation: float1 5s infinite ease-in-out;">
+
+  <h2 style="text-align:center; color:#2f9e44; font-size:42px; font-weight:bold; margin-bottom:10px;">💬 About Us</h2>
+  <p style="text-align:center; max-width:900px; margin:0 auto 60px; font-size:18px; color:#333;">
+    Life With Leaf — Growing health, naturally 🌿
+  </p>
+
+  <div class="about-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:50px; max-width:1100px; margin:0 auto; align-items:start;">
+
+    <!-- Image -->
+    <div class="about-image" style="animation: fadeIn 1.5s ease-in;">
+      <img src="shalini.jpg" alt="Shalini Founder" style="width:100%; border-radius:20px; box-shadow:0 12px 30px rgba(0,0,0,0.2); transition: transform 0.3s;">
     </div>
-    <div class="about-image">
-      <img src="aboutus.jpg" alt="Life With Leaf - Microgreens" />
+
+    <!-- Content -->
+    <div class="about-content" style="color:#333; font-size:17px; line-height:1.8; animation: fadeIn 2s ease-in;">
+      <p>Shalini, an accomplished professional with over a decade of experience in corporate finance, left her corporate career to pursue a purpose-driven journey — promoting healthy, chemical-free living. 🌿</p>
+
+      <p>Her mission: <img src="mission_icon.png" style="width:25px; vertical-align:middle; margin-left:5px;"></p>
+      <div style="background:#d4f1d4; padding:18px 22px; border-left:6px solid #2f9e44; border-radius:12px; margin-bottom:20px; font-weight:bold; position:relative;">
+        "To cultivate a healthier society by providing natural, pure, and nutrient-rich green products. Through sustainable microgreen farming, we empower individuals and families to embrace better health today while nurturing a greener future."
+        <img src="leaf_small.png" style="position:absolute; top:-10px; right:10px; width:25px; opacity:0.4;">
+      </div>
+
+      <p>Her vision: <img src="vision_icon.png" style="width:25px; vertical-align:middle; margin-left:5px;"></p>
+      <div style="background:#fff3e6; padding:18px 22px; border-left:6px solid #f4a261; border-radius:12px; margin-bottom:20px; font-weight:bold; position:relative;">
+        Making clean, chemical-free food accessible to all, educating communities about its benefits, and promoting sustainable living for generations to come.
+        <img src="leaf_small2.png" style="position:absolute; bottom:-10px; left:10px; width:20px; opacity:0.3;">
+      </div>
+
+      <p>Shalini believes microgreens — tiny, nutrient-packed plants — are a delicious, easy, and sustainable way to boost health. Her approach combines <strong>sustainability, purity, and education</strong>, helping reverse the damage caused by modern agricultural practices.</p>
     </div>
+
   </div>
 </section>
+
+<!-- ===== ANIMATION ===== -->
+<style>
+@keyframes fadeIn {
+  from {opacity:0; transform: translateY(20px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+.about-image img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(-15px);}
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(15px);}
+}
+</style>
 
 
 <!-- 📞 CONTACT US -->
