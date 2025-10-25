@@ -158,63 +158,87 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   /* 💬 ABOUT US */
 .about-section {
-  background: #f9fff9;
-  padding: 60px 20px;
+  background: linear-gradient(180deg, #f9fff9 0%, #e8ffe8 100%);
+  padding: 70px 20px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.about-section h2 {
-  font-size: 30px;
-  color: var(--green-1);
-  margin-bottom: 40px;
-  font-weight: 700;
+.about-section::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 180px;
+  height: 180px;
+  background: url('leaf-pattern.png') no-repeat center/contain;
+  opacity: 0.15;
+  transform: rotate(25deg);
 }
 
-.about-container {
+.about-section::after {
+  content: "";
+  position: absolute;
+  bottom: -50px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: url('leaf-pattern.png') no-repeat center/contain;
+  opacity: 0.15;
+  transform: rotate(-15deg);
+}
+
+.about-highlights {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  gap: 25px;
+  margin-top: 40px;
   justify-content: center;
-  gap: 40px;
-  max-width: 1100px;
-  margin: 0 auto;
 }
 
-.about-text {
-  flex: 1 1 450px;
-  font-size: 17px;
-  color: #333;
-  line-height: 1.7;
-  text-align: left;
-}
-
-.about-text strong {
-  color: var(--green-1);
-}
-
-.about-quote {
-  margin-top: 20px;
-  font-style: italic;
-  font-size: 18px;
-  color: #2f9e44;
-}
-
-.about-image {
-  flex: 1 1 350px;
-  text-align: center;
-}
-
-.about-image img {
-  width: 100%;
-  max-width: 380px;
-  border-radius: 20px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+.highlight-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  width: 250px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.about-image img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+.highlight-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+
+.highlight-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.highlight-card h4 {
+  color: var(--green-1);
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.highlight-card p {
+  font-size: 15px;
+  color: #444;
+}
+
+.floating-leaves {
+  position: absolute;
+  inset: 0;
+  background: url('floating-leaves.gif') no-repeat center/contain;
+  opacity: 0.08;
+  animation: floatLeaf 10s infinite alternate ease-in-out;
+}
+
+@keyframes floatLeaf {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-20px); }
 }
   /* 📞 CONTACT US */
 .contact-section {
@@ -1045,9 +1069,27 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
       <p class="about-quote">
         “From seed to sprout, we grow wellness — one leaf at a time.” 🌱
       </p>
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <img src="leaf-icon.png" alt="Organic" />
+          <h4>100% Organic</h4>
+          <p>Grown naturally with zero chemicals or pesticides.</p>
+        </div>
+        <div class="highlight-card">
+          <img src="sun-icon.png" alt="Fresh Harvest" />
+          <h4>Fresh Harvest</h4>
+          <p>Delivered straight from our trays to your table.</p>
+        </div>
+        <div class="highlight-card">
+          <img src="heart-icon.png" alt="Healthy Living" />
+          <h4>Healthy Living</h4>
+          <p>Power-packed with vitamins, minerals & antioxidants.</p>
+        </div>
+      </div>
     </div>
     <div class="about-image">
       <img src="aboutus.jpg" alt="Life With Leaf - Microgreens" />
+      <div class="floating-leaves"></div>
     </div>
   </div>
 </section>
