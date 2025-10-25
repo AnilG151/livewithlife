@@ -160,6 +160,121 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
+  /* 📞 CONTACT US */
+.contact-section {
+  background: #fff;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 30px;
+  color: var(--green-1);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.contact-intro {
+  color: #444;
+  font-size: 17px;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Left side: Contact Info */
+.contact-info {
+  flex: 1 1 300px;
+  background: #f5fff5;
+  border-radius: 16px;
+  padding: 25px;
+  text-align: left;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.contact-info h3 {
+  color: var(--green-1);
+  margin-bottom: 15px;
+}
+
+.contact-info p {
+  color: #333;
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.social-links {
+  margin-top: 15px;
+}
+
+.social-links a {
+  text-decoration: none;
+  font-size: 24px;
+  margin-right: 10px;
+  transition: transform 0.3s;
+}
+
+.social-links a:hover {
+  transform: scale(1.2);
+}
+
+/* Right side: Contact Form */
+.contact-form {
+  flex: 1 1 400px;
+  background: #f9fff9;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: inherit;
+  transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--green-1);
+}
+
+.contact-form button {
+  background: var(--green-1);
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #228b3c;
+}
+
+/* Success message */
+.form-response {
+  margin-top: 10px;
+  font-weight: 500;
+  color: var(--green-1);
+}
 </style>
 </head>
 <body>
@@ -774,12 +889,38 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </section>
 
 
-<!-- contact -->
-<section id="contact">
+<!-- 📞 CONTACT US -->
+<section id="contact" class="contact-section">
   <h2>📞 Contact Us</h2>
-  <p>Email: hello@lifewithleaf.com</p>
-  <p>Phone: +91 98765 43210</p>
+  <p class="contact-intro">
+    We’d love to hear from you! Whether you have a question about our products, want to collaborate, or just say hello — reach out anytime.
+  </p>
+
+  <div class="contact-container">
+    <div class="contact-info">
+      <h3>🌿 Get in Touch</h3>
+      <p><strong>Email:</strong> info@lifewithleaf.com</p>
+      <p><strong>Phone:</strong> +91 9289935744</p>
+      <p><strong>Location:</strong> Pune, Maharashtra, India</p>
+      <div class="social-links">
+        <a href="#" title="Instagram">📸</a>
+        <a href="#" title="Facebook">📘</a>
+        <a href="#" title="WhatsApp">💬</a>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <form onsubmit="sendMessage(event)">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <p id="formResponse" class="form-response"></p>
+    </div>
+  </div>
 </section>
+
 
 
 
