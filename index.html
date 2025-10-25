@@ -44,12 +44,27 @@ header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--gr
 
 
 /* WHY MICROGREENS */
-.whyMicro {
-  background: linear-gradient(180deg, #f9fff9 0%, #eaffea 100%);
-  padding: 70px 20px;
+..whyMicro {
+  background: linear-gradient(135deg, #e0f7e9, #d0f0ec); /* soft gradient */
+  padding: 60px 20px;
+  border-radius: 12px; /* subtle rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* soft shadow for depth */
   text-align: center;
+  transition: all 0.3s ease; /* smooth hover/animation effects */
 }
-.whyMicro h2{font-size:28px;color:var(--green-1);margin-bottom:30px}
+
+/* Heading inside WHY MICROGREENS */
+.whyMicro h2 {
+  font-size: 28px;
+  color: var(--green-1); /* keeps your existing green color */
+  margin-bottom: 30px;
+}
+
+/* Optional: add hover effect for slight animation */
+.whyMicro:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
 .whyGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;max-width:1100px;margin:0 auto}
 .whyCard{background:var(--glass);border-radius:14px;padding:20px;box-shadow:0 8px 20px rgba(15,23,42,0.04);transition:transform .28s ease, box-shadow .28s ease}
 .whyCard:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(15,23,42,0.08)}
