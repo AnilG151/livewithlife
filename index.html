@@ -1347,7 +1347,7 @@ function toggleSection(id) {
     const homeSection = document.getElementById('home');
     const homeDetails = document.getElementById('homeDetails');
 
-    homeSection.style.display = 'flex';  // for hero section flex layout
+    homeSection.style.display = 'flex';
     homeDetails.style.display = 'block';
 
     setTimeout(() => {
@@ -1355,13 +1355,13 @@ function toggleSection(id) {
       homeDetails.style.opacity = 1;
     }, 50);
 
-    // Smooth scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
   } else {
-    // Show only the requested section
+    // Show the clicked section
     const sec = document.getElementById(id);
     if (sec) {
-      sec.style.display = 'block';
+      sec.style.display = (id === 'home' || id === 'products') ? 'flex' : 'block';
       setTimeout(() => sec.style.opacity = 1, 50);
       sec.scrollIntoView({ behavior: 'smooth' });
     }
