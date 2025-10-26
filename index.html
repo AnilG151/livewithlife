@@ -1407,7 +1407,6 @@ function toggleSection(id) {
   });
 
   if(id === 'home') {
-    // Show both home sections
     const homeSections = ['home', 'homeDetails'];
     homeSections.forEach(hid => {
       const el = document.getElementById(hid);
@@ -1423,6 +1422,9 @@ function toggleSection(id) {
       setTimeout(() => active.style.opacity = 1, 50);
     }
   }
+
+  // Reset scroll to top whenever a new section is shown
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 </body>
