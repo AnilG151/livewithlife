@@ -1100,6 +1100,9 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </footer>
 
 <script>
+// =======================
+// SECTION TOGGLE FUNCTION
+// =======================
 function toggleSection(id) {
   const allSections = document.querySelectorAll('section');
 
@@ -1110,7 +1113,6 @@ function toggleSection(id) {
   });
 
   if (id === 'home') {
-    // Show home + homeDetails together
     const homeSection = document.getElementById('home');
     const homeDetails = document.getElementById('homeDetails');
 
@@ -1125,7 +1127,6 @@ function toggleSection(id) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
   } else {
-    // Show the clicked section
     const sec = document.getElementById(id);
     if (sec) {
       sec.style.display = (id === 'home' || id === 'products') ? 'flex' : 'block';
@@ -1134,235 +1135,137 @@ function toggleSection(id) {
     }
   }
 }
+
+// =======================
 // PRODUCTS DATA
+// =======================
 const products = [
-  {
-    id: 1,
-    name: "White Radish",
-    vitamins: "C, K",
-    minerals: "Calcium, Potassium",
-    antioxidants: "Anthocyanins",
-    benefits: "Anti-inflammatory, digestion",
-    skinHairBenefits: "Skin clarity",
-    additionalBenefits: "Supports metabolism",
-    image: "product1.jpg",
-    price: 199
-  },
-  {
-    id: 2,
-    name: "Broccoli",
-    vitamins: "A, C, K",
-    minerals: "Calcium, Iron",
-    antioxidants: "Sulforaphane",
-    benefits: "Anti-cancer, detox",
-    skinHairBenefits: "Collagen boost",
-    additionalBenefits: "Supports liver detox",
-    image: "product2.jpg",
-    price: 249
-  },
-  {
-    id: 3,
-    name: "Fenugreek",
-    vitamins: "A, C, K",
-    minerals: "Iron, Magnesium",
-    antioxidants: "Saponins, Polyphenols",
-    benefits: "Blood sugar control",
-    skinHairBenefits: "Hormonal balance",
-    additionalBenefits: "Improves digestion",
-    image: "product3.jpg",
-    price: 179
-  },
-  {
-    id: 4,
-    name: "Pink Radish",
-    vitamins: "C, K",
-    minerals: "Calcium, Potassium",
-    antioxidants: "Anthocyanins",
-    benefits: "Heart health",
-    skinHairBenefits: "Skin glow",
-    additionalBenefits: "Boosts circulation",
-    image: "product4.jpg",
-    price: 199
-  },
-  {
-    id: 5,
-    name: "Mustard",
-    vitamins: "A, C, K",
-    minerals: "Calcium, Iron",
-    antioxidants: "Glucosinolates",
-    benefits: "Cancer prevention",
-    skinHairBenefits: "Skin hydration",
-    additionalBenefits: "Supports immunity",
-    image: "product5.jpg",
-    price: 179
-  },
-  {
-    id: 6,
-    name: "Sunflower",
-    vitamins: "A, C, E, K",
-    minerals: "Zinc, Magnesium",
-    antioxidants: "Beta-carotene",
-    benefits: "Brain health, immunity",
-    skinHairBenefits: "Scalp nourishment",
-    additionalBenefits: "Improves mood",
-    image: "product6.jpg",
-    price: 219
-  },
-  {
-    id: 7,
-    name: "Kale",
-    vitamins: "A, C, K",
-    minerals: "Calcium, Magnesium",
-    antioxidants: "Sulforaphane, Quercetin",
-    benefits: "Bone health, heart protection",
-    skinHairBenefits: "Skin firmness",
-    additionalBenefits: "Supports vision",
-    image: "product7.jpg",
-    price: 249
-  },
-  {
-    id: 8,
-    name: "Beetroot",
-    vitamins: "A, C, K",
-    minerals: "Iron, Magnesium",
-    antioxidants: "Betalains",
-    benefits: "Heart health, detox",
-    skinHairBenefits: "Hair growth",
-    additionalBenefits: "Improves stamina",
-    image: "product8.jpg",
-    price: 199
-  },
-  {
-    id: 9,
-    name: "Peas",
-    vitamins: "A, C, K",
-    minerals: "Iron, Phosphorus",
-    antioxidants: "Flavonoids",
-    benefits: "Energy, immunity",
-    skinHairBenefits: "Hair strength",
-    additionalBenefits: "Supports pregnancy",
-    image: "product9.jpg",
-    price: 179
-  },
-  {
-    id: 10,
-    name: "Mung Bean",
-    vitamins: "C, B",
-    minerals: "Iron, Magnesium",
-    antioxidants: "Phenolic acids",
-    benefits: "Metabolism support",
-    skinHairBenefits: "Hair texture",
-    additionalBenefits: "Supports gut health",
-    image: "product10.jpg",
-    price: 179
-  },
-  {
-    id: 11,
-    name: "Cilantro",
-    vitamins: "A, C, K",
-    minerals: "Iron, Potassium",
-    antioxidants: "Chlorophyll",
-    benefits: "Detox, immunity",
-    skinHairBenefits: "Skin detox",
-    additionalBenefits: "Improves skin tone",
-    image: "product11.jpg",
-    price: 169
-  },
-  {
-    id: 12,
-    name: "Spinach",
-    vitamins: "A, C, K",
-    minerals: "Magnesium, Iron",
-    antioxidants: "Lutein, Zeaxanthin",
-    benefits: "Eye health, immunity",
-    skinHairBenefits: "Hair strength",
-    additionalBenefits: "Supports bone health",
-    image: "product12.jpg",
-    price: 199
-  }
+  { id: 1, name: "White Radish", vitamins: "C, K", minerals: "Calcium, Potassium", antioxidants: "Anthocyanins", benefits: "Anti-inflammatory, digestion", skinHairBenefits: "Skin clarity", additionalBenefits: "Supports metabolism", image: "product1.jpg", price: 199 },
+  { id: 2, name: "Broccoli", vitamins: "A, C, K", minerals: "Calcium, Iron", antioxidants: "Sulforaphane", benefits: "Anti-cancer, detox", skinHairBenefits: "Collagen boost", additionalBenefits: "Supports liver detox", image: "product2.jpg", price: 249 },
+  { id: 3, name: "Fenugreek", vitamins: "A, C, K", minerals: "Iron, Magnesium", antioxidants: "Saponins, Polyphenols", benefits: "Blood sugar control", skinHairBenefits: "Hormonal balance", additionalBenefits: "Improves digestion", image: "product3.jpg", price: 179 },
+  { id: 4, name: "Pink Radish", vitamins: "C, K", minerals: "Calcium, Potassium", antioxidants: "Anthocyanins", benefits: "Heart health", skinHairBenefits: "Skin glow", additionalBenefits: "Boosts circulation", image: "product4.jpg", price: 199 },
+  { id: 5, name: "Mustard", vitamins: "A, C, K", minerals: "Calcium, Iron", antioxidants: "Glucosinolates", benefits: "Cancer prevention", skinHairBenefits: "Skin hydration", additionalBenefits: "Supports immunity", image: "product5.jpg", price: 179 },
+  { id: 6, name: "Sunflower", vitamins: "A, C, E, K", minerals: "Zinc, Magnesium", antioxidants: "Beta-carotene", benefits: "Brain health, immunity", skinHairBenefits: "Scalp nourishment", additionalBenefits: "Improves mood", image: "product6.jpg", price: 219 },
+  { id: 7, name: "Kale", vitamins: "A, C, K", minerals: "Calcium, Magnesium", antioxidants: "Sulforaphane, Quercetin", benefits: "Bone health, heart protection", skinHairBenefits: "Skin firmness", additionalBenefits: "Supports vision", image: "product7.jpg", price: 249 },
+  { id: 8, name: "Beetroot", vitamins: "A, C, K", minerals: "Iron, Magnesium", antioxidants: "Betalains", benefits: "Heart health, detox", skinHairBenefits: "Hair growth", additionalBenefits: "Improves stamina", image: "product8.jpg", price: 199 },
+  { id: 9, name: "Peas", vitamins: "A, C, K", minerals: "Iron, Phosphorus", antioxidants: "Flavonoids", benefits: "Energy, immunity", skinHairBenefits: "Hair strength", additionalBenefits: "Supports pregnancy", image: "product9.jpg", price: 179 },
+  { id: 10, name: "Mung Bean", vitamins: "C, B", minerals: "Iron, Magnesium", antioxidants: "Phenolic acids", benefits: "Metabolism support", skinHairBenefits: "Hair texture", additionalBenefits: "Supports gut health", image: "product10.jpg", price: 179 },
+  { id: 11, name: "Cilantro", vitamins: "A, C, K", minerals: "Iron, Potassium", antioxidants: "Chlorophyll", benefits: "Detox, immunity", skinHairBenefits: "Skin detox", additionalBenefits: "Improves skin tone", image: "product11.jpg", price: 169 },
+  { id: 12, name: "Spinach", vitamins: "A, C, K", minerals: "Magnesium, Iron", antioxidants: "Lutein, Zeaxanthin", benefits: "Eye health, immunity", skinHairBenefits: "Hair strength", additionalBenefits: "Supports bone health", image: "product12.jpg", price: 199 }
 ];
 
-let cart=[];
-
+// =======================
 // RENDER PRODUCTS
+// =======================
 const grid = document.getElementById('productGrid');
-grid.innerHTML = ''; // Clear existing content
+if (grid) {
+  grid.innerHTML = '';
+  products.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'product fadeIn';
+    div.innerHTML = `
+      <div class="productImg">
+        <img src="${p.image}" alt="${p.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/120.png?text=Img'">
+      </div>
+      <h3>${p.name}</h3>
+      <p class="desc"><strong>Benefits:</strong> ${p.benefits || 'N/A'}</p>
+      <p class="desc"><strong>Vitamins:</strong> ${p.vitamins || 'N/A'}</p>
+      <p class="desc"><strong>Minerals:</strong> ${p.minerals || 'N/A'}</p>
+      <p class="desc"><strong>Antioxidants:</strong> ${p.antioxidants || 'N/A'}</p>
+      <p class="desc"><strong>Skin & Hair:</strong> ${p.skinHairBenefits || 'N/A'}</p>
+      <p class="desc"><strong>Additional Benefits:</strong> ${p.additionalBenefits || 'N/A'}</p>
+      <div class="priceRow">
+        <div class="price">₹${p.price}</div>
+        <button class="addCart" onclick="addToCart(${p.id})">Add 🛒</button>
+      </div>
+    `;
+    grid.appendChild(div);
+  });
+}
 
-products.forEach(p => {
-  const div = document.createElement('div');
-  div.className = 'product fadeIn';
-  div.innerHTML = `
-    <div class="productImg">
-      <img src="${p.image}" 
-           alt="${p.name}" 
-           onerror="this.onerror=null;this.src='https://via.placeholder.com/120.png?text=Img'">
-    </div>
-    <h3>${p.name}</h3>
-    <p class="desc"><strong>Benefits:</strong> ${p.benefits || 'N/A'}</p>
-    <p class="desc"><strong>Vitamins:</strong> ${p.vitamins || 'N/A'}</p>
-    <p class="desc"><strong>Minerals:</strong> ${p.minerals || 'N/A'}</p>
-    <p class="desc"><strong>Antioxidants:</strong> ${p.antioxidants || 'N/A'}</p>
-    <p class="desc"><strong>Skin & Hair:</strong> ${p.skinHairBenefits  || 'N/A'}</p>
-    <p class="desc"><strong>Addtional Benifts:</strong> ${p.additionalBenefits  || 'N/A'}</p>
-    
-    <div class="priceRow">
-      <div class="price">₹${p.price}</div>
-      <button class="addCart" onclick="addToCart(${p.id})">Add 🛒</button>
-    </div>
-  `;
-  grid.appendChild(div);
-});
-
-
+// =======================
 // CART FUNCTIONS
-function addToCart(id){
-  const prod=products.find(p=>p.id===id);
-  const existing=cart.find(c=>c.id===id);
-  if(existing){existing.qty+=1;} else {cart.push({...prod,qty:1});}
+// =======================
+let cart = [];
+
+function addToCart(id) {
+  const prod = products.find(p => p.id === id);
+  const existing = cart.find(c => c.id === id);
+  if (existing) existing.qty += 1;
+  else cart.push({ ...prod, qty: 1 });
   updateCartUI();
 }
-function updateCartUI(){
-  document.getElementById('cartCount').innerText=cart.reduce((a,c)=>a+c.qty,0);
-  document.getElementById('miniCount').innerText=cart.reduce((a,c)=>a+c.qty,0);
-  const list=document.getElementById('cartList'); list.innerHTML='';
-  let total=0;
-  cart.forEach(c=>{
-    total+=c.price*c.qty;
-    const item=document.createElement('div'); item.className='cartItem fadeIn';
-    item.innerHTML=`<img src="${c.img}" onerror="this.onerror=null;this.src='https://via.placeholder.com/80.png'">
+
+function updateCartUI() {
+  document.getElementById('cartCount').innerText = cart.reduce((a, c) => a + c.qty, 0);
+  document.getElementById('miniCount').innerText = cart.reduce((a, c) => a + c.qty, 0);
+
+  const list = document.getElementById('cartList');
+  if (!list) return;
+  list.innerHTML = '';
+  let total = 0;
+
+  cart.forEach(c => {
+    total += c.price * c.qty;
+    const item = document.createElement('div');
+    item.className = 'cartItem fadeIn';
+    item.innerHTML = `
+      <img src="${c.image}" onerror="this.onerror=null;this.src='https://via.placeholder.com/80.png'">
       <div style="flex:1">
         <div>${c.name}</div>
-        <div>₹${c.price} x ${c.qty} = ₹${c.price*c.qty}</div>
+        <div>₹${c.price} x ${c.qty} = ₹${c.price * c.qty}</div>
       </div>
       <div class="qtyCtrl">
         <button onclick="changeQty(${c.id},-1)">➖</button>
         <span>${c.qty}</span>
         <button onclick="changeQty(${c.id},1)">➕</button>
         <button onclick="changeQty(${c.id},-${c.qty})" style="margin-left:6px;">❌</button>
-      </div>`;
+      </div>
+    `;
     list.appendChild(item);
   });
-  document.getElementById('cartTotal').innerText=total;
-  document.getElementById('miniCartBar').style.display=cart.length>0?'flex':'none';
+
+  document.getElementById('cartTotal').innerText = total;
+  document.getElementById('miniCartBar').style.display = cart.length > 0 ? 'flex' : 'none';
 }
-function changeQty(id,val){
-  const item=cart.find(c=>c.id===id); if(!item)return;
-  item.qty+=val; if(item.qty<=0){cart=cart.filter(c=>c.id!==id);}
+
+function changeQty(id, val) {
+  const item = cart.find(c => c.id === id);
+  if (!item) return;
+  item.qty += val;
+  if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
   updateCartUI();
 }
-function openCart(){document.getElementById('cartModalOverlay').style.display='flex';document.querySelector('.cartModal').style.opacity=1;document.querySelector('.cartModal').style.transform='translateY(0)';}
-function closeCart(){document.getElementById('cartModalOverlay').style.display='none';document.querySelector('.cartModal').style.opacity=0;document.querySelector('.cartModal').style.transform='translateY(30px)';}
-function checkout(){alert('Proceed to WhatsApp checkout!');}
 
-// LIGHTBOX
-document.querySelectorAll('.galleryGrid img').forEach(img=>{
-  img.onclick=()=>{
-    const lb=document.getElementById('lightbox');
-    lb.querySelector('img').src=img.src;
-    lb.style.display='flex';
+function openCart() {
+  document.getElementById('cartModalOverlay').style.display = 'flex';
+  const modal = document.querySelector('.cartModal');
+  modal.style.opacity = 1;
+  modal.style.transform = 'translateY(0)';
+}
+
+function closeCart() {
+  document.getElementById('cartModalOverlay').style.display = 'none';
+  const modal = document.querySelector('.cartModal');
+  modal.style.opacity = 0;
+  modal.style.transform = 'translateY(30px)';
+}
+
+function checkout() {
+  alert('Proceed to WhatsApp checkout!');
+}
+
+// =======================
+// LIGHTBOX (IF NEEDED)
+// =======================
+document.querySelectorAll('.galleryGrid img').forEach(img => {
+  img.onclick = () => {
+    const lb = document.getElementById('lightbox');
+    lb.querySelector('img').src = img.src;
+    lb.style.display = 'flex';
   }
 });
-document.getElementById('lightbox').onclick=function(){this.style.display='none'};
+document.getElementById('lightbox').onclick = function() { this.style.display = 'none'; }
 </script>
 </body>
 </html>
