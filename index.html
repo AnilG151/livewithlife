@@ -1401,20 +1401,20 @@ document.getElementById('lightbox').onclick=function(){this.style.display='none'
 <script>
 function toggleSection(id) {
   const allSections = document.querySelectorAll('section');
-  allSections.forEach(sec => sec.style.display = 'none'); // hide all
 
-  if(id === 'home') {
-    document.getElementById('homeHero').style.display = 'block';
-    document.getElementById('homeDetails').style.display = 'block';
-  } else {
-    const active = document.getElementById(id);
-    if(active) active.style.display = 'block';
+  allSections.forEach(sec => {
+    sec.style.display = 'none';
+    sec.style.opacity = 0;
+  });
+
+  const target = document.getElementById(id);
+  if (target) {
+    target.style.display = 'block';
+    setTimeout(() => target.style.opacity = 1, 50);
   }
-}
 
-// Show Home on page load
-window.onload = function() {
-  toggleSection('home');
+  // Optional: scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 </body>
