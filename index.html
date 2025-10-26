@@ -1388,37 +1388,30 @@ document.querySelectorAll('.galleryGrid img').forEach(img=>{
 document.getElementById('lightbox').onclick=function(){this.style.display='none'};
 </script>
 <script>
-// Sections to toggle
-const sectionIds = ['home', 'homeDetails', 'whyMicro', 'health', 'products', 'about', 'contact'];
-
 function toggleSection(id) {
-  sectionIds.forEach(secId => {
-    const sec = document.getElementById(secId);
-    if (!sec) return;
-    
-    if (secId === id) {
-      sec.style.display = 'block';
-      sec.style.opacity = 1;
-      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-      sec.style.opacity = 0;
-      // delay display:none to allow smooth fade out if needed
-      setTimeout(() => { sec.style.display = 'none'; }, 300);
+  const allSections = document.querySelectorAll('section');
+  allSections.forEach(sec => {
+    sec.style.display = 'none';
+    sec.style.opacity = 0;
+  });
+
+  if (id === 'home') {
+    document.getElementById('home').style.display = 'flex'; // hero is flex
+    document.getElementById('home').style.opacity = 1;
+    document.getElementById('homeDetails').style.display = 'block'; // show home details too
+    document.getElementById('homeDetails').style.opacity = 1;
+  } else {
+    const el = document.getElementById(id);
+    if (el) {
+      el.style.display = 'block';
+      el.style.opacity = 1;
     }
-  });
+  }
+
+  // Scroll to top of the section
+  const sectionEl = document.getElementById(id);
+  if (sectionEl) sectionEl.scrollIntoView({behavior:'smooth'});
 }
-
-// For nav links
-document.querySelectorAll('header nav a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').replace('#', '');
-    toggleSection(targetId);
-  });
-});
-
-// Make logo click go home
-document.querySelector('.brand').addEventListener('click', () => toggleSection('home'));
 </script>
 </body>
 </html>
