@@ -1157,29 +1157,6 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </footer>
 
 <script>
-// 🌿 Section Toggle Function
-function toggleSection(id) {
-  const allSections = document.querySelectorAll('section');
-
-  allSections.forEach(sec => {
-    sec.style.opacity = 0;
-    setTimeout(() => sec.style.display = 'none', 300);
-  });
-
-  setTimeout(() => {
-    if (id === 'home') {
-      const hero = document.getElementById('home');
-      const homeDetails = document.getElementById('homeDetails');
-      if (hero) { hero.style.display = 'block'; setTimeout(() => hero.style.opacity = 1, 50); }
-      if (homeDetails) { homeDetails.style.display = 'block'; setTimeout(() => homeDetails.style.opacity = 1, 50); }
-    } else {
-      const target = document.getElementById(id);
-      if (target) { target.style.display = 'block'; setTimeout(() => target.style.opacity = 1, 50); }
-    }
-    window.scrollTo({top:0, behavior:'smooth'});
-  }, 300);
-}
-
 // PRODUCTS DATA
 const products = [
   {
@@ -1411,52 +1388,37 @@ document.querySelectorAll('.galleryGrid img').forEach(img=>{
 document.getElementById('lightbox').onclick=function(){this.style.display='none'};
 </script>
 <script>
-// 🌿 Section Toggle & Smooth Scroll
+// Sections to toggle
+const sectionIds = ['home', 'homeDetails', 'whyMicro', 'health', 'products', 'about', 'contact'];
+
 function toggleSection(id) {
-  const allSections = document.querySelectorAll('section');
-
-  // Hide all sections with fade-out
-  allSections.forEach(sec => {
-    sec.style.opacity = 0;
-    setTimeout(() => sec.style.display = 'none', 300);
-  });
-
-  // Show target section(s) after fade-out
-  setTimeout(() => {
-    if(id === 'home'){
-      // Show both hero and homeDetails
-      ['home','homeDetails'].forEach(secId => {
-        const s = document.getElementById(secId);
-        if(s){
-          s.style.display = 'block';
-          setTimeout(()=> s.style.opacity = 1, 50);
-        }
-      });
+  sectionIds.forEach(secId => {
+    const sec = document.getElementById(secId);
+    if (!sec) return;
+    
+    if (secId === id) {
+      sec.style.display = 'block';
+      sec.style.opacity = 1;
+      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-      const target = document.getElementById(id);
-      if(target){
-        target.style.display = 'block';
-        setTimeout(()=> target.style.opacity = 1, 50);
-      }
+      sec.style.opacity = 0;
+      // delay display:none to allow smooth fade out if needed
+      setTimeout(() => { sec.style.display = 'none'; }, 300);
     }
-    // Scroll to top smoothly
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, 300);
+  });
 }
 
-// Smooth scroll for nav links
+// For nav links
 document.querySelectorAll('header nav a').forEach(link => {
-  link.addEventListener('click', e => {
+  link.addEventListener('click', function(e) {
     e.preventDefault();
-    const targetId = link.getAttribute('href').substring(1);
+    const targetId = this.getAttribute('href').replace('#', '');
     toggleSection(targetId);
   });
 });
 
-// Logo click scrolls to home
-document.querySelector('header .brand').addEventListener('click', () => {
-  toggleSection('home');
-});
+// Make logo click go home
+document.querySelector('.brand').addEventListener('click', () => toggleSection('home'));
 </script>
 </body>
 </html>
