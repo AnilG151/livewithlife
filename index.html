@@ -1101,7 +1101,40 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </footer>
 
 <script>
+function toggleSection(id) {
+  const allSections = document.querySelectorAll('section');
 
+  // Hide all sections first
+  allSections.forEach(sec => {
+    sec.style.display = 'none';
+    sec.style.opacity = 0;
+  });
+
+  if (id === 'home') {
+    // Show home + homeDetails together
+    const homeSection = document.getElementById('home');
+    const homeDetails = document.getElementById('homeDetails');
+
+    homeSection.style.display = 'flex';
+    homeDetails.style.display = 'block';
+
+    setTimeout(() => {
+      homeSection.style.opacity = 1;
+      homeDetails.style.opacity = 1;
+    }, 50);
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  } else {
+    // Show the clicked section
+    const sec = document.getElementById(id);
+    if (sec) {
+      sec.style.display = (id === 'home' || id === 'products') ? 'flex' : 'block';
+      setTimeout(() => sec.style.opacity = 1, 50);
+      sec.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}
 // PRODUCTS DATA
 const products = [
   {
@@ -1331,42 +1364,6 @@ document.querySelectorAll('.galleryGrid img').forEach(img=>{
   }
 });
 document.getElementById('lightbox').onclick=function(){this.style.display='none'};
-</script>
-<script>
-function toggleSection(id) {
-  const allSections = document.querySelectorAll('section');
-
-  // Hide all sections first
-  allSections.forEach(sec => {
-    sec.style.display = 'none';
-    sec.style.opacity = 0;
-  });
-
-  if (id === 'home') {
-    // Show home + homeDetails together
-    const homeSection = document.getElementById('home');
-    const homeDetails = document.getElementById('homeDetails');
-
-    homeSection.style.display = 'flex';
-    homeDetails.style.display = 'block';
-
-    setTimeout(() => {
-      homeSection.style.opacity = 1;
-      homeDetails.style.opacity = 1;
-    }, 50);
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  } else {
-    // Show the clicked section
-    const sec = document.getElementById(id);
-    if (sec) {
-      sec.style.display = (id === 'home' || id === 'products') ? 'flex' : 'block';
-      setTimeout(() => sec.style.opacity = 1, 50);
-      sec.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-}
 </script>
 </body>
 </html>
