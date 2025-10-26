@@ -1101,28 +1101,6 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </footer>
 
 <script>
-// 🌿 Section Toggle Function
-function toggleSection(id) {
-  const allSections = document.querySelectorAll('section');
-
-  allSections.forEach(sec => {
-    sec.style.opacity = 0;
-    setTimeout(() => sec.style.display = 'none', 300);
-  });
-
-  setTimeout(() => {
-    if (id === 'home') {
-      const hero = document.getElementById('home');
-      const homeDetails = document.getElementById('homeDetails');
-      if (hero) { hero.style.display = 'block'; setTimeout(() => hero.style.opacity = 1, 50); }
-      if (homeDetails) { homeDetails.style.display = 'block'; setTimeout(() => homeDetails.style.opacity = 1, 50); }
-    } else {
-      const target = document.getElementById(id);
-      if (target) { target.style.display = 'block'; setTimeout(() => target.style.opacity = 1, 50); }
-    }
-    window.scrollTo({top:0, behavior:'smooth'});
-  }, 300);
-}
 
 // PRODUCTS DATA
 const products = [
