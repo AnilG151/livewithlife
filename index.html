@@ -1401,31 +1401,47 @@ document.getElementById('lightbox').onclick=function(){this.style.display='none'
 <script>
 function toggleSection(id) {
   const allSections = document.querySelectorAll('section');
-
+  
   // Hide all sections first
   allSections.forEach(sec => {
+    sec.style.display = 'none';
     sec.style.opacity = 0;
-    setTimeout(() => sec.style.display = 'none', 300);
   });
 
-  // Show the requested section
-  const sectionsToShow = id === 'home' ? ['home', 'homeDetails'] : [id];
+  if(id === 'home') {
+    // Show Home + Home Details + Why Microgreens
+    const homeSections = ['home', 'homeDetails', 'whyMicrogreens'];
+    homeSections.forEach(hid => {
+      const el = document.getElementById(hid);
+      if(el){
+        el.style.display = 'block';
+        setTimeout(() => el.style.opacity = 1, 50);
+      }
+    });
+  } else {
+    // Show only clicked section
+    const active = document.getElementById(id);
+    if(active){
+      active.style.display = 'block';
+      setTimeout(() => active.style.opacity = 1, 50);
+    }
+  }
 
-  sectionsToShow.forEach(hid => {
-    const el = document.getElementById(hid);
-    if (el) {
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// On page load: show Home + Home Details + Why Microgreens
+window.addEventListener('DOMContentLoaded', () => {
+  const sectionsToShow = ['home', 'homeDetails', 'whyMicrogreens'];
+  sectionsToShow.forEach(id => {
+    const el = document.getElementById(id);
+    if(el){
       el.style.display = 'block';
-      // Allow display to register before fading in
       setTimeout(() => el.style.opacity = 1, 50);
     }
   });
-
-  // Reset scroll to top of the **document**
-  // This avoids leftover scroll from previous section
-  setTimeout(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, 100); // wait a tiny bit for display changes
-}
+});
 </script>
 </body>
 </html>
