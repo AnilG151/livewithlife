@@ -779,49 +779,48 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
  <div class="subscription">
   <h3 class="subscription-title">Nourish your health — Subscribe and enjoy premium value.</h3>
 
-  <div class="table-container">
-    <table class="subscription-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Start Greens 1 Month<br><span class="price">Rs 799/-</span></th>
-          <th>Nourish Greens 3 Month<br><span class="price">Rs 2299/-</span></th>
-          <th>Wellness Greens 6 Month<br><span class="price">Rs 4299/-</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>No. of Boxes of Fresh Microgreens</td>
-          <td>4</td>
-          <td>14</td>
-          <td>30</td>
-        </tr>
-        <tr>
-          <td>Health Benefit</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td>*Green Wellness Loyalty Program</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td>Recipes</td>
-          <td>—</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td>Variety</td>
-          <td>Different variety every week</td>
-          <td>Fresh picks every week/month — or select your favorites from the list</td>
-          <td>Fresh picks every week/month — or select your favorites from the list</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="subscription-cards">
+
+    <!-- Plan Card -->
+    <div class="plan-card">
+      <h4 class="plan-title">Start Greens 1 Month</h4>
+      <p class="plan-price">Rs 799/-</p>
+      <ul class="plan-features">
+        <li>4 Boxes of Fresh Microgreens</li>
+        <li>Health Benefit: ✅ Yes</li>
+        <li>Green Wellness Loyalty Program: ✅ Yes</li>
+        <li>Recipes: —</li>
+        <li>Variety: Different variety every week</li>
+      </ul>
+      <button class="subscribe-btn">Subscribe Now</button>
+    </div>
+
+    <div class="plan-card">
+      <h4 class="plan-title">Nourish Greens 3 Month</h4>
+      <p class="plan-price">Rs 2299/-</p>
+      <ul class="plan-features">
+        <li>14 Boxes of Fresh Microgreens</li>
+        <li>Health Benefit: ✅ Yes</li>
+        <li>Green Wellness Loyalty Program: ✅ Yes</li>
+        <li>Recipes: ✅ Yes</li>
+        <li>Variety: Fresh picks every week/month — or select your favorites</li>
+      </ul>
+      <button class="subscribe-btn">Subscribe Now</button>
+    </div>
+
+    <div class="plan-card">
+      <h4 class="plan-title">Wellness Greens 6 Month</h4>
+      <p class="plan-price">Rs 4299/-</p>
+      <ul class="plan-features">
+        <li>30 Boxes of Fresh Microgreens</li>
+        <li>Health Benefit: ✅ Yes</li>
+        <li>Green Wellness Loyalty Program: ✅ Yes</li>
+        <li>Recipes: ✅ Yes</li>
+        <li>Variety: Fresh picks every week/month — or select your favorites</li>
+      </ul>
+      <button class="subscribe-btn">Subscribe Now</button>
+    </div>
+
   </div>
 
   <p class="note">
@@ -982,67 +981,101 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   display: block;
   opacity: 1;
 }
-  /* Subscription Section Styles */
+/* General Subscription Styles */
 .subscription {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 40px auto;
   padding: 20px;
   font-family: 'Arial', sans-serif;
   color: #333;
-  line-height: 1.5;
 }
 
 .subscription-title {
-  font-size: 1.8em;
+  font-size: 2em;
   text-align: center;
   color: #2f9e44;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
-.table-container {
-  overflow-x: auto;
+/* Card Layout */
+.subscription-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.subscription-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
+.plan-card {
+  background-color: #f9f9f9;
+  border: 2px solid #2f9e44;
+  border-radius: 12px;
+  padding: 20px;
+  flex: 1 1 280px;
+  max-width: 320px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.subscription-table th,
-.subscription-table td {
-  border: 1px solid #ccc;
-  padding: 12px 15px;
+.plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.plan-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #2f9e44;
+  margin-bottom: 10px;
   text-align: center;
-  vertical-align: middle;
 }
 
-.subscription-table th {
+.plan-price {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #6a1b9a;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px;
+}
+
+.plan-features li {
+  padding: 6px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95em;
+}
+
+.plan-features li:last-child {
+  border-bottom: none;
+}
+
+.subscribe-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
   background-color: #2f9e44;
   color: #fff;
-  font-weight: 600;
-}
-
-.subscription-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.subscription-table td:first-child {
-  text-align: left;
-  font-weight: 500;
-}
-
-.price {
-  font-size: 1.1em;
   font-weight: bold;
-  display: block;
-  margin-top: 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
 }
 
+.subscribe-btn:hover {
+  background-color: #237a32;
+}
+
+/* Notes and Highlights */
 .note {
   font-size: 0.9em;
   color: #2f9e44;
-  margin-bottom: 15px;
+  margin-top: 20px;
 }
 
 .highlight-title {
