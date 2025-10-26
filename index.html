@@ -43,7 +43,6 @@ header .cartIcon{position:relative;font-size:20px;cursor:pointer}
 header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--green-1);color:#fff;padding:2px 7px;border-radius:999px;font-size:12px;font-weight:700}
 
 
-/* WHY MICROGREENS */
 /* WHY MICROGREENS SECTION */
 .whyMicro {
   background: linear-gradient(180deg, #a8e6a3, #ffffff); /* fresh green to white */
@@ -156,7 +155,67 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 .kicker{display:inline-block;background:rgba(107,211,106,0.12);color:var(--green-1);padding:6px 10px;border-radius:999px;font-weight:700;margin-bottom:12px}
 .fadeIn{animation:fadeIn .6s ease both}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+ 
+  /* 💬 ABOUT US */
+.about-section {
+  background: #f9fff9;
+  padding: 60px 20px;
+  text-align: center;
+}
 
+.about-section h2 {
+  font-size: 30px;
+  color: var(--green-1);
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1 1 450px;
+  font-size: 17px;
+  color: #333;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.about-text strong {
+  color: var(--green-1);
+}
+
+.about-quote {
+  margin-top: 20px;
+  font-style: italic;
+  font-size: 18px;
+  color: #2f9e44;
+}
+
+.about-image {
+  flex: 1 1 350px;
+  text-align: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
   /* 📞 CONTACT US */
 .contact-section {
   background: #fff;
@@ -495,7 +554,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     <img src="images/leaf3.png" class="leaf leaf3" alt="">
   </div>
 
-  <div class="container" style="max-width:1000px; margin:0 auto; position:relative; z-index:2;">
+  <div class="container" style="max-width:900px; margin:0 auto; position:relative; z-index:2;">
 
     <!-- Combined Intro + Assurance Block -->
     <div class="assurance-card" style="background:#fff; padding:50px; border-radius:25px; box-shadow:0 6px 16px rgba(0,0,0,0.08);">
@@ -523,7 +582,6 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
         <li>🥗 Fresh Taste for Every Meal</li>
       </ul>
     </div>
-
     <!-- Usage Ideas Section -->
     <div class="usage-card" style="background:#e8f5e9; padding:40px; border-radius:20px; box-shadow:0 4px 12px rgba(0,0,0,0.06);">
       <h3 style="font-size:1.8rem; color:#000; font-weight:600; margin-bottom:20px;">🌿 Add Microgreens To Your</h3>
@@ -534,79 +592,6 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
         <li>🌮 Wraps, Tacos & More</li>
       </ul>
     </div>
-
-    <!-- 🌾 WHY MICROGREENS SECTION -->
-    <section id="whyMicro" class="whyMicro" style="margin-top:50px;">
-      <div class="why-container">
-        <h2 class="why-title">Why Microgreens?</h2>
-        <p class="why-intro">
-          Tiny but mighty — microgreens are young edible greens packed with concentrated nutrients, vibrant flavors, and a burst of life in every leaf.
-        </p>
-
-        <!-- 🌱 BENEFITS GRID -->
-        <div class="why-grid">
-          <div class="why-item">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Nutrients" />
-            <h3>Up to 40× More Nutrients</h3>
-            <p>Compared to mature greens, microgreens deliver intense nutrition in every bite.</p>
-          </div>
-          <div class="why-item">
-            <img src="https://cdn-icons-png.flaticon.com/512/2331/2331926.png" alt="Immunity" />
-            <h3>Boosts Immunity</h3>
-            <p>Rich in vitamins A, C, and K, they help your body fight fatigue and infections.</p>
-          </div>
-          <div class="why-item">
-            <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="Sustainability" />
-            <h3>Eco-Friendly Growth</h3>
-            <p>Microgreens use 90% less water and grow naturally without pesticides or chemicals.</p>
-          </div>
-          <div class="why-item">
-            <img src="https://cdn-icons-png.flaticon.com/512/2830/2830289.png" alt="Freshness" />
-            <h3>Harvested Fresh</h3>
-            <p>From our trays to your plate within hours — nothing beats the freshness of Life With Leaf.</p>
-          </div>
-        </div>
-
-        <!-- 🧬 COMPARISON TABLE -->
-        <div class="why-compare">
-          <h3>Microgreens vs. Regular Greens</h3>
-          <table>
-            <tr>
-              <th>Feature</th>
-              <th>Microgreens 🌿</th>
-              <th>Regular Greens 🥬</th>
-            </tr>
-            <tr>
-              <td>Nutrient Density</td>
-              <td>4–40× higher</td>
-              <td>Standard</td>
-            </tr>
-            <tr>
-              <td>Freshness</td>
-              <td>Harvested daily</td>
-              <td>Stored for days</td>
-            </tr>
-            <tr>
-              <td>Growth Cycle</td>
-              <td>7–10 days</td>
-              <td>30–60 days</td>
-            </tr>
-            <tr>
-              <td>Pesticide Use</td>
-              <td>Zero</td>
-              <td>Possible residue</td>
-            </tr>
-          </table>
-        </div>
-
-        <!-- 🌸 QUOTE / CTA -->
-        <div class="why-quote">
-          <p>“A handful of microgreens a day can bring a world of health benefits.”</p>
-          <a href="#products" class="why-btn">Explore Fresh Greens</a>
-        </div>
-      </div>
-    </section>
-
   </div>
 </section>
 
@@ -721,15 +706,87 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 }
 </style>
 
-  
-<!-- PRODUCTS -->
-<section id="products" style="display:none;">
-  <div class="container">
-    <h2>🛒 Our Products</h2>
-    <div class="productGrid" id="productGrid"></div>
+<!-- 🌾 WHY MICROGREENS SECTION -->
+<section id="whyMicro" class="whyMicro">
+  <div class="why-container">
+    <h2 class="why-title">Why Microgreens?</h2>
+    <p class="why-intro">
+      Tiny but mighty — microgreens are young edible greens packed with concentrated nutrients, vibrant flavors, and a burst of life in every leaf.
+    </p>
+
+    <!-- 🌱 BENEFITS GRID -->
+    <div class="why-grid">
+      <div class="why-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Nutrients" />
+        <h3>Up to 40× More Nutrients</h3>
+        <p>Compared to mature greens, microgreens deliver intense nutrition in every bite.</p>
+      </div>
+      <div class="why-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331926.png" alt="Immunity" />
+        <h3>Boosts Immunity</h3>
+        <p>Rich in vitamins A, C, and K, they help your body fight fatigue and infections.</p>
+      </div>
+      <div class="why-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="Sustainability" />
+        <h3>Eco-Friendly Growth</h3>
+        <p>Microgreens use 90% less water and grow naturally without pesticides or chemicals.</p>
+      </div>
+      <div class="why-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/2830/2830289.png" alt="Freshness" />
+        <h3>Harvested Fresh</h3>
+        <p>From our trays to your plate within hours — nothing beats the freshness of Life With Leaf.</p>
+      </div>
+    </div>
+
+    <!-- 🧬 COMPARISON TABLE -->
+    <div class="why-compare">
+      <h3>Microgreens vs. Regular Greens</h3>
+      <table>
+        <tr>
+          <th>Feature</th>
+          <th>Microgreens 🌿</th>
+          <th>Regular Greens 🥬</th>
+        </tr>
+        <tr>
+          <td>Nutrient Density</td>
+          <td>4–40× higher</td>
+          <td>Standard</td>
+        </tr>
+        <tr>
+          <td>Freshness</td>
+          <td>Harvested daily</td>
+          <td>Stored for days</td>
+        </tr>
+        <tr>
+          <td>Growth Cycle</td>
+          <td>7–10 days</td>
+          <td>30–60 days</td>
+        </tr>
+        <tr>
+          <td>Pesticide Use</td>
+          <td>Zero</td>
+          <td>Possible residue</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 🌸 QUOTE / CTA -->
+    <div class="why-quote">
+      <p>“A handful of microgreens a day can bring a world of health benefits.”</p>
+      <a href="#shop" class="why-btn">Explore Fresh Greens</a>
+    </div>
   </div>
 </section>
-
+  
+<!-- PRODUCTS -->
+<section id="products" style="display:none">
+  <div class="container">
+    <h2>Our Products</h2>
+    <div class="productGrid" id="productGrid">
+      <!-- JS will populate products here -->
+    </div>
+  </div>
+</section>
 
 <style>
 /* 🌾 WHY MICROGREENS SECTION */
@@ -1100,172 +1157,306 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </footer>
 
 <script>
-// =======================
-// SECTION TOGGLE FUNCTION
-// =======================
+// 🌿 Section Toggle Function
 function toggleSection(id) {
   const allSections = document.querySelectorAll('section');
 
-  // Hide all sections first
   allSections.forEach(sec => {
-    sec.style.display = 'none';
     sec.style.opacity = 0;
+    setTimeout(() => sec.style.display = 'none', 300);
   });
 
-  if (id === 'home') {
-    const homeSection = document.getElementById('home');
-    const homeDetails = document.getElementById('homeDetails');
-
-    homeSection.style.display = 'flex';
-    homeDetails.style.display = 'block';
-
-    setTimeout(() => {
-      homeSection.style.opacity = 1;
-      homeDetails.style.opacity = 1;
-    }, 50);
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  } else {
-    const sec = document.getElementById(id);
-    if (sec) {
-      sec.style.display = (id === 'home' || id === 'products') ? 'flex' : 'block';
-      setTimeout(() => sec.style.opacity = 1, 50);
-      sec.scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => {
+    if (id === 'home') {
+      const hero = document.getElementById('home');
+      const homeDetails = document.getElementById('homeDetails');
+      if (hero) { hero.style.display = 'block'; setTimeout(() => hero.style.opacity = 1, 50); }
+      if (homeDetails) { homeDetails.style.display = 'block'; setTimeout(() => homeDetails.style.opacity = 1, 50); }
+    } else {
+      const target = document.getElementById(id);
+      if (target) { target.style.display = 'block'; setTimeout(() => target.style.opacity = 1, 50); }
     }
-  }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }, 300);
 }
 
-// =======================
 // PRODUCTS DATA
-// =======================
 const products = [
-  { id: 1, name: "White Radish", vitamins: "C, K", minerals: "Calcium, Potassium", antioxidants: "Anthocyanins", benefits: "Anti-inflammatory, digestion", skinHairBenefits: "Skin clarity", additionalBenefits: "Supports metabolism", image: "product1.jpg", price: 199 },
-  { id: 2, name: "Broccoli", vitamins: "A, C, K", minerals: "Calcium, Iron", antioxidants: "Sulforaphane", benefits: "Anti-cancer, detox", skinHairBenefits: "Collagen boost", additionalBenefits: "Supports liver detox", image: "product2.jpg", price: 249 },
-  { id: 3, name: "Fenugreek", vitamins: "A, C, K", minerals: "Iron, Magnesium", antioxidants: "Saponins, Polyphenols", benefits: "Blood sugar control", skinHairBenefits: "Hormonal balance", additionalBenefits: "Improves digestion", image: "product3.jpg", price: 179 },
-  { id: 4, name: "Pink Radish", vitamins: "C, K", minerals: "Calcium, Potassium", antioxidants: "Anthocyanins", benefits: "Heart health", skinHairBenefits: "Skin glow", additionalBenefits: "Boosts circulation", image: "product4.jpg", price: 199 },
-  { id: 5, name: "Mustard", vitamins: "A, C, K", minerals: "Calcium, Iron", antioxidants: "Glucosinolates", benefits: "Cancer prevention", skinHairBenefits: "Skin hydration", additionalBenefits: "Supports immunity", image: "product5.jpg", price: 179 },
-  { id: 6, name: "Sunflower", vitamins: "A, C, E, K", minerals: "Zinc, Magnesium", antioxidants: "Beta-carotene", benefits: "Brain health, immunity", skinHairBenefits: "Scalp nourishment", additionalBenefits: "Improves mood", image: "product6.jpg", price: 219 },
-  { id: 7, name: "Kale", vitamins: "A, C, K", minerals: "Calcium, Magnesium", antioxidants: "Sulforaphane, Quercetin", benefits: "Bone health, heart protection", skinHairBenefits: "Skin firmness", additionalBenefits: "Supports vision", image: "product7.jpg", price: 249 },
-  { id: 8, name: "Beetroot", vitamins: "A, C, K", minerals: "Iron, Magnesium", antioxidants: "Betalains", benefits: "Heart health, detox", skinHairBenefits: "Hair growth", additionalBenefits: "Improves stamina", image: "product8.jpg", price: 199 },
-  { id: 9, name: "Peas", vitamins: "A, C, K", minerals: "Iron, Phosphorus", antioxidants: "Flavonoids", benefits: "Energy, immunity", skinHairBenefits: "Hair strength", additionalBenefits: "Supports pregnancy", image: "product9.jpg", price: 179 },
-  { id: 10, name: "Mung Bean", vitamins: "C, B", minerals: "Iron, Magnesium", antioxidants: "Phenolic acids", benefits: "Metabolism support", skinHairBenefits: "Hair texture", additionalBenefits: "Supports gut health", image: "product10.jpg", price: 179 },
-  { id: 11, name: "Cilantro", vitamins: "A, C, K", minerals: "Iron, Potassium", antioxidants: "Chlorophyll", benefits: "Detox, immunity", skinHairBenefits: "Skin detox", additionalBenefits: "Improves skin tone", image: "product11.jpg", price: 169 },
-  { id: 12, name: "Spinach", vitamins: "A, C, K", minerals: "Magnesium, Iron", antioxidants: "Lutein, Zeaxanthin", benefits: "Eye health, immunity", skinHairBenefits: "Hair strength", additionalBenefits: "Supports bone health", image: "product12.jpg", price: 199 }
+  {
+    id: 1,
+    name: "White Radish",
+    vitamins: "C, K",
+    minerals: "Calcium, Potassium",
+    antioxidants: "Anthocyanins",
+    benefits: "Anti-inflammatory, digestion",
+    skinHairBenefits: "Skin clarity",
+    additionalBenefits: "Supports metabolism",
+    image: "product1.jpg",
+    price: 199
+  },
+  {
+    id: 2,
+    name: "Broccoli",
+    vitamins: "A, C, K",
+    minerals: "Calcium, Iron",
+    antioxidants: "Sulforaphane",
+    benefits: "Anti-cancer, detox",
+    skinHairBenefits: "Collagen boost",
+    additionalBenefits: "Supports liver detox",
+    image: "product2.jpg",
+    price: 249
+  },
+  {
+    id: 3,
+    name: "Fenugreek",
+    vitamins: "A, C, K",
+    minerals: "Iron, Magnesium",
+    antioxidants: "Saponins, Polyphenols",
+    benefits: "Blood sugar control",
+    skinHairBenefits: "Hormonal balance",
+    additionalBenefits: "Improves digestion",
+    image: "product3.jpg",
+    price: 179
+  },
+  {
+    id: 4,
+    name: "Pink Radish",
+    vitamins: "C, K",
+    minerals: "Calcium, Potassium",
+    antioxidants: "Anthocyanins",
+    benefits: "Heart health",
+    skinHairBenefits: "Skin glow",
+    additionalBenefits: "Boosts circulation",
+    image: "product4.jpg",
+    price: 199
+  },
+  {
+    id: 5,
+    name: "Mustard",
+    vitamins: "A, C, K",
+    minerals: "Calcium, Iron",
+    antioxidants: "Glucosinolates",
+    benefits: "Cancer prevention",
+    skinHairBenefits: "Skin hydration",
+    additionalBenefits: "Supports immunity",
+    image: "product5.jpg",
+    price: 179
+  },
+  {
+    id: 6,
+    name: "Sunflower",
+    vitamins: "A, C, E, K",
+    minerals: "Zinc, Magnesium",
+    antioxidants: "Beta-carotene",
+    benefits: "Brain health, immunity",
+    skinHairBenefits: "Scalp nourishment",
+    additionalBenefits: "Improves mood",
+    image: "product6.jpg",
+    price: 219
+  },
+  {
+    id: 7,
+    name: "Kale",
+    vitamins: "A, C, K",
+    minerals: "Calcium, Magnesium",
+    antioxidants: "Sulforaphane, Quercetin",
+    benefits: "Bone health, heart protection",
+    skinHairBenefits: "Skin firmness",
+    additionalBenefits: "Supports vision",
+    image: "product7.jpg",
+    price: 249
+  },
+  {
+    id: 8,
+    name: "Beetroot",
+    vitamins: "A, C, K",
+    minerals: "Iron, Magnesium",
+    antioxidants: "Betalains",
+    benefits: "Heart health, detox",
+    skinHairBenefits: "Hair growth",
+    additionalBenefits: "Improves stamina",
+    image: "product8.jpg",
+    price: 199
+  },
+  {
+    id: 9,
+    name: "Peas",
+    vitamins: "A, C, K",
+    minerals: "Iron, Phosphorus",
+    antioxidants: "Flavonoids",
+    benefits: "Energy, immunity",
+    skinHairBenefits: "Hair strength",
+    additionalBenefits: "Supports pregnancy",
+    image: "product9.jpg",
+    price: 179
+  },
+  {
+    id: 10,
+    name: "Mung Bean",
+    vitamins: "C, B",
+    minerals: "Iron, Magnesium",
+    antioxidants: "Phenolic acids",
+    benefits: "Metabolism support",
+    skinHairBenefits: "Hair texture",
+    additionalBenefits: "Supports gut health",
+    image: "product10.jpg",
+    price: 179
+  },
+  {
+    id: 11,
+    name: "Cilantro",
+    vitamins: "A, C, K",
+    minerals: "Iron, Potassium",
+    antioxidants: "Chlorophyll",
+    benefits: "Detox, immunity",
+    skinHairBenefits: "Skin detox",
+    additionalBenefits: "Improves skin tone",
+    image: "product11.jpg",
+    price: 169
+  },
+  {
+    id: 12,
+    name: "Spinach",
+    vitamins: "A, C, K",
+    minerals: "Magnesium, Iron",
+    antioxidants: "Lutein, Zeaxanthin",
+    benefits: "Eye health, immunity",
+    skinHairBenefits: "Hair strength",
+    additionalBenefits: "Supports bone health",
+    image: "product12.jpg",
+    price: 199
+  }
 ];
 
-// =======================
+let cart=[];
+
 // RENDER PRODUCTS
-// =======================
 const grid = document.getElementById('productGrid');
-if (grid) {
-  grid.innerHTML = '';
-  products.forEach(p => {
-    const div = document.createElement('div');
-    div.className = 'product fadeIn';
-    div.innerHTML = `
-      <div class="productImg">
-        <img src="${p.image}" alt="${p.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/120.png?text=Img'">
-      </div>
-      <h3>${p.name}</h3>
-      <p class="desc"><strong>Benefits:</strong> ${p.benefits || 'N/A'}</p>
-      <p class="desc"><strong>Vitamins:</strong> ${p.vitamins || 'N/A'}</p>
-      <p class="desc"><strong>Minerals:</strong> ${p.minerals || 'N/A'}</p>
-      <p class="desc"><strong>Antioxidants:</strong> ${p.antioxidants || 'N/A'}</p>
-      <p class="desc"><strong>Skin & Hair:</strong> ${p.skinHairBenefits || 'N/A'}</p>
-      <p class="desc"><strong>Additional Benefits:</strong> ${p.additionalBenefits || 'N/A'}</p>
-      <div class="priceRow">
-        <div class="price">₹${p.price}</div>
-        <button class="addCart" onclick="addToCart(${p.id})">Add 🛒</button>
-      </div>
-    `;
-    grid.appendChild(div);
-  });
-}
+grid.innerHTML = ''; // Clear existing content
 
-// =======================
+products.forEach(p => {
+  const div = document.createElement('div');
+  div.className = 'product fadeIn';
+  div.innerHTML = `
+    <div class="productImg">
+      <img src="${p.image}" 
+           alt="${p.name}" 
+           onerror="this.onerror=null;this.src='https://via.placeholder.com/120.png?text=Img'">
+    </div>
+    <h3>${p.name}</h3>
+    <p class="desc"><strong>Benefits:</strong> ${p.benefits || 'N/A'}</p>
+    <p class="desc"><strong>Vitamins:</strong> ${p.vitamins || 'N/A'}</p>
+    <p class="desc"><strong>Minerals:</strong> ${p.minerals || 'N/A'}</p>
+    <p class="desc"><strong>Antioxidants:</strong> ${p.antioxidants || 'N/A'}</p>
+    <p class="desc"><strong>Skin & Hair:</strong> ${p.skinHairBenefits  || 'N/A'}</p>
+    <p class="desc"><strong>Addtional Benifts:</strong> ${p.additionalBenefits  || 'N/A'}</p>
+    
+    <div class="priceRow">
+      <div class="price">₹${p.price}</div>
+      <button class="addCart" onclick="addToCart(${p.id})">Add 🛒</button>
+    </div>
+  `;
+  grid.appendChild(div);
+});
+
+
 // CART FUNCTIONS
-// =======================
-let cart = [];
-
-function addToCart(id) {
-  const prod = products.find(p => p.id === id);
-  const existing = cart.find(c => c.id === id);
-  if (existing) existing.qty += 1;
-  else cart.push({ ...prod, qty: 1 });
+function addToCart(id){
+  const prod=products.find(p=>p.id===id);
+  const existing=cart.find(c=>c.id===id);
+  if(existing){existing.qty+=1;} else {cart.push({...prod,qty:1});}
   updateCartUI();
 }
-
-function updateCartUI() {
-  document.getElementById('cartCount').innerText = cart.reduce((a, c) => a + c.qty, 0);
-  document.getElementById('miniCount').innerText = cart.reduce((a, c) => a + c.qty, 0);
-
-  const list = document.getElementById('cartList');
-  if (!list) return;
-  list.innerHTML = '';
-  let total = 0;
-
-  cart.forEach(c => {
-    total += c.price * c.qty;
-    const item = document.createElement('div');
-    item.className = 'cartItem fadeIn';
-    item.innerHTML = `
-      <img src="${c.image}" onerror="this.onerror=null;this.src='https://via.placeholder.com/80.png'">
+function updateCartUI(){
+  document.getElementById('cartCount').innerText=cart.reduce((a,c)=>a+c.qty,0);
+  document.getElementById('miniCount').innerText=cart.reduce((a,c)=>a+c.qty,0);
+  const list=document.getElementById('cartList'); list.innerHTML='';
+  let total=0;
+  cart.forEach(c=>{
+    total+=c.price*c.qty;
+    const item=document.createElement('div'); item.className='cartItem fadeIn';
+    item.innerHTML=`<img src="${c.img}" onerror="this.onerror=null;this.src='https://via.placeholder.com/80.png'">
       <div style="flex:1">
         <div>${c.name}</div>
-        <div>₹${c.price} x ${c.qty} = ₹${c.price * c.qty}</div>
+        <div>₹${c.price} x ${c.qty} = ₹${c.price*c.qty}</div>
       </div>
       <div class="qtyCtrl">
         <button onclick="changeQty(${c.id},-1)">➖</button>
         <span>${c.qty}</span>
         <button onclick="changeQty(${c.id},1)">➕</button>
         <button onclick="changeQty(${c.id},-${c.qty})" style="margin-left:6px;">❌</button>
-      </div>
-    `;
+      </div>`;
     list.appendChild(item);
   });
-
-  document.getElementById('cartTotal').innerText = total;
-  document.getElementById('miniCartBar').style.display = cart.length > 0 ? 'flex' : 'none';
+  document.getElementById('cartTotal').innerText=total;
+  document.getElementById('miniCartBar').style.display=cart.length>0?'flex':'none';
 }
-
-function changeQty(id, val) {
-  const item = cart.find(c => c.id === id);
-  if (!item) return;
-  item.qty += val;
-  if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
+function changeQty(id,val){
+  const item=cart.find(c=>c.id===id); if(!item)return;
+  item.qty+=val; if(item.qty<=0){cart=cart.filter(c=>c.id!==id);}
   updateCartUI();
 }
+function openCart(){document.getElementById('cartModalOverlay').style.display='flex';document.querySelector('.cartModal').style.opacity=1;document.querySelector('.cartModal').style.transform='translateY(0)';}
+function closeCart(){document.getElementById('cartModalOverlay').style.display='none';document.querySelector('.cartModal').style.opacity=0;document.querySelector('.cartModal').style.transform='translateY(30px)';}
+function checkout(){alert('Proceed to WhatsApp checkout!');}
 
-function openCart() {
-  document.getElementById('cartModalOverlay').style.display = 'flex';
-  const modal = document.querySelector('.cartModal');
-  modal.style.opacity = 1;
-  modal.style.transform = 'translateY(0)';
-}
-
-function closeCart() {
-  document.getElementById('cartModalOverlay').style.display = 'none';
-  const modal = document.querySelector('.cartModal');
-  modal.style.opacity = 0;
-  modal.style.transform = 'translateY(30px)';
-}
-
-function checkout() {
-  alert('Proceed to WhatsApp checkout!');
-}
-
-// =======================
-// LIGHTBOX (IF NEEDED)
-// =======================
-document.querySelectorAll('.galleryGrid img').forEach(img => {
-  img.onclick = () => {
-    const lb = document.getElementById('lightbox');
-    lb.querySelector('img').src = img.src;
-    lb.style.display = 'flex';
+// LIGHTBOX
+document.querySelectorAll('.galleryGrid img').forEach(img=>{
+  img.onclick=()=>{
+    const lb=document.getElementById('lightbox');
+    lb.querySelector('img').src=img.src;
+    lb.style.display='flex';
   }
 });
-document.getElementById('lightbox').onclick = function() { this.style.display = 'none'; }
+document.getElementById('lightbox').onclick=function(){this.style.display='none'};
+</script>
+<script>
+// 🌿 Section Toggle & Smooth Scroll
+function toggleSection(id) {
+  const allSections = document.querySelectorAll('section');
+
+  // Hide all sections with fade-out
+  allSections.forEach(sec => {
+    sec.style.opacity = 0;
+    setTimeout(() => sec.style.display = 'none', 300);
+  });
+
+  // Show target section(s) after fade-out
+  setTimeout(() => {
+    if(id === 'home'){
+      // Show both hero and homeDetails
+      ['home','homeDetails'].forEach(secId => {
+        const s = document.getElementById(secId);
+        if(s){
+          s.style.display = 'block';
+          setTimeout(()=> s.style.opacity = 1, 50);
+        }
+      });
+    } else {
+      const target = document.getElementById(id);
+      if(target){
+        target.style.display = 'block';
+        setTimeout(()=> target.style.opacity = 1, 50);
+      }
+    }
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 300);
+}
+
+// Smooth scroll for nav links
+document.querySelectorAll('header nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href').substring(1);
+    toggleSection(targetId);
+  });
+});
+
+// Logo click scrolls to home
+document.querySelector('header .brand').addEventListener('click', () => {
+  toggleSection('home');
+});
 </script>
 </body>
 </html>
