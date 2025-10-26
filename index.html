@@ -776,15 +776,17 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     </div>
     
      <!-- Subscription Table -->
-  <div class="subscription">
-    <h3>Nourish your health — Subscribe and enjoy premium value.</h3>
-    <table border="1" cellspacing="0" cellpadding="5">
+ <div class="subscription">
+  <h3 class="subscription-title">Nourish your health — Subscribe and enjoy premium value.</h3>
+
+  <div class="table-container">
+    <table class="subscription-table">
       <thead>
         <tr>
           <th></th>
-          <th>Start Greens 1 Month<br>Rs 799/-</th>
-          <th>Nourish Greens 3 Month<br>Rs 2299/-</th>
-          <th>Wellness Greens 6 Month<br>Rs 4299/-</th>
+          <th>Start Greens 1 Month<br><span class="price">Rs 799/-</span></th>
+          <th>Nourish Greens 3 Month<br><span class="price">Rs 2299/-</span></th>
+          <th>Wellness Greens 6 Month<br><span class="price">Rs 4299/-</span></th>
         </tr>
       </thead>
       <tbody>
@@ -796,45 +798,49 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
         </tr>
         <tr>
           <td>Health Benefit</td>
-          <td>Yes</td>
-          <td>Yes</td>
-          <td>Yes</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
         </tr>
         <tr>
           <td>*Green Wellness Loyalty Program</td>
-          <td>Yes</td>
-          <td>Yes</td>
-          <td>Yes</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
         </tr>
         <tr>
           <td>Recipes</td>
-          <td></td>
-          <td>Yes</td>
-          <td>Yes</td>
+          <td>—</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
         </tr>
         <tr>
           <td>Variety</td>
           <td>Different variety every week</td>
-          <td>  Fresh picks every week/month — or select your favorites from the list  </td>
-          <td>  Fresh picks every week/month — or select your favorites from the list  </td>
+          <td>Fresh picks every week/month — or select your favorites from the list</td>
+          <td>Fresh picks every week/month — or select your favorites from the list</td>
         </tr>
       </tbody>
     </table>
-
-    <p style="font-size: 0.9em; color: green;">
-      * Green Wellness Loyalty Program - Invite friends and family to join — and enjoy extra discount of 12% as a thank-you for growing the community.<br>
-      * Currently Subscription Plan & Price Only For Noida, Greater Noida West, Ghaziabad (Indirapuram, Vaishali, Crossing Republic)<br>
-      * List of Choice - White Radish, Broccoli, Fenugreek, Pink Radish, Mustard, Sunflower, Kale, Beetroot, Peas, Mung Bean.
-    </p>
-
-    <p style="font-weight: bold; color: purple;">Why choose Life with Leaf Green Wellness Program?</p>
-    <p>Boost your everyday health with ease — Our Green Wellness subscription offers a cost-effective and hassle-free way to enjoy fresh microgreens tailored to your lifestyle needs.</p>
-
-    <h3 style="background-color: #2f9e44; color: white; padding: 5px;">Microgreen Grow Kit Price</h3>
-    <p>1) Microgreen Grow Kit Monthly Pac – 4 variety of seeds and growing medium – INR 499<br>
-       2) Microgreen Grow Kit Fort Monthly Pack – 2 variety of seeds and growing medium – INR 299
-    </p>
   </div>
+
+  <p class="note">
+    * Green Wellness Loyalty Program - Invite friends and family to join — and enjoy extra discount of 12% as a thank-you for growing the community.<br>
+    * Currently Subscription Plan & Price Only For Noida, Greater Noida West, Ghaziabad (Indirapuram, Vaishali, Crossing Republic)<br>
+    * List of Choice - White Radish, Broccoli, Fenugreek, Pink Radish, Mustard, Sunflower, Kale, Beetroot, Peas, Mung Bean.
+  </p>
+
+  <p class="highlight-title">Why choose Life with Leaf Green Wellness Program?</p>
+  <p class="highlight-text">
+    Boost your everyday health with ease — Our Green Wellness subscription offers a cost-effective and hassle-free way to enjoy fresh microgreens tailored to your lifestyle needs.
+  </p>
+
+  <h3 class="microkit-title">Microgreen Grow Kit Price</h3>
+  <p class="microkit-text">
+    1) Microgreen Grow Kit Monthly Pack – 4 varieties of seeds and growing medium – INR 499<br>
+    2) Microgreen Grow Kit Fort Monthly Pack – 2 varieties of seeds and growing medium – INR 299
+  </p>
+</div>
   </div>
 </section>
   
@@ -975,6 +981,91 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 #home, #homeDetails {
   display: block;
   opacity: 1;
+}
+  /* Subscription Section Styles */
+.subscription {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  line-height: 1.5;
+}
+
+.subscription-title {
+  font-size: 1.8em;
+  text-align: center;
+  color: #2f9e44;
+  margin-bottom: 25px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.subscription-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.subscription-table th,
+.subscription-table td {
+  border: 1px solid #ccc;
+  padding: 12px 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.subscription-table th {
+  background-color: #2f9e44;
+  color: #fff;
+  font-weight: 600;
+}
+
+.subscription-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.subscription-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+}
+
+.price {
+  font-size: 1.1em;
+  font-weight: bold;
+  display: block;
+  margin-top: 5px;
+}
+
+.note {
+  font-size: 0.9em;
+  color: #2f9e44;
+  margin-bottom: 15px;
+}
+
+.highlight-title {
+  font-weight: bold;
+  color: #6a1b9a;
+  margin: 20px 0 10px;
+}
+
+.highlight-text {
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+.microkit-title {
+  background-color: #2f9e44;
+  color: #fff;
+  padding: 8px 12px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.microkit-text {
+  font-size: 1em;
 }
 </style>
 
