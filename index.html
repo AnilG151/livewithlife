@@ -452,11 +452,11 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 /* HERO IMAGE */
 .hero-image {
-  flex: 1;
+  flex: 1 1 45%; /* 👈 keeps image balanced on right */
   display: flex;
-  justify-content: center;
+  justify-content: flex-end; /* 👈 aligns image to right edge */
+  z-index: 1;
 }
-
 .hero-image img {
   width: 100%;
   max-width: 400px;
@@ -517,7 +517,8 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     text-align: center;
   }
   .hero .hero-image {
-    order: -1;  /* image above text */
+    order: -1; /* 👈 image above text on mobile */
+    justify-content: center;
     max-width: 100%;
     margin-bottom: 18px;
   }
