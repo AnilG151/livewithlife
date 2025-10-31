@@ -106,7 +106,7 @@ header nav a:hover{background:rgba(47,158,68,0.08);color:var(--green-1)}
 header .cartIcon {
   position: fixed;
   top: 15px;
-  left: 80%;
+  left: 50%;
   transform: translateX(-50%);
   font-size: 24px;
   cursor: pointer;
@@ -115,6 +115,7 @@ header .cartIcon {
   padding: 8px 10px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  display: none; /* 👈 hidden initially */
 }
 header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--green-1);color:#fff;padding:2px 7px;border-radius:999px;font-size:12px;font-weight:700}
 
@@ -1625,14 +1626,27 @@ function addToCart(id){
   updateCartUI();
 }
 function updateCartUI(){
-  document.getElementById('cartCount').innerText=cart.reduce((a,c)=>a+c.qty,0);
-  document.getElementById('miniCount').innerText=cart.reduce((a,c)=>a+c.qty,0);
-  const list=document.getElementById('cartList'); list.innerHTML='';
-  let total=0;
+  // update counts
+  const totalQty = cart.reduce((a,c)=>a+c.qty,0);
+  document.getElementById('cartCount').innerText = totalQty;
+  document.getElementById('miniCount').innerText = totalQty;
+
+  // show/hide header cart icon (hidden when no items)
+  const headerCart = document.querySelector('.cartIcon');
+  if (headerCart) {
+    headerCart.style.display = totalQty > 0 ? 'inline-flex' : 'none';
+  }
+
+  // update mini cart bar visibility and contents
+  const list = document.getElementById('cartList');
+  list.innerHTML = '';
+  let total = 0;
   cart.forEach(c=>{
-    total+=c.price*c.qty;
-    const item=document.createElement('div'); item.className='cartItem fadeIn';
-    item.innerHTML=`<img src="${c.img}" onerror="this.onerror=null;this.src='https://via.placeholder.com/80.png'">
+    total += c.price * c.qty;
+    const item = document.createElement('div');
+    item.className = 'cartItem fadeIn';
+    /* NOTE: use c.image (your products use "image" key) */
+    item.innerHTML = `<img src="${c.image}" onerror="this.onerror=null;this.src='https://via.placeholder.com/80.png'">
       <div style="flex:1">
         <div>${c.name}</div>
         <div>₹${c.price} x ${c.qty} = ₹${c.price*c.qty}</div>
@@ -1645,8 +1659,9 @@ function updateCartUI(){
       </div>`;
     list.appendChild(item);
   });
-  document.getElementById('cartTotal').innerText=total;
-  document.getElementById('miniCartBar').style.display=cart.length>0?'flex':'none';
+
+  document.getElementById('cartTotal').innerText = total;
+  document.getElementById('miniCartBar').style.display = cart.length > 0 ? 'flex' : 'none';
 }
 function changeQty(id,val){
   const item=cart.find(c=>c.id===id); if(!item)return;
@@ -1705,12 +1720,17 @@ window.addEventListener('DOMContentLoaded', () => {
   const sectionsToShow = ['home', 'homeDetails', 'whyMicro'];
   sectionsToShow.forEach(id => {
     const el = document.getElementById(id);
-    if(el){
+    if (el) {
       el.style.display = 'block';
       setTimeout(() => el.style.opacity = 1, 50);
     }
   });
+
+  // 👇 NEW PART: hide cart icon initially if cart is empty
+  const headerCart = document.querySelector('.cartIcon');
+  if (headerCart) headerCart.style.display = cart.length > 0 ? 'inline-flex' : 'none';
 });
+  
 function subscribeWhatsApp(planName, price) {
   // Your WhatsApp number (replace with your number including country code)
   const phoneNumber = "919873324887";
