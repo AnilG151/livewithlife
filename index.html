@@ -5,7 +5,71 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Life With Leaf — Healthy Living</title>
 <meta name="description" content="Life With Leaf - Live microgreens, pesticide-free, homegrown. Fresh microgreens, grow kits and seeds." />
+
+<!-- HAMBURGER MENU -->
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+
+<!-- NAVIGATION MENU -->
+<nav id="navMenu" class="nav-menu">
+  <a href="#" onclick="toggleSection('home')">🏠 Home</a>
+  <a href="#" onclick="toggleSection('whyMicro')">🌿 Why Microgreens</a>
+  <a href="#" onclick="toggleSection('benefits')">💪 Health Benefits</a>
+  <a href="#" onclick="toggleSection('products')">🛒 Products</a>
+  <a href="#" onclick="toggleSection('about')">💬 About Us</a>
+  <a href="#" onclick="toggleSection('contact')">📞 Contact Us</a>
+</nav>
+  
 <style>
+/* Hamburger Icon */
+.hamburger {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  font-size: 26px;
+  cursor: pointer;
+  z-index: 1001;
+  color: var(--green-1);
+  user-select: none;
+  transition: transform 0.3s;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+/* Hidden by default */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 220px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+.nav-menu a {
+  padding: 14px 20px;
+  text-decoration: none;
+  color: var(--green-1);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.nav-menu a:hover {
+  background: rgba(107,211,106,0.12);
+}
+
+/* Active menu state */
+.nav-menu.active {
+  right: 0;
+}
+  
 :root{
   --green-1:#2f9e44; --green-2:#6bd36a; --muted:#556068;
   --card:#ffffff; --glass:rgba(255,255,255,0.92);
@@ -42,6 +106,7 @@ header nav a:hover{background:rgba(47,158,68,0.08);color:var(--green-1)}
 header .cartIcon{position:relative;font-size:20px;cursor:pointer}
 header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--green-1);color:#fff;padding:2px 7px;border-radius:999px;font-size:12px;font-weight:700}
 
+  
 
 /* WHY MICROGREENS SECTION */
 .whyMicro {
@@ -108,6 +173,8 @@ header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--gr
   background-color: #237a34; /* darker green on hover */
 }
 
+  
+  
 /* SECTIONS */
 section{padding:40px 0}
 section h2{font-size:26px;color:var(--green-1);margin-bottom:20px;text-align:center}
@@ -155,6 +222,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 .kicker{display:inline-block;background:rgba(107,211,106,0.12);color:var(--green-1);padding:6px 10px;border-radius:999px;font-weight:700;margin-bottom:12px}
 .fadeIn{animation:fadeIn .6s ease both}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  
   /* 💬 ABOUT US */
 .about-section {
   background: #f9fff9;
@@ -1645,6 +1713,9 @@ function subscribeWhatsApp(planName, price) {
   const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   window.open(url, '_blank');
 }  
+function toggleMenu() {
+  document.getElementById('navMenu').classList.toggle('active');
+}
 </script>
 </body>
 </html>
