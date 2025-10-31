@@ -5,90 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Life With Leaf — Healthy Living</title>
 <meta name="description" content="Life With Leaf - Live microgreens, pesticide-free, homegrown. Fresh microgreens, grow kits and seeds." />
-  
-  
 <style>
-/* 🌿 Hamburger Icon */
-.hamburger {
-  display: none;
-  font-size: 28px;
-  color: var(--green-1);
-  position: absolute;
-  top: 18px;
-  right: 22px;
-  cursor: pointer;
-  z-index: 1001;
-  transition: transform 0.3s ease;
-}
-
-.hamburger:hover {
-  transform: scale(1.1);
-}
-
-/* 🌿 NAV MENU */
-.nav-menu {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-/* 🌿 MOBILE VIEW */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-
-  .nav-menu {
-    position: fixed;
-    top: 0;
-    right: -260px;
-    width: 220px;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.8); /* transparent white */
-    backdrop-filter: blur(8px); /* soft glass effect */
-    flex-direction: column;
-    padding-top: 80px;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-    transition: right 0.3s ease;
-    z-index: 1001;
-  }
-
-  .nav-menu a {
-    padding: 15px 20px;
-    text-decoration: none;
-    color: var(--green-1);
-    font-weight: 600;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-  }
-
-  .nav-menu a:hover {
-    background: rgba(107,211,106,0.12);
-  }
-
-  .nav-menu.active {
-    right: 0;
-  }
-
-  /* Overlay background */
-  .menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 1000;
-  }
-
-  .menu-overlay.active {
-    opacity: 1;
-    pointer-events: all;
-  }
-}
-  
 :root{
   --green-1:#2f9e44; --green-2:#6bd36a; --muted:#556068;
   --card:#ffffff; --glass:rgba(255,255,255,0.92);
@@ -207,7 +124,6 @@ section h2{font-size:26px;color:var(--green-1);margin-bottom:20px;text-align:cen
 .priceRow{display:flex;justify-content:space-between;align-items:center}
 .price{font-weight:800;color:var(--green-1)}
 .addCart{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:white;padding:8px 12px;border-radius:10px;border:0;font-weight:700}
-
 
 
 /* MINI-CART BAR */
@@ -428,8 +344,6 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     </div>
   </div>
 
-  
-
   <!-- NAVIGATION -->
   <nav>
   <ul>
@@ -442,25 +356,6 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   </ul>
 </nav>
 
-  <!-- HAMBURGER ICON -->
-<div class="hamburger" onclick="toggleMenu()">☰</div>
-
-<!-- NAVIGATION MENU -->
-<nav id="navMenu" class="nav-menu">
-  <a href="#" onclick="toggleSection('home')">🏠 Home</a>
-  <a href="#" onclick="toggleSection('whyMicro')">🌿 Why Microgreens</a>
-  <a href="#" onclick="toggleSection('health')">💪 Health Benefits</a>
-  <a href="#" onclick="toggleSection('products')">🛒 Products</a>
-  <a href="#" onclick="toggleSection('about')">💬 About Us</a>
-  <a href="#" onclick="toggleSection('contact')">📞 Contact Us</a>
-</nav>
-
-<!-- Overlay -->
-<div id="menuOverlay" class="menu-overlay" onclick="closeMenu()"></div>
-
-  
-  <!-- CART ICON -->
-  <div class="cartIcon" onclick="openCart()">🛒 <span id="cartCount">0</span></div>
 </header>
 
 <!-- HERO SECTION -->
@@ -1748,20 +1643,6 @@ function subscribeWhatsApp(planName, price) {
   const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   window.open(url, '_blank');
 }  
-function toggleMenu() {
-  document.getElementById('navMenu').classList.toggle('active');
-  document.getElementById('menuOverlay').classList.toggle('active');
-}
-
-function closeMenu() {
-  document.getElementById('navMenu').classList.remove('active');
-  document.getElementById('menuOverlay').classList.remove('active');
-}
-
-// Close when clicking a nav link
-document.querySelectorAll('.nav-menu a').forEach(link => {
-  link.addEventListener('click', closeMenu);
-});
 </script>
 </body>
 </html>
