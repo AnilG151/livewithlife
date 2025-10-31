@@ -6,18 +6,21 @@
 <title>Life With Leaf — Healthy Living</title>
 <meta name="description" content="Life With Leaf - Live microgreens, pesticide-free, homegrown. Fresh microgreens, grow kits and seeds." />
   
-<!-- HAMBURGER ICON (Visible only on mobile) -->
+<!-- HAMBURGER ICON -->
 <div class="hamburger" onclick="toggleMenu()">☰</div>
 
 <!-- NAVIGATION MENU -->
 <nav id="navMenu" class="nav-menu">
   <a href="#" onclick="toggleSection('home')">🏠 Home</a>
   <a href="#" onclick="toggleSection('whyMicro')">🌿 Why Microgreens</a>
-  <a href="#" onclick="toggleSection('benefits')">💪 Health Benefits</a>
+  <a href="#" onclick="toggleSection('health')">💪 Health Benefits</a>
   <a href="#" onclick="toggleSection('products')">🛒 Products</a>
   <a href="#" onclick="toggleSection('about')">💬 About Us</a>
   <a href="#" onclick="toggleSection('contact')">📞 Contact Us</a>
 </nav>
+
+<!-- Overlay -->
+<div id="menuOverlay" class="menu-overlay" onclick="closeMenu()"></div>
 
   
 <style>
@@ -38,14 +41,14 @@
   transform: scale(1.1);
 }
 
-/* 🌿 Mobile Menu Panel */
+/* 🌿 NAV MENU */
 .nav-menu {
   display: flex;
   gap: 20px;
   align-items: center;
 }
 
-/* Desktop View — Normal Nav */
+/* 🌿 MOBILE VIEW */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -57,12 +60,13 @@
     right: -260px;
     width: 220px;
     height: 100%;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.8); /* transparent white */
+    backdrop-filter: blur(8px); /* soft glass effect */
     flex-direction: column;
-    padding-top: 60px;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.15);
+    padding-top: 80px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
     transition: right 0.3s ease;
-    z-index: 1000;
+    z-index: 1001;
   }
 
   .nav-menu a {
@@ -80,22 +84,25 @@
   .nav-menu.active {
     right: 0;
   }
-}
 
-/* Optional: Dim background when menu is open */
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.3);
-  display: none;
-  z-index: 999;
-}
+  /* Overlay background */
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+  }
 
-.menu-overlay.active {
-  display: block;
+  .menu-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
   
 :root{
@@ -1743,13 +1750,15 @@ function toggleMenu() {
   document.getElementById('menuOverlay').classList.toggle('active');
 }
 
-// Close menu when clicking a nav link or background
-document.addEventListener('click', (e) => {
-  if (e.target.matches('.nav-menu a, .menu-overlay')) {
-    document.getElementById('navMenu').classList.remove('active');
-    document.getElementById('menuOverlay').classList.remove('active');
-  }
-});  
+function closeMenu() {
+  document.getElementById('navMenu').classList.remove('active');
+  document.getElementById('menuOverlay').classList.remove('active');
+}
+
+// Close when clicking a nav link
+document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', closeMenu);
+});
 </script>
 </body>
 </html>
