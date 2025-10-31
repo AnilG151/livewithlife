@@ -140,7 +140,19 @@ header .brand img {
 header nav ul{display:flex;gap:14px;list-style:none}
 header nav a{padding:8px 10px;border-radius:10px;font-weight:600;color:var(--muted)}
 header nav a:hover{background:rgba(47,158,68,0.08);color:var(--green-1)}
-header .cartIcon{position:relative;font-size:20px;cursor:pointer}
+header .cartIcon {
+  position: fixed;
+  top: 15px;
+  left: 20%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1200;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 8px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
 header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--green-1);color:#fff;padding:2px 7px;border-radius:999px;font-size:12px;font-weight:700}
 
 
@@ -437,7 +449,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 <header>
  <!-- MOBILE HAMBURGER (visible only on mobile) -->
-<button class="hamburger" id="mobileBurger" aria-label="Open menu" onclick="openMobileMenu()">☰</button>
+<div class="hamburger" onclick="toggleMenu()">☰</div>
 
   <!-- BRAND / LOGO -->
   <div class="brand" onclick="toggleSection('home')" style="cursor:pointer;">
