@@ -6,70 +6,106 @@
 <title>Life With Leaf — Healthy Living</title>
 <meta name="description" content="Life With Leaf - Live microgreens, pesticide-free, homegrown. Fresh microgreens, grow kits and seeds." />
 <style>
- /* Hamburger Icon */
+/* ---------- MOBILE HAMBURGER & MENU ---------- */
+/* Hidden by default (desktop) */
 .hamburger {
-  font-size: 28px;
-  cursor: pointer;
-  margin-top: 10px; /* places below cart */
-  align-self: flex-end;
-}
-
-/* Menu Overlay */
-.menuOverlay {
   display: none;
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3); /* backdrop behind menu */
-  justify-content: flex-end;
-  z-index: 2000;
-}
-
-/* Menu Box */
-.menuBox {
-  width: 250px;
-  background: rgba(255, 255, 255, 0.7); /* 70% transparent white */
-  backdrop-filter: blur(10px);
-  height: 100%;
-  padding: 30px 20px;
-  box-shadow: -4px 0 20px rgba(0,0,0,0.2);
-  position: relative;
-  animation: slideIn 0.3s ease forwards;
-}
-
-/* Close Button */
-.closeMenu {
+  top: 14px;
+  left: 14px;
+  z-index: 1500;
+  font-size: 28px;
+  line-height: 1;
   background: transparent;
   border: none;
-  font-size: 22px;
   cursor: pointer;
+  color: var(--green-1);
+  padding: 6px;
+}
+
+/* Overlay (backdrop) */
+#mobileMenuOverlay {
+  display: none; /* toggled by JS */
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  background: rgba(0,0,0,0.25); /* darkened backdrop behind transparent menu */
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+/* Sliding menu box */
+#mobileMenu {
+  width: 70%; /* menu takes 70% width */
+  max-width: 360px;
+  height: 100%;
+  background: rgba(255,255,255,0.70); /* 70% transparent white */
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 4px 0 24px rgba(0,0,0,0.18);
+  transform: translateX(-110%); /* hidden offscreen left */
+  transition: transform 280ms cubic-bezier(.22,.9,.26,1), opacity 200ms ease;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px 20px 20px;
+  position: relative;
+}
+
+/* When overlay is active we show the menu */
+#mobileMenuOverlay.open { display: flex; }
+
+/* menu open state */
+#mobileMenuOverlay.open #mobileMenu {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Close button */
+.close-btn {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 14px;
+  right: 12px;
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--green-1);
 }
 
-/* Menu Links */
-.menuBox ul {
+/* Links */
+.mobile-links {
   list-style: none;
-  padding: 60px 0 0;
-  margin: 0;
+  padding: 0;
+  margin: 18px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
-.menuBox li {
-  margin: 20px 0;
-}
-
-.menuBox a {
+.mobile-links a {
+  color: #11402a;
+  font-weight: 700;
   text-decoration: none;
   font-size: 18px;
-  color: #2f9e44;
-  font-weight: bold;
 }
 
-/* Slide animation */
-@keyframes slideIn {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-} 
+/* SHOW HAMBURGER ONLY ON MOBILE */
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+
+  /* hide header nav on mobile (you already had similar rule — keep consistent) */
+  header nav { display: none; }
+}
+
+/* ENSURE overlay doesn't show on desktop even if JS toggles */
+@media (min-width: 769px) {
+  #mobileMenuOverlay { display: none !important; }
+}
+
+ 
 :root{
   --green-1:#2f9e44; --green-2:#6bd36a; --muted:#556068;
   --card:#ffffff; --glass:rgba(255,255,255,0.92);
@@ -399,6 +435,9 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 <body>
 
 <header>
+ <!-- MOBILE HAMBURGER (visible only on mobile) -->
+<button class="hamburger" id="mobileBurger" aria-label="Open menu" onclick="openMobileMenu()">☰</button>
+
   <!-- BRAND / LOGO -->
   <div class="brand" onclick="toggleSection('home')" style="cursor:pointer;">
     <img src="images/logo.png" alt="Life With Leaf" 
@@ -423,7 +462,6 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
   <!-- CART ICON -->
   <div class="cartIcon" onclick="openCart()">🛒 <span id="cartCount">0</span></div>
-  <div class="hamburger" onclick="openMenu()">☰</div>
 </header>
 
 <!-- HERO SECTION -->
@@ -1711,25 +1749,66 @@ function subscribeWhatsApp(planName, price) {
   const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   window.open(url, '_blank');
 }  
- function openMenu() {
-  document.getElementById('menuOverlay').style.display = 'flex';
+// MOBILE MENU CONTROL
+const mobileOverlay = document.getElementById('mobileMenuOverlay');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileBurger = document.getElementById('mobileBurger');
+
+// Open menu
+function openMobileMenu() {
+  if (window.innerWidth > 768) return; // safety for desktop
+  mobileOverlay.classList.add('open');
+  mobileOverlay.setAttribute('aria-hidden', 'false');
+  // prevent body scroll while open
+  document.body.style.overflow = 'hidden';
 }
 
-function closeMenu() {
-  document.getElementById('menuOverlay').style.display = 'none';
-} 
+// Close menu
+function closeMobileMenu() {
+  mobileOverlay.classList.remove('open');
+  mobileOverlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = ''; // restore scroll
+}
+
+// Toggle helper (if you used onclick="toggleMenu()" earlier)
+function toggleMobileMenu() {
+  mobileOverlay.classList.toggle('open');
+  const open = mobileOverlay.classList.contains('open');
+  mobileOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+
+// Close when clicking outside the menu box
+document.addEventListener('click', function(e) {
+  if (!mobileOverlay.classList.contains('open')) return;
+  const isClickInsideMenu = mobileMenu.contains(e.target);
+  const isClickOnBurger = mobileBurger && mobileBurger.contains(e.target);
+  if (!isClickInsideMenu && !isClickOnBurger) {
+    closeMobileMenu();
+  }
+});
+
+// Close with Esc key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && mobileOverlay.classList.contains('open')) {
+    closeMobileMenu();
+  }
+});
 </script>
-<!-- MENU OVERLAY -->
-<div class="menuOverlay" id="menuOverlay">
-  <div class="menuBox">
-    <button class="closeMenu" onclick="closeMenu()">✕</button>
-    <ul>
-      <li><a href="#" onclick="toggleSection('home'); closeMenu()">Home</a></li>
-      <li><a href="#" onclick="toggleSection('about'); closeMenu()">About</a></li>
-      <li><a href="#" onclick="toggleSection('products'); closeMenu()">Products</a></li>
-      <li><a href="#" onclick="toggleSection('contact'); closeMenu()">Contact</a></li>
+<!-- MOBILE MENU OVERLAY -->
+<div id="mobileMenuOverlay" aria-hidden="true">
+  <nav id="mobileMenu" role="navigation" aria-label="Mobile menu">
+    <button class="close-btn" id="mobileMenuClose" aria-label="Close menu" onclick="closeMobileMenu()">✕</button>
+
+    <ul class="mobile-links">
+      <li><a onclick="toggleSection('home'); closeMobileMenu()">🏠 Home</a></li>
+      <li><a onclick="toggleSection('whyMicro'); closeMobileMenu()">🌿 Why Microgreens</a></li>
+      <li><a onclick="toggleSection('health'); closeMobileMenu()">💪 Health Benefits</a></li>
+      <li><a onclick="toggleSection('products'); closeMobileMenu()">🛒 Products</a></li>
+      <li><a onclick="toggleSection('about'); closeMobileMenu()">💬 About Us</a></li>
+      <li><a onclick="toggleSection('contact'); closeMobileMenu()">📞 Contact Us</a></li>
     </ul>
-  </div>
+  </nav>
 </div>
   </body>
 </html>
