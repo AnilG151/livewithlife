@@ -837,7 +837,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
         <li>4 Boxes of Fresh Microgreens</li>
         <li>Health Benefit: ✅ Yes</li>
         <li>Green Wellness Loyalty Program: ✅ Yes</li>
-        <li>Recipes: —</li>
+        <li>Recipes: ❌ No</li>
         <li>Variety: Different variety every week</li>
       </ul>
       <button class="subscribe-btn" onclick="subscribeWhatsApp('Start Greens 1 Month', 799)">
@@ -894,8 +894,8 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     2) Microgreen Grow Kit Fort Monthly Pack – 2 varieties of seeds and growing medium – INR 299
   </p>
 <!-- 🌿 Image below microkit details -->
-<div class="microkit-image">
-  <img src="images/microgreenkit.png" alt="Microgreen Grow Kit" />
+<div class="microgreenkit-image">
+  <img src="images/microgreenkit.png" alt="Microgreen Grow Kit">
 </div>
    </div>
   </div>
@@ -1158,39 +1158,27 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 .microkit-text {
   font-size: 1em;
 }
-.microkit-image {
+.microgreenkit-image {
   text-align: center;
-  margin: 35px auto 10px;
-  padding: 0 15px;
+  margin: 40px auto;
+  max-width: 1000px; /* limits size on very large screens */
 }
 
-.microkit-image img {
+.microgreenkit-image img {
   width: 100%;
-  max-width: 550px; /* perfect balance for desktop */
   height: auto;
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  object-fit: cover;
 }
 
-/* Hover lift effect for desktop */
-.microkit-image img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-}
-
-/* 📱 Mobile optimization */
+/* Mobile optimization */
 @media (max-width: 768px) {
-  .microkit-image {
-    padding: 0 10px;
-    margin-top: 25px;
+  .microgreenkit-image {
+    margin: 25px auto;
+    max-width: 95%;
   }
-  .microkit-image img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-}  
+}
 </style>
 
 
