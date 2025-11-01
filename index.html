@@ -605,24 +605,13 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   <div class="container" style="max-width:900px; margin:0 auto; position:relative; z-index:2;">
 
     <!-- Combined Intro + Assurance Block -->
-    <div class="assurance-card" style="background:#fff; padding:50px; border-radius:25px; box-shadow:0 6px 16px rgba(0,0,0,0.08);">
-      <h2 style="font-size:2.2rem; color:#000; font-weight:700; margin-bottom:30px;">
-        A small handful each day brings big health benefits
-      </h2>
-
-      <h3 style="font-size:2rem; color:#000; font-weight:600; margin-bottom:10px;">
-        🌱 Life With Leaf Assurance
-      </h3>
-
-      <p class="subtitle" style="font-size:1.1rem; color:#2e7d32; font-weight:500; margin-bottom:8px;">
-        100% Natural | Pesticide-Free | Non-GMO
-      </p>
-
-      <p style="font-size:1rem; color:#444; margin-bottom:25px;">
-        Homegrown with passion, arriving at your doorstep live, fresh and full of health.
-      </p>
-
-      <ul style="list-style:none; padding:0; margin:0; line-height:2; font-size:1.05rem; color:#333;">
+    <div class="card-container">
+    <div class="assurance-card">
+      <h2>A small handful each day brings big health benefits</h2>
+      <h3>🌱 Life With Leaf Assurance</h3>
+      <p class="subtitle">100% Natural | Pesticide-Free | Non-GMO</p>
+      <p>Homegrown with passion, arriving at your doorstep live, fresh and full of health.</p>
+      <ul>
         <li>🌿 Boost Immunity</li>
         <li>💚 Support Heart Health</li>
         <li>🍃 Aid Digestion</li>
@@ -630,10 +619,10 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
         <li>🥗 Fresh Taste for Every Meal</li>
       </ul>
     </div>
-    <!-- Usage Ideas Section -->
-    <div class="usage-card" style="background:#e8f5e9; padding:40px; border-radius:20px; box-shadow:0 4px 12px rgba(0,0,0,0.06);">
-      <h3 style="font-size:1.8rem; color:#000; font-weight:600; margin-bottom:20px;">🌿 Add Microgreens To Your</h3>
-      <ul style="list-style:none; padding:0; margin:0; font-size:1.05rem; color:#333; line-height:2;">
+
+    <div class="usage-card">
+      <h3>🌿 Add Microgreens To Your</h3>
+      <ul>
         <li>🥤 Smoothies & Juices</li>
         <li>🥗 Salads & Sandwiches</li>
         <li>🍲 Soups, Chutneys & Curries</li>
@@ -671,21 +660,35 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   font-weight: 700;
 }
 
+/* 🌿 Cards Container */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 50px 20px;
+  background: #f9fff9; /* soft mint background */
+}
+
 /* 🌿 Cards */
 .assurance-card, .usage-card {
+  flex: 1 1 400px;
+  max-width: 500px;
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.05);
   padding: 30px 25px;
-  margin-bottom: 30px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: default;
 }
+
+/* Subtle hover lift */
 .assurance-card:hover, .usage-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
+/* Headings */
 .assurance-card h3, .usage-card h3 {
   color: #2f9e44;
   font-weight: 700;
@@ -693,6 +696,15 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   text-align: center;
 }
 
+.assurance-card h2 {
+  color: #000;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/* Subtitles & text */
 .assurance-card .subtitle {
   text-align: center;
   font-weight: 600;
@@ -707,6 +719,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   margin-bottom: 20px;
 }
 
+/* Lists */
 .assurance-card ul, .usage-card ul {
   list-style: none;
   padding-left: 0;
@@ -717,6 +730,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   color: #444;
   transition: transform 0.2s ease;
 }
+
 .assurance-card ul li:hover, .usage-card ul li:hover {
   transform: translateX(6px);
 }
@@ -729,6 +743,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   z-index: 1;
   pointer-events: none;
 }
+
 .leaf {
   position: absolute;
   opacity: 0.7;
@@ -736,6 +751,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   animation: floatLeaf linear infinite;
   will-change: transform;
 }
+
 .leaf1 { left: 10%; animation-duration: 18s; top: -80px; }
 .leaf2 { left: 50%; animation-duration: 22s; top: -100px; animation-delay: 3s; }
 .leaf3 { right: 10%; animation-duration: 25s; top: -120px; animation-delay: 6s; }
@@ -746,12 +762,21 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   100% { transform: translateY(100vh) rotate(180deg); opacity: 0.4; }
 }
 
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  .intro-text h2 { font-size: 1.4rem; }
-  .assurance-card, .usage-card { padding: 20px; }
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .assurance-card, .usage-card {
+    padding: 20px;
+    max-width: 90%;
+  }
+
   .leaf { width: 50px; }
 }
+
 </style>
 
 <!-- 🌾 WHY MICROGREENS SECTION -->
