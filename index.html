@@ -1159,24 +1159,29 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   font-size: 1em;
 }
 .microgreenkit-image {
-  text-align: center;
-  margin: 40px auto;
-  max-width: 1000px; /* limits size on very large screens */
+  width: 100%;
+  margin: 40px 0;
 }
 
 .microgreenkit-image img {
   width: 100%;
   height: auto;
-  border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  display: block;
+  border-radius: 0; /* make edges flush with screen */
+  box-shadow: none; /* remove shadow for full-width look */
   object-fit: cover;
 }
 
-/* Mobile optimization */
+/* Optional: give it more height for visual impact */
+@media (min-width: 769px) {
+  .microgreenkit-image img {
+    height: 450px;
+  }
+}
+
 @media (max-width: 768px) {
-  .microgreenkit-image {
-    margin: 25px auto;
-    max-width: 95%;
+  .microgreenkit-image img {
+    height: auto; /* auto scales on mobile */
   }
 }
 </style>
