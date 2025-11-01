@@ -1163,24 +1163,28 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   margin: 40px 0;
 }
 
-.microgreenkit-image img {
+.microgreenkit-image {
   width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 0;
-  box-shadow: none;
-  object-fit: cover;
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
 }
 
+.microgreenkit-image img {
+  width: 95%;              /* balanced full width without touching edges */
+  max-width: 1200px;       /* prevents over-stretching on large screens */
+  height: auto;            /* keep natural proportion */
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  object-fit: contain;     /* shows the full image (no cropping) */
+}
+
+/* Optional larger look for desktop */
 @media (min-width: 769px) {
   .microgreenkit-image img {
-    height: 450px;
-  }
-}
-
-@media (max-width: 768px) {
-  .microgreenkit-image img {
-    height: auto;
+    width: 100%;
+    max-height: 550px;     /* sets a max height but doesn’t crop */
   }
 }
 </style>
