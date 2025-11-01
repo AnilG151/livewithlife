@@ -1159,29 +1159,24 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   font-size: 1em;
 }
 .microgreenkit-image {
-  width: 100%;
-  margin: 40px 0;
+  max-width: 800px;      /* keeps it same width as cards area */
+  margin: 40px auto;     /* center align */
+  border-radius: 12px;   /* match card style */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .microgreenkit-image img {
   width: 100%;
-  height: auto;
+  height: auto;           /* let height adjust naturally */
   display: block;
-  border-radius: 0; /* make edges flush with screen */
-  box-shadow: none; /* remove shadow for full-width look */
   object-fit: cover;
+  border-radius: 12px;
 }
 
-/* Optional: give it more height for visual impact */
 @media (min-width: 769px) {
   .microgreenkit-image img {
-    height: 450px;
-  }
-}
-
-@media (max-width: 768px) {
-  .microgreenkit-image img {
-    height: auto; /* auto scales on mobile */
+    max-height: 350px;   /* reduce desktop height */
   }
 }
 </style>
