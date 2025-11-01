@@ -330,7 +330,8 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   background: #f5fff5;
   border-radius: 16px;
   padding: 25px;
-  text-align: left;
+  text-align: center;
+  margin: 0 auto;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
@@ -359,55 +360,22 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 .social-links a:hover {
   transform: scale(1.2);
 }
-
-/* Right side: Contact Form */
-.contact-form {
-  flex: 1 1 400px;
-  background: #f9fff9;
-  border-radius: 16px;
-  padding: 25px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  font-size: 16px;
-  font-family: inherit;
-  transition: border-color 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--green-1);
-}
-
-.contact-form button {
-  background: var(--green-1);
+.whatsapp-link a {
+  display: inline-block;
+  background: #25d366;
   color: #fff;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 10px;
-  font-size: 17px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.3s;
 }
 
-.contact-form button:hover {
-  background: #228b3c;
+.whatsapp-link a:hover {
+  background: #1ebe5d;
+  transform: scale(1.05);
 }
 
-/* Success message */
-.form-response {
-  margin-top: 10px;
-  font-weight: 500;
-  color: var(--green-1);
-}
 </style>
 </head>
 <body>
@@ -1395,16 +1363,13 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
       </div>
     </div>
 
-    <div class="contact-form">
-      <form onsubmit="sendMessage(event)">
-        <input type="text" id="name" placeholder="Your Name" required />
-        <input type="email" id="email" placeholder="Your Email" required />
-        <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-      <p id="formResponse" class="form-response"></p>
-    </div>
+<!-- ✅ Add WhatsApp link here -->
+  <div class="whatsapp-link">
+    <a href="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20your%20products" target="_blank">
+      💬 Chat on WhatsApp
+    </a>
   </div>
+</div>
 </section>
 
 
