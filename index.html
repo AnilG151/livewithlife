@@ -188,10 +188,7 @@ header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--gr
 }
 
 /* SECTIONS */
-section:first-of-type {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
+section{padding:40px 0}
 section h2{font-size:26px;color:var(--green-1);margin-bottom:20px;text-align:center}
 .container{max-width:1100px;margin:0 auto;padding:0 18px}
 
@@ -1757,6 +1754,32 @@ function toggleMenu() {
 function closeMenu() {
   document.querySelector('nav ul').classList.remove('show');
 }
+document.addEventListener("DOMContentLoaded", () => {
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href").substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        history.pushState(null, "", `#${targetId}`); // Add state to history
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+
+  // When user presses the Back or Forward button
+  window.addEventListener("popstate", () => {
+    const hash = window.location.hash.substring(1);
+    const target = document.getElementById(hash);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" }); // Default scroll to top
+    }
+  });
+});
+  
 </script>
 </body>
 </html>
