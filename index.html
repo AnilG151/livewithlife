@@ -92,13 +92,14 @@ header {
   z-index: 1200;
   background: var(--card);
   border-bottom: 1px solid rgba(15,23,42,0.06);
-  padding: 12px 20px;
+  padding: 20px 20px; /* increased for better spacing */
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.03);
   backdrop-filter: blur(6px);
+  height: 100px; /* define explicit header height */
 }
 
 /* Logo and Brand */
@@ -118,6 +119,10 @@ header .brand img {
 
 /* Mobile logo size */
 @media (max-width: 768px) {
+  header {
+    height: 80px; /* slightly smaller header on mobile */
+    padding: 12px 16px;
+  }
   header .brand img {
     width: 56px;
     height: 56px;
@@ -159,7 +164,7 @@ header .cartIcon {
   padding: 8px 10px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  display: none; /* hidden initially */
+  display: none;
 }
 
 header .cartIcon span {
@@ -176,7 +181,8 @@ header .cartIcon span {
 
 /* ===== BODY SPACING ===== */
 body {
-  padding-top: 120px; /* prevents hero overlap with fixed header */
+  margin: 0;
+  padding-top: 100px; /* must match header height exactly */
 }
 
 
