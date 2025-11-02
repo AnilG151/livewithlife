@@ -101,9 +101,41 @@ header .brand img {
     height: 56px;
   }
 }
-header nav ul{display:flex;gap:14px;list-style:none}
-header nav a{padding:8px 10px;border-radius:10px;font-weight:600;color:var(--muted)}
-header nav a:hover{background:rgba(47,158,68,0.08);color:var(--green-1)}
+/* HEADER NAVIGATION */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1200;
+  background: var(--card);
+  border-bottom: 1px solid rgba(15,23,42,0.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+  backdrop-filter: blur(6px);
+}
+
+header nav ul {
+  display: flex;
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav a {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+header nav a:hover {
+  background: rgba(47,158,68,0.08);
+  color: var(--green-1);
+}
+
+/* Cart icon */
 header .cartIcon {
   position: fixed;
   top: 15px;
@@ -111,29 +143,29 @@ header .cartIcon {
   transform: translateX(-50%);
   font-size: 24px;
   cursor: pointer;
-  z-index: 1200;
+  z-index: 1300;
   background: rgba(255, 255, 255, 0.85);
   padding: 8px 10px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  display: none; /* 👈 hidden initially */
-}
-header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--green-1);color:#fff;padding:2px 7px;border-radius:999px;font-size:12px;font-weight:700}
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+  display: none; /* hidden initially */
 }
 
+header .cartIcon span {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: var(--green-1);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Prevent hero overlap */
 body {
-  padding-top: 110px; /* equal to header height to avoid overlap */
-}
-
-/* Ensure nav doesn’t push hero content */
-header nav ul {
-  margin: 0;
-  padding: 0;
+  padding-top: 120px; /* roughly header height */
 }
 
 /* WHY MICROGREENS SECTION */
@@ -1768,6 +1800,12 @@ function toggleMenu() {
 function closeMenu() {
   document.querySelector('nav ul').classList.remove('show');
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector("header");
+  if (header) {
+    document.body.style.paddingTop = `${header.offsetHeight + 10}px`;
+  }
+});  
 </script>
 </body>
 </html>
