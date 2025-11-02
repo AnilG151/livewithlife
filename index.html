@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -84,67 +85,26 @@ img{max-width:100%;display:block}
 button{font-family:inherit;cursor:pointer}
 
 /* HEADER */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1200;
-  background: var(--card);
-  border-bottom: 1px solid rgba(15,23,42,0.06);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.03);
-  backdrop-filter: blur(6px);
-  padding: 12px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-}
-
-header .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* Logo sizes */
+header{position:sticky;top:0;z-index:60;background:var(--card);border-bottom:1px solid rgba(15,23,42,0.06);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;box-shadow:0 6px 18px rgba(0,0,0,0.03);backdrop-filter:blur(6px)}
+header .brand{display:flex;align-items:center;gap:12px}
+/* Desktop logo size */
 header .brand img {
   width: 80px;
   height: 80px;
-  border-radius: 12px;
+  border-radius: 12px; /* slightly more rounded for elegance */
   object-fit: contain;
 }
 
-@media (max-width: 768px) {
+/* Mobile logo size */
+@media(max-width:768px){
   header .brand img {
     width: 56px;
     height: 56px;
   }
 }
-
-/* Navigation links */
-header nav ul {
-  display: flex;
-  gap: 14px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-header nav a {
-  padding: 8px 10px;
-  border-radius: 10px;
-  font-weight: 600;
-  color: var(--muted);
-  text-decoration: none;
-}
-
-header nav a:hover {
-  background: rgba(47,158,68,0.08);
-  color: var(--green-1);
-}
-
-/* Cart icon */
+header nav ul{display:flex;gap:14px;list-style:none}
+header nav a{padding:8px 10px;border-radius:10px;font-weight:600;color:var(--muted)}
+header nav a:hover{background:rgba(47,158,68,0.08);color:var(--green-1)}
 header .cartIcon {
   position: fixed;
   top: 15px;
@@ -152,53 +112,14 @@ header .cartIcon {
   transform: translateX(-50%);
   font-size: 24px;
   cursor: pointer;
-  z-index: 1300;
+  z-index: 1200;
   background: rgba(255, 255, 255, 0.85);
   padding: 8px 10px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  display: none;
+  display: none; /* 👈 hidden initially */
 }
-
-header .cartIcon span {
-  position: absolute;
-  top: -8px;
-  right: -10px;
-  background: var(--green-1);
-  color: #fff;
-  padding: 2px 7px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-/* Add body padding to avoid header overlap */
-body {
-  padding-top: 100px; /* Adjust to match actual header height */
-}
-
-/* SECTIONS */
-section {
-  padding: 40px 0;
-}
-
-section:first-of-type {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-
-section h2 {
-  font-size: 26px;
-  color: var(--green-1);
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 18px;
-}
+header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--green-1);color:#fff;padding:2px 7px;border-radius:999px;font-size:12px;font-weight:700}
 
 
 /* WHY MICROGREENS SECTION */
@@ -265,6 +186,14 @@ section h2 {
 .whyMicro .btn:hover {
   background-color: #237a34; /* darker green on hover */
 }
+
+/* SECTIONS */
+section:first-of-type {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+section h2{font-size:26px;color:var(--green-1);margin-bottom:20px;text-align:center}
+.container{max-width:1100px;margin:0 auto;padding:0 18px}
 
 /* PRODUCTS */
 .productGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:20px}
@@ -1828,12 +1757,6 @@ function toggleMenu() {
 function closeMenu() {
   document.querySelector('nav ul').classList.remove('show');
 }
-document.addEventListener("DOMContentLoaded", () => {
-  const header = document.querySelector("header");
-  if (header) {
-    document.body.style.paddingTop = `${header.offsetHeight + 10}px`;
-  }
-});  
 </script>
 </body>
 </html>
