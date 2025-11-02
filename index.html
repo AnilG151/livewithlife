@@ -83,7 +83,7 @@ a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 button{font-family:inherit;cursor:pointer}
 
-/* ===== HEADER ===== */
+/* HEADER */
 header {
   position: fixed;
   top: 0;
@@ -92,24 +92,22 @@ header {
   z-index: 1200;
   background: var(--card);
   border-bottom: 1px solid rgba(15,23,42,0.06);
-  padding: 20px 20px; /* increased for better spacing */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+  backdrop-filter: blur(6px);
+  padding: 12px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.03);
-  backdrop-filter: blur(6px);
-  height: 100px; /* define explicit header height */
 }
 
-/* Logo and Brand */
 header .brand {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* Desktop logo size */
+/* Logo sizes */
 header .brand img {
   width: 80px;
   height: 80px;
@@ -117,19 +115,14 @@ header .brand img {
   object-fit: contain;
 }
 
-/* Mobile logo size */
 @media (max-width: 768px) {
-  header {
-    height: 80px; /* slightly smaller header on mobile */
-    padding: 12px 16px;
-  }
   header .brand img {
     width: 56px;
     height: 56px;
   }
 }
 
-/* ===== NAVIGATION ===== */
+/* Navigation links */
 header nav ul {
   display: flex;
   gap: 14px;
@@ -151,7 +144,7 @@ header nav a:hover {
   color: var(--green-1);
 }
 
-/* ===== CART ICON ===== */
+/* Cart icon */
 header .cartIcon {
   position: fixed;
   top: 15px;
@@ -179,10 +172,31 @@ header .cartIcon span {
   font-weight: 700;
 }
 
-/* ===== BODY SPACING ===== */
+/* Add body padding to avoid header overlap */
 body {
-  margin: 0;
-  padding-top: 100px; /* must match header height exactly */
+  padding-top: 100px; /* Adjust to match actual header height */
+}
+
+/* SECTIONS */
+section {
+  padding: 40px 0;
+}
+
+section:first-of-type {
+  padding-top: 0; /* Hero section won't have extra space */
+}
+
+section h2 {
+  font-size: 26px;
+  color: var(--green-1);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 18px;
 }
 
 
@@ -249,30 +263,6 @@ body {
 
 .whyMicro .btn:hover {
   background-color: #237a34; /* darker green on hover */
-}
-
-/* SECTIONS */
-/* SECTIONS */
-section {
-  padding: 40px 0;
-}
-
-section h2 {
-  font-size: 26px;
-  color: var(--green-1);
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 18px;
-}
-
-/* Remove extra top space for hero section */
-section:first-of-type {
-  padding-top: 0;
 }
 
 /* PRODUCTS */
