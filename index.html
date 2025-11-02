@@ -83,23 +83,7 @@ a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 button{font-family:inherit;cursor:pointer}
 
-
-/* Desktop logo size */
-header .brand img {
-  width: 80px;
-  height: 80px;
-  border-radius: 12px; /* slightly more rounded for elegance */
-  object-fit: contain;
-}
-
-/* Mobile logo size */
-@media(max-width:768px){
-  header .brand img {
-    width: 56px;
-    height: 56px;
-  }
-}
-/* HEADER NAVIGATION */
+/* ===== HEADER ===== */
 header {
   position: fixed;
   top: 0;
@@ -108,10 +92,39 @@ header {
   z-index: 1200;
   background: var(--card);
   border-bottom: 1px solid rgba(15,23,42,0.06);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.03);
   backdrop-filter: blur(6px);
 }
 
+/* Logo and Brand */
+header .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Desktop logo size */
+header .brand img {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+/* Mobile logo size */
+@media (max-width: 768px) {
+  header .brand img {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* ===== NAVIGATION ===== */
 header nav ul {
   display: flex;
   gap: 14px;
@@ -133,7 +146,7 @@ header nav a:hover {
   color: var(--green-1);
 }
 
-/* Cart icon */
+/* ===== CART ICON ===== */
 header .cartIcon {
   position: fixed;
   top: 15px;
@@ -161,10 +174,11 @@ header .cartIcon span {
   font-weight: 700;
 }
 
-/* Prevent hero overlap */
+/* ===== BODY SPACING ===== */
 body {
-  padding-top: 120px; /* roughly header height */
+  padding-top: 120px; /* prevents hero overlap with fixed header */
 }
+
 
 /* WHY MICROGREENS SECTION */
 .whyMicro {
