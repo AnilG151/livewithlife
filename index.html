@@ -6,70 +6,6 @@
 <title>Life With Leaf — Healthy Living</title>
 <meta name="description" content="Life With Leaf - Live microgreens, pesticide-free, homegrown. Fresh microgreens, grow kits and seeds." />
 <style>
-  
-/* ---------- MOBILE HAMBURGER & MENU ---------- */
-/* Hidden by default (desktop) */
-  
-/* Hide hamburger on desktop */
-.hamburger {
-  display: none;
-}
-
-/* Mobile only */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    font-size: 28px;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 8px;
-    padding: 6px 10px;
-    z-index: 1500;
-    cursor: pointer;
-  }
-
-  nav ul {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 70%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    transition: transform 0.3s ease-in-out;
-    z-index: 1400;
-  }
-
-  nav ul.show {
-    display: flex;
-  }
-
-  nav ul li {
-    margin: 15px 0;
-  }
-
-  nav ul li a {
-    color: #fff;
-    font-size: 20px;
-  }
-
-  /* Close button inside menu */
-  .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    color: #fff;
-    cursor: pointer;
-  }
-}
  
 :root{
   --green-1:#2f9e44; --green-2:#6bd36a; --muted:#556068;
@@ -230,27 +166,107 @@ footer {
   margin-top: 40px;
 }
 
-/* HERO RESPONSIVE FIX */
+/* ---------- RESPONSIVE: MOBILE (<=768px) ---------- */
 @media (max-width: 768px) {
+
+  /* 📱 HERO SECTION */
   .hero {
     flex-direction: column;
     text-align: center;
     padding: 46px 16px;
   }
+
   .hero .hero-image {
     order: -1; /* Moves image above text */
-    margin-bottom: 18px;
+    justify-content: center;
     width: 100%;
-    max-width: 320px; /* Adjust image size for mobile */
+    max-width: 320px; /* Mobile image size */
+    margin: 0 auto 18px;
   }
-  header nav ul {
-    display: none; /* Hides nav menu (hamburger will show instead) */
+
+  .hero .hero-image img {
+    width: 100%;
+    height: auto;
   }
+
+  .hero .hero-text {
+    max-width: 100%;
+  }
+
+  .hero .hero-text h1 {
+    font-size: 36px;
+  }
+
+  .hero .hero-text p.lead {
+    font-size: 16px;
+  }
+
+  .hero .hero-text p.details {
+    font-size: 13px;
+  }
+
+  /* 🌿 Smaller floating leaves for mobile */
   .leaf {
-    width: 50px; /* smaller floating leaves for mobile */
+    width: 50px;
+  }
+
+  /* 🍔 Hide desktop nav, show hamburger */
+  header nav ul {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    padding: 6px 10px;
+    z-index: 1500;
+    cursor: pointer;
+  }
+
+  nav ul {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1400;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 15px 0;
+  }
+
+  nav ul li a {
+    color: #fff;
+    font-size: 20px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
   }
 }
-
 .kicker{display:inline-block;background:rgba(107,211,106,0.12);color:var(--green-1);padding:6px 10px;border-radius:999px;font-weight:700;margin-bottom:12px}
 .fadeIn{animation:fadeIn .6s ease both}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -1769,8 +1785,8 @@ function subscribeWhatsApp(planName, price) {
   window.open(url, '_blank');
 }  
 function toggleMenu() {
-  const menu = document.querySelector('nav ul');
-  menu.classList.toggle('show');
+  const menu = document.querySelector("nav ul");
+  menu.classList.toggle("show");
 }
 
 // Optional close button handler
