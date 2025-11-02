@@ -230,7 +230,7 @@ footer {
   margin-top: 40px;
 }
 
-/* RESPONSIVE */
+/* HERO RESPONSIVE FIX */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
@@ -238,11 +238,16 @@ footer {
     padding: 46px 16px;
   }
   .hero .hero-image {
-    order: -1;
+    order: -1; /* Moves image above text */
     margin-bottom: 18px;
+    width: 100%;
+    max-width: 320px; /* Adjust image size for mobile */
   }
   header nav ul {
-    display: none;
+    display: none; /* Hides nav menu (hamburger will show instead) */
+  }
+  .leaf {
+    width: 50px; /* smaller floating leaves for mobile */
   }
 }
 
