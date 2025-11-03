@@ -438,51 +438,41 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </section>
 
 <style>
-/* ---------- HERO SECTION ---------- */
+/* HERO SECTION */
 .hero {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 40px; /* balanced space between text & image */
-  padding: 80px 8%;
-  background: linear-gradient(135deg, #e0f7e9, #ffffff);
+  justify-content: space-between;
+  padding: 60px 20px;
   flex-wrap: wrap;
+  background: linear-gradient(135deg, #e0f7e9, #ffffff);
+  position: relative;
   overflow: hidden;
 }
 
-/* ---------- FLOATING LEAVES ---------- */
+/* Floating Leaves */
 .floating-leaves {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 1;
-  pointer-events: none; /* prevent interference */
+  inset: 0;
+  pointer-events: none;
 }
 
-.leaf {
+.floating-leaves .leaf {
   position: absolute;
-  width: 50px;
   opacity: 0.6;
-  animation: floatLeaf 14s linear infinite;
+  animation: float 8s ease-in-out infinite alternate;
 }
 
-.leaf1 { top: 10%; left: -60px; animation-delay: 0s; }
-.leaf2 { top: 50%; left: -100px; animation-delay: 3s; }
-.leaf3 { top: 80%; left: -80px; animation-delay: 6s; }
+.leaf1 { top: 10%; left: 5%; width: 60px; animation-delay: 0s; }
+.leaf2 { top: 40%; right: 10%; width: 80px; animation-delay: 2s; }
+.leaf3 { bottom: 10%; left: 20%; width: 70px; animation-delay: 4s; }
 
-@keyframes floatLeaf {
-  0%   { transform: translate(0, 0) rotate(0deg); opacity: 0.8; }
-  25%  { transform: translate(30vw, 10vh) rotate(90deg); }
-  50%  { transform: translate(60vw, -10vh) rotate(180deg); }
-  75%  { transform: translate(90vw, 10vh) rotate(270deg); }
-  100% { transform: translate(120vw, 0) rotate(360deg); opacity: 0.6; }
+@keyframes float {
+  from { transform: translateY(0px) rotate(0deg); }
+  to { transform: translateY(-20px) rotate(10deg); }
 }
 
-/* ---------- HERO TEXT ---------- */
+/* HERO TEXT */
 .hero-text {
   flex: 1 1 50%;
   max-width: 600px;
@@ -490,110 +480,92 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 }
 
 .hero-text .kicker {
-  font-size: 1rem;
+  font-size: 1.2em;
   color: #2f9e44;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-weight: bold;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
 
 .hero-text h1 {
-  font-size: 2.8rem;
-  color: #2f9e44;
-  margin-bottom: 15px;
+  font-size: 3em;
+  margin: 10px 0;
+  color: #2b9348;
   line-height: 1.2;
 }
 
 .hero-text .lead {
-  font-size: 1.25rem;
-  color: #333;
+  font-size: 1.2em;
   margin-bottom: 15px;
-  line-height: 1.6;
 }
 
 .hero-text .details {
-  font-size: 1rem;
+  font-size: 1em;
   color: #555;
-  line-height: 1.6;
   margin-bottom: 25px;
 }
 
 .ctaRow {
   display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+  gap: 10px;
 }
 
-/* ---------- BUTTONS ---------- */
 .btn {
-  background: #2f9e44;
+  background-color: #2f9e44;
   color: #fff;
-  padding: 12px 24px;
+  padding: 10px 25px;
   border: none;
-  border-radius: 30px;
-  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #258a39;
+  font-weight: 600;
 }
 
 .btn.ghost {
-  background: transparent;
+  background-color: transparent;
   border: 2px solid #2f9e44;
   color: #2f9e44;
 }
 
-.btn.ghost:hover {
-  background: #2f9e44;
-  color: #fff;
-}
-
-/* ---------- HERO IMAGE ---------- */
+/* HERO IMAGE */
 .hero-image {
   flex: 1 1 40%;
-  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 2;
 }
 
 .hero-image img {
-  max-width: 85%;
+  width: 100%;
+  max-width: 500px;
   height: auto;
-  border-radius: 16px;
-  display: inline-block;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
 }
 
-/* ---------- MOBILE VIEW ---------- */
-@media (max-width: 768px) {
+/* ---------- RESPONSIVE (MOBILE FIRST) ---------- */
+@media (max-width: 900px) {
   .hero {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse; /* image goes ABOVE text */
     text-align: center;
-    padding: 60px 5%;
   }
 
-  .hero-text, .hero-image {
+  .hero-text {
     flex: 1 1 100%;
+    max-width: 100%;
+    padding: 0 10px;
   }
 
-  .hero-text h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-text .lead {
-    font-size: 1.1rem;
-  }
-
-  .hero-image img {
-    max-width: 90%;
+  .hero-image {
+    flex: 1 1 100%;
     margin-bottom: 25px;
   }
 
-  .leaf {
-    width: 35px;
+  .hero-text h1 {
+    font-size: 2em;
+  }
+
+  .ctaRow {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
