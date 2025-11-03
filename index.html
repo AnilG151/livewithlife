@@ -6,6 +6,71 @@
 <title>Life With Leaf — Healthy Living</title>
 <meta name="description" content="Life With Leaf - Live microgreens, pesticide-free, homegrown. Fresh microgreens, grow kits and seeds." />
 <style>
+  
+/* ---------- MOBILE HAMBURGER & MENU ---------- */
+/* Hidden by default (desktop) */
+  
+/* Hide hamburger on desktop */
+.hamburger {
+  display: none;
+}
+
+/* Mobile only */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    padding: 6px 10px;
+    z-index: 1500;
+    cursor: pointer;
+  }
+
+  nav ul {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1400;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 15px 0;
+  }
+
+  nav ul li a {
+    color: #fff;
+    font-size: 20px;
+  }
+
+  /* Close button inside menu */
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+ 
 :root{
   --green-1:#2f9e44; --green-2:#6bd36a; --muted:#556068;
   --card:#ffffff; --glass:rgba(255,255,255,0.92);
@@ -39,7 +104,20 @@ header .brand img {
 header nav ul{display:flex;gap:14px;list-style:none}
 header nav a{padding:8px 10px;border-radius:10px;font-weight:600;color:var(--muted)}
 header nav a:hover{background:rgba(47,158,68,0.08);color:var(--green-1)}
-header .cartIcon{position:relative;font-size:20px;cursor:pointer}
+header .cartIcon {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1200;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 8px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  display: none; /* 👈 hidden initially */
+}
 header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--green-1);color:#fff;padding:2px 7px;border-radius:999px;font-size:12px;font-weight:700}
 
 
@@ -217,7 +295,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 }
   /* 📞 CONTACT US */
 .contact-section {
-  background: #fff;
+  background: #f9fff9;
   padding: 70px 20px;
   text-align: center;
 }
@@ -252,7 +330,8 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   background: #f5fff5;
   border-radius: 16px;
   padding: 25px;
-  text-align: left;
+  text-align: center;
+  margin: 0 auto;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
@@ -281,60 +360,30 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 .social-links a:hover {
   transform: scale(1.2);
 }
-
-/* Right side: Contact Form */
-.contact-form {
-  flex: 1 1 400px;
-  background: #f9fff9;
-  border-radius: 16px;
-  padding: 25px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  font-size: 16px;
-  font-family: inherit;
-  transition: border-color 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--green-1);
-}
-
-.contact-form button {
-  background: var(--green-1);
+.whatsapp-link a {
+  display: inline-block;
+  background: #25d366;
   color: #fff;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 10px;
-  font-size: 17px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.3s;
 }
 
-.contact-form button:hover {
-  background: #228b3c;
+.whatsapp-link a:hover {
+  background: #1ebe5d;
+  transform: scale(1.05);
 }
 
-/* Success message */
-.form-response {
-  margin-top: 10px;
-  font-weight: 500;
-  color: var(--green-1);
-}
 </style>
 </head>
 <body>
 
 <header>
+ <!-- MOBILE HAMBURGER (visible only on mobile) -->
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+
   <!-- BRAND / LOGO -->
   <div class="brand" onclick="toggleSection('home')" style="cursor:pointer;">
     <img src="images/logo.png" alt="Life With Leaf" 
@@ -349,7 +398,6 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   <nav>
   <ul>
     <li><a onclick="toggleSection('home')">🏠 Home</a></li>
-    <li><a onclick="toggleSection('whyMicro')">🌿 Why Microgreens</a></li>
     <li><a onclick="toggleSection('health')">💪 Health Benefits</a></li>
     <li><a onclick="toggleSection('products')">🛒 Products</a></li>
     <li><a onclick="toggleSection('about')">💬 About Us</a></li>
@@ -417,7 +465,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 .hero .hero-text h1 {
   font-size: 64px; /* Bigger font for desktop */
   font-weight: 800;
-  color: #11402a;
+  color: #2ead49;
   line-height: 1.1;
   margin: 12px 0 20px;
 }
@@ -779,49 +827,54 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
  <div class="subscription">
   <h3 class="subscription-title">Nourish your health — Subscribe and enjoy premium value.</h3>
 
-  <div class="table-container">
-    <table class="subscription-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Start Greens 1 Month<br><span class="price">Rs 799/-</span></th>
-          <th>Nourish Greens 3 Month<br><span class="price">Rs 2299/-</span></th>
-          <th>Wellness Greens 6 Month<br><span class="price">Rs 4299/-</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>No. of Boxes of Fresh Microgreens</td>
-          <td>4</td>
-          <td>14</td>
-          <td>30</td>
-        </tr>
-        <tr>
-          <td>Health Benefit</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td>*Green Wellness Loyalty Program</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td>Recipes</td>
-          <td>—</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td>Variety</td>
-          <td>Different variety every week</td>
-          <td>Fresh picks every week/month — or select your favorites from the list</td>
-          <td>Fresh picks every week/month — or select your favorites from the list</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="subscription-cards">
+
+    <!-- Plan Card -->
+    <div class="plan-card">
+      <h4 class="plan-title">Start Greens 1 Month</h4>
+      <p class="plan-price">Rs 799/-</p>
+      <ul class="plan-features">
+        <li>4 Boxes of Fresh Microgreens</li>
+        <li>Health Benefit: ✅ Yes</li>
+        <li>Green Wellness Loyalty Program: ✅ Yes</li>
+        <li>Recipes: ❌ No</li>
+        <li>Variety: Different variety every week</li>
+      </ul>
+      <button class="subscribe-btn" onclick="subscribeWhatsApp('Start Greens 1 Month', 799)">
+  Subscribe Now
+</button>
+    </div>
+
+    <div class="plan-card">
+      <h4 class="plan-title">Nourish Greens 3 Month</h4>
+      <p class="plan-price">Rs 2299/-</p>
+      <ul class="plan-features">
+        <li>14 Boxes of Fresh Microgreens</li>
+        <li>Health Benefit: ✅ Yes</li>
+        <li>Green Wellness Loyalty Program: ✅ Yes</li>
+        <li>Recipes: ✅ Yes</li>
+        <li>Variety: Fresh picks every week/month — or select your favorites</li>
+      </ul>
+      <button class="subscribe-btn" onclick="subscribeWhatsApp('Nourish Greens 3 Month', 2299)">
+  Subscribe Now
+</button>
+    </div>
+
+    <div class="plan-card">
+      <h4 class="plan-title">Wellness Greens 6 Month</h4>
+      <p class="plan-price">Rs 4299/-</p>
+      <ul class="plan-features">
+        <li>30 Boxes of Fresh Microgreens</li>
+        <li>Health Benefit: ✅ Yes</li>
+        <li>Green Wellness Loyalty Program: ✅ Yes</li>
+        <li>Recipes: ✅ Yes</li>
+        <li>Variety: Fresh picks every week/month — or select your favorites</li>
+      </ul>
+      <button class="subscribe-btn" onclick="subscribeWhatsApp('Wellness Greens 6 Month', 4299)">
+  Subscribe Now
+</button>
+    </div>
+
   </div>
 
   <p class="note">
@@ -840,8 +893,12 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     1) Microgreen Grow Kit Monthly Pack – 4 varieties of seeds and growing medium – INR 499<br>
     2) Microgreen Grow Kit Fort Monthly Pack – 2 varieties of seeds and growing medium – INR 299
   </p>
+   </div>
+<!-- 🌿 Image below microkit details -->
+<div class="microgreenkit-image">
+  <img src="images/microgreenkit.png" alt="Microgreen Grow Kit">
 </div>
-  </div>
+   </div>
 </section>
   
 <!-- PRODUCTS -->
@@ -982,67 +1039,101 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   display: block;
   opacity: 1;
 }
-  /* Subscription Section Styles */
+/* General Subscription Styles */
 .subscription {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 40px auto;
   padding: 20px;
   font-family: 'Arial', sans-serif;
   color: #333;
-  line-height: 1.5;
 }
 
 .subscription-title {
-  font-size: 1.8em;
+  font-size: 2em;
   text-align: center;
   color: #2f9e44;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
-.table-container {
-  overflow-x: auto;
+/* Card Layout */
+.subscription-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.subscription-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
+.plan-card {
+  background-color: #f9f9f9;
+  border: 2px solid #2f9e44;
+  border-radius: 12px;
+  padding: 20px;
+  flex: 1 1 280px;
+  max-width: 320px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.subscription-table th,
-.subscription-table td {
-  border: 1px solid #ccc;
-  padding: 12px 15px;
+.plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.plan-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #2f9e44;
+  margin-bottom: 10px;
   text-align: center;
-  vertical-align: middle;
 }
 
-.subscription-table th {
+.plan-price {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #6a1b9a;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px;
+}
+
+.plan-features li {
+  padding: 6px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95em;
+}
+
+.plan-features li:last-child {
+  border-bottom: none;
+}
+
+.subscribe-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
   background-color: #2f9e44;
   color: #fff;
-  font-weight: 600;
-}
-
-.subscription-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.subscription-table td:first-child {
-  text-align: left;
-  font-weight: 500;
-}
-
-.price {
-  font-size: 1.1em;
   font-weight: bold;
-  display: block;
-  margin-top: 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
 }
 
+.subscribe-btn:hover {
+  background-color: #237a32;
+}
+
+/* Notes and Highlights */
 .note {
   font-size: 0.9em;
   color: #2f9e44;
-  margin-bottom: 15px;
+  margin-top: 20px;
 }
 
 .highlight-title {
@@ -1066,6 +1157,35 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 .microkit-text {
   font-size: 1em;
+}
+.microgreenkit-image {
+  width: 100%;
+  margin: 40px 0;
+}
+
+.microgreenkit-image {
+  width: 100%;
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.microgreenkit-image img {
+  width: 95%;              /* balanced full width without touching edges */
+  max-width: 1200px;       /* prevents over-stretching on large screens */
+  height: auto;            /* keep natural proportion */
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  object-fit: contain;     /* shows the full image (no cropping) */
+}
+
+/* Optional larger look for desktop */
+@media (min-width: 769px) {
+  .microgreenkit-image img {
+    width: 100%;
+    max-height: 550px;     /* sets a max height but doesn’t crop */
+  }
 }
 </style>
 
@@ -1192,7 +1312,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 
 <!-- 💬 ABOUT US -->
-<section id="about" class="about-section style="background: linear-gradient(135deg, #e6f5ea, #ffffff); padding: 100px 20px; position:relative; overflow:hidden;">
+<section id="about" class="about-section" style="background: linear-gradient(135deg, #e6f5ea, #ffffff); padding: 100px 20px; position:relative; overflow:hidden;">
   <!-- Decorative floating leaves -->
   <img src="leaf1.png" alt="" style="position:absolute; top:10%; left:5%; width:60px; opacity:0.3; animation: float1 6s infinite ease-in-out;">
   <img src="leaf2.png" alt="" style="position:absolute; bottom:15%; right:8%; width:50px; opacity:0.3; animation: float2 7s infinite ease-in-out;">
@@ -1269,20 +1389,12 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
       <p><strong>Email:</strong> info@lifewithleaf.com</p>
       <p><strong>Phone:</strong> +91 9289935744</p>
       <p><strong>Location:</strong> Noida, UP, India</p>
-      <div class="social-links">
-        <a href="#" title="Instagram">📸</a>
-        <a href="#" title="WhatsApp">💬</a>
+      <!-- ✅ WhatsApp Button -->
+      <div class="whatsapp-link">
+        <a href="https://wa.me/919289935744?text=Hi!%20I'm%20interested%20in%20your%20products" target="_blank">
+          💬 Chat on WhatsApp
+        </a>
       </div>
-    </div>
-
-    <div class="contact-form">
-      <form onsubmit="sendMessage(event)">
-        <input type="text" id="name" placeholder="Your Name" required />
-        <input type="email" id="email" placeholder="Your Email" required />
-        <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-      <p id="formResponse" class="form-response"></p>
     </div>
   </div>
 </section>
@@ -1507,14 +1619,27 @@ function addToCart(id){
   updateCartUI();
 }
 function updateCartUI(){
-  document.getElementById('cartCount').innerText=cart.reduce((a,c)=>a+c.qty,0);
-  document.getElementById('miniCount').innerText=cart.reduce((a,c)=>a+c.qty,0);
-  const list=document.getElementById('cartList'); list.innerHTML='';
-  let total=0;
+  // update counts
+  const totalQty = cart.reduce((a,c)=>a+c.qty,0);
+  document.getElementById('cartCount').innerText = totalQty;
+  document.getElementById('miniCount').innerText = totalQty;
+
+  // show/hide header cart icon (hidden when no items)
+  const headerCart = document.querySelector('.cartIcon');
+  if (headerCart) {
+    headerCart.style.display = totalQty > 0 ? 'inline-flex' : 'none';
+  }
+
+  // update mini cart bar visibility and contents
+  const list = document.getElementById('cartList');
+  list.innerHTML = '';
+  let total = 0;
   cart.forEach(c=>{
-    total+=c.price*c.qty;
-    const item=document.createElement('div'); item.className='cartItem fadeIn';
-    item.innerHTML=`<img src="${c.img}" onerror="this.onerror=null;this.src='https://via.placeholder.com/80.png'">
+    total += c.price * c.qty;
+    const item = document.createElement('div');
+    item.className = 'cartItem fadeIn';
+    /* NOTE: use c.image (your products use "image" key) */
+    item.innerHTML = `<img src="${c.image}" onerror="this.onerror=null;this.src='https://via.placeholder.com/80.png'">
       <div style="flex:1">
         <div>${c.name}</div>
         <div>₹${c.price} x ${c.qty} = ₹${c.price*c.qty}</div>
@@ -1527,8 +1652,9 @@ function updateCartUI(){
       </div>`;
     list.appendChild(item);
   });
-  document.getElementById('cartTotal').innerText=total;
-  document.getElementById('miniCartBar').style.display=cart.length>0?'flex':'none';
+
+  document.getElementById('cartTotal').innerText = total;
+  document.getElementById('miniCartBar').style.display = cart.length > 0 ? 'flex' : 'none';
 }
 function changeQty(id,val){
   const item=cart.find(c=>c.id===id); if(!item)return;
@@ -1587,12 +1713,40 @@ window.addEventListener('DOMContentLoaded', () => {
   const sectionsToShow = ['home', 'homeDetails', 'whyMicro'];
   sectionsToShow.forEach(id => {
     const el = document.getElementById(id);
-    if(el){
+    if (el) {
       el.style.display = 'block';
       setTimeout(() => el.style.opacity = 1, 50);
     }
   });
+
+  // 👇 NEW PART: hide cart icon initially if cart is empty
+  const headerCart = document.querySelector('.cartIcon');
+  if (headerCart) headerCart.style.display = cart.length > 0 ? 'inline-flex' : 'none';
 });
+  
+function subscribeWhatsApp(planName, price) {
+  // Your WhatsApp number (replace with your number including country code)
+  const phoneNumber = "919873324887";
+
+  // Message to pre-fill
+  const message = `Hello! I would like to subscribe to the "${planName}" plan for Rs ${price}/-. Please confirm my subscription.`;
+
+  // Encode message
+  const encodedMessage = encodeURIComponent(message);
+
+  // Open WhatsApp chat
+  const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  window.open(url, '_blank');
+}  
+function toggleMenu() {
+  const menu = document.querySelector('nav ul');
+  menu.classList.toggle('show');
+}
+
+// Optional close button handler
+function closeMenu() {
+  document.querySelector('nav ul').classList.remove('show');
+}
 </script>
 </body>
 </html>
