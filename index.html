@@ -43,7 +43,6 @@ header .cartIcon{position:relative;font-size:20px;cursor:pointer}
 header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--green-1);color:#fff;padding:2px 7px;border-radius:999px;font-size:12px;font-weight:700}
 
 
-/* WHY MICROGREENS */
 /* WHY MICROGREENS SECTION */
 .whyMicro {
   background: linear-gradient(180deg, #a8e6a3, #ffffff); /* fresh green to white */
@@ -349,12 +348,12 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   <!-- NAVIGATION -->
   <nav>
   <ul>
-    <li><a href="#home">🏠 Home</a></li>
-    <li><a href="#whyMicro">🌿 Why Microgreens</a></li>
-    <li><a href="#health">💪 Health Benefits</a></li>
-    <li><a href="#products">🛒 Products</a></li>
-    <li><a href="#about">💬 About Us</a></li>
-    <li><a href="#contact">📞 Contact Us</a></li>
+    <li><a onclick="toggleSection('home')">🏠 Home</a></li>
+    <li><a onclick="toggleSection('whyMicro')">🌿 Why Microgreens</a></li>
+    <li><a onclick="toggleSection('health')">💪 Health Benefits</a></li>
+    <li><a onclick="toggleSection('products')">🛒 Products</a></li>
+    <li><a onclick="toggleSection('about')">💬 About Us</a></li>
+    <li><a onclick="toggleSection('contact')">📞 Contact Us</a></li>
   </ul>
 </nav>
 
@@ -775,6 +774,73 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
       <p>“A handful of microgreens a day can bring a world of health benefits.”</p>
       <a href="#shop" class="why-btn">Explore Fresh Greens</a>
     </div>
+    
+     <!-- Subscription Table -->
+ <div class="subscription">
+  <h3 class="subscription-title">Nourish your health — Subscribe and enjoy premium value.</h3>
+
+  <div class="table-container">
+    <table class="subscription-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Start Greens 1 Month<br><span class="price">Rs 799/-</span></th>
+          <th>Nourish Greens 3 Month<br><span class="price">Rs 2299/-</span></th>
+          <th>Wellness Greens 6 Month<br><span class="price">Rs 4299/-</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>No. of Boxes of Fresh Microgreens</td>
+          <td>4</td>
+          <td>14</td>
+          <td>30</td>
+        </tr>
+        <tr>
+          <td>Health Benefit</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
+        </tr>
+        <tr>
+          <td>*Green Wellness Loyalty Program</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
+        </tr>
+        <tr>
+          <td>Recipes</td>
+          <td>—</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
+        </tr>
+        <tr>
+          <td>Variety</td>
+          <td>Different variety every week</td>
+          <td>Fresh picks every week/month — or select your favorites from the list</td>
+          <td>Fresh picks every week/month — or select your favorites from the list</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="note">
+    * Green Wellness Loyalty Program - Invite friends and family to join — and enjoy extra discount of 12% as a thank-you for growing the community.<br>
+    * Currently Subscription Plan & Price Only For Noida, Greater Noida West, Ghaziabad (Indirapuram, Vaishali, Crossing Republic)<br>
+    * List of Choice - White Radish, Broccoli, Fenugreek, Pink Radish, Mustard, Sunflower, Kale, Beetroot, Peas, Mung Bean.
+  </p>
+
+  <p class="highlight-title">Why choose Life with Leaf Green Wellness Program?</p>
+  <p class="highlight-text">
+    Boost your everyday health with ease — Our Green Wellness subscription offers a cost-effective and hassle-free way to enjoy fresh microgreens tailored to your lifestyle needs.
+  </p>
+
+  <h3 class="microkit-title">Microgreen Grow Kit Price</h3>
+  <p class="microkit-text">
+    1) Microgreen Grow Kit Monthly Pack – 4 varieties of seeds and growing medium – INR 499<br>
+    2) Microgreen Grow Kit Fort Monthly Pack – 2 varieties of seeds and growing medium – INR 299
+  </p>
+</div>
   </div>
 </section>
   
@@ -904,6 +970,102 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 .why-btn:hover {
   background: #4d6c39;
+}
+  section {
+  display: none; /* hide all sections */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Show home and homeDetails by default */
+#home, #homeDetails {
+  display: block;
+  opacity: 1;
+}
+  /* Subscription Section Styles */
+.subscription {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  line-height: 1.5;
+}
+
+.subscription-title {
+  font-size: 1.8em;
+  text-align: center;
+  color: #2f9e44;
+  margin-bottom: 25px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.subscription-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.subscription-table th,
+.subscription-table td {
+  border: 1px solid #ccc;
+  padding: 12px 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.subscription-table th {
+  background-color: #2f9e44;
+  color: #fff;
+  font-weight: 600;
+}
+
+.subscription-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.subscription-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+}
+
+.price {
+  font-size: 1.1em;
+  font-weight: bold;
+  display: block;
+  margin-top: 5px;
+}
+
+.note {
+  font-size: 0.9em;
+  color: #2f9e44;
+  margin-bottom: 15px;
+}
+
+.highlight-title {
+  font-weight: bold;
+  color: #6a1b9a;
+  margin: 20px 0 10px;
+}
+
+.highlight-text {
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+.microkit-title {
+  background-color: #2f9e44;
+  color: #fff;
+  padding: 8px 12px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.microkit-text {
+  font-size: 1em;
 }
 </style>
 
@@ -1157,29 +1319,6 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </footer>
 
 <script>
-// 🌿 Section Toggle Function
-function toggleSection(id) {
-  const allSections = document.querySelectorAll('section');
-
-  allSections.forEach(sec => {
-    sec.style.opacity = 0;
-    setTimeout(() => sec.style.display = 'none', 300);
-  });
-
-  setTimeout(() => {
-    if (id === 'home') {
-      const hero = document.getElementById('home');
-      const homeDetails = document.getElementById('homeDetails');
-      if (hero) { hero.style.display = 'block'; setTimeout(() => hero.style.opacity = 1, 50); }
-      if (homeDetails) { homeDetails.style.display = 'block'; setTimeout(() => homeDetails.style.opacity = 1, 50); }
-    } else {
-      const target = document.getElementById(id);
-      if (target) { target.style.display = 'block'; setTimeout(() => target.style.opacity = 1, 50); }
-    }
-    window.scrollTo({top:0, behavior:'smooth'});
-  }, 300);
-}
-
 // PRODUCTS DATA
 const products = [
   {
@@ -1411,51 +1550,48 @@ document.querySelectorAll('.galleryGrid img').forEach(img=>{
 document.getElementById('lightbox').onclick=function(){this.style.display='none'};
 </script>
 <script>
-// 🌿 Section Toggle & Smooth Scroll
 function toggleSection(id) {
   const allSections = document.querySelectorAll('section');
-
-  // Hide all sections with fade-out
+  
+  // Hide all sections first
   allSections.forEach(sec => {
+    sec.style.display = 'none';
     sec.style.opacity = 0;
-    setTimeout(() => sec.style.display = 'none', 300);
   });
 
-  // Show target section(s) after fade-out
-  setTimeout(() => {
-    if(id === 'home'){
-      // Show both hero and homeDetails
-      ['home','homeDetails'].forEach(secId => {
-        const s = document.getElementById(secId);
-        if(s){
-          s.style.display = 'block';
-          setTimeout(()=> s.style.opacity = 1, 50);
-        }
-      });
-    } else {
-      const target = document.getElementById(id);
-      if(target){
-        target.style.display = 'block';
-        setTimeout(()=> target.style.opacity = 1, 50);
+  if(id === 'home') {
+    // Show Home + Home Details + Why Microgreens
+    const homeSections = ['home', 'homeDetails', 'whyMicro'];
+    homeSections.forEach(hid => {
+      const el = document.getElementById(hid);
+      if(el){
+        el.style.display = 'block';
+        setTimeout(() => el.style.opacity = 1, 50);
       }
+    });
+  } else {
+    // Show only clicked section
+    const active = document.getElementById(id);
+    if(active){
+      active.style.display = 'block';
+      setTimeout(() => active.style.opacity = 1, 50);
     }
-    // Scroll to top smoothly
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, 300);
+  }
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Smooth scroll for nav links
-document.querySelectorAll('header nav a').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const targetId = link.getAttribute('href').substring(1);
-    toggleSection(targetId);
+// On page load: show Home + Home Details + Why Microgreens
+window.addEventListener('DOMContentLoaded', () => {
+  const sectionsToShow = ['home', 'homeDetails', 'whyMicro'];
+  sectionsToShow.forEach(id => {
+    const el = document.getElementById(id);
+    if(el){
+      el.style.display = 'block';
+      setTimeout(() => el.style.opacity = 1, 50);
+    }
   });
-});
-
-// Logo click scrolls to home
-document.querySelector('header .brand').addEventListener('click', () => {
-  toggleSection('home');
 });
 </script>
 </body>
