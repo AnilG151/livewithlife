@@ -440,15 +440,17 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 <style>
 /* HERO SECTION */
 .hero {
-  display: flex;
-  flex-wrap: wrap; /* ✅ allows content to stack on smaller screens */
+  display: flex !important;              /* Force side-by-side layout */
+  flex-direction: row !important;        /* ✅ Text left, image right */
   justify-content: space-between;
   align-items: center;
-  padding: 68px 60px;
+  flex-wrap: nowrap;
   gap: 40px;
-  background: linear-gradient(180deg,#f5fbf5,#f8fff8);
+  padding: 68px 60px;
+  background: linear-gradient(180deg, #f5fbf5, #f8fff8);
   position: relative;
   overflow: hidden;
+  min-height: 100vh; /* or remove height altogether */
 }
 
 /* HERO TEXT */
@@ -503,6 +505,9 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   flex: 1 1 50%;
   max-width: 50%;
   min-width: 300px;
+  display: flex;
+  justify-content: flex-end;  /* ✅ Push image to the right */
+  align-items: center;
   text-align: center;
   z-index: 1;
 }
@@ -563,12 +568,13 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 /* RESPONSIVE: MOBILE */
 @media(max-width:768px){
   .hero {
-    flex-direction: column;
+    flex-direction: column !important;   /* ✅ Stack only on mobile */
     padding: 46px 16px;
     text-align: center;
   }
   .hero .hero-image {
     order: -1;  /* image above text */
+    justify-content: center;
     max-width: 100%;
     margin-bottom: 18px;
   }
@@ -1191,7 +1197,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 
 <!-- health -->
-<section id="health" style="display:none">
+<section id="health" style="background: linear-gradient(135deg, #e0f7e9, #ffffff); padding:60px 20px; position:relative;">
   <h2 style="font-size:36px; color:#2f9e44; text-align:center; margin-bottom:10px;">💪 Top Health Benefits of Microgreens</h2>
   <p style="text-align:center; color:#333; max-width:900px; margin:0 auto 40px; font-size:18px;">
     Life with Leaf — Healthy, Natural, Organic.<br>Nourish your body. Refresh your soul. 🌿
@@ -1312,7 +1318,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 
 <!-- 💬 ABOUT US -->
-<section id="about" style="display:none">
+<section id="about" class="about-section" style="background: linear-gradient(135deg, #e6f5ea, #ffffff); padding: 100px 20px; position:relative; overflow:hidden;">
   <!-- Decorative floating leaves -->
   <img src="leaf1.png" alt="" style="position:absolute; top:10%; left:5%; width:60px; opacity:0.3; animation: float1 6s infinite ease-in-out;">
   <img src="leaf2.png" alt="" style="position:absolute; bottom:15%; right:8%; width:50px; opacity:0.3; animation: float2 7s infinite ease-in-out;">
@@ -1377,7 +1383,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 
 <!-- 📞 CONTACT US -->
-<section id="contact" style="display:none">
+<section id="contact" class="contact-section">
   <h2>📞 Contact Us</h2>
   <p class="contact-intro">
     We’d love to hear from you! Whether you have a question about our products, want to collaborate, or just say hello — reach out anytime.
@@ -1398,6 +1404,8 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     </div>
   </div>
 </section>
+
+
 
 
 <!-- MINI-CART -->
