@@ -444,117 +444,159 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 60px 20px;
+  padding: 80px 20px;
   background: linear-gradient(135deg, #e0f7e9, #ffffff);
   flex-wrap: wrap;
-  overflow: hidden; /* ensures floating leaves stay inside */
+  overflow: hidden; /* Keeps leaves inside */
 }
 
-/* Text content */
-.hero-content {
+/* ---------- FLOATING LEAVES ---------- */
+.floating-leaves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.leaf {
+  position: absolute;
+  width: 50px;
+  opacity: 0.7;
+  animation: floatLeaf 14s linear infinite;
+}
+
+.leaf1 { top: 10%; left: -60px; animation-delay: 0s; }
+.leaf2 { top: 40%; left: -120px; animation-delay: 3s; }
+.leaf3 { top: 70%; left: -100px; animation-delay: 6s; }
+
+@keyframes floatLeaf {
+  0%   { transform: translate(0, 0) rotate(0deg); opacity: 0.8; }
+  25%  { transform: translate(30vw, 10vh) rotate(90deg); opacity: 1; }
+  50%  { transform: translate(60vw, -10vh) rotate(180deg); opacity: 0.9; }
+  75%  { transform: translate(90vw, 10vh) rotate(270deg); opacity: 0.8; }
+  100% { transform: translate(120vw, 0) rotate(360deg); opacity: 0.6; }
+}
+
+/* ---------- HERO TEXT ---------- */
+.hero-text {
   flex: 1 1 50%;
   max-width: 600px;
+  z-index: 2;
   padding: 20px;
-  z-index: 2; /* keeps text above leaves */
 }
 
-.hero-content h1 {
-  font-size: 2.5rem;
+.hero-text .kicker {
+  font-size: 1rem;
+  color: #2f9e44;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.hero-text h1 {
+  font-size: 2.8rem;
   color: #2f9e44;
   margin-bottom: 15px;
+  line-height: 1.2;
 }
 
-.hero-content p {
-  font-size: 1.2rem;
+.hero-text .lead {
+  font-size: 1.25rem;
   color: #333;
-  line-height: 1.6;
+  margin-bottom: 15px;
+  line-height: 1.5;
 }
 
-/* Image */
+.hero-text .details {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background: #2f9e44;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #258a39;
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 2px solid #2f9e44;
+  color: #2f9e44;
+}
+
+.btn.ghost:hover {
+  background: #2f9e44;
+  color: #fff;
+}
+
+/* ---------- HERO IMAGE ---------- */
 .hero-image {
   flex: 1 1 45%;
   text-align: right;
-  padding: 20px;
   z-index: 2;
+  padding: 20px;
 }
 
 .hero-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 12px;
+  border-radius: 16px;
   display: inline-block;
-}
-
-/* ---------- FLOATING LEAVES ---------- */
-.leaf {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background-image: url('images/leaf.png'); /* update path */
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.7;
-  animation: floatLeaf 12s linear infinite;
-}
-
-.leaf:nth-child(1) { top: 10%; left: -60px; animation-delay: 0s; }
-.leaf:nth-child(2) { top: 30%; left: -100px; animation-delay: 2s; }
-.leaf:nth-child(3) { top: 50%; left: -80px; animation-delay: 4s; }
-.leaf:nth-child(4) { top: 70%; left: -120px; animation-delay: 6s; }
-
-@keyframes floatLeaf {
-  0% { transform: translateX(0) rotate(0deg); opacity: 0.8; }
-  50% { transform: translateX(60vw) rotate(180deg); opacity: 1; }
-  100% { transform: translateX(120vw) rotate(360deg); opacity: 0.6; }
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
 }
 
 /* ---------- MOBILE VIEW ---------- */
 @media (max-width: 768px) {
   .hero {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse; /* Image above text */
     text-align: center;
+    padding: 60px 15px;
   }
 
-  .hero-content, .hero-image {
+  .hero-text, .hero-image {
     flex: 1 1 100%;
     padding: 10px;
-    text-align: center;
   }
 
-  .hero-content h1 {
-    font-size: 2rem;
+  .hero-text h1 {
+    font-size: 2.2rem;
   }
 
-  .hero-content p {
-    font-size: 1rem;
+  .hero-text .lead {
+    font-size: 1.1rem;
   }
 
   .hero-image img {
     max-width: 90%;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 
   .leaf {
-    width: 30px;
-    height: 30px;
+    width: 35px;
     opacity: 0.6;
   }
 }
-
-/* GLOW BEHIND IMAGE */
-.hero::after {
-  content:'';
-  position:absolute;
-  top:-60px;
-  right:-100px;
-  width:500px;
-  height:500px;
-  border-radius:50%;
-  background: linear-gradient(180deg, rgba(107,211,106,0.08), rgba(47,158,68,0.04));
-  filter: blur(50px);
-  z-index:0;
-}
-
 
 </style>
 
