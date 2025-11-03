@@ -443,11 +443,12 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 80px 20px;
+  justify-content: center;
+  gap: 40px; /* balanced space between text & image */
+  padding: 80px 8%;
   background: linear-gradient(135deg, #e0f7e9, #ffffff);
   flex-wrap: wrap;
-  overflow: hidden; /* Keeps leaves inside */
+  overflow: hidden;
 }
 
 /* ---------- FLOATING LEAVES ---------- */
@@ -459,24 +460,25 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   height: 100%;
   overflow: hidden;
   z-index: 1;
+  pointer-events: none; /* prevent interference */
 }
 
 .leaf {
   position: absolute;
   width: 50px;
-  opacity: 0.7;
+  opacity: 0.6;
   animation: floatLeaf 14s linear infinite;
 }
 
 .leaf1 { top: 10%; left: -60px; animation-delay: 0s; }
-.leaf2 { top: 40%; left: -120px; animation-delay: 3s; }
-.leaf3 { top: 70%; left: -100px; animation-delay: 6s; }
+.leaf2 { top: 50%; left: -100px; animation-delay: 3s; }
+.leaf3 { top: 80%; left: -80px; animation-delay: 6s; }
 
 @keyframes floatLeaf {
   0%   { transform: translate(0, 0) rotate(0deg); opacity: 0.8; }
-  25%  { transform: translate(30vw, 10vh) rotate(90deg); opacity: 1; }
-  50%  { transform: translate(60vw, -10vh) rotate(180deg); opacity: 0.9; }
-  75%  { transform: translate(90vw, 10vh) rotate(270deg); opacity: 0.8; }
+  25%  { transform: translate(30vw, 10vh) rotate(90deg); }
+  50%  { transform: translate(60vw, -10vh) rotate(180deg); }
+  75%  { transform: translate(90vw, 10vh) rotate(270deg); }
   100% { transform: translate(120vw, 0) rotate(360deg); opacity: 0.6; }
 }
 
@@ -485,16 +487,15 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   flex: 1 1 50%;
   max-width: 600px;
   z-index: 2;
-  padding: 20px;
 }
 
 .hero-text .kicker {
   font-size: 1rem;
   color: #2f9e44;
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .hero-text h1 {
@@ -508,7 +509,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   font-size: 1.25rem;
   color: #333;
   margin-bottom: 15px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .hero-text .details {
@@ -524,6 +525,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   flex-wrap: wrap;
 }
 
+/* ---------- BUTTONS ---------- */
 .btn {
   background: #2f9e44;
   color: #fff;
@@ -552,14 +554,13 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 /* ---------- HERO IMAGE ---------- */
 .hero-image {
-  flex: 1 1 45%;
+  flex: 1 1 40%;
   text-align: right;
   z-index: 2;
-  padding: 20px;
 }
 
 .hero-image img {
-  max-width: 100%;
+  max-width: 85%;
   height: auto;
   border-radius: 16px;
   display: inline-block;
@@ -569,14 +570,13 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 /* ---------- MOBILE VIEW ---------- */
 @media (max-width: 768px) {
   .hero {
-    flex-direction: column-reverse; /* Image above text */
+    flex-direction: column-reverse;
     text-align: center;
-    padding: 60px 15px;
+    padding: 60px 5%;
   }
 
   .hero-text, .hero-image {
     flex: 1 1 100%;
-    padding: 10px;
   }
 
   .hero-text h1 {
@@ -594,7 +594,6 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
   .leaf {
     width: 35px;
-    opacity: 0.6;
   }
 }
 
