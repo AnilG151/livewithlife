@@ -418,99 +418,175 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     <img src="images/leaf3.png" class="leaf leaf3" alt="">
   </div>
 
-  <!-- Hero Content -->
-  <div class="hero-content">
-    <h1>Healthy Living Starts Here 🌿</h1>
-    <p>Your journey to wellness begins with nature’s best. Explore healthy habits, natural foods, and mindful living tips.</p>
-    <a href="#about" class="btn">Learn More</a>
+  <!-- HERO TEXT -->
+  <div class="hero-text">
+    <div class="kicker">Fresh • Local • Sustainable</div>
+    <h1>Grow. Nourish. Thrive.</h1>
+    <p class="lead">Fresh, pesticide-free microgreens grown with love — straight from our farm to your plate.</p>
+    <p class="details">Microgreens are tender, young greens harvested at the peak of their nutritional value. Despite their small size, they contain 4 to 40 times more vitamins, minerals, and antioxidants than their fully grown counterparts. A small handful each day brings big health benefits.</p>
+    <div class="ctaRow">
+      <button class="btn" onclick="toggleSection('products')">Shop Now</button>
+      <button class="btn ghost" onclick="toggleSection('whyMicro')">Learn More</button>
+    </div>
   </div>
 
-  <!-- Hero Image -->
+  <!-- HERO IMAGE -->
   <div class="hero-image">
-    <img src="hero-microgreens.png" alt="Healthy lifestyle">
+    <img src="images/hero-microgreens.png" alt="Fresh Microgreens"
+         onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+Image'">
   </div>
 </section>
-  
 
 <style>
-/* ---------- HERO SECTION ---------- */
+/* HERO SECTION */
 .hero {
-  position: relative;
   display: flex;
-  align-items: center;
+  flex-wrap: nowrap;
   justify-content: space-between;
-  flex-wrap: wrap;
+  align-items: center;
+  padding: 68px 60px;
   gap: 40px;
-  padding: 80px 20px;
+  background: linear-gradient(180deg,#f5fbf5,#f8fff8);
+  position: relative;
   overflow: hidden;
 }
 
-/* Content */
-.hero-content {
+/* HERO TEXT */
+.hero .hero-text {
   flex: 1 1 50%;
-  max-width: 600px;
+  max-width: 50%;
+  min-width: 300px;
   z-index: 2;
 }
-
-/* Image */
-.hero-image {
-  flex: 1 1 45%;
+.hero .hero-text .kicker {
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+.hero .hero-text h1 {
+  font-size: 64px; /* Bigger font for desktop */
+  font-weight: 800;
+  color: #2ead49;
+  line-height: 1.1;
+  margin: 12px 0 20px;
+}
+.hero .hero-text p.lead {
+  font-size: 18px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.hero .hero-text p.details {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.hero .ctaRow {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hero .ctaRow .btn {
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+.hero .ctaRow .btn.ghost {
+  background: transparent;
+  border: 2px solid var(--green-1);
+  color: var(--green-1);
 }
 
-.hero-image img {
-  width: 100%;
-  max-width: 480px;
-  height: auto;
-}
-
-/* Floating Leaves */
-.floating-leaves {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: visible;
+/* HERO IMAGE */
+.hero .hero-image {
+  flex: 1 1 50%;
+  max-width: 50%;
+  min-width: 300px;
+  text-align: center;
   z-index: 1;
 }
+.hero .hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(15,23,42,0.08);
+  transform: translateY(6px);
+  animation: float 6s ease-in-out infinite;
+}
 
+/* GLOW BEHIND IMAGE */
+.hero::after {
+  content:'';
+  position:absolute;
+  top:-60px;
+  right:-100px;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  background: linear-gradient(180deg, rgba(107,211,106,0.08), rgba(47,158,68,0.04));
+  filter: blur(50px);
+  z-index:0;
+}
+
+/* FLOAT ANIMATION */
+@keyframes float {
+  0% { transform: translateY(6px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(6px); }
+}
+
+/* FLOATING LEAVES */
+.floating-leaves {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
 .leaf {
   position: absolute;
-  width: 60px;
   opacity: 0.7;
-  animation: float 12s infinite ease-in-out;
+  width: 80px;
+  animation: floatLeaf linear infinite;
+}
+.leaf1 { left: 10%; animation-duration: 18s; top: -80px; }
+.leaf2 { left: 50%; animation-duration: 22s; top: -100px; animation-delay: 3s; }
+.leaf3 { right: 10%; animation-duration: 25s; top: -120px; animation-delay: 6s; }
+
+@keyframes floatLeaf {
+  0% { transform: translateY(-10%) rotate(0deg); opacity: 0.9; }
+  50% { transform: translateY(50vh) rotate(90deg); opacity: 0.7; }
+  100% { transform: translateY(100vh) rotate(180deg); opacity: 0.4; }
 }
 
-.leaf1 { top: 20%; left: 10%; animation-delay: 0s; }
-.leaf2 { top: 40%; left: 80%; animation-delay: 4s; }
-.leaf3 { top: 70%; left: 50%; animation-delay: 8s; }
-
-@keyframes float {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-25px) rotate(15deg); }
-  100% { transform: translateY(0) rotate(0deg); }
-}
-
-/* ---------- MOBILE VIEW ---------- */
-@media (max-width: 768px) {
+/* RESPONSIVE: MOBILE */
+@media(max-width:768px){
   .hero {
-    flex-direction: column-reverse; /* image above text */
+    flex-direction: column;
+    padding: 46px 16px;
     text-align: center;
-    padding: 60px 20px;
   }
-
-  .hero-content, .hero-image {
-    flex: 1 1 100%;
+  .hero .hero-image {
+    order: -1;  /* image above text */
+    max-width: 100%;
+    margin-bottom: 18px;
+  }
+  .hero .hero-text {
     max-width: 100%;
   }
-
-  .hero-image img {
-    max-width: 300px;
+  .hero .hero-text h1 {
+    font-size: 36px; /* smaller on mobile */
+  }
+  .hero .hero-text p.lead {
+    font-size: 16px;
+  }
+  .hero .hero-text p.details {
+    font-size: 13px;
+  }
+  .hero::after {
+    width: 300px; height: 300px;
+    top:-40px; right:-60px;
   }
 }
 </style>
