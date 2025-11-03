@@ -6,71 +6,6 @@
 <title>Life With Leaf — Healthy Living</title>
 <meta name="description" content="Life With Leaf - Live microgreens, pesticide-free, homegrown. Fresh microgreens, grow kits and seeds." />
 <style>
-  
-/* ---------- MOBILE HAMBURGER & MENU ---------- */
-/* Hidden by default (desktop) */
-  
-/* Hide hamburger on desktop */
-.hamburger {
-  display: none;
-}
-
-/* Mobile only */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    font-size: 28px;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 8px;
-    padding: 6px 10px;
-    z-index: 1500;
-    cursor: pointer;
-  }
-
-  nav ul {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 70%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    transition: transform 0.3s ease-in-out;
-    z-index: 1400;
-  }
-
-  nav ul.show {
-    display: flex;
-  }
-
-  nav ul li {
-    margin: 15px 0;
-  }
-
-  nav ul li a {
-    color: #fff;
-    font-size: 20px;
-  }
-
-  /* Close button inside menu */
-  .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    color: #fff;
-    cursor: pointer;
-  }
-}
- 
 :root{
   --green-1:#2f9e44; --green-2:#6bd36a; --muted:#556068;
   --card:#ffffff; --glass:rgba(255,255,255,0.92);
@@ -104,87 +39,19 @@ header .brand img {
 header nav ul{display:flex;gap:14px;list-style:none}
 header nav a{padding:8px 10px;border-radius:10px;font-weight:600;color:var(--muted)}
 header nav a:hover{background:rgba(47,158,68,0.08);color:var(--green-1)}
-header .cartIcon {
-  position: fixed;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 1200;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 8px 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  display: none; /* 👈 hidden initially */
-}
+header .cartIcon{position:relative;font-size:20px;cursor:pointer}
 header .cartIcon span{position:absolute;top:-8px;right:-10px;background:var(--green-1);color:#fff;padding:2px 7px;border-radius:999px;font-size:12px;font-weight:700}
 
 
-/* WHY MICROGREENS SECTION */
-.whyMicro {
-  background: linear-gradient(180deg, #a8e6a3, #ffffff); /* fresh green to white */
-  padding: 60px 20px;
-  text-align: center;
-  border-radius: 12px; /* soft corners */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* subtle shadow */
-}
-
-.whyMicro h2 {
-  font-size: 32px;
-  color: #2f9e44; /* dark green for headings */
-  margin-bottom: 30px;
-  font-weight: 600;
-}
-
-.whyGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.whyGrid .whyItem {
-  background: rgba(255,255,255,0.8); /* semi-transparent white */
-  padding: 20px;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.whyGrid .whyItem:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-}
-
-.whyGrid .whyItem h3 {
-  font-size: 20px;
-  color: #1b5e20; /* slightly darker green */
-  margin-bottom: 12px;
-}
-
-.whyGrid .whyItem p {
-  font-size: 15px;
-  color: #333;
-  line-height: 1.5;
-}
-
-/* Optional button styling if you have CTA */
-.whyMicro .btn {
-  margin-top: 25px;
-  padding: 12px 28px;
-  background-color: #2f9e44; /* dark green button */
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.whyMicro .btn:hover {
-  background-color: #237a34; /* darker green on hover */
-}
+/* WHY MICROGREENS */
+.whyMicro{background:#fff;padding:56px 20px;text-align:center}
+.whyMicro h2{font-size:28px;color:var(--green-1);margin-bottom:30px}
+.whyGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;max-width:1100px;margin:0 auto}
+.whyCard{background:var(--glass);border-radius:14px;padding:20px;box-shadow:0 8px 20px rgba(15,23,42,0.04);transition:transform .28s ease, box-shadow .28s ease}
+.whyCard:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(15,23,42,0.08)}
+.whyCard img{width:56px;height:56px;margin:0 auto 14px}
+.whyCard h3{color:var(--green-1);font-size:16px;margin-bottom:8px}
+.whyCard p{color:var(--muted);font-size:14px}
 
 /* SECTIONS */
 section{padding:40px 0}
@@ -233,157 +100,11 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 .kicker{display:inline-block;background:rgba(107,211,106,0.12);color:var(--green-1);padding:6px 10px;border-radius:999px;font-weight:700;margin-bottom:12px}
 .fadeIn{animation:fadeIn .6s ease both}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  /* 💬 ABOUT US */
-.about-section {
-  background: #f9fff9;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.about-section h2 {
-  font-size: 30px;
-  color: var(--green-1);
-  margin-bottom: 40px;
-  font-weight: 700;
-}
-
-.about-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.about-text {
-  flex: 1 1 450px;
-  font-size: 17px;
-  color: #333;
-  line-height: 1.7;
-  text-align: left;
-}
-
-.about-text strong {
-  color: var(--green-1);
-}
-
-.about-quote {
-  margin-top: 20px;
-  font-style: italic;
-  font-size: 18px;
-  color: #2f9e44;
-}
-
-.about-image {
-  flex: 1 1 350px;
-  text-align: center;
-}
-
-.about-image img {
-  width: 100%;
-  max-width: 380px;
-  border-radius: 20px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.about-image img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-  /* 📞 CONTACT US */
-.contact-section {
-  background: #f9fff9;
-  padding: 70px 20px;
-  text-align: center;
-}
-
-.contact-section h2 {
-  font-size: 30px;
-  color: var(--green-1);
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-.contact-intro {
-  color: #444;
-  font-size: 17px;
-  margin-bottom: 40px;
-  line-height: 1.7;
-}
-
-.contact-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  justify-content: center;
-  align-items: flex-start;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-/* Left side: Contact Info */
-.contact-info {
-  flex: 1 1 300px;
-  background: #f5fff5;
-  border-radius: 16px;
-  padding: 25px;
-  text-align: center;
-  margin: 0 auto;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.contact-info h3 {
-  color: var(--green-1);
-  margin-bottom: 15px;
-}
-
-.contact-info p {
-  color: #333;
-  margin: 8px 0;
-  font-size: 16px;
-}
-
-.social-links {
-  margin-top: 15px;
-}
-
-.social-links a {
-  text-decoration: none;
-  font-size: 24px;
-  margin-right: 10px;
-  transition: transform 0.3s;
-}
-
-.social-links a:hover {
-  transform: scale(1.2);
-}
-.whatsapp-link a {
-  display: inline-block;
-  background: #25d366;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.3s, transform 0.3s;
-}
-
-.whatsapp-link a:hover {
-  background: #1ebe5d;
-  transform: scale(1.05);
-}
-
 </style>
 </head>
 <body>
 
 <header>
- <!-- MOBILE HAMBURGER (visible only on mobile) -->
-<div class="hamburger" onclick="toggleMenu()">☰</div>
-
   <!-- BRAND / LOGO -->
   <div class="brand" onclick="toggleSection('home')" style="cursor:pointer;">
     <img src="images/logo.png" alt="Life With Leaf" 
@@ -397,11 +118,12 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   <!-- NAVIGATION -->
   <nav>
   <ul>
-    <li><a onclick="toggleSection('home')">🏠 Home</a></li>
-    <li><a onclick="toggleSection('health')">💪 Health Benefits</a></li>
-    <li><a onclick="toggleSection('products')">🛒 Products</a></li>
-    <li><a onclick="toggleSection('about')">💬 About Us</a></li>
-    <li><a onclick="toggleSection('contact')">📞 Contact Us</a></li>
+    <li><a href="#home">🏠 Home</a></li>
+    <li><a href="#whyMicro">🌿 Why Microgreens</a></li>
+    <li><a href="#health">💪 Health Benefits</a></li>
+    <li><a href="#products">🛒 Products</a></li>
+    <li><a href="#about">💬 About Us</a></li>
+    <li><a href="#contact">📞 Contact Us</a></li>
   </ul>
 </nav>
 
@@ -440,17 +162,15 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 <style>
 /* HERO SECTION */
 .hero {
-  display: flex !important;              /* Force side-by-side layout */
-  flex-direction: row !important;        /* ✅ Text left, image right */
+  display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap;
-  gap: 40px;
   padding: 68px 60px;
-  background: linear-gradient(180deg, #f5fbf5, #f8fff8);
+  gap: 40px;
+  background: linear-gradient(180deg,#f5fbf5,#f8fff8);
   position: relative;
   overflow: hidden;
-  min-height: 100vh; /* or remove height altogether */
 }
 
 /* HERO TEXT */
@@ -467,7 +187,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 .hero .hero-text h1 {
   font-size: 64px; /* Bigger font for desktop */
   font-weight: 800;
-  color: #2ead49;
+  color: #11402a;
   line-height: 1.1;
   margin: 12px 0 20px;
 }
@@ -505,9 +225,6 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   flex: 1 1 50%;
   max-width: 50%;
   min-width: 300px;
-  display: flex;
-  justify-content: flex-end;  /* ✅ Push image to the right */
-  align-items: center;
   text-align: center;
   z-index: 1;
 }
@@ -568,13 +285,12 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 /* RESPONSIVE: MOBILE */
 @media(max-width:768px){
   .hero {
-    flex-direction: column !important;   /* ✅ Stack only on mobile */
+    flex-direction: column;
     padding: 46px 16px;
     text-align: center;
   }
   .hero .hero-image {
     order: -1;  /* image above text */
-    justify-content: center;
     max-width: 100%;
     margin-bottom: 18px;
   }
@@ -760,7 +476,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </style>
 
 <!-- 🌾 WHY MICROGREENS SECTION -->
-<section id="whyMicro" class="whyMicro">
+<section id="whyMicro" class="why-microgreens-section">
   <div class="why-container">
     <h2 class="why-title">Why Microgreens?</h2>
     <p class="why-intro">
@@ -828,83 +544,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
       <p>“A handful of microgreens a day can bring a world of health benefits.”</p>
       <a href="#shop" class="why-btn">Explore Fresh Greens</a>
     </div>
-    
-     <!-- Subscription Table -->
- <div class="subscription">
-  <h3 class="subscription-title">Nourish your health — Subscribe and enjoy premium value.</h3>
-
-  <div class="subscription-cards">
-
-    <!-- Plan Card -->
-    <div class="plan-card">
-      <h4 class="plan-title">Start Greens 1 Month</h4>
-      <p class="plan-price">Rs 799/-</p>
-      <ul class="plan-features">
-        <li>4 Boxes of Fresh Microgreens</li>
-        <li>Health Benefit: ✅ Yes</li>
-        <li>Green Wellness Loyalty Program: ✅ Yes</li>
-        <li>Recipes: ❌ No</li>
-        <li>Variety: Different variety every week</li>
-      </ul>
-      <button class="subscribe-btn" onclick="subscribeWhatsApp('Start Greens 1 Month', 799)">
-  Subscribe Now
-</button>
-    </div>
-
-    <div class="plan-card">
-      <h4 class="plan-title">Nourish Greens 3 Month</h4>
-      <p class="plan-price">Rs 2299/-</p>
-      <ul class="plan-features">
-        <li>14 Boxes of Fresh Microgreens</li>
-        <li>Health Benefit: ✅ Yes</li>
-        <li>Green Wellness Loyalty Program: ✅ Yes</li>
-        <li>Recipes: ✅ Yes</li>
-        <li>Variety: Fresh picks every week/month — or select your favorites</li>
-      </ul>
-      <button class="subscribe-btn" onclick="subscribeWhatsApp('Nourish Greens 3 Month', 2299)">
-  Subscribe Now
-</button>
-    </div>
-
-    <div class="plan-card">
-      <h4 class="plan-title">Wellness Greens 6 Month</h4>
-      <p class="plan-price">Rs 4299/-</p>
-      <ul class="plan-features">
-        <li>30 Boxes of Fresh Microgreens</li>
-        <li>Health Benefit: ✅ Yes</li>
-        <li>Green Wellness Loyalty Program: ✅ Yes</li>
-        <li>Recipes: ✅ Yes</li>
-        <li>Variety: Fresh picks every week/month — or select your favorites</li>
-      </ul>
-      <button class="subscribe-btn" onclick="subscribeWhatsApp('Wellness Greens 6 Month', 4299)">
-  Subscribe Now
-</button>
-    </div>
-
   </div>
-
-  <p class="note">
-    * Green Wellness Loyalty Program - Invite friends and family to join — and enjoy extra discount of 12% as a thank-you for growing the community.<br>
-    * Currently Subscription Plan & Price Only For Noida, Greater Noida West, Ghaziabad (Indirapuram, Vaishali, Crossing Republic)<br>
-    * List of Choice - White Radish, Broccoli, Fenugreek, Pink Radish, Mustard, Sunflower, Kale, Beetroot, Peas, Mung Bean.
-  </p>
-
-  <p class="highlight-title">Why choose Life with Leaf Green Wellness Program?</p>
-  <p class="highlight-text">
-    Boost your everyday health with ease — Our Green Wellness subscription offers a cost-effective and hassle-free way to enjoy fresh microgreens tailored to your lifestyle needs.
-  </p>
-
-  <h3 class="microkit-title">Microgreen Grow Kit Price</h3>
-  <p class="microkit-text">
-    1) Microgreen Grow Kit Monthly Pack – 4 varieties of seeds and growing medium – INR 499<br>
-    2) Microgreen Grow Kit Fort Monthly Pack – 2 varieties of seeds and growing medium – INR 299
-  </p>
-   </div>
-<!-- 🌿 Image below microkit details -->
-<div class="microgreenkit-image">
-  <img src="images/microgreenkit.png" alt="Microgreen Grow Kit">
-</div>
-   </div>
 </section>
   
 <!-- PRODUCTS -->
@@ -1034,377 +674,34 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 .why-btn:hover {
   background: #4d6c39;
 }
-  section {
-  display: none; /* hide all sections */
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-/* Show home and homeDetails by default */
-#home, #homeDetails {
-  display: block;
-  opacity: 1;
-}
-/* General Subscription Styles */
-.subscription {
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 20px;
-  font-family: 'Arial', sans-serif;
-  color: #333;
-}
-
-.subscription-title {
-  font-size: 2em;
-  text-align: center;
-  color: #2f9e44;
-  margin-bottom: 30px;
-}
-
-/* Card Layout */
-.subscription-cards {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.plan-card {
-  background-color: #f9f9f9;
-  border: 2px solid #2f9e44;
-  border-radius: 12px;
-  padding: 20px;
-  flex: 1 1 280px;
-  max-width: 320px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.plan-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.plan-title {
-  font-size: 1.3em;
-  font-weight: bold;
-  color: #2f9e44;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.plan-price {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #6a1b9a;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.plan-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 15px;
-}
-
-.plan-features li {
-  padding: 6px 0;
-  border-bottom: 1px solid #ddd;
-  font-size: 0.95em;
-}
-
-.plan-features li:last-child {
-  border-bottom: none;
-}
-
-.subscribe-btn {
-  display: block;
-  width: 100%;
-  padding: 10px 0;
-  background-color: #2f9e44;
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s;
-}
-
-.subscribe-btn:hover {
-  background-color: #237a32;
-}
-
-/* Notes and Highlights */
-.note {
-  font-size: 0.9em;
-  color: #2f9e44;
-  margin-top: 20px;
-}
-
-.highlight-title {
-  font-weight: bold;
-  color: #6a1b9a;
-  margin: 20px 0 10px;
-}
-
-.highlight-text {
-  font-size: 1em;
-  margin-bottom: 20px;
-}
-
-.microkit-title {
-  background-color: #2f9e44;
-  color: #fff;
-  padding: 8px 12px;
-  display: inline-block;
-  margin-bottom: 10px;
-}
-
-.microkit-text {
-  font-size: 1em;
-}
-.microgreenkit-image {
-  width: 100%;
-  margin: 40px 0;
-}
-
-.microgreenkit-image {
-  width: 100%;
-  margin: 40px 0;
-  display: flex;
-  justify-content: center;
-}
-
-.microgreenkit-image img {
-  width: 95%;              /* balanced full width without touching edges */
-  max-width: 1200px;       /* prevents over-stretching on large screens */
-  height: auto;            /* keep natural proportion */
-  display: block;
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-  object-fit: contain;     /* shows the full image (no cropping) */
-}
-
-/* Optional larger look for desktop */
-@media (min-width: 769px) {
-  .microgreenkit-image img {
-    width: 100%;
-    max-height: 550px;     /* sets a max height but doesn’t crop */
-  }
-}
 </style>
 
 
 <!-- health -->
-<section id="health" style="background: linear-gradient(135deg, #e0f7e9, #ffffff); padding:60px 20px; position:relative;">
-  <h2 style="font-size:36px; color:#2f9e44; text-align:center; margin-bottom:10px;">💪 Top Health Benefits of Microgreens</h2>
-  <p style="text-align:center; color:#333; max-width:900px; margin:0 auto 40px; font-size:18px;">
-    Life with Leaf — Healthy, Natural, Organic.<br>Nourish your body. Refresh your soul. 🌿
-  </p>
-
-  <div class="benefits-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; max-width:1100px; margin:0 auto;">
-
-    <!-- Nutrient Powerhouses -->
-    <div class="benefit-card">
-      <img src="microgreens1.png" alt="Nutrient Powerhouses" class="benefit-icon">
-      <h3>💚 Nutrient Powerhouses</h3>
-      <p>Microgreens contain 4–40× more nutrients than mature counterparts: <strong>Vitamins A, C, E, K</strong>, <strong>Folate, Iron, Magnesium, Potassium, Zinc</strong>, and antioxidants like <strong>polyphenols & sulforaphane</strong>.</p>
-    </div>
-
-    <!-- Heart Health -->
-    <div class="benefit-card">
-      <img src="heart.png" alt="Heart Health" class="benefit-icon">
-      <h3>❤️ Support Heart Health</h3>
-      <p>Red cabbage microgreens help lower <strong>LDL cholesterol</strong> and reduce inflammation, supporting a healthy heart.</p>
-    </div>
-
-    <!-- Type 2 Diabetes -->
-    <div class="benefit-card">
-      <img src="diabetes.png" alt="Diabetes Management" class="benefit-icon">
-      <h3>🩺 Help Manage Type 2 Diabetes</h3>
-      <p>Microgreens like broccoli and fenugreek may improve <strong>insulin sensitivity</strong> and regulate blood sugar levels.</p>
-    </div>
-
-    <!-- Brain Function -->
-    <div class="benefit-card">
-      <img src="brain.png" alt="Brain Function" class="benefit-icon">
-      <h3>🧠 Boost Brain Function</h3>
-      <p>High polyphenol content in microgreens may enhance <strong>cognitive performance</strong> and protect against neurodegenerative diseases.</p>
-    </div>
-
-    <!-- Digestion & Gut Health -->
-    <div class="benefit-card">
-      <img src="gut.png" alt="Gut Health" class="benefit-icon">
-      <h3>🍃 Aid Digestion & Gut Health</h3>
-      <p>Rich in dietary fiber, microgreens support healthy digestion and act as prebiotics for beneficial gut bacteria.</p>
-    </div>
-
-    <!-- Eye Health -->
-    <div class="benefit-card">
-      <img src="eye.png" alt="Eye Health" class="benefit-icon">
-      <h3>👀 Protect Eye Health</h3>
-      <p>Kale and pea shoot microgreens are rich in <strong>lutein and zeaxanthin</strong>, antioxidants that protect your eyes from blue light and aging.</p>
-    </div>
-
-    <!-- Immune Function -->
-    <div class="benefit-card">
-      <img src="immune.png" alt="Immune Function" class="benefit-icon">
-      <h3>🛡️ Support Immune Function</h3>
-      <p>Dense in vitamins and antioxidants, microgreens help strengthen your immune system and reduce oxidative stress.</p>
-    </div>
-
-    <!-- Plant-Based Diets -->
-    <div class="benefit-card">
-      <img src="protein.png" alt="Plant-Based Protein" class="benefit-icon">
-      <h3>🌱 Great for Plant-Based Diets</h3>
-      <p>Lentil and chickpea microgreens offer a plant-based protein boost, ideal for vegetarians and vegans.</p>
-    </div>
-
-  </div>
-
-  <!-- Final Thoughts -->
-  <p style="text-align:center; max-width:900px; margin:40px auto 0; font-size:18px; color:#333;">
-    Whether you're looking to enhance your nutrition, manage a health condition, or simply add vibrant flavor to your meals, microgreens are a smart and delicious choice. Easy to cultivate, sustainable, and accessible for every home.
-  </p>
+<section id="health">
+  <h2>💪 Health Benefits</h2>
+  <p>Microgreens are packed with nutrients—vitamins, minerals, and antioxidants.</p>
+  <ul>
+    <li>Boosts immunity</li>
+    <li>Improves digestion</li>
+    <li>Enhances energy & focus</li>
+    <li>Supports heart health</li>
+  </ul>
 </section>
 
-<style>
-/* Benefit Cards */
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-  gap: 30px;
-}
 
-.benefit-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 25px 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
-
-.benefit-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-}
-
-.benefit-card h3 {
-  color: #2f9e44;
-  margin-bottom: 12px;
-  font-size: 20px;
-}
-
-.benefit-card p {
-  color: #555;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.benefit-icon {
-  width: 60px;
-  margin-bottom: 15px;
-  display: block;
-}
-
-/* Responsive */
-@media screen and (max-width: 600px){
-  .benefit-card {
-    padding: 20px 15px;
-  }
-}
-</style>
-
-
-<!-- 💬 ABOUT US -->
-<section id="about" class="about-section" style="background: linear-gradient(135deg, #e6f5ea, #ffffff); padding: 100px 20px; position:relative; overflow:hidden;">
-  <!-- Decorative floating leaves -->
-  <img src="leaf1.png" alt="" style="position:absolute; top:10%; left:5%; width:60px; opacity:0.3; animation: float1 6s infinite ease-in-out;">
-  <img src="leaf2.png" alt="" style="position:absolute; bottom:15%; right:8%; width:50px; opacity:0.3; animation: float2 7s infinite ease-in-out;">
-  <img src="leaf3.png" alt="" style="position:absolute; top:40%; right:20%; width:40px; opacity:0.2; animation: float1 5s infinite ease-in-out;">
-
-  <h2 style="text-align:center; color:#2f9e44; font-size:42px; font-weight:bold; margin-bottom:10px;">💬 About Us</h2>
-  <p style="text-align:center; max-width:900px; margin:0 auto 60px; font-size:18px; color:#333;">
-    Life With Leaf — Growing health, naturally 🌿
-  </p>
-
-  <div class="about-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:50px; max-width:1100px; margin:0 auto; align-items:start;">
-
-    <!-- Image -->
-    <div class="about-image" style="animation: fadeIn 1.5s ease-in;">
-      <img src="shalini.jpg" alt="Shalini Founder" style="width:100%; border-radius:20px; box-shadow:0 12px 30px rgba(0,0,0,0.2); transition: transform 0.3s;">
-    </div>
-
-    <!-- Content -->
-    <div class="about-content" style="color:#333; font-size:17px; line-height:1.8; animation: fadeIn 2s ease-in;">
-      <p>Shalini, an accomplished professional with over a decade of experience in corporate finance, left her corporate career to pursue a purpose-driven journey — promoting healthy, chemical-free living. 🌿</p>
-
-      <p>Her mission: <img src="mission_icon.png" style="width:25px; vertical-align:middle; margin-left:5px;"></p>
-      <div style="background:#d4f1d4; padding:18px 22px; border-left:6px solid #2f9e44; border-radius:12px; margin-bottom:20px; font-weight:bold; position:relative;">
-        "To cultivate a healthier society by providing natural, pure, and nutrient-rich green products. Through sustainable microgreen farming, we empower individuals and families to embrace better health today while nurturing a greener future."
-        <img src="leaf_small.png" style="position:absolute; top:-10px; right:10px; width:25px; opacity:0.4;">
-      </div>
-
-      <p>Her vision: <img src="vision_icon.png" style="width:25px; vertical-align:middle; margin-left:5px;"></p>
-      <div style="background:#fff3e6; padding:18px 22px; border-left:6px solid #f4a261; border-radius:12px; margin-bottom:20px; font-weight:bold; position:relative;">
-        Making clean, chemical-free food accessible to all, educating communities about its benefits, and promoting sustainable living for generations to come.
-        <img src="leaf_small2.png" style="position:absolute; bottom:-10px; left:10px; width:20px; opacity:0.3;">
-      </div>
-
-      <p>Shalini believes microgreens — tiny, nutrient-packed plants — are a delicious, easy, and sustainable way to boost health. Her approach combines <strong>sustainability, purity, and education</strong>, helping reverse the damage caused by modern agricultural practices.</p>
-    </div>
-
-  </div>
+<!-- about -->
+<section id="about">
+  <h2>💬 About Us</h2>
+  <p>Life With Leaf grows fresh, pesticide-free microgreens with love, bringing health to your plate daily.</p>
 </section>
 
-<!-- ===== ANIMATION ===== -->
-<style>
-@keyframes fadeIn {
-  from {opacity:0; transform: translateY(20px);}
-  to {opacity:1; transform: translateY(0);}
-}
-
-.about-image img:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-}
-
-@keyframes float1 {
-  0%, 100% { transform: translateY(0);}
-  50% { transform: translateY(-15px);}
-}
-
-@keyframes float2 {
-  0%, 100% { transform: translateY(0);}
-  50% { transform: translateY(15px);}
-}
-</style>
-
-
-<!-- 📞 CONTACT US -->
-<section id="contact" class="contact-section">
+<!-- contact -->
+<section id="contact">
   <h2>📞 Contact Us</h2>
-  <p class="contact-intro">
-    We’d love to hear from you! Whether you have a question about our products, want to collaborate, or just say hello — reach out anytime.
-  </p>
-
-  <div class="contact-container">
-    <div class="contact-info">
-      <h3>🌿 Get in Touch</h3>
-      <p><strong>Email:</strong> info@lifewithleaf.com</p>
-      <p><strong>Phone:</strong> +91 9289935744</p>
-      <p><strong>Location:</strong> Noida, UP, India</p>
-      <!-- ✅ WhatsApp Button -->
-      <div class="whatsapp-link">
-        <a href="https://wa.me/919289935744?text=Hi!%20I'm%20interested%20in%20your%20products" target="_blank">
-          💬 Chat on WhatsApp
-        </a>
-      </div>
-    </div>
-  </div>
+  <p>Email: hello@lifewithleaf.com</p>
+  <p>Phone: +91 98765 43210</p>
 </section>
-
 
 
 
@@ -1437,6 +734,29 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </footer>
 
 <script>
+// 🌿 Section Toggle Function
+function toggleSection(id) {
+  const allSections = document.querySelectorAll('section');
+
+  allSections.forEach(sec => {
+    sec.style.opacity = 0;
+    setTimeout(() => sec.style.display = 'none', 300);
+  });
+
+  setTimeout(() => {
+    if (id === 'home') {
+      const hero = document.getElementById('home');
+      const homeDetails = document.getElementById('homeDetails');
+      if (hero) { hero.style.display = 'block'; setTimeout(() => hero.style.opacity = 1, 50); }
+      if (homeDetails) { homeDetails.style.display = 'block'; setTimeout(() => homeDetails.style.opacity = 1, 50); }
+    } else {
+      const target = document.getElementById(id);
+      if (target) { target.style.display = 'block'; setTimeout(() => target.style.opacity = 1, 50); }
+    }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }, 300);
+}
+
 // PRODUCTS DATA
 const products = [
   {
@@ -1625,27 +945,14 @@ function addToCart(id){
   updateCartUI();
 }
 function updateCartUI(){
-  // update counts
-  const totalQty = cart.reduce((a,c)=>a+c.qty,0);
-  document.getElementById('cartCount').innerText = totalQty;
-  document.getElementById('miniCount').innerText = totalQty;
-
-  // show/hide header cart icon (hidden when no items)
-  const headerCart = document.querySelector('.cartIcon');
-  if (headerCart) {
-    headerCart.style.display = totalQty > 0 ? 'inline-flex' : 'none';
-  }
-
-  // update mini cart bar visibility and contents
-  const list = document.getElementById('cartList');
-  list.innerHTML = '';
-  let total = 0;
+  document.getElementById('cartCount').innerText=cart.reduce((a,c)=>a+c.qty,0);
+  document.getElementById('miniCount').innerText=cart.reduce((a,c)=>a+c.qty,0);
+  const list=document.getElementById('cartList'); list.innerHTML='';
+  let total=0;
   cart.forEach(c=>{
-    total += c.price * c.qty;
-    const item = document.createElement('div');
-    item.className = 'cartItem fadeIn';
-    /* NOTE: use c.image (your products use "image" key) */
-    item.innerHTML = `<img src="${c.image}" onerror="this.onerror=null;this.src='https://via.placeholder.com/80.png'">
+    total+=c.price*c.qty;
+    const item=document.createElement('div'); item.className='cartItem fadeIn';
+    item.innerHTML=`<img src="${c.img}" onerror="this.onerror=null;this.src='https://via.placeholder.com/80.png'">
       <div style="flex:1">
         <div>${c.name}</div>
         <div>₹${c.price} x ${c.qty} = ₹${c.price*c.qty}</div>
@@ -1658,9 +965,8 @@ function updateCartUI(){
       </div>`;
     list.appendChild(item);
   });
-
-  document.getElementById('cartTotal').innerText = total;
-  document.getElementById('miniCartBar').style.display = cart.length > 0 ? 'flex' : 'none';
+  document.getElementById('cartTotal').innerText=total;
+  document.getElementById('miniCartBar').style.display=cart.length>0?'flex':'none';
 }
 function changeQty(id,val){
   const item=cart.find(c=>c.id===id); if(!item)return;
@@ -1682,77 +988,54 @@ document.querySelectorAll('.galleryGrid img').forEach(img=>{
 document.getElementById('lightbox').onclick=function(){this.style.display='none'};
 </script>
 <script>
+// 🌿 Section Toggle & Smooth Scroll
 function toggleSection(id) {
   const allSections = document.querySelectorAll('section');
-  
-  // Hide all sections first
+
+  // Hide all sections with fade-out
   allSections.forEach(sec => {
-    sec.style.display = 'none';
     sec.style.opacity = 0;
+    setTimeout(() => sec.style.display = 'none', 300);
   });
 
-  if(id === 'home') {
-    // Show Home + Home Details + Why Microgreens
-    const homeSections = ['home', 'homeDetails', 'whyMicro'];
-    homeSections.forEach(hid => {
-      const el = document.getElementById(hid);
-      if(el){
-        el.style.display = 'block';
-        setTimeout(() => el.style.opacity = 1, 50);
+  // Show target section(s) after fade-out
+  setTimeout(() => {
+    if(id === 'home'){
+      // Show both hero and homeDetails
+      ['home','homeDetails'].forEach(secId => {
+        const s = document.getElementById(secId);
+        if(s){
+          s.style.display = 'block';
+          setTimeout(()=> s.style.opacity = 1, 50);
+        }
+      });
+    } else {
+      const target = document.getElementById(id);
+      if(target){
+        target.style.display = 'block';
+        setTimeout(()=> target.style.opacity = 1, 50);
       }
-    });
-  } else {
-    // Show only clicked section
-    const active = document.getElementById(id);
-    if(active){
-      active.style.display = 'block';
-      setTimeout(() => active.style.opacity = 1, 50);
     }
-  }
-
-  // Scroll to top
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 300);
 }
 
-// On page load: show Home + Home Details + Why Microgreens
-window.addEventListener('DOMContentLoaded', () => {
-  const sectionsToShow = ['home', 'homeDetails', 'whyMicro'];
-  sectionsToShow.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.style.display = 'block';
-      setTimeout(() => el.style.opacity = 1, 50);
-    }
+// Smooth scroll for nav links
+document.querySelectorAll('header nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href').substring(1);
+    toggleSection(targetId);
   });
-
-  // 👇 NEW PART: hide cart icon initially if cart is empty
-  const headerCart = document.querySelector('.cartIcon');
-  if (headerCart) headerCart.style.display = cart.length > 0 ? 'inline-flex' : 'none';
 });
-  
-function subscribeWhatsApp(planName, price) {
-  // Your WhatsApp number (replace with your number including country code)
-  const phoneNumber = "919873324887";
 
-  // Message to pre-fill
-  const message = `Hello! I would like to subscribe to the "${planName}" plan for Rs ${price}/-. Please confirm my subscription.`;
-
-  // Encode message
-  const encodedMessage = encodeURIComponent(message);
-
-  // Open WhatsApp chat
-  const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-  window.open(url, '_blank');
-}  
-function toggleMenu() {
-  const menu = document.querySelector('nav ul');
-  menu.classList.toggle('show');
-}
-
-// Optional close button handler
-function closeMenu() {
-  document.querySelector('nav ul').classList.remove('show');
-}
+// Logo click scrolls to home
+document.querySelector('header .brand').addEventListener('click', () => {
+  toggleSection('home');
+});
 </script>
+
+
 </body>
 </html>
