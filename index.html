@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -439,81 +438,107 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </section>
 
 <style>
-/* HERO SECTION */
+/* ---------- HERO SECTION ---------- */
 .hero {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 68px 60px;
-  gap: 40px;
-  background: linear-gradient(180deg,#f5fbf5,#f8fff8);
   position: relative;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #e0f7e9, #ffffff);
+  flex-wrap: wrap;
+  overflow: hidden; /* ensures floating leaves stay inside */
 }
 
-/* HERO TEXT */
-.hero .hero-text {
+/* Text content */
+.hero-content {
   flex: 1 1 50%;
-  max-width: 50%;
-  min-width: 300px;
+  max-width: 600px;
+  padding: 20px;
+  z-index: 2; /* keeps text above leaves */
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  color: #2f9e44;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Image */
+.hero-image {
+  flex: 1 1 45%;
+  text-align: right;
+  padding: 20px;
   z-index: 2;
 }
-.hero .hero-text .kicker {
-  font-size: 16px;
-  letter-spacing: 0.5px;
-}
-.hero .hero-text h1 {
-  font-size: 64px; /* Bigger font for desktop */
-  font-weight: 800;
-  color: #2ead49;
-  line-height: 1.1;
-  margin: 12px 0 20px;
-}
-.hero .hero-text p.lead {
-  font-size: 18px;
-  color: var(--muted);
-  margin-bottom: 16px;
-}
-.hero .hero-text p.details {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 24px;
-}
-.hero .ctaRow {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.hero .ctaRow .btn {
-  padding: 12px 24px;
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
   border-radius: 12px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-}
-.hero .ctaRow .btn.ghost {
-  background: transparent;
-  border: 2px solid var(--green-1);
-  color: var(--green-1);
+  display: inline-block;
 }
 
-/* HERO IMAGE */
-.hero .hero-image {
-  flex: 1 1 50%;
-  max-width: 50%;
-  min-width: 300px;
-  text-align: center;
-  z-index: 1;
+/* ---------- FLOATING LEAVES ---------- */
+.leaf {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url('images/leaf.png'); /* update path */
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  animation: floatLeaf 12s linear infinite;
 }
-.hero .hero-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 18px;
-  box-shadow: 0 12px 30px rgba(15,23,42,0.08);
-  transform: translateY(6px);
-  animation: float 6s ease-in-out infinite;
+
+.leaf:nth-child(1) { top: 10%; left: -60px; animation-delay: 0s; }
+.leaf:nth-child(2) { top: 30%; left: -100px; animation-delay: 2s; }
+.leaf:nth-child(3) { top: 50%; left: -80px; animation-delay: 4s; }
+.leaf:nth-child(4) { top: 70%; left: -120px; animation-delay: 6s; }
+
+@keyframes floatLeaf {
+  0% { transform: translateX(0) rotate(0deg); opacity: 0.8; }
+  50% { transform: translateX(60vw) rotate(180deg); opacity: 1; }
+  100% { transform: translateX(120vw) rotate(360deg); opacity: 0.6; }
+}
+
+/* ---------- MOBILE VIEW ---------- */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero-content, .hero-image {
+    flex: 1 1 100%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-image img {
+    max-width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .leaf {
+    width: 30px;
+    height: 30px;
+    opacity: 0.6;
+  }
 }
 
 /* GLOW BEHIND IMAGE */
@@ -530,66 +555,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   z-index:0;
 }
 
-/* FLOAT ANIMATION */
-@keyframes float {
-  0% { transform: translateY(6px); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(6px); }
-}
 
-/* FLOATING LEAVES */
-.floating-leaves {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
-  pointer-events: none;
-}
-.leaf {
-  position: absolute;
-  opacity: 0.7;
-  width: 80px;
-  animation: floatLeaf linear infinite;
-}
-.leaf1 { left: 10%; animation-duration: 18s; top: -80px; }
-.leaf2 { left: 50%; animation-duration: 22s; top: -100px; animation-delay: 3s; }
-.leaf3 { right: 10%; animation-duration: 25s; top: -120px; animation-delay: 6s; }
-
-@keyframes floatLeaf {
-  0% { transform: translateY(-10%) rotate(0deg); opacity: 0.9; }
-  50% { transform: translateY(50vh) rotate(90deg); opacity: 0.7; }
-  100% { transform: translateY(100vh) rotate(180deg); opacity: 0.4; }
-}
-
-/* RESPONSIVE: MOBILE */
-@media(max-width:768px){
-  .hero {
-    flex-direction: column;
-    padding: 46px 16px;
-    text-align: center;
-  }
-  .hero .hero-image {
-    order: -1;  /* image above text */
-    max-width: 100%;
-    margin-bottom: 18px;
-  }
-  .hero .hero-text {
-    max-width: 100%;
-  }
-  .hero .hero-text h1 {
-    font-size: 36px; /* smaller on mobile */
-  }
-  .hero .hero-text p.lead {
-    font-size: 16px;
-  }
-  .hero .hero-text p.details {
-    font-size: 13px;
-  }
-  .hero::after {
-    width: 300px; height: 300px;
-    top:-40px; right:-60px;
-  }
-}
 </style>
 
 <!-- HOME DETAILS SECTION -->
