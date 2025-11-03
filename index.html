@@ -6,49 +6,6 @@
 <title>Life With Leaf — Healthy Living</title>
 <meta name="description" content="Life With Leaf - Live microgreens, pesticide-free, homegrown. Fresh microgreens, grow kits and seeds." />
 <style>
-
-  /* RESET browser default list and link styles for nav */
-nav ul {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;         /* controls horizontal space between tabs */
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  align-items: center;
-  justify-content: center; /* center the tabs horizontally */
-}
-nav ul li {
-  margin: 0;         /* eliminate extra spacing */
-  padding: 0;
-}
-nav ul li a {
-  display: block;
-  padding: 10px 18px;  /* makes tabs larger and easier to click */
-  text-decoration: none;
-  color: #222;         /* adjust for contrast as needed */
-  font-weight: 500;
-  border-radius: 6px;
-  transition: background 0.2s;
-}
-nav ul li a:hover,
-nav ul li a:focus {
-  background: #e3ffd7; /* subtle highlight color for interaction */
-}
-
-/* MOBILE: stack vertically, keep even vertical spacing */
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    gap: 12px;        /* controls vertical space between tabs */
-    align-items: stretch; /* stretch tabs to full width */
-  }
-  nav ul li a {
-    padding: 14px 10px;
-    text-align: left;
-    border-radius: 0;
-  }
-}
   
 /* ---------- MOBILE HAMBURGER & MENU ---------- */
 /* Hidden by default (desktop) */
@@ -483,17 +440,15 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 <style>
 /* HERO SECTION */
 .hero {
-  display: flex !important;              /* Force side-by-side layout */
-  flex-direction: row !important;        /* ✅ Text left, image right */
+  display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap;
-  gap: 40px;
   padding: 68px 60px;
-  background: linear-gradient(180deg, #f5fbf5, #f8fff8);
+  gap: 40px;
+  background: linear-gradient(180deg,#f5fbf5,#f8fff8);
   position: relative;
   overflow: hidden;
-  min-height: 100vh; /* or remove height altogether */
 }
 
 /* HERO TEXT */
@@ -548,9 +503,6 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   flex: 1 1 50%;
   max-width: 50%;
   min-width: 300px;
-  display: flex;
-  justify-content: flex-end;  /* ✅ Push image to the right */
-  align-items: center;
   text-align: center;
   z-index: 1;
 }
@@ -611,13 +563,12 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 /* RESPONSIVE: MOBILE */
 @media(max-width:768px){
   .hero {
-    flex-direction: column !important;   /* ✅ Stack only on mobile */
+    flex-direction: column;
     padding: 46px 16px;
     text-align: center;
   }
   .hero .hero-image {
     order: -1;  /* image above text */
-    justify-content: center;
     max-width: 100%;
     margin-bottom: 18px;
   }
