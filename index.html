@@ -224,29 +224,7 @@ section h2{font-size:26px;color:var(--green-1);margin-bottom:20px;text-align:cen
 /* FOOTER */
 footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#fff;text-align:center;padding:26px 20px;margin-top:40px}
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 46px 16px;
-    gap: 24px;
-  }
 
-  .hero .hero-image {
-    order: -1;
-    margin-bottom: 18px;
-    text-align: center;
-  }
-
-  .hero-image img {
-    max-width: 320px;
-  }
-
-  header nav ul {
-    display: none; /* Keeps your mobile nav logic */
-  }
-}
 .kicker{display:inline-block;background:rgba(107,211,106,0.12);color:var(--green-1);padding:6px 10px;border-radius:999px;font-weight:700;margin-bottom:12px}
 .fadeIn{animation:fadeIn .6s ease both}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -460,15 +438,12 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* ensures image floats right */
+  justify-content: space-between;
   gap: 40px;
   padding: 80px 8%;
   background: linear-gradient(135deg, #e0f7e9, #ffffff);
+  flex-wrap: nowrap;
   overflow: hidden;
-  flex-wrap: wrap;
-  border: 2px dashed rgba(47, 158, 68, 0.3); /* debug border */
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(47, 158, 68, 0.1);
 }
 
 /* ---------- FLOATING LEAVES ---------- */
@@ -478,6 +453,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   z-index: 1;
   pointer-events: none;
 }
@@ -495,7 +471,9 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 @keyframes floatLeaf {
   0%   { transform: translate(0, 0) rotate(0deg); opacity: 0.8; }
+  25%  { transform: translate(30vw, 10vh) rotate(90deg); }
   50%  { transform: translate(60vw, -10vh) rotate(180deg); }
+  75%  { transform: translate(90vw, 10vh) rotate(270deg); }
   100% { transform: translate(120vw, 0) rotate(360deg); opacity: 0.6; }
 }
 
@@ -571,10 +549,8 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 /* ---------- HERO IMAGE ---------- */
 .hero-image {
-  flex: 1 1 40%;
-  display: flex;
-  justify-content: flex-end; /* ensures right alignment */
-  align-items: center;
+  flex: 1 1 45%;
+  text-align: right;
   z-index: 2;
 }
 
@@ -582,25 +558,31 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   max-width: 100%;
   height: auto;
   border-radius: 16px;
+  display: inline-block;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
 }
 
 /* ---------- MOBILE VIEW ---------- */
 @media (max-width: 768px) {
   .hero {
-    flex-direction: column-reverse; /* image above text */
+    flex-direction: column;
     text-align: center;
-    padding: 60px 5%;
+    padding: 46px 16px;
+    gap: 24px;
   }
 
-  .hero-text, .hero-image {
-    flex: 1 1 100%;
-    justify-content: center;
+  .hero .hero-image {
+    order: -1;
+    margin-bottom: 18px;
+    text-align: center;
   }
 
   .hero-image img {
-    max-width: 90%;
-    margin-bottom: 25px;
+    max-width: 320px;
+  }
+
+  .hero-text {
+    flex: 1 1 100%;
   }
 
   .hero-text h1 {
@@ -614,8 +596,14 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   .leaf {
     width: 35px;
   }
+
+  /* 🔒 Keep navigation hidden on mobile */
+  header nav ul {
+    display: none;
+  }
 }
 </style>
+
 
 
 <!-- HOME DETAILS SECTION -->
