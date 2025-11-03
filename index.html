@@ -438,23 +438,24 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </section>
 
 <style>
-/* HERO SECTION */
+/* ---------- HERO SECTION ---------- */
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 60px 20px;
-  flex-wrap: wrap;
   background: linear-gradient(135deg, #e0f7e9, #ffffff);
   position: relative;
   overflow: hidden;
+  flex-wrap: wrap;
 }
 
-/* Floating Leaves */
+/* Floating Leaves (background layer only) */
 .floating-leaves {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  z-index: 1; /* behind everything */
 }
 
 .floating-leaves .leaf {
@@ -477,6 +478,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   flex: 1 1 50%;
   max-width: 600px;
   z-index: 2;
+  position: relative;
 }
 
 .hero-text .kicker {
@@ -530,21 +532,24 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 .hero-image {
   flex: 1 1 40%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end; /* Ensures right alignment */
   align-items: center;
   z-index: 2;
+  position: relative;
 }
 
 .hero-image img {
   width: 100%;
   max-width: 500px;
   height: auto;
+  display: block;
+  border-radius: 16px;
 }
 
 /* ---------- RESPONSIVE (MOBILE FIRST) ---------- */
 @media (max-width: 900px) {
   .hero {
-    flex-direction: column-reverse; /* image goes ABOVE text */
+    flex-direction: column-reverse; /* image ABOVE text */
     text-align: center;
   }
 
@@ -555,6 +560,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   }
 
   .hero-image {
+    justify-content: center;
     flex: 1 1 100%;
     margin-bottom: 25px;
   }
