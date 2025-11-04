@@ -418,22 +418,22 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     <img src="images/leaf3.png" class="leaf leaf3" alt="">
   </div>
 
+  <!-- HERO IMAGE -->
+  <div class="hero-image">
+    <img src="images/hero-microgreens.png" alt="Fresh Microgreens"
+         onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+Image'">
+  </div>
+
   <!-- HERO TEXT -->
   <div class="hero-text">
     <div class="kicker">Fresh • Local • Sustainable</div>
     <h1>Grow. Nourish. Thrive.</h1>
     <p class="lead">Fresh, pesticide-free microgreens grown with love — straight from our farm to your plate.</p>
-    <p class="details">Microgreens are tender, young greens harvested at the peak of their nutritional value. Despite their small size, they contain 4 to 40 times more vitamins, minerals, and antioxidants than their fully grown counterparts. A small handful each day brings big health benefits.</p>
+    <p class="details">Microgreens are tender, young greens harvested at the peak of their nutritional value. Despite their small size, they contain 4 to 40 times more vitamins, minerals, and antioxidants than their fully grown counterparts.</p>
     <div class="ctaRow">
       <button class="btn" onclick="toggleSection('products')">Shop Now</button>
       <button class="btn ghost" onclick="toggleSection('whyMicro')">Learn More</button>
     </div>
-  </div>
-
-  <!-- HERO IMAGE -->
-  <div class="hero-image">
-    <img src="images/hero-microgreens.png" alt="Fresh Microgreens"
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+Image'">
   </div>
 </section>
 
@@ -441,14 +441,13 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 /* ---------- HERO SECTION ---------- */
 .hero {
   position: relative;
+  width: 100%;
+  min-height: 50vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 60px;
-  padding: 80px 8%;
+  justify-content: flex-end;
   background: linear-gradient(135deg, #e0f7e9, #ffffff);
   overflow: hidden;
-  height: 50vh; /* Half the screen height */
 }
 
 /* ---------- FLOATING LEAVES ---------- */
@@ -482,66 +481,70 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   100% { transform: translate(120vw, 0) rotate(360deg); opacity: 0.6; }
 }
 
+/* ---------- HERO IMAGE ---------- */
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 50vh;
+  z-index: 1;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9);
+  display: block;
+}
+
 /* ---------- HERO TEXT ---------- */
 .hero-text {
-  flex: 1 1 50%;
-  max-width: 550px;
+  position: relative;
   z-index: 2;
+  color: #333;
+  max-width: 650px;
+  padding: 30px 3vw;
+  margin-right: 6vw;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
   text-align: left;
+  line-height: 1.6;
 }
 
 .hero-text .kicker {
   font-size: 1rem;
   color: #2f9e44;
   font-weight: 600;
-  letter-spacing: 1px;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
 
 .hero-text h1 {
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   color: #2f9e44;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   line-height: 1.2;
 }
 
 .hero-text .lead {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
   color: #333;
-  margin-bottom: 15px;
-  line-height: 1.6;
 }
 
 .hero-text .details {
   font-size: 1rem;
   color: #555;
-  line-height: 1.6;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .ctaRow {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
-}
-
-/* ---------- HERO IMAGE ---------- */
-.hero-image {
-  flex: 1 1 45%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  z-index: 2;
-}
-
-.hero-image img {
-  max-width: 100%;
-  height: 50vh; /* Fixed to half-screen height */
-  object-fit: cover;
-  border-radius: 16px;
-  display: block;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+  justify-content: flex-start;
 }
 
 /* ---------- BUTTONS ---------- */
@@ -575,32 +578,34 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
-    text-align: center;
     height: auto;
-    padding: 46px 16px;
-    gap: 24px;
-  }
-
-  .hero-image {
-    order: -1;
     justify-content: center;
   }
 
-  .hero-image img {
+  .hero-image {
+    position: relative;
     height: 40vh;
-    max-width: 320px;
   }
 
   .hero-text {
+    position: relative;
+    margin: 0;
+    margin-top: 16px;
+    background: none;
+    padding: 20px 8%;
     text-align: center;
   }
 
   .hero-text h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   .hero-text .lead {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+  }
+
+  .ctaRow {
+    justify-content: center;
   }
 
   .leaf {
@@ -612,6 +617,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   }
 }
 </style>
+
 
 
 <!-- HOME DETAILS SECTION -->
