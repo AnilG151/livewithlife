@@ -409,16 +409,22 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   <div class="cartIcon" onclick="openCart()">🛒 <span id="cartCount">0</span></div>
 </header>
 
-<!-- HERO SECTION -->
-<section class="hero" id="home">
-  <!-- Floating Leaves -->
-  <div class="floating-leaves">
+<!-- HERO SECTION — IMAGE ABOVE CONTENT (stacked) -->
+<section class="hero hero-stack" id="home">
+  <!-- Floating Leaves (background) -->
+  <div class="floating-leaves" aria-hidden="true">
     <img src="images/leaf1.png" class="leaf leaf1" alt="">
     <img src="images/leaf2.png" class="leaf leaf2" alt="">
     <img src="images/leaf3.png" class="leaf leaf3" alt="">
   </div>
 
-  <!-- HERO TEXT -->
+  <!-- HERO IMAGE (appears first) -->
+  <div class="hero-image">
+    <img src="images/hero-microgreens.png" alt="Fresh Microgreens"
+         onerror="this.onerror=null;this.src='https://via.placeholder.com/800x520.png?text=Hero+Image'">
+  </div>
+
+  <!-- HERO TEXT (below image) -->
   <div class="hero-text">
     <div class="kicker">Fresh • Local • Sustainable</div>
     <h1>Grow. Nourish. Thrive.</h1>
@@ -429,166 +435,125 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
       <button class="btn ghost" onclick="toggleSection('whyMicro')">Learn More</button>
     </div>
   </div>
-
-  <!-- HERO IMAGE -->
-  <div class="hero-image">
-    <img src="images/hero-microgreens.png" alt="Fresh Microgreens"
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+Image'">
-  </div>
 </section>
 
 <style>
-/* HERO SECTION */
-.hero {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 68px 60px;
-  gap: 40px;
-  background: linear-gradient(180deg,#f5fbf5,#f8fff8);
+/* ---------- HERO SECTION (STACKED: image above content) ---------- */
+.hero.hero-stack {
   position: relative;
-  overflow: hidden;
-}
-
-/* HERO TEXT */
-.hero .hero-text {
-  flex: 1 1 50%;
-  max-width: 50%;
-  min-width: 300px;
-  z-index: 2;
-}
-.hero .hero-text .kicker {
-  font-size: 16px;
-  letter-spacing: 0.5px;
-}
-.hero .hero-text h1 {
-  font-size: 64px; /* Bigger font for desktop */
-  font-weight: 800;
-  color: #2ead49;
-  line-height: 1.1;
-  margin: 12px 0 20px;
-}
-.hero .hero-text p.lead {
-  font-size: 18px;
-  color: var(--muted);
-  margin-bottom: 16px;
-}
-.hero .hero-text p.details {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 24px;
-}
-.hero .ctaRow {
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.hero .ctaRow .btn {
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-}
-.hero .ctaRow .btn.ghost {
-  background: transparent;
-  border: 2px solid var(--green-1);
-  color: var(--green-1);
+  flex-direction: column;       /* stack vertically: image first, then text */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 28px;
+  padding: 60px 6%;
+  background: linear-gradient(135deg, #e0f7e9, #ffffff);
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* HERO IMAGE */
-.hero .hero-image {
-  flex: 1 1 50%;
-  max-width: 50%;
-  min-width: 300px;
-  text-align: center;
-  z-index: 1;
-}
-.hero .hero-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 18px;
-  box-shadow: 0 12px 30px rgba(15,23,42,0.08);
-  transform: translateY(6px);
-  animation: float 6s ease-in-out infinite;
-}
-
-/* GLOW BEHIND IMAGE */
-.hero::after {
-  content:'';
-  position:absolute;
-  top:-60px;
-  right:-100px;
-  width:500px;
-  height:500px;
-  border-radius:50%;
-  background: linear-gradient(180deg, rgba(107,211,106,0.08), rgba(47,158,68,0.04));
-  filter: blur(50px);
-  z-index:0;
-}
-
-/* FLOAT ANIMATION */
-@keyframes float {
-  0% { transform: translateY(6px); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(6px); }
-}
-
-/* FLOATING LEAVES */
+/* make sure floating leaves stay in the background */
 .floating-leaves {
   position: absolute;
   inset: 0;
-  overflow: hidden;
-  z-index: 0;
   pointer-events: none;
+  z-index: 0;
 }
-.leaf {
-  position: absolute;
-  opacity: 0.7;
-  width: 80px;
-  animation: floatLeaf linear infinite;
-}
-.leaf1 { left: 10%; animation-duration: 18s; top: -80px; }
-.leaf2 { left: 50%; animation-duration: 22s; top: -100px; animation-delay: 3s; }
-.leaf3 { right: 10%; animation-duration: 25s; top: -120px; animation-delay: 6s; }
-
+.leaf { position: absolute; opacity: 0.6; width: 50px; animation: floatLeaf 14s linear infinite; }
+.leaf1 { top: 6%; left: 2%; }
+.leaf2 { top: 30%; right: 6%; }
+.leaf3 { bottom: 6%; left: 20%; }
 @keyframes floatLeaf {
-  0% { transform: translateY(-10%) rotate(0deg); opacity: 0.9; }
-  50% { transform: translateY(50vh) rotate(90deg); opacity: 0.7; }
-  100% { transform: translateY(100vh) rotate(180deg); opacity: 0.4; }
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(12deg); }
+  100% { transform: translateY(0) rotate(24deg); }
 }
 
-/* RESPONSIVE: MOBILE */
-@media(max-width:768px){
-  .hero {
-    flex-direction: column;
-    padding: 46px 16px;
-    text-align: center;
-  }
-  .hero .hero-image {
-    order: -1;  /* image above text */
-    max-width: 100%;
-    margin-bottom: 18px;
-  }
-  .hero .hero-text {
-    max-width: 100%;
-  }
-  .hero .hero-text h1 {
-    font-size: 36px; /* smaller on mobile */
-  }
-  .hero .hero-text p.lead {
-    font-size: 16px;
-  }
-  .hero .hero-text p.details {
-    font-size: 13px;
-  }
-  .hero::after {
-    width: 300px; height: 300px;
-    top:-40px; right:-60px;
-  }
+/* hero image (top) */
+.hero-image {
+  width: 100%;
+  max-width: 1100px;
+  z-index: 2; /* above leaves */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.hero-image img {
+  width: 100%;
+  max-width: 980px;
+  height: auto;
+  border-radius: 18px;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 22px rgba(0,0,0,0.12));
+  transition: transform .35s ease, filter .25s ease;
+}
+.hero-image img:hover { transform: translateY(-4px) scale(1.01); }
+
+/* hero text (below) */
+.hero-text {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  z-index: 2;
+  padding: 0 12px;
+}
+.kicker { display:inline-block; background:rgba(107,211,106,0.12); color:var(--green-1); padding:6px 10px; border-radius:999px; font-weight:700; margin-bottom:12px; }
+.hero-text h1 {
+  font-size: 2.6rem;
+  color: #2f9e44;
+  margin: 12px 0;
+  line-height: 1.08;
+}
+.hero-text .lead {
+  font-size: 1.15rem;
+  color: #333;
+  margin-bottom: 12px;
+}
+.hero-text .details {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.ctaRow { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+/* Buttons */
+.btn {
+  background: #2f9e44;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 28px;
+  border: 0;
+  font-weight:700;
+  cursor:pointer;
+}
+.btn.ghost {
+  background: transparent;
+  border: 2px solid #2f9e44;
+  color: #2f9e44;
+}
+
+/* Responsive tweaks: keep the stacked layout but scale nicely */
+@media (max-width: 1000px) {
+  .hero.hero-stack { padding: 48px 5%; gap: 20px; }
+  .hero-text h1 { font-size: 2.2rem; }
+  .hero-image img { max-width: 720px; }
+}
+@media (max-width: 700px) {
+  .hero.hero-stack { padding: 36px 4%; gap: 16px; }
+  .hero-text h1 { font-size: 1.8rem; }
+  .hero-text .lead { font-size: 1rem; }
+  .hero-image img { max-width: 420px; border-radius: 14px; }
+  .leaf { width: 40px; }
+  /* hide floating leaves on very small screens for clarity */
+  .floating-leaves { display: none; }
+}
+
+/* Small accessibility improvement so keyboard users see focus */
+.btn:focus { outline: 3px solid rgba(47,158,68,0.18); outline-offset: 2px; }
+</style>
+
 </style>
 
 <!-- HOME DETAILS SECTION -->
