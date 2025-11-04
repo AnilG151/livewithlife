@@ -506,7 +506,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   max-width: 650px;
   padding: 30px 3vw;
   margin-right: 6vw;
-  background: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.65); /* desktop blur background */
   backdrop-filter: blur(6px);
   border-radius: 16px;
   text-align: left;
@@ -591,7 +591,8 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     position: relative;
     margin: 0;
     margin-top: 16px;
-    background: none;
+    background: none; /* ✅ remove blur/overlay for mobile */
+    backdrop-filter: none;
     padding: 20px 8%;
     text-align: center;
   }
@@ -617,7 +618,6 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   }
 }
 </style>
-
 
 
 <!-- HOME DETAILS SECTION -->
