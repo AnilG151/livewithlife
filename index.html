@@ -1039,32 +1039,46 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 }
 
 .why-compare {
-  background: linear-gradient(135deg, #f1f9f1, #f7f5ef); /* light beige + green hue */
+  background: linear-gradient(135deg, #f1f9f1, #f7f5ef); /* soft green + light beige */
   box-shadow: 0 0 15px rgba(47, 158, 68, 0.08);
   border-radius: 15px;
   padding: 30px;
+  transition: 0.3s ease;
 }
 
 .why-compare h3 {
   margin-bottom: 15px;
   font-size: 1.3rem;
-  color: #3c3a32;
+  color: #2f9e44; /* brand green */
+  font-weight: 600;
 }
 
 .why-compare table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
+  color: #333;
 }
 
-.why-compare th, .why-compare td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd7c8;
+.why-compare th, 
+.why-compare td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #d6e6d8; /* soft greenish border */
 }
 
 .why-compare th {
-  background-color: #e7e2d5;
-  color: #333;
+  background-color: #d8efd8; /* leafy green tone */
+  color: #2f9e44; /* brand green text */
+  font-weight: 600;
+}
+
+.why-compare tr:nth-child(even) td {
+  background-color: #ffffffee; /* subtle zebra effect */
+}
+
+.why-compare tr:hover td {
+  background-color: #f3fbf3; /* gentle green glow on hover */
+  transition: background 0.3s ease;
 }
 
 .why-quote {
