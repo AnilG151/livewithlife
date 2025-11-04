@@ -1733,7 +1733,33 @@ function changeQty(id,val){
 }
 function openCart(){document.getElementById('cartModalOverlay').style.display='flex';document.querySelector('.cartModal').style.opacity=1;document.querySelector('.cartModal').style.transform='translateY(0)';}
 function closeCart(){document.getElementById('cartModalOverlay').style.display='none';document.querySelector('.cartModal').style.opacity=0;document.querySelector('.cartModal').style.transform='translateY(30px)';}
-function checkout(){alert('Proceed to WhatsApp checkout!');}
+function checkout() {
+  if (!cart || cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  // Build WhatsApp order message
+  let message = "🛒 *New Order from Currchi!*%0A%0A";
+  cart.forEach((c, i) => {
+    message += `${i + 1}. ${c.name} x ${c.qty} = ₹${c.price * c.qty}%0A`;
+  });
+
+  const total = cart.reduce((sum, c) => sum + c.price * c.qty, 0);
+  message += `%0A💰 *Total:* ₹${total}%0A%0A📍Please confirm order ASAP.`;
+
+  // Your WhatsApp number (with country code)
+  const phoneNumber = "919873324887"; // 91 for India
+
+  // Open WhatsApp with the order message
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+  window.open(whatsappURL, "_blank");
+
+  // Optional: Clear cart & update UI after checkout
+  // cart = [];
+  // updateCartUI();
+  // closeCart();
+}
 
 // LIGHTBOX
 document.querySelectorAll('.galleryGrid img').forEach(img=>{
