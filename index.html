@@ -674,28 +674,50 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
         Homegrown with passion, arriving at your doorstep live, fresh and full of health.
       </p>
 
-      <ul style="list-style:none; padding:0; margin:0; line-height:2; font-size:1.05rem; color:#333;">
-        <li>🌿 Boost Immunity</li>
-        <li>💚 Support Heart Health</li>
-        <li>🍃 Aid Digestion</li>
-        <li>💎 Rich in Natural Antioxidants</li>
-        <li>🥗 Fresh Taste for Every Meal</li>
-      </ul>
+<ul class="feature-list">
+  <li>🌿 Boost Immunity</li>
+  <li>💚 Support Heart Health</li>
+  <li>🍃 Aid Digestion</li>
+  <li>💎 Rich in Natural Antioxidants</li>
+  <li>🥗 Fresh Taste for Every Meal</li>
+</ul>
     </div>
-    <!-- Usage Ideas Section -->
-    <div class="usage-card" style="background:#e8f5e9; padding:40px; border-radius:20px; box-shadow:0 4px 12px rgba(0,0,0,0.06);">
-      <h3 style="font-size:1.8rem; color:#000; font-weight:600; margin-bottom:20px;">🌿 Add Microgreens To Your</h3>
-      <ul style="list-style:none; padding:0; margin:0; font-size:1.05rem; color:#333; line-height:2;">
-        <li>🥤 Smoothies & Juices</li>
-        <li>🥗 Salads & Sandwiches</li>
-        <li>🍲 Soups, Chutneys & Curries</li>
-        <li>🌮 Wraps, Tacos & More</li>
-      </ul>
-    </div>
+<!-- Usage Ideas Section -->
+<div class="usage-card" style="background:#e8f5e9; padding:40px; border-radius:20px; box-shadow:0 4px 12px rgba(0,0,0,0.06); text-align:center;">
+  <h3 style="font-size:1.8rem; color:#000; font-weight:600; margin-bottom:20px;">🌿 Add Microgreens To Your</h3>
+  <ul style="list-style:none; padding:0; margin:0; font-size:1.05rem; color:#333; line-height:2; display:inline-block; text-align:left;">
+    <li>🥤 Smoothies & Juices</li>
+    <li>🥗 Salads & Sandwiches</li>
+    <li>🍲 Soups, Chutneys & Curries</li>
+    <li>🌮 Wraps, Tacos & More</li>
+  </ul>
+</div>
   </div>
 </section>
 
 <style>
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 2;
+  font-size: 1.05rem;
+  color: #333;
+  text-align: center;
+}
+
+.feature-list li {
+  display: inline-block;
+  width: 100%;
+}
+
+/* ---------- MOBILE VIEW ---------- */
+@media (max-width: 768px) {
+  .feature-list {
+    text-align: left;
+  }
+}
+  
 /* 🌱 Home Details Section */
 .home-details {
   background: #f8fff8;
