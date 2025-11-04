@@ -442,11 +442,10 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 .hero {
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-align: left;
-  gap: 40px;
-  padding: 60px 5%;
+  flex-direction: column;
+  align-items: flex-start; /* changed from center */
+  text-align: left;        /* changed from center */
+  padding: 0;
   background: linear-gradient(135deg, #e0f7e9, #ffffff);
   overflow: hidden;
 }
@@ -454,8 +453,10 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 /* ---------- FLOATING LEAVES ---------- */
 .floating-leaves {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   z-index: 1;
   pointer-events: none;
@@ -467,6 +468,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   opacity: 0.6;
   animation: floatLeaf 14s linear infinite;
 }
+
 .leaf1 { top: 10%; left: -60px; animation-delay: 0s; }
 .leaf2 { top: 50%; left: -100px; animation-delay: 3s; }
 .leaf3 { top: 80%; left: -80px; animation-delay: 6s; }
@@ -481,26 +483,29 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 /* ---------- HERO IMAGE ---------- */
 .hero-image {
-  flex: 1;
+  width: 100%;
+  height: 50vh; /* Half the screen height */
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
 }
 
 .hero-image img {
   width: 100%;
-  height: 50vh; /* fixed half-screen height */
+  height: 50vh;
   object-fit: cover;
   border-radius: 16px;
+  display: block;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
 }
 
 /* ---------- HERO TEXT ---------- */
 .hero-text {
-  flex: 1;
   z-index: 2;
-  max-width: 600px;
+  padding: 40px 12% 40px 40%; /* shifted right by adding large left padding */
+  max-width: 800px;
+  text-align: left;
 }
 
 .hero-text .kicker {
@@ -535,6 +540,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 .ctaRow {
   display: flex;
+  justify-content: flex-start;
   gap: 15px;
   flex-wrap: wrap;
 }
@@ -550,13 +556,17 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   cursor: pointer;
   transition: 0.3s;
 }
-.btn:hover { background: #258a39; }
+
+.btn:hover {
+  background: #258a39;
+}
 
 .btn.ghost {
   background: transparent;
   border: 2px solid #2f9e44;
   color: #2f9e44;
 }
+
 .btn.ghost:hover {
   background: #2f9e44;
   color: #fff;
@@ -565,18 +575,16 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 /* ---------- MOBILE VIEW ---------- */
 @media (max-width: 768px) {
   .hero {
-    flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding: 40px 20px;
   }
 
   .hero-image {
-    order: -1;
-    height: 40vh; /* slightly smaller on mobile */
-    margin-bottom: 18px;
+    height: 40vh;
   }
 
   .hero-text {
+    padding: 30px 8%;
     text-align: center;
   }
 
@@ -588,6 +596,10 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     font-size: 1.1rem;
   }
 
+  .ctaRow {
+    justify-content: center;
+  }
+
   .leaf {
     width: 35px;
   }
@@ -597,6 +609,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   }
 }
 </style>
+
 
 
 <!-- HOME DETAILS SECTION -->
