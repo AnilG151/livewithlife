@@ -409,27 +409,29 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   <div class="cartIcon" onclick="openCart()">🛒 <span id="cartCount">0</span></div>
 </header>
 
-<!-- HERO SECTION — IMAGE ABOVE CONTENT (stacked) -->
-<section class="hero hero-stack" id="home">
-  <!-- Floating Leaves (background) -->
+<!-- HERO SECTION — IMAGE LEFT ON DESKTOP, ABOVE ON MOBILE -->
+<section class="hero" id="home">
+  <!-- Floating Leaves -->
   <div class="floating-leaves" aria-hidden="true">
     <img src="images/leaf1.png" class="leaf leaf1" alt="">
     <img src="images/leaf2.png" class="leaf leaf2" alt="">
     <img src="images/leaf3.png" class="leaf leaf3" alt="">
   </div>
 
-  <!-- HERO IMAGE (appears first) -->
+  <!-- HERO IMAGE -->
   <div class="hero-image">
     <img src="images/hero-microgreens.png" alt="Fresh Microgreens"
          onerror="this.onerror=null;this.src='https://via.placeholder.com/800x520.png?text=Hero+Image'">
   </div>
 
-  <!-- HERO TEXT (below image) -->
+  <!-- HERO TEXT -->
   <div class="hero-text">
     <div class="kicker">Fresh • Local • Sustainable</div>
     <h1>Grow. Nourish. Thrive.</h1>
     <p class="lead">Fresh, pesticide-free microgreens grown with love — straight from our farm to your plate.</p>
-    <p class="details">Microgreens are tender, young greens harvested at the peak of their nutritional value. Despite their small size, they contain 4 to 40 times more vitamins, minerals, and antioxidants than their fully grown counterparts. A small handful each day brings big health benefits.</p>
+    <p class="details">
+      Microgreens are tender, young greens harvested at the peak of their nutritional value. Despite their small size, they contain 4 to 40 times more vitamins, minerals, and antioxidants than their fully grown counterparts. A small handful each day brings big health benefits.
+    </p>
     <div class="ctaRow">
       <button class="btn" onclick="toggleSection('products')">Shop Now</button>
       <button class="btn ghost" onclick="toggleSection('whyMicro')">Learn More</button>
@@ -438,28 +440,32 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 </section>
 
 <style>
-/* ---------- HERO SECTION (STACKED: image above content) ---------- */
-.hero.hero-stack {
+/* ---------- HERO SECTION ---------- */
+.hero {
   position: relative;
   display: flex;
-  flex-direction: column;       /* stack vertically: image first, then text */
   align-items: center;
-  justify-content: flex-start;
-  gap: 28px;
+  justify-content: center;
+  gap: 50px;
   padding: 60px 6%;
   background: linear-gradient(135deg, #e0f7e9, #ffffff);
   overflow: hidden;
   box-sizing: border-box;
 }
 
-/* make sure floating leaves stay in the background */
+/* Floating leaves background */
 .floating-leaves {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
 }
-.leaf { position: absolute; opacity: 0.6; width: 50px; animation: floatLeaf 14s linear infinite; }
+.leaf {
+  position: absolute;
+  opacity: 0.6;
+  width: 50px;
+  animation: floatLeaf 14s linear infinite;
+}
 .leaf1 { top: 6%; left: 2%; }
 .leaf2 { top: 30%; right: 6%; }
 .leaf3 { bottom: 6%; left: 20%; }
@@ -469,18 +475,17 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   100% { transform: translateY(0) rotate(24deg); }
 }
 
-/* hero image (top) */
+/* HERO IMAGE (LEFT) */
 .hero-image {
-  width: 100%;
-  max-width: 1100px;
-  z-index: 2; /* above leaves */
+  flex: 1 1 45%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 .hero-image img {
   width: 100%;
-  max-width: 980px;
+  max-width: 520px;
   height: auto;
   border-radius: 18px;
   display: block;
@@ -490,15 +495,21 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 }
 .hero-image img:hover { transform: translateY(-4px) scale(1.01); }
 
-/* hero text (below) */
+/* HERO TEXT (RIGHT) */
 .hero-text {
-  width: 100%;
-  max-width: 900px;
-  text-align: center;
+  flex: 1 1 50%;
   z-index: 2;
-  padding: 0 12px;
+  text-align: left;
 }
-.kicker { display:inline-block; background:rgba(107,211,106,0.12); color:var(--green-1); padding:6px 10px; border-radius:999px; font-weight:700; margin-bottom:12px; }
+.kicker {
+  display:inline-block;
+  background:rgba(107,211,106,0.12);
+  color:#2f9e44;
+  padding:6px 10px;
+  border-radius:999px;
+  font-weight:700;
+  margin-bottom:12px;
+}
 .hero-text h1 {
   font-size: 2.6rem;
   color: #2f9e44;
@@ -516,7 +527,11 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   line-height: 1.6;
   margin-bottom: 20px;
 }
-.ctaRow { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.ctaRow {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
 
 /* Buttons */
 .btn {
@@ -534,27 +549,32 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   color: #2f9e44;
 }
 
-/* Responsive tweaks: keep the stacked layout but scale nicely */
-@media (max-width: 1000px) {
-  .hero.hero-stack { padding: 48px 5%; gap: 20px; }
-  .hero-text h1 { font-size: 2.2rem; }
-  .hero-image img { max-width: 720px; }
-}
-@media (max-width: 700px) {
-  .hero.hero-stack { padding: 36px 4%; gap: 16px; }
-  .hero-text h1 { font-size: 1.8rem; }
-  .hero-text .lead { font-size: 1rem; }
-  .hero-image img { max-width: 420px; border-radius: 14px; }
+/* ---------- MOBILE VIEW (IMAGE ABOVE CONTENT) ---------- */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column; /* stack vertically */
+    padding: 48px 5%;
+    gap: 28px;
+  }
+  .hero-text {
+    text-align: center;
+  }
+  .hero-image img {
+    max-width: 420px;
+  }
   .leaf { width: 40px; }
-  /* hide floating leaves on very small screens for clarity */
   .floating-leaves { display: none; }
+  .hero-text h1 { font-size: 2rem; }
+  .hero-text .lead { font-size: 1rem; }
 }
 
-/* Small accessibility improvement so keyboard users see focus */
-.btn:focus { outline: 3px solid rgba(47,158,68,0.18); outline-offset: 2px; }
+/* focus style */
+.btn:focus {
+  outline: 3px solid rgba(47,158,68,0.18);
+  outline-offset: 2px;
+}
 </style>
 
-</style>
 
 <!-- HOME DETAILS SECTION -->
 <section id="homeDetails" class="home-details" style="padding:60px 20px; background:#f8fff8; position:relative; overflow:hidden; text-align:center;">
