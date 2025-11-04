@@ -1740,7 +1740,7 @@ function checkout() {
   }
 
   // Build WhatsApp order message
-  let message = "Hi Team - Life with Leaf!%0A%0A";
+  let message = "Hi Team - Life with Leaf! 👋%0AI'd like to place the order for:%0A%0A";
   cart.forEach((c, i) => {
     message += `${i + 1}. ${c.name} x ${c.qty} = ₹${c.price * c.qty}%0A`;
   });
