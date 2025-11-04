@@ -943,8 +943,8 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
   <p class="note">
     * Green Wellness Loyalty Program - Invite friends and family to join — and enjoy extra discount of 12% as a thank-you for growing the community.<br>
-    * Currently Subscription Plan & Price Only For Greater Noida West, Ghaziabad (Indirapuram, Vaishali, Vasundhara, Siddharth Vihar, Crossing Republic)<br>
-    * We offer free delivery in Gaur City 1,2 and Crossing Republic<br>
+    * Currently Subscription Plan & Price Only For Greater Noida West, Ghaziabad (Indirapuram, Vaishali, Vasundhara, Siddharth Vihar, Crossing Republic).<br>
+    * We offer free delivery in Gaur City 1,2 and Crossing Republic.<br>
     * List of Choice - White Radish, Broccoli, Fenugreek, Pink Radish, Mustard, Sunflower, Kale, Beetroot, Peas, Mung Bean.
   </p>
 
@@ -1740,13 +1740,13 @@ function checkout() {
   }
 
   // Build WhatsApp order message
-  let message = "🛒 *New Order from Currchi!*%0A%0A";
+  let message = "Hi Team - Life with Leaf!%0A%0A";
   cart.forEach((c, i) => {
     message += `${i + 1}. ${c.name} x ${c.qty} = ₹${c.price * c.qty}%0A`;
   });
 
   const total = cart.reduce((sum, c) => sum + c.price * c.qty, 0);
-  message += `%0A💰 *Total:* ₹${total}%0A%0A📍Please confirm order ASAP.`;
+  message += `%0A💰 *Total:* ₹${total}%0A%0APlease confirm order ASAP.`;
 
   // Your WhatsApp number (with country code)
   const phoneNumber = "919873324887"; // 91 for India
