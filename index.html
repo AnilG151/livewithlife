@@ -418,13 +418,13 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
     <img src="images/leaf3.png" class="leaf leaf3" alt="">
   </div>
 
-  <!-- HERO IMAGE -->
+ <!-- HERO IMAGES (Looping Fade) -->
   <div class="hero-image">
     <img src="images/hero-microgreens.png" alt="Fresh Microgreens"
-       onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+Image'">
-  <img src="images/hero-farm.png" alt="Microgreens Farm" class="delayed-image"
-       onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Second+Image'">
-</div>
+         onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+1'">
+    <img src="images/hero-farm.png" alt="Microgreens Farm"
+         onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+2'">
+  </div>
 
   <!-- HERO TEXT -->
   <div class="hero-text">
@@ -481,7 +481,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   100% { transform: translate(110vw, 0) rotate(360deg); opacity: 0.7; }
 }
 
-/* ---------- HERO IMAGE ---------- */
+/* ---------- HERO IMAGE (Loop Crossfade) ---------- */
 .hero-image {
   position: absolute;
   inset: 0;
@@ -491,22 +491,36 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   overflow: hidden;
 }
 
+/* Two hero images fading in/out in loop */
 .hero-image img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* keeps aspect ratio */
   object-position: center;
   filter: brightness(0.9) contrast(1.05) saturate(1.1);
-  transform: scale(1.02);
-  transition: transform 6s ease-in-out;
-  animation: subtleMove 16s ease-in-out infinite alternate;
+  opacity: 0;
+  animation: fadeLoop 5s ease-in-out infinite;
 }
 
-/* Slight movement instead of heavy zoom */
-@keyframes subtleMove {
-  0% { transform: scale(1.02) translateY(0); }
-  50% { transform: scale(1.05) translateY(-1.5%); }
-  100% { transform: scale(1.02) translateY(0); }
+/* First image starts immediately */
+.hero-image img:nth-child(1) {
+  animation-delay: 0s;
+}
+
+/* Second image starts 5 seconds later (half of the 10s cycle) */
+.hero-image img:nth-child(2) {
+  animation-delay: 5s;
+}
+
+/* Crossfade keyframes */
+@keyframes fadeLoop {
+  0% { opacity: 1; transform: scale(1.01); }
+  40% { opacity: 1; transform: scale(1.02); }
+  50% { opacity: 0; }
+  90% { opacity: 0; transform: scale(1.01); }
+  100% { opacity: 1; }
 }
 
 /* ---------- HERO TEXT ---------- */
@@ -596,24 +610,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   background: #2f9e44;
   color: #fff;
 }
-/* Second hero image - appears after 1.5s */
-.hero-image img.delayed-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  filter: brightness(0.9) contrast(1.05) saturate(1.1);
-  opacity: 0;
-  animation: fadeInSecond 1s ease-in forwards;
-  animation-delay: 1.5s;
-}
 
-@keyframes fadeInSecond {
-  from { opacity: 0; transform: scale(1.02); }
-  to { opacity: 1; transform: scale(1.05); }
-}
 /* ---------- MOBILE VIEW ---------- */
 @media (max-width: 768px) {
   .hero {
