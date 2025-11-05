@@ -492,12 +492,16 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 }
 
 .hero-image img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   filter: brightness(0.9) contrast(1.05) saturate(1.1);
-  animation: crossfade 18s ease-in-out infinite; /* slowed down */
+  opacity: 0;
+  transform: scale(0.975)
+  animation: crossfade 8s ease-in-out infinite;
 }
 
 /* First image starts immediately */
