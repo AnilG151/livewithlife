@@ -500,7 +500,7 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   object-position: center;
   filter: brightness(0.9) contrast(1.05) saturate(1.1);
   opacity: 0;
-  transform: scale(0.975)
+  transform: scale(0.98); /* reduced stretch */
   animation: crossfade 8s ease-in-out infinite;
 }
 
@@ -509,10 +509,9 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   animation-delay: 0s;
 }
 
-
-/* second image starts halfway into the cycle */
+/* Second image starts halfway into the cycle */
 .hero-image img:nth-child(2) {
-  animation-delay: 4s;
+  animation-delay: 8s;
 }
 
 /* Crossfade keyframes */
