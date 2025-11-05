@@ -491,17 +491,16 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   overflow: hidden;
 }
 
-/* Two hero images fading in/out in loop */
 .hero-image img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* keeps aspect ratio */
+  object-fit: cover;
   object-position: center;
   filter: brightness(0.9) contrast(1.05) saturate(1.1);
   opacity: 0;
-  animation: fadeLoop 5s ease-in-out infinite;
+  animation: crossfade 8s ease-in-out infinite;
 }
 
 /* First image starts immediately */
@@ -509,18 +508,19 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   animation-delay: 0s;
 }
 
-/* Second image starts 5 seconds later (half of the 10s cycle) */
+
+/* second image starts halfway into the cycle */
 .hero-image img:nth-child(2) {
-  animation-delay: 5s;
+  animation-delay: 4s;
 }
 
 /* Crossfade keyframes */
-@keyframes fadeLoop {
-  0% { opacity: 1; transform: scale(1.01); }
-  40% { opacity: 1; transform: scale(1.02); }
-  50% { opacity: 0; }
-  90% { opacity: 0; transform: scale(1.01); }
-  100% { opacity: 1; }
+@keyframes crossfade {
+  0%   { opacity: 0; transform: scale(1.00); }  /* no stretch on load */
+  10%  { opacity: 1; transform: scale(1.01); }  /* subtle zoom */
+  40%  { opacity: 1; transform: scale(1.015); }
+  50%  { opacity: 0; transform: scale(1.02); }  /* light zoom-out before switch */
+  100% { opacity: 0; transform: scale(1.00); }  /* reset smoothly */
 }
 
 /* ---------- HERO TEXT ---------- */
