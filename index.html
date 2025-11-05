@@ -421,8 +421,10 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   <!-- HERO IMAGE -->
   <div class="hero-image">
     <img src="images/hero-microgreens.png" alt="Fresh Microgreens"
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+Image'">
-  </div>
+       onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Hero+Image'">
+  <img src="images/hero-farm.png" alt="Microgreens Farm" class="delayed-image"
+       onerror="this.onerror=null;this.src='https://via.placeholder.com/400x320.png?text=Second+Image'">
+</div>
 
   <!-- HERO TEXT -->
   <div class="hero-text">
@@ -594,7 +596,24 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
   background: #2f9e44;
   color: #fff;
 }
+/* Second hero image - appears after 1.5s */
+.hero-image img.delayed-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.9) contrast(1.05) saturate(1.1);
+  opacity: 0;
+  animation: fadeInSecond 1s ease-in forwards;
+  animation-delay: 1.5s;
+}
 
+@keyframes fadeInSecond {
+  from { opacity: 0; transform: scale(1.02); }
+  to { opacity: 1; transform: scale(1.05); }
+}
 /* ---------- MOBILE VIEW ---------- */
 @media (max-width: 768px) {
   .hero {
