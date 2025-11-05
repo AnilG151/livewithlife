@@ -492,15 +492,12 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 }
 
 .hero-image img {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   filter: brightness(0.9) contrast(1.05) saturate(1.1);
-  opacity: 0;
-  animation: crossfade 8s ease-in-out infinite;
+  animation: crossfade 18s ease-in-out infinite; /* slowed down */
 }
 
 /* First image starts immediately */
@@ -516,11 +513,11 @@ footer{background:linear-gradient(90deg,var(--green-1),var(--green-2));color:#ff
 
 /* Crossfade keyframes */
 @keyframes crossfade {
-  0%   { opacity: 0; transform: scale(1.00); }  /* no stretch on load */
-  10%  { opacity: 1; transform: scale(1.01); }  /* subtle zoom */
-  40%  { opacity: 1; transform: scale(1.015); }
-  50%  { opacity: 0; transform: scale(1.02); }  /* light zoom-out before switch */
-  100% { opacity: 0; transform: scale(1.00); }  /* reset smoothly */
+  0%   { opacity: 0; transform: scale(0.975); }  /* smaller start */
+  10%  { opacity: 1; transform: scale(0.98); }   /* smooth zoom */
+  40%  { opacity: 1; transform: scale(0.985); }  /* subtle motion */
+  50%  { opacity: 0; transform: scale(0.98); }   /* fade out gently */
+  100% { opacity: 0; transform: scale(0.975); }  /* reset */
 }
 
 /* ---------- HERO TEXT ---------- */
